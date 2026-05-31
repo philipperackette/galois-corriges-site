@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<title>Corrigés — Chapitre 13 : Polynômes cyclotomiques et extensions cyclotomiques</title>
+<script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+<script async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<style>
+
+    :root { --accent:#8a2d18; --soft:#fff7f2; --line:#ead8cf; --ink:#222; --muted:#5f5f5f; }
+    body { max-width: 900px; margin: 32px auto; padding: 0 18px 40px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.65; hyphens: auto; color: var(--ink); background:#fff; }
+    h1 { text-align: center; line-height:1.25; margin-bottom: 1.2em; }
+    h2 { border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-top: 2.2em; }
+    .intro, .mode { background: #f8f8f8; border-left: 5px solid var(--accent); padding: 0.9em 1em; margin: 1.2em 0 1.6em; }
+    .exo { margin: 1.6em 0 2.2em; padding: 1em 1.1em; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+    .exo > strong:first-child { color: var(--accent); font-size: 1.05em; }
+    .sol { margin-left: 0; margin-top: 0.8em; }
+    .methode, .vigilance, .conclusion { margin: .75em 0; padding: .65em .8em; border-radius: 8px; }
+    .methode { background: #f4f7ff; border-left: 4px solid #4867aa; }
+    .vigilance { background: #fff8e8; border-left: 4px solid #c7861b; }
+    .conclusion { background: var(--soft); border-left: 4px solid var(--accent); }
+    .label { font-weight: 700; color: #333; }
+    code { background:#f5f5f5; padding:.1em .25em; border-radius:4px; }
+    a { color: var(--accent); }
+  </style>
+</head>
+<body>
+<h1>Corrigés — Chapitre 13 : Polynômes cyclotomiques et extensions cyclotomiques</h1><div class="intro"><p><span class="label">Objectif pédagogique.</span> Les solutions insistent sur les racines de l’unité, les polynômes cyclotomiques et le rôle de $(\mathbb Z/n\mathbb Z)^\times$ dans la structure galoisienne des extensions cyclotomiques.</p></div><div class="mode"><p><span class="label">Mode de lecture.</span> Pour chaque exercice, lire d’abord la méthode, refaire le calcul sans regarder la solution, puis comparer avec le point de vigilance.</p></div>
+<h2>✏️ Vérification</h2>
+<div class="exo">
+<strong>V1.</strong> Déterminer les racines primitives $8$-ièmes de l'unité.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Fixer une convention de calcul, effectuer les images ou les réductions explicitement, puis seulement ensuite reconnaître l’objet obtenu.</div>
+      Les racines $8$-ièmes de l'unité sont les $\zeta_8^k = e^{2ik\pi/8}$ pour $k=0,\dots,7$.
+      Une racine est primitive si son ordre multiplicatif vaut exactement $8$, c'est-à-dire si $\gcd(k,8)=1$.
+      Les entiers $k$ entre $1$ et $7$ premiers avec $8$ sont $1, 3, 5, 7$.
+      Les racines primitives $8$-ièmes sont donc $\zeta_8, \zeta_8^3, \zeta_8^5, \zeta_8^7$ (où $\zeta_8 = e^{2i\pi/8}$).
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+</div>
+<div class="exo">
+<strong>V2.</strong> Calculer $\Phi_8(X)$ à partir de la relation $X^8 - 1 = \prod_{d\mid 8} \Phi_d(X)$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Fixer une convention de calcul, effectuer les images ou les réductions explicitement, puis seulement ensuite reconnaître l’objet obtenu.</div>
+      Les diviseurs de $8$ sont $1,2,4,8$.
+      On connaît $\Phi_1(X) = X-1$, $\Phi_2(X) = X+1$, $\Phi_4(X) = X^2+1$.
+      Alors $X^8 - 1 = \Phi_1(X) \Phi_2(X) \Phi_4(X) \Phi_8(X)$.
+      Donc $\Phi_8(X) = \frac{X^8-1}{(X-1)(X+1)(X^2+1)}$.
+      Or $(X-1)(X+1) = X^2-1$, et $(X^2-1)(X^2+1) = X^4-1$.
+      Ainsi $\Phi_8(X) = \frac{X^8-1}{X^4-1} = X^4+1$.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+</div>
+<div class="exo">
+<strong>V3.</strong> Vérifier que $\Phi_{10}(X) = X^4 - X^3 + X^2 - X + 1$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Isoler la définition utile, écrire les hypothèses sous forme exploitable, puis conclure par une phrase qui répond exactement à la question.</div>
+      On peut utiliser $\Phi_{10}(X) = \Phi_5(-X)$ car pour tout $n$ pair, $\Phi_{2n}(X) = \Phi_n(-X)$ lorsque $n$ est impair. Ici $n=5$ impair, donc $\Phi_{10}(X) = \Phi_5(-X)$.
+      $\Phi_5(X) = X^4+X^3+X^2+X+1$, donc $\Phi_5(-X) = (-X)^4 + (-X)^3 + (-X)^2 + (-X) + 1 = X^4 - X^3 + X^2 - X + 1$, ce qui correspond.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+</div>
+<div class="exo">
+<strong>V4.</strong> Donner le degré de $\mathbb Q(\zeta_{12})/\mathbb Q$, puis décrire le groupe $\mathrm{Gal}(\mathbb Q(\zeta_{12})/\mathbb Q)$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Lister d’abord les candidats imposés par les théorèmes de structure ou de degré, puis vérifier que la liste est complète.</div>
+      Le degré est $\varphi(12)$. $\varphi(12) = \varphi(4) \cdot \varphi(3) = 2 \cdot 2 = 4$ (car $12=4\cdot3$).
+      Le groupe de Galois est isomorphe à $(\mathbb Z/12\mathbb Z)^\times$.
+      $(\mathbb Z/12\mathbb Z)^\times = \{ a \in \{1,\dots,11\} \mid \gcd(a,12)=1 \} = \{1, 5, 7, 11\}$.
+      Ce groupe a $4$ éléments. Comme $5^2 \equiv 1$, $7^2 \equiv 1$, $11^2 \equiv 1 \pmod{12}$, aucun élément n'est d'ordre $4$ ; le groupe est $C_2 \times C_2$, isomorphe au groupe de Klein $V_4$.
+      Donc $\mathrm{Gal}(\mathbb Q(\zeta_{12})/\mathbb Q) \simeq (\mathbb Z/12\mathbb Z)^\times \simeq \mathbb Z/2\mathbb Z \times \mathbb Z/2\mathbb Z$.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Une famille génératrice ne suffit pas : lorsqu’on parle de base, il faut aussi justifier l’unicité de l’écriture, ou utiliser un argument de dimension.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+</div>
+<h2>🔧 Structurants</h2>
+<div class="exo">
+<strong>S1.</strong> Montrer que, si $p$ est premier et $k\ge 1$, alors $\Phi_{p^k}(X) = \frac{X^{p^k}-1}{X^{p^{k-1}}-1}$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
+      Les diviseurs de $p^k$ sont $1, p, p^2, \dots, p^k$.
+      On a $X^{p^k} - 1 = \prod_{i=0}^{k} \Phi_{p^i}(X)$.
+      Par récurrence ou en divisant par la formule analogue pour $p^{k-1}$,
+      $\prod_{i=0}^{k-1} \Phi_{p^i}(X) = X^{p^{k-1}} - 1$.
+      Donc $\Phi_{p^k}(X) = \frac{X^{p^k}-1}{X^{p^{k-1}}-1}$.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+</div>
+<div class="exo">
+<strong>S2.</strong> En déduire une formule explicite pour $\Phi_9(X)$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Isoler la définition utile, écrire les hypothèses sous forme exploitable, puis conclure par une phrase qui répond exactement à la question.</div>
+      D'après S1 avec $p=3, k=2$ : $\Phi_9(X) = \frac{X^9-1}{X^3-1} = X^6 + X^3 + 1$.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+</div>
+<div class="exo">
+<strong>S3.</strong> Montrer que $\mathbb Q(\zeta_4) = \mathbb Q(i)$ et retrouver son groupe de Galois.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
+      $\zeta_4 = e^{2i\pi/4} = i$, donc $\mathbb Q(\zeta_4) = \mathbb Q(i)$.
+      $[\mathbb Q(i):\mathbb Q] = \varphi(4)=2$. L'extension est galoisienne.
+      Le groupe de Galois est $(\mathbb Z/4\mathbb Z)^\times = \{1,3\}$ (mod $4$), isomorphe à $\mathbb Z/2\mathbb Z$. Les automorphismes sont l'identité et la conjugaison complexe $i \mapsto -i = i^3$.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Un automorphisme au-dessus de $K$ fixe les coefficients de $K$ ; c’est exactement ce qui permet de transporter l’équation $P(\alpha)=0$.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+</div>
+<div class="exo">
+<strong>S4.</strong> Montrer que $\mathbb Q(\zeta_3) = \mathbb Q(\sqrt{-3})$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
+      $\zeta_3 = e^{2i\pi/3} = \frac{-1 + i\sqrt{3}}{2}$.
+      Il est clair que $\sqrt{-3} = i\sqrt{3} = 2\zeta_3 + 1 \in \mathbb Q(\zeta_3)$.
+      Réciproquement, $\zeta_3 = \frac{-1 + \sqrt{-3}}{2} \in \mathbb Q(\sqrt{-3})$.
+      Donc les deux corps coïncident.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> On termine en indiquant clairement le corps obtenu, son degré ou la propriété d’extension démontrée.</div></div>
+</div>
+<div class="exo">
+<strong>S5.</strong> Montrer que $\mathbb Q(\zeta_5 + \zeta_5^{-1}) = \mathbb Q(\sqrt{5})$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
+      On a montré (exercice A1 chapitre 8 ou dans le cours) que $u = \zeta_5+\zeta_5^{-1}$ satisfait $u^2+u-1=0$, donc $u = \frac{-1+\sqrt{5}}{2}$ (la racine positive). Par conséquent, $\sqrt{5} = 2u+1 \in \mathbb Q(u)$ et $u \in \mathbb Q(\sqrt{5})$. Ainsi $\mathbb Q(\zeta_5+\zeta_5^{-1}) = \mathbb Q(\sqrt{5})$.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+</div>
+<h2>🚀 Approfondissement</h2>
+<div class="exo">
+<strong>A1.</strong> Montrer que $(\mathbb Z/9\mathbb Z)^\times$ est cyclique. En déduire la structure de $\mathrm{Gal}(\mathbb Q(\zeta_9)/\mathbb Q)$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
+      $(\mathbb Z/9\mathbb Z)^\times = \{1,2,4,5,7,8\}$, d'ordre $6 = \varphi(9)$.
+      $2$ est un générateur : $2^1=2$, $2^2=4$, $2^3=8$, $2^4=16\equiv 7$, $2^5=14\equiv 5$, $2^6=10\equiv 1$. Donc ce groupe est cyclique d'ordre $6$.
+      Ainsi $\mathrm{Gal}(\mathbb Q(\zeta_9)/\mathbb Q) \simeq (\mathbb Z/9\mathbb Z)^\times \simeq \mathbb Z/6\mathbb Z$.
+      C'est un groupe cyclique d'ordre $6$.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+</div>
+<div class="exo">
+<strong>A2.</strong> Décrire les sous-groupes de $(\mathbb Z/8\mathbb Z)^\times$, puis les degrés possibles des sous-corps de $\mathbb Q(\zeta_8)$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Lister d’abord les candidats imposés par les théorèmes de structure ou de degré, puis vérifier que la liste est complète.</div>
+      $(\mathbb Z/8\mathbb Z)^\times = \{1,3,5,7\}$, d'ordre $4$. La table est :
+      $3^2=9\equiv 1$, $5^2=25\equiv 1$, $7^2=49\equiv 1$. C'est le groupe de Klein $V_4 \simeq C_2 \times C_2$.
+      Ses sous-groupes sont : le trivial $\{1\}$, et trois sous-groupes d'ordre $2$ : $\langle 3 \rangle = \{1,3\}$, $\langle 5 \rangle = \{1,5\}$, $\langle 7 \rangle = \{1,7\}$ (car $7\equiv -1$).
+      Par la correspondance de Galois, les sous-corps de $\mathbb Q(\zeta_8)$ sont de degrés sur $\mathbb Q$ égaux à l'indice du sous-groupe. L'indice d'un sous-groupe d'ordre $2$ dans un groupe d'ordre $4$ est $2$, donc on aura trois sous-corps quadratiques (de degré $2$) dans $\mathbb Q(\zeta_8)$, en plus de $\mathbb Q$ et $\mathbb Q(\zeta_8)$.
+      Les degrés possibles sont $1, 2, 4$.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Une famille génératrice ne suffit pas : lorsqu’on parle de base, il faut aussi justifier l’unicité de l’écriture, ou utiliser un argument de dimension.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+</div>
+<div class="exo">
+<strong>A3.</strong> On admet que $(\mathbb Z/p\mathbb Z)^\times$ est cyclique pour $p$ premier. Décrire la chaîne de sous-groupes de $(\mathbb Z/17\mathbb Z)^\times$ correspondant à une tour d'extensions quadratiques.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Lister d’abord les candidats imposés par les théorèmes de structure ou de degré, puis vérifier que la liste est complète.</div>
+      $(\mathbb Z/17\mathbb Z)^\times$ est cyclique d'ordre $16 = 2^4$.
+      Soit $g$ un générateur. La chaîne de sous-groupes correspondant à la tour d'extensions quadratiques est la suite des sous-groupes emboîtés d'ordre décroissant :
+      \begin{align*}
+      G = G_0 &amp;= \langle g \rangle \quad (\text{ordre } 16)\\
+      G_1 &amp;= \langle g^2 \rangle \quad (\text{ordre } 8)\\
+      G_2 &amp;= \langle g^4 \rangle \quad (\text{ordre } 4)\\
+      G_3 &amp;= \langle g^8 \rangle \quad (\text{ordre } 2)\\
+      G_4 &amp;= \{1\} \quad (\text{ordre } 1)
+      \end{align*}
+      Chaque quotient $G_i / G_{i+1}$ est d'ordre $2$ (cyclique). Par la correspondance de Galois, les corps fixes associés forment une tour d'extensions quadratiques successives, ce qui permet de construire $\zeta_{17}$ (ou plutôt son sous-corps réel) par racines carrées successives. C'est l'idée de la construction de Gauss.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Ne pas confondre le polynôme $P$ avec sa classe : dans le quotient, la classe de $P$ est nulle.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+</div>
+<div class="exo">
+<strong>A4.</strong> Montrer que si $n\ge 3$, alors la conjugaison complexe correspond à la classe de $-1$ dans $(\mathbb Z/n\mathbb Z)^\times$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
+      La conjugaison complexe envoie $\zeta_n = e^{2i\pi/n}$ sur $\overline{\zeta_n} = e^{-2i\pi/n} = \zeta_n^{-1}$.
+      Dans la paramétrisation $\sigma_a : \zeta_n \mapsto \zeta_n^a$, cet automorphisme correspond à $a \equiv -1 \pmod n$.
+      Comme $n\ge 3$, $-1 \not\equiv 1 \pmod n$, donc c'est bien un élément non trivial, d'ordre $2$ dans $(\mathbb Z/n\mathbb Z)^\times$ (car $(-1)^2 = 1$).
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Un automorphisme au-dessus de $K$ fixe les coefficients de $K$ ; c’est exactement ce qui permet de transporter l’équation $P(\alpha)=0$.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+</div>
+</body>
+</html>

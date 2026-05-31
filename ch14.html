@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<title>Corrigés — Chapitre 14 : Constructions à la règle et au compas</title>
+<script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+<script async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<style>
+
+    :root { --accent:#8a2d18; --soft:#fff7f2; --line:#ead8cf; --ink:#222; --muted:#5f5f5f; }
+    body { max-width: 900px; margin: 32px auto; padding: 0 18px 40px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.65; hyphens: auto; color: var(--ink); background:#fff; }
+    h1 { text-align: center; line-height:1.25; margin-bottom: 1.2em; }
+    h2 { border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-top: 2.2em; }
+    .intro, .mode { background: #f8f8f8; border-left: 5px solid var(--accent); padding: 0.9em 1em; margin: 1.2em 0 1.6em; }
+    .exo { margin: 1.6em 0 2.2em; padding: 1em 1.1em; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+    .exo > strong:first-child { color: var(--accent); font-size: 1.05em; }
+    .sol { margin-left: 0; margin-top: 0.8em; }
+    .methode, .vigilance, .conclusion { margin: .75em 0; padding: .65em .8em; border-radius: 8px; }
+    .methode { background: #f4f7ff; border-left: 4px solid #4867aa; }
+    .vigilance { background: #fff8e8; border-left: 4px solid #c7861b; }
+    .conclusion { background: var(--soft); border-left: 4px solid var(--accent); }
+    .label { font-weight: 700; color: #333; }
+    code { background:#f5f5f5; padding:.1em .25em; border-radius:4px; }
+    a { color: var(--accent); }
+  </style>
+</head>
+<body>
+<h1>Corrigés — Chapitre 14 : Constructions à la règle et au compas</h1><div class="intro"><p><span class="label">Objectif pédagogique.</span> Les corrigés relient les constructions à la règle et au compas aux extensions quadratiques successives. La question devient alors : le degré pertinent est-il une puissance de deux ?</p></div><div class="mode"><p><span class="label">Mode de lecture.</span> Pour chaque exercice, lire d’abord la méthode, refaire le calcul sans regarder la solution, puis comparer avec le point de vigilance.</p></div>
+<h2>✏️ Vérification</h2>
+<div class="exo">
+<strong>V1.</strong> Montrer que si $x$ et $y$ sont constructibles, alors $x+y$, $x-y$, $xy$ et $x/y$ (pour $y\neq0$) sont constructibles.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
+      Par hypothèse, les points $(x,0)$ et $(y,0)$ sont constructibles.
+      <ul>
+<li><strong>$x+y$ :</strong> C'est la longueur obtenue en reportant bout à bout les segments de longueur $x$ et $y$ sur une droite. Constructible.</li>
+<li><strong>$x-y$ :</strong> De même, en reportant dans l'autre sens.</li>
+<li><strong>$xy$ :</strong> Utiliser le théorème de Thalès avec des droites parallèles et le segment unité $[0,1]$ connu. La construction classique du produit de deux longueurs donne un point d'abscisse $xy$.</li>
+<li><strong>$x/y$ :</strong> Construction duale de la division.</li>
+</ul>
+      Toutes ces opérations se ramènent à des intersections de droites et de cercles, donc les résultats sont constructibles.
+      Ainsi l'ensemble des nombres constructibles forme un sous-corps de $\mathbb R$ (contenant $\mathbb Q$).
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> On termine en indiquant clairement le corps obtenu, son degré ou la propriété d’extension démontrée.</div></div>
+</div>
+<div class="exo">
+<strong>V2.</strong> Montrer que le triangle équilatéral est constructible.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
+      On part de deux points $O=(0,0)$ et $I=(1,0)$ qui définissent l'unité. Le triangle équilatéral de côté $1$ peut être construit en traçant les cercles de rayon $1$ centrés en $O$ et $I$ ; leur intersection (au-dessus de l'axe) donne le troisième sommet $(\frac12,\frac{\sqrt3}{2})$. Ce point est constructible car on a construit $\sqrt3$ par la méthode classique (hauteur d'un triangle équilatéral). Donc le triangle équilatéral est constructible.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+</div>
+<div class="exo">
+<strong>V3.</strong> Calculer $\varphi(3)$, $\varphi(4)$, $\varphi(5)$, $\varphi(6)$, $\varphi(7)$, $\varphi(8)$, $\varphi(9)$, et déterminer quels polygones réguliers correspondants sont constructibles.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Fixer une convention de calcul, effectuer les images ou les réductions explicitement, puis seulement ensuite reconnaître l’objet obtenu.</div>
+<ul>
+<li>$\varphi(3)=2$ (puissance de $2$) → triangle équilatéral constructible.</li>
+<li>$\varphi(4)=2$ → carré constructible.</li>
+<li>$\varphi(5)=4 = 2^2$ → pentagone régulier constructible.</li>
+<li>$\varphi(6) = \varphi(2)\varphi(3) = 1\cdot 2 = 2$ → hexagone régulier constructible.</li>
+<li>$\varphi(7)=6$ n'est pas une puissance de $2$ → heptagone régulier non constructible.</li>
+<li>$\varphi(8)=4$ → octogone régulier constructible.</li>
+<li>$\varphi(9)=6$ → ennéagone régulier non constructible.</li>
+</ul>
+<div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+</div>
+<div class="exo">
+<strong>V4.</strong> Vérifier que $8X^3 - 6X - 1$ n'a pas de racine rationnelle.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Isoler la définition utile, écrire les hypothèses sous forme exploitable, puis conclure par une phrase qui répond exactement à la question.</div>
+      Les racines rationnelles possibles d'un polynôme à coefficients entiers sont de la forme $\frac{p}{q}$ avec $p \mid 1$ et $q \mid 8$, donc parmi $\pm 1, \pm \frac12, \pm \frac14, \pm \frac18$.
+      <ul>
+<li>$x=1$ : $8-6-1=1 \neq 0$.</li>
+<li>$x=-1$ : $-8+6-1=-3 \neq 0$.</li>
+<li>$x=\frac12$ : $8\cdot\frac18 - 6\cdot\frac12 -1 = 1-3-1 = -3 \neq 0$.</li>
+<li>$x=-\frac12$ : $-1+3-1=1 \neq 0$.</li>
+<li>$x=\frac14$ : $8\cdot\frac{1}{64} - 6\cdot\frac14 -1 = \frac18 - \frac32 -1 \neq 0$.</li>
+<li>$x=-\frac14$ : $8\cdot(-\frac{1}{64}) + \frac32 -1 = -\frac18 + \frac32 -1 \neq 0$.</li>
+<li>$x=\frac18$ : $8\cdot\frac{1}{512} - 6\cdot\frac18 -1 = \frac{1}{64} - \frac34 -1 \neq 0$.</li>
+<li>$x=-\frac18$ : $-\frac{1}{64} + \frac34 -1 \neq 0$.</li>
+</ul>
+      Aucune racine rationnelle, donc le polynôme n'a pas de racine dans $\mathbb Q$.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La solution se clôt en identifiant le polynôme ou la factorisation cherchée, avec la raison qui garantit son unicité ou son irréductibilité.</div></div>
+</div>
+<h2>🔧 Structurants</h2>
+<div class="exo">
+<strong>S1.</strong> Soit $x$ constructible et algébrique sur $\mathbb Q$. Montrer que le degré de son polynôme minimal est une puissance de $2$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
+      Puisque $x$ est constructible, il existe une tour quadratique $\mathbb Q = K_0 \subset K_1 \subset \cdots \subset K_m$ telle que $x \in K_m$. Chaque $[K_i:K_{i-1}] \le 2$.
+      Le degré $[K_m:\mathbb Q]$ est un produit de facteurs $1$ ou $2$, donc une puissance de $2$.
+      Comme $\mathbb Q(x) \subset K_m$, on a $[\mathbb Q(x):\mathbb Q] \mid [K_m:\mathbb Q]$. Donc le degré du polynôme minimal de $x$ divise une puissance de $2$, c'est donc une puissance de $2$.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Une famille génératrice ne suffit pas : lorsqu’on parle de base, il faut aussi justifier l’unicité de l’écriture, ou utiliser un argument de dimension.</div><div class="conclusion"><span class="label">Conclusion.</span> La solution se clôt en identifiant le polynôme ou la factorisation cherchée, avec la raison qui garantit son unicité ou son irréductibilité.</div></div>
+</div>
+<div class="exo">
+<strong>S2.</strong> Montrer que le polygone régulier à $15$ côtés est constructible.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
+      $15 = 3 \times 5$, produits de deux premiers de Fermat distincts.
+      $\varphi(15) = \varphi(3)\varphi(5) = 2 \cdot 4 = 8$, qui est une puissance de $2$ ($2^3$).
+      D'après le théorème de Gauss-Wantzel, le polygone régulier à $15$ côtés est constructible.
+      (On peut aussi le construire en combinant les constructions du triangle équilatéral et du pentagone régulier, car $3$ et $5$ sont premiers entre eux.)
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+</div>
+<div class="exo">
+<strong>S3.</strong> Montrer que le polygone régulier à $21$ côtés n'est pas constructible.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
+      $21 = 3 \times 7$. $\varphi(21) = \varphi(3)\varphi(7) = 2 \cdot 6 = 12$, qui n'est pas une puissance de $2$.
+      Par le critère de Gauss-Wantzel (condition nécessaire), le polygone régulier à $21$ côtés n'est pas constructible.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+</div>
+<div class="exo">
+<strong>S4.</strong> Soit $p$ un nombre premier impair. Montrer que le polygone régulier à $p$ côtés est constructible si et seulement si $p$ est un premier de Fermat.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
+      Pour $p$ premier impair, $\varphi(p) = p-1$.
+      D'après le théorème de Gauss-Wantzel, le polygone régulier à $p$ côtés est constructible si et seulement si $\varphi(p) = p-1$ est une puissance de $2$.
+      Un nombre premier $p$ tel que $p-1$ soit une puissance de $2$ est exactement un nombre premier de Fermat (car si $p-1 = 2^k$, alors $p = 2^k+1$ ; pour que $p$ soit premier, $k$ doit être une puissance de $2$, donc $p = 2^{2^m}+1$).
+      Réciproquement, tout premier de Fermat $p = 2^{2^m}+1$ vérifie bien $\varphi(p) = p-1 = 2^{2^m}$, une puissance de $2$. Donc le polygone est constructible si et seulement si $p$ est un premier de Fermat.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+</div>
+<h2>🚀 Approfondissement</h2>
+<div class="exo">
+<strong>A1.</strong> Montrer que si deux polygones réguliers à $m$ et $n$ côtés sont constructibles et si $\gcd(m,n)=1$, alors le polygone régulier à $mn$ côtés est constructible.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
+      Si le polygone à $m$ côtés est constructible, alors $\zeta_m$ est constructible (ou plus précisément ses coordonnées). De même pour $n$. Comme $\gcd(m,n)=1$, les racines primitives $mn$-ièmes de l'unité peuvent s'exprimer comme combinaison de $\zeta_m$ et $\zeta_n$ (car $(\mathbb Z/mn\mathbb Z)^\times \simeq (\mathbb Z/m\mathbb Z)^\times \times (\mathbb Z/n\mathbb Z)^\times$ par le lemme chinois). Ainsi $\zeta_{mn}$ est constructible, donc le polygone régulier à $mn$ côtés est constructible.
+      Algébriquement, $\varphi(mn) = \varphi(m)\varphi(n)$ est produit de deux puissances de $2$, donc une puissance de $2$, ce qui suffit.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+</div>
+<div class="exo">
+<strong>A2.</strong> Expliquer pourquoi le fait que $F_5 = 2^{32}+1$ soit composé implique que le polygone régulier à $F_5$ côtés n'est pas constructible.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Isoler la définition utile, écrire les hypothèses sous forme exploitable, puis conclure par une phrase qui répond exactement à la question.</div>
+      $F_5 = 2^{2^5}+1$ est un nombre de Fermat, mais il n'est pas premier (il est divisible par $641$). Si le polygone à $F_5$ côtés était constructible, alors d'après le théorème de Gauss-Wantzel, $F_5$ devrait être de la forme $2^a p_1\cdots p_r$ avec des premiers de Fermat distincts. Comme $F_5$ est un nombre de Fermat (même s'il est composé), il n'a que des facteurs premiers impairs qui ne sont pas tous des premiers de Fermat distincts ? En réalité, $F_5$ admet des facteurs premiers qui ne sont pas de Fermat (par exemple $641$ n'est pas un premier de Fermat). Donc $\varphi(F_5)$ n'est pas une puissance de $2$, ce qui rend le polygone non constructible.
+      Plus directement, un polygone régulier à $n$ côtés est constructible si et seulement si $n$ est produit d'une puissance de $2$ et de \textbf{premiers} de Fermat distincts. Ici $n = F_5$ est un nombre de Fermat mais composé, donc il n'est pas un premier de Fermat, et il ne figure pas dans la liste des $n$ autorisés (car dans la décomposition, les premiers de Fermat doivent être distincts et figurer à la puissance $1$). Puisque $F_5$ n'est pas premier, il ne satisfait pas la condition nécessaire et suffisante.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+</div>
+<div class="exo">
+<strong>A3.</strong> On admet que tout $2$-groupe fini possède une chaîne de sous-groupes d'indices successifs $2$. Détailler la traduction de cette chaîne par la correspondance de Galois.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Penser en termes d’espaces vectoriels : une base donne le degré, et une tour donne un produit de degrés.</div>
+      Soit $L/\mathbb Q$ une extension galoisienne finie contenue dans $\mathbb R$, et supposons que $\mathrm{Gal}(L/\mathbb Q)$ soit un $2$-groupe. Comme tout $2$-groupe admet une chaîne de sous-groupes
+      $$ G = G_0 \supset G_1 \supset \cdots \supset G_m = \{1\} $$
+      avec $[G_i : G_{i+1}] = 2$.
+      Par la correspondance de Galois, les corps fixes $K_i = L^{G_i}$ forment une tour
+      $$ \mathbb Q = L^{G_0} \subset L^{G_1} \subset \cdots \subset L^{G_m} = L. $$
+      Le groupe de Galois de $L/K_i$ est $G_i$, donc $[L : K_i] = |G_i|$. L'indice $[K_{i+1} : K_i]$ est égal à $[G_i : G_{i+1}] = 2$.
+      Donc la tour d'extensions est une tour quadratique. Par le théorème de caractérisation des nombres constructibles, tout élément de $L$ est constructible.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Un automorphisme au-dessus de $K$ fixe les coefficients de $K$ ; c’est exactement ce qui permet de transporter l’équation $P(\alpha)=0$.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+</div>
+<div class="exo">
+<strong>A4.</strong> Relire le chapitre 13 pour $n=5$. Identifier explicitement le sous-corps réel $\mathbb Q(\zeta_5+\zeta_5^{-1})$ et expliquer pourquoi cela suffit à construire le pentagone régulier.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Isoler la définition utile, écrire les hypothèses sous forme exploitable, puis conclure par une phrase qui répond exactement à la question.</div>
+      Pour $n=5$, $\zeta_5 = e^{2i\pi/5}$. La conjugaison complexe envoie $\zeta_5$ sur $\zeta_5^{-1}$. Le sous-corps fixé par cette conjugaison est le sous-corps réel maximal de $\mathbb Q(\zeta_5)$, à savoir $\mathbb Q(\zeta_5 + \zeta_5^{-1})$.
+      Comme montré dans l'exercice S5 du chapitre 13, $\zeta_5 + \zeta_5^{-1} = 2\cos(2\pi/5) = \frac{\sqrt{5}-1}{2}$, donc ce sous-corps est $\mathbb Q(\sqrt{5})$.
+      Pour construire le pentagone régulier, il suffit de construire le point $(\cos(2\pi/5), \sin(2\pi/5))$. Connaître $\cos(2\pi/5) = \frac{\sqrt{5}-1}{4}$ permet de construire cet angle. Puisque $\sqrt{5}$ est constructible (par une tour quadratique), $\cos(2\pi/5)$ l'est aussi. On peut alors reporter cette longueur sur le cercle unité pour obtenir le pentagone.
+      Ainsi, l'identification du sous-corps réel et la constructibilité de $\sqrt{5}$ (qui découle d'une tour quadratique) montrent que le pentagone régulier est constructible.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> On termine en indiquant clairement le corps obtenu, son degré ou la propriété d’extension démontrée.</div></div>
+</div>
+</body>
+</html>

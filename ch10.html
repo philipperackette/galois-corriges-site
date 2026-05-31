@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<title>Corrigés — Chapitre 10 : Groupes résolubles</title>
+<script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+<script async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<style>
+
+    :root { --accent:#8a2d18; --soft:#fff7f2; --line:#ead8cf; --ink:#222; --muted:#5f5f5f; }
+    body { max-width: 900px; margin: 32px auto; padding: 0 18px 40px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.65; hyphens: auto; color: var(--ink); background:#fff; }
+    h1 { text-align: center; line-height:1.25; margin-bottom: 1.2em; }
+    h2 { border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-top: 2.2em; }
+    .intro, .mode { background: #f8f8f8; border-left: 5px solid var(--accent); padding: 0.9em 1em; margin: 1.2em 0 1.6em; }
+    .exo { margin: 1.6em 0 2.2em; padding: 1em 1.1em; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+    .exo > strong:first-child { color: var(--accent); font-size: 1.05em; }
+    .sol { margin-left: 0; margin-top: 0.8em; }
+    .methode, .vigilance, .conclusion { margin: .75em 0; padding: .65em .8em; border-radius: 8px; }
+    .methode { background: #f4f7ff; border-left: 4px solid #4867aa; }
+    .vigilance { background: #fff8e8; border-left: 4px solid #c7861b; }
+    .conclusion { background: var(--soft); border-left: 4px solid var(--accent); }
+    .label { font-weight: 700; color: #333; }
+    code { background:#f5f5f5; padding:.1em .25em; border-radius:4px; }
+    a { color: var(--accent); }
+  </style>
+</head>
+<body>
+<h1>Corrigés — Chapitre 10 : Groupes résolubles</h1><div class="intro"><p><span class="label">Objectif pédagogique.</span> Les corrigés rappellent les mécanismes des groupes résolubles : suites normales, quotients abéliens et stabilité par sous-groupes ou quotients lorsque les hypothèses le permettent.</p></div><div class="mode"><p><span class="label">Mode de lecture.</span> Pour chaque exercice, lire d’abord la méthode, refaire le calcul sans regarder la solution, puis comparer avec le point de vigilance.</p></div>
+<h2>✏️ Vérification</h2>
+<div class="exo">
+<strong>V1.</strong> Montrer que tout groupe cyclique est résoluble.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
+      Soit $G = \langle g \rangle$ cyclique. Alors $G$ est abélien, donc la suite $\{e\} \triangleleft G$ est une suite de composition à quotients abéliens (le quotient $G/\{e\} \simeq G$ est abélien). Donc $G$ est résoluble.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Ne pas confondre le polynôme $P$ avec sa classe : dans le quotient, la classe de $P$ est nulle.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+</div>
+<div class="exo">
+<strong>V2.</strong> Montrer que tout groupe d’ordre premier est résoluble.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
+      Un groupe d'ordre premier $p$ est cyclique (tout élément non neutre engendre le groupe), donc abélien, donc résoluble.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+</div>
+<div class="exo">
+<strong>V3.</strong> Vérifier que $A_3$ est distingué dans $S_3$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Isoler la définition utile, écrire les hypothèses sous forme exploitable, puis conclure par une phrase qui répond exactement à la question.</div>
+      $S_3$ a pour ordre $6$. $A_3$ est le sous-groupe alterné d'ordre $3$. Il est d'indice $2$ dans $S_3$. Tout sous-groupe d'indice $2$ est toujours distingué (ses classes à gauche et à droite coïncident). Donc $A_3 \triangleleft S_3$.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Attention à l’ordre de composition : ici les permutations se composent de droite à gauche.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+</div>
+<div class="exo">
+<strong>V4.</strong> Vérifier que $V_4$ est distingué dans $A_4$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Isoler la définition utile, écrire les hypothèses sous forme exploitable, puis conclure par une phrase qui répond exactement à la question.</div>
+      $V_4$ est le groupe de Klein $\{ \mathrm{Id}, (12)(34), (13)(24), (14)(23)\}$. Il est normal dans $S_4$ (réunion des classes de conjugaison des doubles transpositions et de l'identité). Puisqu'il est distingué dans $S_4$, il l'est a fortiori dans $A_4$. Autre argument : $A_4/V_4$ est d'ordre $3$, donc $V_4$ est d'indice $3$ dans $A_4$ mais pas d'indice $2$ ; on vérifie que $V_4$ est stable par conjugaison par les $3$-cycles de $A_4$ (tout $3$-cycle conjugue une double transposition en une autre double transposition).
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+</div>
+<div class="exo">
+<strong>V5.</strong> Donner explicitement les quotients de la chaîne $\{e\} \triangleleft V_4 \triangleleft A_4 \triangleleft S_4$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Lister d’abord les candidats imposés par les théorèmes de structure ou de degré, puis vérifier que la liste est complète.</div>
+<ul>
+<li>$V_4 / \{e\} \simeq V_4$ (abélien, isomorphe à $\mathbb Z/2\mathbb Z \times \mathbb Z/2\mathbb Z$).</li>
+<li>$A_4 / V_4$ : $|A_4|=12$, $|V_4|=4$, quotient d'ordre $3$, nécessairement cyclique $\mathbb Z/3\mathbb Z$ (abélien).</li>
+<li>$S_4 / A_4$ : d'ordre $2$, isomorphe à $\{\pm 1\}$ via la signature (abélien).</li>
+</ul>
+      Tous les quotients sont abéliens.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Ne pas confondre le polynôme $P$ avec sa classe : dans le quotient, la classe de $P$ est nulle.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+</div>
+<h2>🔧 Structurants</h2>
+<div class="exo">
+<strong>S1.</strong> Montrer que si $G$ est résoluble et si $H \subset G$, alors $H$ est résoluble.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
+      Soit $\{e\} = G_0 \triangleleft G_1 \triangleleft \cdots \triangleleft G_n = G$ une suite de résolution de $G$ (chaque quotient abélien). Posons $H_i = H \cap G_i$. Alors $H_i \triangleleft H_{i+1}$ (car $G_i \triangleleft G_{i+1}$) et $H_{i+1}/H_i$ s'injecte dans $G_{i+1}/G_i$ via $h H_i \mapsto h G_i$. Son image est un sous-groupe du groupe abélien $G_{i+1}/G_i$, donc abélienne. Ainsi les quotients de la suite $(H_i)$ sont abéliens. Après avoir éliminé les répétitions, on obtient une suite de résolution de $H$. Donc $H$ est résoluble.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Ne pas confondre le polynôme $P$ avec sa classe : dans le quotient, la classe de $P$ est nulle.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+</div>
+<div class="exo">
+<strong>S2.</strong> Montrer que $D(G)$ est distingué dans $G$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
+      $D(G) = \langle [g,h] \mid g,h \in G \rangle$. Pour tout $x \in G$, $x[g,h]x^{-1} = [x g x^{-1}, x h x^{-1}] \in D(G)$. L'ensemble des commutateurs est stable par conjugaison. Le sous-groupe engendré est donc stable par conjugaison, d'où $D(G) \triangleleft G$.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+</div>
+<div class="exo">
+<strong>S3.</strong> Montrer que $G$ est abélien si et seulement si $D(G) = \{e\}$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
+      Si $G$ est abélien, pour tous $g,h$, $[g,h] = ghg^{-1}h^{-1} = e$, donc $D(G) = \{e\}$.
+      Réciproquement, si $D(G) = \{e\}$, alors pour tous $g,h$, $[g,h] = e$, donc $gh=hg$, $G$ est abélien.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+</div>
+<div class="exo">
+<strong>S4.</strong> Calculer la suite dérivée de $S_3$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Fixer une convention de calcul, effectuer les images ou les réductions explicitement, puis seulement ensuite reconnaître l’objet obtenu.</div>
+      $S_3^{(0)} = S_3$.
+      $D(S_3)$ est le sous-groupe dérivé. $S_3/A_3 \simeq \{\pm 1\}$ est abélien, et $A_3$ est le plus petit sous-groupe normal avec quotient abélien (car tout sous-groupe normal strict ne contient que $\{e\}$, et $S_3/\{e\}$ n'est pas abélien). Donc $S_3^{(1)} = A_3$.
+      $D(A_3)$ : $A_3 \simeq \mathbb Z/3\mathbb Z$ est abélien, donc $S_3^{(2)} = \{e\}$.
+      Suite dérivée : $S_3 \triangleright A_3 \triangleright \{e\}$.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Attention à l’ordre de composition : ici les permutations se composent de droite à gauche.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+</div>
+<div class="exo">
+<strong>S5.</strong> Calculer la suite dérivée de $S_4$ en utilisant la chaîne $S_4 \triangleright A_4 \triangleright V_4 \triangleright \{e\}$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Fixer une convention de calcul, effectuer les images ou les réductions explicitement, puis seulement ensuite reconnaître l’objet obtenu.</div>
+      $S_4^{(0)} = S_4$.
+      $D(S_4) = A_4$ (car $S_4/A_4$ est abélien d'ordre 2, et $A_4$ est le plus grand quotient abélien, donc le plus petit sous-groupe normal avec quotient abélien).
+      Ensuite, $D(A_4)$ : $A_4 / V_4 \simeq \mathbb Z/3\mathbb Z$ est abélien, et $V_4$ est le seul sous-groupe distingué propre de $A_4$ non trivial (en fait $A_4$ n'a pas de sous-groupe normal d'ordre 2 ou 3). Donc $D(A_4) = V_4$.
+      Enfin, $D(V_4) = \{e\}$ car $V_4$ est abélien.
+      Suite dérivée : $S_4 \triangleright A_4 \triangleright V_4 \triangleright \{e\}$.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Ne pas confondre le polynôme $P$ avec sa classe : dans le quotient, la classe de $P$ est nulle.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+</div>
+<h2>🚀 Approfondissement</h2>
+<div class="exo">
+<strong>A1.</strong> Montrer que $A_4$ n'est pas simple.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
+      $A_4$ possède le sous-groupe $V_4$ (les doubles transpositions et l'identité) d'ordre $4$. $V_4$ est distingué dans $A_4$ (et même dans $S_4$). Il est non trivial et strict, donc $A_4$ n'est pas simple.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+</div>
+<div class="exo">
+<strong>A2.</strong> Montrer que le groupe diédral $D_n$ est résoluble pour tout $n \ge 3$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
+      $D_n = \langle r, s \mid r^n = s^2 = 1, srs = r^{-1} \rangle$. Le sous-groupe des rotations $\langle r \rangle$ est cyclique d'ordre $n$, donc résoluble. Il est d'indice $2$, donc distingué dans $D_n$. Le quotient $D_n / \langle r \rangle \simeq \mathbb Z/2\mathbb Z$ est abélien. Par extension, $D_n$ est résoluble.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Ne pas confondre le polynôme $P$ avec sa classe : dans le quotient, la classe de $P$ est nulle.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+</div>
+<div class="exo">
+<strong>A3.</strong> Reprendre la démonstration de la simplicité de $A_5$ en détaillant le calcul des classes de conjugaison.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Isoler la définition utile, écrire les hypothèses sous forme exploitable, puis conclure par une phrase qui répond exactement à la question.</div>
+      $|A_5| = 60$. Les types de permutations paires dans $A_5$ :
+      <ol>
+<li>Identité : $1$ élément.</li>
+<li>$3$-cycles : $\binom{5}{3} \times 2 = 20$ éléments. Dans $A_5$, ils forment une seule classe de conjugaison de taille $20$ (car deux $3$-cycles sont conjugués par une permutation paire).</li>
+<li>Doubles transpositions (type $(ab)(cd)$) : nombre de façons de choisir $4$ éléments parmi $5$ puis partition en $2$ paires : $\binom{5}{4} \times 3 = 15$. Ils forment une seule classe de conjugaison de taille $15$.</li>
+<li>$5$-cycles : $24$ éléments dans $S_5$, tous pairs (car $5$-cycle se décompose en $4$ transpositions, donc pair). Dans $A_5$, cette classe de $S_5$ se scinde en deux classes égales de taille $12$.</li>
+</ol>
+      Si $N \triangleleft A_5$, $|N|$ est une somme parmi $\{1,15,20,12,12\}$ incluant $1$, dont le total divise $60$. Seules les sommes $1$ et $60$ divisent $60$. Donc $N = \{e\}$ ou $A_5$.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Attention à l’ordre de composition : ici les permutations se composent de droite à gauche.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+</div>
+<div class="exo">
+<strong>A4.</strong> Expliquer pourquoi la simplicité de $A_5$ est la première obstruction possible dans la famille des groupes alternés.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Penser en termes d’espaces vectoriels : une base donne le degré, et une tour donne un produit de degrés.</div>
+      $A_3$ est cyclique d'ordre $3 \implies$ simple (abélien simple). $A_4$ n'est pas simple ($V_4 \triangleleft A_4$). $A_5$ est simple non abélien. Pour $n \ge 5$, $A_n$ est simple (théorème général). $A_5$ est donc le premier groupe simple non abélien rencontré dans la famille $A_n$. Sa simplicité non abélienne bloque la résolubilité de $S_5$, car la suite dérivée de $S_5$ aboutit à $A_5$, et $D(A_5) = A_5$. Cela empêche la suite dérivée de $S_5$ d'atteindre $\{e\}$, d'où la non-résolubilité de $S_5$. C'est l'origine algébrique de l'obstruction en degré $5$.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Une famille génératrice ne suffit pas : lorsqu’on parle de base, il faut aussi justifier l’unicité de l’écriture, ou utiliser un argument de dimension.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+</div>
+</body>
+</html>

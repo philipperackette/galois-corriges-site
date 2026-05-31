@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<title>Corrigés — Chapitre 1 : Groupes, symétries et calculs</title>
+<script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+<script async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<style>
+
+    :root { --accent:#8a2d18; --soft:#fff7f2; --line:#ead8cf; --ink:#222; --muted:#5f5f5f; }
+    body { max-width: 900px; margin: 32px auto; padding: 0 18px 40px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.65; hyphens: auto; color: var(--ink); background:#fff; }
+    h1 { text-align: center; line-height:1.25; margin-bottom: 1.2em; }
+    h2 { border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-top: 2.2em; }
+    .intro, .mode { background: #f8f8f8; border-left: 5px solid var(--accent); padding: 0.9em 1em; margin: 1.2em 0 1.6em; }
+    .exo { margin: 1.6em 0 2.2em; padding: 1em 1.1em; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+    .exo > strong:first-child { color: var(--accent); font-size: 1.05em; }
+    .sol { margin-left: 0; margin-top: 0.8em; }
+    .methode, .vigilance, .conclusion { margin: .75em 0; padding: .65em .8em; border-radius: 8px; }
+    .methode { background: #f4f7ff; border-left: 4px solid #4867aa; }
+    .vigilance { background: #fff8e8; border-left: 4px solid #c7861b; }
+    .conclusion { background: var(--soft); border-left: 4px solid var(--accent); }
+    .label { font-weight: 700; color: #333; }
+    code { background:#f5f5f5; padding:.1em .25em; border-radius:4px; }
+    a { color: var(--accent); }
+  </style>
+</head>
+<body>
+<h1>Corrigés — Chapitre 1 : Groupes, symétries et calculs</h1><div class="intro"><p><span class="label">Objectif pédagogique.</span> Les corrigés détaillent les vérifications de groupe, les calculs dans les groupes de permutations et les premières preuves abstraites. L’idée centrale est toujours la même : identifier clairement la loi, le neutre, les inverses et les propriétés de stabilité.</p></div><div class="mode"><p><span class="label">Mode de lecture.</span> Pour chaque exercice, lire d’abord la méthode, refaire le calcul sans regarder la solution, puis comparer avec le point de vigilance.</p></div>
+<h2>✏️ Vérification</h2>
+<div class="exo">
+<strong>V1.</strong> Montrer que $(\mathbb Z, +)$ est un groupe abélien.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
+      • L’addition des entiers est associative : $(a+b)+c = a+(b+c)$ pour tous $a,b,c\in\mathbb Z$.<br/>
+      • L’élément $0$ est neutre : $a+0 = 0+a = a$ pour tout $a$.<br/>
+      • Tout $a$ possède un inverse additif : $a + (-a) = 0$.<br/>
+      • La loi $+$ est commutative : $a+b = b+a$.<br/>
+      Ainsi $(\mathbb Z,+)$ est bien un groupe abélien.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+</div>
+<div class="exo">
+<strong>V2.</strong> Montrer que $\mathbb Q^\times$, muni de la multiplication, est un groupe abélien.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
+      • Le produit de deux rationnels non nuls est un rationnel non nul : la loi est interne.<br/>
+      • La multiplication est associative et commutative dans $\mathbb Q$.<br/>
+      • L’élément $1$ est neutre pour la multiplication.<br/>
+      • Tout $a \in \mathbb Q^\times$ a pour inverse $\frac{1}{a}$, qui est encore un rationnel non nul.<br/>
+      Donc $\mathbb Q^\times$ est un groupe abélien.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+</div>
+<div class="exo">
+<strong>V3.</strong> Dans $S_3$, calculer $(12)(23)$ et $(23)(12)$ (composition de droite à gauche).<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Fixer une convention de calcul, effectuer les images ou les réductions explicitement, puis seulement ensuite reconnaître l’objet obtenu.</div>
+      Rappel : on applique d’abord la permutation de droite, puis celle de gauche.<br/>
+      • $(12)(23)$ : on suit les images.<br/>
+      $1 \xmapsto{(23)} 1 \xmapsto{(12)} 2$,<br/>
+      $2 \xmapsto{(23)} 3 \xmapsto{(12)} 3$,<br/>
+      $3 \xmapsto{(23)} 2 \xmapsto{(12)} 1$.<br/>
+      Donc $(12)(23) = (1\,2\,3) = (123)$.<br/><br/>
+      • $(23)(12)$ :<br/>
+      $1 \xmapsto{(12)} 2 \xmapsto{(23)} 3$,<br/>
+      $2 \xmapsto{(12)} 1 \xmapsto{(23)} 1$,<br/>
+      $3 \xmapsto{(12)} 3 \xmapsto{(23)} 2$.<br/>
+      Donc $(23)(12) = (1\,3\,2) = (132)$.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Attention à l’ordre de composition : ici les permutations se composent de droite à gauche.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+</div>
+<div class="exo">
+<strong>V4.</strong> Donner l’ordre des éléments $(12)$, $(123)$ et $\mathrm{Id}$ dans $S_3$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Isoler la définition utile, écrire les hypothèses sous forme exploitable, puis conclure par une phrase qui répond exactement à la question.</div>
+      • $(12)^2 = \mathrm{Id}$ ⇒ ordre $2$.<br/>
+      • $(123)^3 = \mathrm{Id}$ (et $(123)^2=(132) \neq \mathrm{Id}$) ⇒ ordre $3$.<br/>
+      • $\mathrm{Id}$ est l’identité : ordre $1$.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Attention à l’ordre de composition : ici les permutations se composent de droite à gauche.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+</div>
+<div class="exo">
+<strong>V5.</strong> Montrer que $2\mathbb Z$ est un sous-groupe de $(\mathbb Z,+)$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
+      • $0 = 2\cdot0 \in 2\mathbb Z$.<br/>
+      • Si $2m, 2n \in 2\mathbb Z$, alors $2m+2n = 2(m+n) \in 2\mathbb Z$.<br/>
+      • L’opposé de $2m$ est $-2m = 2(-m) \in 2\mathbb Z$.<br/>
+      Ces trois conditions montrent que $2\mathbb Z \le (\mathbb Z,+)$.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+</div>
+<h2>🔧 Structurants</h2>
+<div class="exo">
+<strong>S1.</strong> Unicité de l’élément neutre dans un groupe.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Isoler la définition utile, écrire les hypothèses sous forme exploitable, puis conclure par une phrase qui répond exactement à la question.</div>
+      Soient $e$ et $e'$ deux éléments neutres. Alors $e = e\,e'$ (car $e'$ est neutre) et $e\,e' = e'$ (car $e$ est neutre). Donc $e = e'$. L’élément neutre est unique.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+</div>
+<div class="exo">
+<strong>S2.</strong> Unicité de l’inverse d’un élément dans un groupe.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Isoler la définition utile, écrire les hypothèses sous forme exploitable, puis conclure par une phrase qui répond exactement à la question.</div>
+      Soit $x \in G$ et supposons qu’il existe $y,z \in G$ tels que $xy = yx = e$ et $xz = zx = e$. Alors :
+      $$ y = y\,e = y\,(x z) = (y x) z = e\,z = z.$$
+      Donc l’inverse est unique.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+</div>
+<div class="exo">
+<strong>S3.</strong> L’image d’un morphisme est un sous-groupe.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Isoler la définition utile, écrire les hypothèses sous forme exploitable, puis conclure par une phrase qui répond exactement à la question.</div>
+      Soit $f : G \to G'$ un morphisme de groupes. Notons $H = f(G)$.<br/>
+      • $e_{G'} = f(e_G) \in H$.<br/>
+      • Si $a,b \in H$, il existe $x,y \in G$ tels que $a = f(x), b = f(y)$. Alors $ab = f(x)f(y) = f(xy) \in H$.<br/>
+      • Pour $a = f(x) \in H$, $a^{-1} = f(x)^{-1} = f(x^{-1}) \in H$ car $x^{-1} \in G$.<br/>
+      Donc $H$ est un sous-groupe de $G'$.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+</div>
+<div class="exo">
+<strong>S4.</strong> Le noyau d’un morphisme de groupes est un sous-groupe distingué.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Isoler la définition utile, écrire les hypothèses sous forme exploitable, puis conclure par une phrase qui répond exactement à la question.</div>
+      Soit $f: G \to G'$ un morphisme. On sait que $\ker f \le G$ (exercice S3). Montrons qu’il est distingué.<br/>
+      Soit $n \in \ker f$ et $g \in G$. Alors
+      $$ f(g n g^{-1}) = f(g) f(n) f(g)^{-1} = f(g)\, e_{G'}\, f(g)^{-1} = e_{G'}.$$
+      Donc $g n g^{-1} \in \ker f$, ce qui signifie exactement $\ker f \triangleleft G$.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+</div>
+<div class="exo">
+<strong>S5.</strong> Si $g$ est d’ordre $n$, montrer que $g^k = e \iff n \mid k$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
+      ($\Leftarrow$) Si $n \mid k$, alors $k = qn$, donc $g^k = (g^n)^q = e^q = e$.<br/>
+      ($\Rightarrow$) Supposons $g^k = e$. Division euclidienne : $k = qn + r$ avec $0 \le r &lt; n$.
+      Alors $e = g^k = g^{qn+r} = (g^n)^q g^r = g^r$.
+      Par minimalité de $n$, $r = 0$, donc $n \mid k$.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+</div>
+<h2>🚀 Approfondissement</h2>
+<div class="exo">
+<strong>A1.</strong> Tout groupe cyclique est abélien.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Isoler la définition utile, écrire les hypothèses sous forme exploitable, puis conclure par une phrase qui répond exactement à la question.</div>
+      Soit $G = \langle a \rangle$. Deux éléments quelconques de $G$ s’écrivent $a^m$ et $a^n$, avec $m,n \in \mathbb Z$. Alors
+      $$ a^m a^n = a^{m+n} = a^{n+m} = a^n a^m.$$
+      Le groupe est donc abélien.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+</div>
+<div class="exo">
+<strong>A2.</strong> Tout sous-groupe d’un groupe cyclique est cyclique.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Isoler la définition utile, écrire les hypothèses sous forme exploitable, puis conclure par une phrase qui répond exactement à la question.</div>
+      Soit $G = \langle a \rangle$ un groupe cyclique, et $H \le G$. Si $H = \{e\}$, il est cyclique. Sinon, soit $d$ le plus petit entier $&gt;0$ tel que $a^d \in H$. Montrons $H = \langle a^d \rangle$.<br/>
+      • $\langle a^d \rangle \subset H$ car $H$ est un sous-groupe contenant $a^d$.<br/>
+      • Soit $h = a^k \in H$. Division euclidienne : $k = qd + r$, $0 \le r &lt; d$. Alors $a^r = a^k (a^d)^{-q} \in H$. Par minimalité de $d$, $r=0$, donc $k = qd$ et $h = (a^d)^q \in \langle a^d \rangle$.<br/>
+      Ainsi $H$ est cyclique (engendré par $a^d$).
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+</div>
+<div class="exo">
+<strong>A3.</strong> Décrire tous les sous-groupes de $S_3$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Lister d’abord les candidats imposés par les théorèmes de structure ou de degré, puis vérifier que la liste est complète.</div>
+      $S_3 = \{ \mathrm{Id}, (12), (13), (23), (123), (132) \}$.<br/>
+      • Sous-groupe trivial : $\{\mathrm{Id}\}$.<br/>
+      • Sous-groupes d’ordre $2$ (engendrés par une transposition) :<br/>
+      $\{ \mathrm{Id}, (12) \}$, $\{ \mathrm{Id}, (13) \}$, $\{ \mathrm{Id}, (23) \}$.<br/>
+      • Sous-groupe d’ordre $3$ (groupe alterné $A_3$) : $\{ \mathrm{Id}, (123), (132) \}$.<br/>
+      • $S_3$ lui-même, d’ordre $6$.<br/>
+      Ce sont les six sous-groupes de $S_3$.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Attention à l’ordre de composition : ici les permutations se composent de droite à gauche.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+</div>
+<div class="exo">
+<strong>A4.</strong> Le stabilisateur d’un point pour une action de groupe est un sous-groupe.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Isoler la définition utile, écrire les hypothèses sous forme exploitable, puis conclure par une phrase qui répond exactement à la question.</div>
+      Soit un groupe $G$ agissant sur un ensemble $X$, et $x \in X$. Posons $H = \mathrm{Stab}_G(x) = \{g \in G \mid g\cdot x = x\}$.<br/>
+      • $e \cdot x = x \Rightarrow e \in H$.<br/>
+      • Si $g,h \in H$, alors $(gh)\cdot x = g\cdot (h\cdot x) = g\cdot x = x$, donc $gh \in H$.<br/>
+      • Si $g \in H$, $g^{-1}\cdot x = g^{-1}\cdot (g\cdot x) = (g^{-1}g)\cdot x = e\cdot x = x$, donc $g^{-1} \in H$.<br/>
+      Ainsi $H$ est un sous-groupe de $G$.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+</div>
+</body>
+</html>

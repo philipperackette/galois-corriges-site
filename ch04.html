@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<title>Corrigés — Chapitre 4 : Extensions de corps</title>
+<script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+<script async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<style>
+
+    :root { --accent:#8a2d18; --soft:#fff7f2; --line:#ead8cf; --ink:#222; --muted:#5f5f5f; }
+    body { max-width: 900px; margin: 32px auto; padding: 0 18px 40px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.65; hyphens: auto; color: var(--ink); background:#fff; }
+    h1 { text-align: center; line-height:1.25; margin-bottom: 1.2em; }
+    h2 { border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-top: 2.2em; }
+    .intro, .mode { background: #f8f8f8; border-left: 5px solid var(--accent); padding: 0.9em 1em; margin: 1.2em 0 1.6em; }
+    .exo { margin: 1.6em 0 2.2em; padding: 1em 1.1em; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+    .exo > strong:first-child { color: var(--accent); font-size: 1.05em; }
+    .sol { margin-left: 0; margin-top: 0.8em; }
+    .methode, .vigilance, .conclusion { margin: .75em 0; padding: .65em .8em; border-radius: 8px; }
+    .methode { background: #f4f7ff; border-left: 4px solid #4867aa; }
+    .vigilance { background: #fff8e8; border-left: 4px solid #c7861b; }
+    .conclusion { background: var(--soft); border-left: 4px solid var(--accent); }
+    .label { font-weight: 700; color: #333; }
+    code { background:#f5f5f5; padding:.1em .25em; border-radius:4px; }
+    a { color: var(--accent); }
+  </style>
+</head>
+<body>
+<h1>Corrigés — Chapitre 4 : Extensions de corps</h1><div class="intro"><p><span class="label">Objectif pédagogique.</span> Les solutions détaillent le langage des extensions : degré, polynôme minimal, quotient et tours. Chaque calcul doit être lu comme un calcul d’espace vectoriel au-dessus du corps de base.</p></div><div class="mode"><p><span class="label">Mode de lecture.</span> Pour chaque exercice, lire d’abord la méthode, refaire le calcul sans regarder la solution, puis comparer avec le point de vigilance.</p></div>
+<div class="exo">
+<strong>Exercice 1 – Vérification.</strong> Montrer que $(1,\sqrt 5)$ est une base de $\mathbb Q(\sqrt 5)$ sur $\mathbb Q$. En déduire le degré de l’extension.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
+      • $\sqrt 5$ est racine du polynôme $X^2-5 \in \mathbb Q[X]$, qui est irréductible sur $\mathbb Q$ (pas de racine rationnelle, degré $2$). Donc $[\mathbb Q(\sqrt 5):\mathbb Q] = \deg(X^2-5) = 2$.<br/>
+      • Une extension simple de degré $2$ possède toujours $(1,\alpha)$ comme base : tout élément s’écrit $a + b\sqrt 5$ avec $a,b\in\mathbb Q$ de manière unique. Ainsi $(1,\sqrt 5)$ est bien une base (famille génératrice et libre).
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Pour les degrés $2$ ou $3$, l’absence de racine dans le corps suffit à conclure à l’irréductibilité ; ce n’est plus vrai en degré supérieur.</div><div class="conclusion"><span class="label">Conclusion.</span> On termine en indiquant clairement le corps obtenu, son degré ou la propriété d’extension démontrée.</div></div>
+</div>
+<div class="exo">
+<strong>Exercice 2 – Polynôme minimal.</strong> Déterminer le polynôme minimal de $1+\sqrt 2$ sur $\mathbb Q$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Fixer une convention de calcul, effectuer les images ou les réductions explicitement, puis seulement ensuite reconnaître l’objet obtenu.</div>
+      Posons $\alpha = 1+\sqrt 2$. Alors $\alpha-1 = \sqrt 2$, donc $(\alpha-1)^2 = 2$, soit $\alpha^2 - 2\alpha + 1 = 2$, d’où $\alpha^2 - 2\alpha - 1 = 0$.<br/>
+      Le polynôme $P(X) = X^2 - 2X - 1$ annule $\alpha$. Il est unitaire, de degré $2$. S’il était réductible sur $\mathbb Q$, il aurait une racine rationnelle. Les racines possibles sont $\pm 1$, or $P(1) = -2 \neq 0$, $P(-1) = 2 \neq 0$. Donc $P$ est irréductible sur $\mathbb Q$. C’est le polynôme minimal de $1+\sqrt 2$.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Pour les degrés $2$ ou $3$, l’absence de racine dans le corps suffit à conclure à l’irréductibilité ; ce n’est plus vrai en degré supérieur.</div><div class="conclusion"><span class="label">Conclusion.</span> La solution se clôt en identifiant le polynôme ou la factorisation cherchée, avec la raison qui garantit son unicité ou son irréductibilité.</div></div>
+</div>
+<div class="exo">
+<strong>Exercice 3 – Quotient.</strong> Montrer que $\mathbb Q[X]/(X^2+1)$ est isomorphe à $\mathbb Q(i)$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
+      $X^2+1$ est irréductible sur $\mathbb Q$ (pas de racine rationnelle, degré $2$). L’idéal $(X^2+1)$ est donc maximal dans $\mathbb Q[X]$, et le quotient est un corps.<br/>
+      Notons $\overline X$ la classe de $X$. Alors $\overline X^2 + 1 = 0$, donc $\overline X^2 = -1$. L’élément $\overline X$ se comporte exactement comme $i$ (une racine carrée de $-1$).<br/>
+      Tout élément du quotient s’écrit $a + b\overline X$ avec $a,b \in \mathbb Q$ (division euclidienne). L’application $\varphi : \mathbb Q[X]/(X^2+1) \to \mathbb Q(i)$, définie par $\varphi(a + b\overline X) = a + bi$, est bien définie, bijective et respecte les opérations. C’est un isomorphisme de corps.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Pour les degrés $2$ ou $3$, l’absence de racine dans le corps suffit à conclure à l’irréductibilité ; ce n’est plus vrai en degré supérieur.</div><div class="conclusion"><span class="label">Conclusion.</span> On termine en indiquant clairement le corps obtenu, son degré ou la propriété d’extension démontrée.</div></div>
+</div>
+<div class="exo">
+<strong>Exercice 4 – Tour d’extensions.</strong> On pose $K = \mathbb Q(\sqrt 2,\sqrt 3)$. Montrer que tout élément de $K$ s’écrit sous la forme $a+b\sqrt 2+c\sqrt 3+d\sqrt 6$, avec $a,b,c,d\in\mathbb Q$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
+      On sait $[\mathbb Q(\sqrt 2):\mathbb Q] = 2$. Montrons $\sqrt 3 \notin \mathbb Q(\sqrt 2)$. Si $\sqrt 3 = p+q\sqrt 2$ avec $p,q\in\mathbb Q$, alors en élevant au carré : $3 = p^2+2q^2 + 2pq\sqrt 2$. Donc $2pq\sqrt 2 = 3 - p^2 - 2q^2$. Si $pq \neq 0$, $\sqrt 2$ serait rationnel, impossible. Si $p=0$, $\sqrt 3 = q\sqrt 2$, donc $3 = 2q^2$, impossible dans $\mathbb Q$. Si $q=0$, $\sqrt 3 = p \in \mathbb Q$, impossible. Donc $\sqrt 3 \notin \mathbb Q(\sqrt 2)$. Ainsi $[\mathbb Q(\sqrt 2,\sqrt 3):\mathbb Q(\sqrt 2)] = 2$. Par multiplicativité des degrés, $[K:\mathbb Q] = 4$.<br/>
+      Une base sur $\mathbb Q$ est donnée par le produit des bases des étages : $(1,\sqrt 2)$ pour $\mathbb Q(\sqrt 2)/\mathbb Q$ et $(1,\sqrt 3)$ pour $K/\mathbb Q(\sqrt 2)$. Le produit donne $(1, \sqrt 2, \sqrt 3, \sqrt 6)$. Donc tout élément s’écrit de manière unique $a + b\sqrt 2 + c\sqrt 3 + d\sqrt 6$.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Une famille génératrice ne suffit pas : lorsqu’on parle de base, il faut aussi justifier l’unicité de l’écriture, ou utiliser un argument de dimension.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+</div>
+<div class="exo">
+<strong>Exercice 5 – Extension finie.</strong> Soit $L/K$ une extension de degré $n$. Montrer que pour tout $\alpha \in L$, le degré du polynôme minimal de $\alpha$ sur $K$ est inférieur ou égal à $n$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
+      Soit $m$ le degré du polynôme minimal de $\alpha$ sur $K$. Alors $K(\alpha)$ est un sous-corps de $L$ et $[K(\alpha):K] = m$. Comme $K \subset K(\alpha) \subset L$, la multiplicativité des degrés donne $[L:K] = [L:K(\alpha)] \cdot [K(\alpha):K]$. Donc $n = [L:K(\alpha)] \cdot m$, d’où $m \le n$.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Une famille génératrice ne suffit pas : lorsqu’on parle de base, il faut aussi justifier l’unicité de l’écriture, ou utiliser un argument de dimension.</div><div class="conclusion"><span class="label">Conclusion.</span> On termine en indiquant clairement le corps obtenu, son degré ou la propriété d’extension démontrée.</div></div>
+</div>
+<div class="exo">
+<strong>Exercice 6 – Vers Galois.</strong> Soit $P \in K[X]$, soit $L/K$ une extension, et soit $\sigma$ un $K$-automorphisme de $L$. Montrer que $\sigma$ permute l’ensemble des racines de $P$ appartenant à $L$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
+      Soit $\alpha \in L$ une racine de $P$ : $P(\alpha) = 0$. On a $P(X) = a_n X^n + \cdots + a_1 X + a_0$ avec $a_i \in K$. Alors
+      $$P(\sigma(\alpha)) = \sum a_i \sigma(\alpha)^i = \sigma\!\left(\sum a_i \alpha^i\right) = \sigma(P(\alpha)) = \sigma(0) = 0.$$
+      Donc $\sigma(\alpha)$ est aussi une racine de $P$. De plus, $\sigma$ est bijectif, donc il permute les racines présentes dans $L$.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Un automorphisme au-dessus de $K$ fixe les coefficients de $K$ ; c’est exactement ce qui permet de transporter l’équation $P(\alpha)=0$.</div><div class="conclusion"><span class="label">Conclusion.</span> On termine en indiquant clairement le corps obtenu, son degré ou la propriété d’extension démontrée.</div></div>
+</div>
+<div class="exo">
+<strong>Exercice 7 – Approfondissement.</strong> Montrer que $\sqrt 3 \notin \mathbb Q(\sqrt 2)$. En déduire que $[\mathbb Q(\sqrt 2,\sqrt 3):\mathbb Q] = 4$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
+      La preuve que $\sqrt 3 \notin \mathbb Q(\sqrt 2)$ est donnée dans l’exercice 4 (par l’absurde, en élevant au carré).<br/>
+      On a $[\mathbb Q(\sqrt 2):\mathbb Q] = 2$. Comme $\sqrt 3$ n’est pas dans $\mathbb Q(\sqrt 2)$, le polynôme $X^2-3$ (irréductible sur $\mathbb Q$) le reste sur $\mathbb Q(\sqrt 2)$ (car s’il y avait une racine, $\sqrt 3$ y serait). Donc $[\mathbb Q(\sqrt 2,\sqrt 3):\mathbb Q(\sqrt 2)] = 2$. Par multiplicativité, $[\mathbb Q(\sqrt 2,\sqrt 3):\mathbb Q] = 2 \cdot 2 = 4$.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Pour les degrés $2$ ou $3$, l’absence de racine dans le corps suffit à conclure à l’irréductibilité ; ce n’est plus vrai en degré supérieur.</div><div class="conclusion"><span class="label">Conclusion.</span> La solution se clôt en identifiant le polynôme ou la factorisation cherchée, avec la raison qui garantit son unicité ou son irréductibilité.</div></div>
+</div>
+<div class="exo">
+<strong>Exercice 8 – Construction.</strong> Soit $P = X^3+X+1 \in \mathbb F_2[X]$. Vérifier que $P$ est irréductible sur $\mathbb F_2$, puis décrire le corps $\mathbb F_2[X]/(P)$ comme espace vectoriel sur $\mathbb F_2$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Lister d’abord les candidats imposés par les théorèmes de structure ou de degré, puis vérifier que la liste est complète.</div>
+      • $\mathbb F_2 = \{0,1\}$. $P(0) = 1 \neq 0$, $P(1) = 1+1+1 = 1 \neq 0$ (car $1+1=0$ dans $\mathbb F_2$, donc $1+1+1 = 1$). Ainsi $P$ n’a pas de racine dans $\mathbb F_2$. Comme il est de degré $3$, l’absence de racine suffit pour l’irréductibilité.<br/>
+      • Puisque $P$ est irréductible, le quotient $\mathbb F_2[X]/(P)$ est un corps, extension de $\mathbb F_2$ de degré $3$. Une base sur $\mathbb F_2$ est donnée par les classes de $1, X, X^2$. Tout élément s’écrit de manière unique $a_0 + a_1 \overline X + a_2 \overline X^2$ avec $a_i \in \mathbb F_2$. Le corps a donc $2^3 = 8$ éléments.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Pour les degrés $2$ ou $3$, l’absence de racine dans le corps suffit à conclure à l’irréductibilité ; ce n’est plus vrai en degré supérieur.</div><div class="conclusion"><span class="label">Conclusion.</span> On termine en indiquant clairement le corps obtenu, son degré ou la propriété d’extension démontrée.</div></div>
+</div>
+<div class="exo">
+<strong>Exercice 9 – Extensions finies et générateurs algébriques.</strong> Soit $L/K$ une extension. Montrer que si $L = K(\alpha_1,\dots,\alpha_n)$ avec $\alpha_1,\dots,\alpha_n$ algébriques sur $K$, alors $L/K$ est finie. Réciproquement, montrer que si $L/K$ est finie, alors tout élément de $L$ est algébrique sur $K$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
+      • <strong>Sens direct :</strong> On construit la tour $K \subset K(\alpha_1) \subset K(\alpha_1,\alpha_2) \subset \cdots \subset K(\alpha_1,\dots,\alpha_n) = L$. À chaque étape, l’élément ajouté est algébrique sur le corps précédent (car il est algébrique sur $K$, donc a fortiori sur le sur-corps). Donc chaque extension simple est finie (égale au degré du polynôme minimal). Une tour finie d’extensions finies est finie (produit des degrés). Donc $L/K$ est finie.<br/>
+      • <strong>Réciproque :</strong> Supposons $[L:K] = n &lt; \infty$. Soit $\alpha \in L$. La famille $\{1, \alpha, \alpha^2, \dots, \alpha^n\}$ possède $n+1$ éléments dans un espace vectoriel de dimension $n$, donc elle est liée. Il existe donc une relation linéaire $a_0 + a_1 \alpha + \cdots + a_n \alpha^n = 0$ non triviale, avec $a_i \in K$. Cela signifie que $\alpha$ annule un polynôme non nul de $K[X]$, donc $\alpha$ est algébrique sur $K$.<br/>
+      Ainsi $L/K$ est une extension algébrique.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Une famille génératrice ne suffit pas : lorsqu’on parle de base, il faut aussi justifier l’unicité de l’écriture, ou utiliser un argument de dimension.</div><div class="conclusion"><span class="label">Conclusion.</span> On termine en indiquant clairement le corps obtenu, son degré ou la propriété d’extension démontrée.</div></div>
+</div>
+</body>
+</html>

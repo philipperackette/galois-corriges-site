@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<title>Corrigés — Chapitre 6 : Séparabilité, normalité, élément primitif</title>
+<script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+<script async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<style>
+
+    :root { --accent:#8a2d18; --soft:#fff7f2; --line:#ead8cf; --ink:#222; --muted:#5f5f5f; }
+    body { max-width: 900px; margin: 32px auto; padding: 0 18px 40px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.65; hyphens: auto; color: var(--ink); background:#fff; }
+    h1 { text-align: center; line-height:1.25; margin-bottom: 1.2em; }
+    h2 { border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-top: 2.2em; }
+    .intro, .mode { background: #f8f8f8; border-left: 5px solid var(--accent); padding: 0.9em 1em; margin: 1.2em 0 1.6em; }
+    .exo { margin: 1.6em 0 2.2em; padding: 1em 1.1em; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+    .exo > strong:first-child { color: var(--accent); font-size: 1.05em; }
+    .sol { margin-left: 0; margin-top: 0.8em; }
+    .methode, .vigilance, .conclusion { margin: .75em 0; padding: .65em .8em; border-radius: 8px; }
+    .methode { background: #f4f7ff; border-left: 4px solid #4867aa; }
+    .vigilance { background: #fff8e8; border-left: 4px solid #c7861b; }
+    .conclusion { background: var(--soft); border-left: 4px solid var(--accent); }
+    .label { font-weight: 700; color: #333; }
+    code { background:#f5f5f5; padding:.1em .25em; border-radius:4px; }
+    a { color: var(--accent); }
+  </style>
+</head>
+<body>
+<h1>Corrigés — Chapitre 6 : Séparabilité, normalité, élément primitif</h1><div class="intro"><p><span class="label">Objectif pédagogique.</span> Les corrigés distinguent soigneusement séparabilité, normalité et théorème de l’élément primitif. Le point important est de ne pas confondre « toutes les racines sont simples » et « toutes les racines sont déjà dans le corps ».</p></div><div class="mode"><p><span class="label">Mode de lecture.</span> Pour chaque exercice, lire d’abord la méthode, refaire le calcul sans regarder la solution, puis comparer avec le point de vigilance.</p></div>
+<h2>✏️ Vérification</h2>
+<div class="exo">
+<strong>V1.</strong> Montrer que $X^2-5$ est séparable sur $\mathbb Q$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
+      $\mathbb Q$ est de caractéristique nulle, donc tout polynôme irréductible est séparable. $X^2-5$ n'a pas de racine dans $\mathbb Q$, il est irréductible de degré $2$, donc séparable.<br/>
+      On peut aussi utiliser le critère de la dérivée : $P'(X)=2X$, $\gcd(P,P')=\gcd(X^2-5,\,2X)=1$ car $2X$ ne divise pas $X^2-5$ (les racines de $2X$ sont $0$, qui n'est pas racine de $X^2-5$). Donc pas de racine multiple, $P$ est séparable.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Pour les degrés $2$ ou $3$, l’absence de racine dans le corps suffit à conclure à l’irréductibilité ; ce n’est plus vrai en degré supérieur.</div><div class="conclusion"><span class="label">Conclusion.</span> La solution se clôt en identifiant le polynôme ou la factorisation cherchée, avec la raison qui garantit son unicité ou son irréductibilité.</div></div>
+</div>
+<div class="exo">
+<strong>V2.</strong> Montrer que $X^3-2$ est séparable sur $\mathbb Q$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
+      Même argument : $\mathbb Q$ est de caractéristique nulle, $X^3-2$ est irréductible (Eisenstein avec $p=2$), donc séparable.<br/>
+      Ou bien $P'(X)=3X^2$, les racines de $P'$ sont $0$, qui n'annule pas $P$, donc $\gcd(P,P')=1$.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Pour les degrés $2$ ou $3$, l’absence de racine dans le corps suffit à conclure à l’irréductibilité ; ce n’est plus vrai en degré supérieur.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+</div>
+<div class="exo">
+<strong>V3.</strong> Vérifier que $\mathbb Q(\sqrt 5)/\mathbb Q$ est normale.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Trouver d’abord un polynôme annulateur, puis prouver son irréductibilité pour garantir qu’il est minimal.</div>
+      L'extension est de degré $2$, engendrée par $\alpha = \sqrt 5$, racine de $P(X)=X^2-5$. Le polynôme $P$ est irréductible sur $\mathbb Q$, et ses deux racines sont $\sqrt 5$ et $-\sqrt 5$. Toutes deux appartiennent à $\mathbb Q(\sqrt 5)$ (l'opposé d'un élément du corps est dans le corps). Donc $P$, polynôme minimal de $\alpha$, se scinde dans $\mathbb Q(\sqrt 5)$. Une extension finie est normale si tout polynôme irréductible ayant une racine dans $L$ se scinde dans $L$. Ici tout élément de $L$ a un polynôme minimal de degré $1$ ou $2$, et le corps contenant une racine contient automatiquement l'autre par conjugaison. L'extension est donc normale.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Pour les degrés $2$ ou $3$, l’absence de racine dans le corps suffit à conclure à l’irréductibilité ; ce n’est plus vrai en degré supérieur.</div><div class="conclusion"><span class="label">Conclusion.</span> On termine en indiquant clairement le corps obtenu, son degré ou la propriété d’extension démontrée.</div></div>
+</div>
+<div class="exo">
+<strong>V4.</strong> Expliquer pourquoi $\mathbb Q(\sqrt[3]{2})/\mathbb Q$ n'est pas normale.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Trouver d’abord un polynôme annulateur, puis prouver son irréductibilité pour garantir qu’il est minimal.</div>
+      $\sqrt[3]{2}$ est racine du polynôme irréductible $X^3-2$ (Eisenstein). Les autres racines de $X^3-2$ sont $\zeta_3\sqrt[3]{2}$ et $\zeta_3^2\sqrt[3]{2}$, qui sont complexes non réelles. Or $\mathbb Q(\sqrt[3]{2}) \subset \mathbb R$, donc ces deux racines n'appartiennent pas à l'extension. Comme le polynôme minimal de $\sqrt[3]{2}$ ne se scinde pas dans l'extension, elle n'est pas normale.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Pour les degrés $2$ ou $3$, l’absence de racine dans le corps suffit à conclure à l’irréductibilité ; ce n’est plus vrai en degré supérieur.</div><div class="conclusion"><span class="label">Conclusion.</span> On termine en indiquant clairement le corps obtenu, son degré ou la propriété d’extension démontrée.</div></div>
+</div>
+<h2>🔧 Structurants</h2>
+<div class="exo">
+<strong>S1.</strong> Soit $K$ un corps de caractéristique nulle. Montrer que tout polynôme irréductible de degré $2$ est séparable.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
+      Soit $P\in K[X]$ irréductible de degré $2$. En caractéristique nulle, $P'$ est de degré $1$ (non nul). Puisque $P$ est irréductible, ses seuls diviseurs dans $K[X]$ sont les constantes et les multiples de $P$. Comme $\deg P' = 1 &lt; 2 = \deg P$, $P'$ n'est pas un multiple de $P$. Le seul diviseur commun possible entre $P$ et $P'$ est donc une constante. Ainsi $\gcd(P,P')=1$, donc $P$ n'a pas de racine multiple dans une clôture algébrique, il est séparable. (Plus généralement, tout irréductible en caractéristique nulle est séparable.)
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Pour les degrés $2$ ou $3$, l’absence de racine dans le corps suffit à conclure à l’irréductibilité ; ce n’est plus vrai en degré supérieur.</div><div class="conclusion"><span class="label">Conclusion.</span> On termine en indiquant clairement le corps obtenu, son degré ou la propriété d’extension démontrée.</div></div>
+</div>
+<div class="exo">
+<strong>S2.</strong> Soit $L/K$ une extension finie normale. Montrer que si $\alpha \in L$, alors tous les conjugués de $\alpha$ sur $K$ appartiennent à $L$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
+      Les conjugués de $\alpha$ sur $K$ sont les racines du polynôme minimal $m_\alpha \in K[X]$. Comme $\alpha \in L$ et $L/K$ est normale, tout polynôme irréductible de $K[X]$ ayant une racine dans $L$ se scinde dans $L[X]$. Ainsi $m_\alpha$ se scinde dans $L[X]$, donc toutes ses racines (c'est-à-dire tous les conjugués de $\alpha$) sont dans $L$.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Pour les degrés $2$ ou $3$, l’absence de racine dans le corps suffit à conclure à l’irréductibilité ; ce n’est plus vrai en degré supérieur.</div><div class="conclusion"><span class="label">Conclusion.</span> On termine en indiquant clairement le corps obtenu, son degré ou la propriété d’extension démontrée.</div></div>
+</div>
+<div class="exo">
+<strong>S3.</strong> Montrer que $\mathbb Q(\sqrt 2,\sqrt 3)/\mathbb Q$ est normale.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
+      $\mathbb Q(\sqrt 2,\sqrt 3)$ est le corps de décomposition sur $\mathbb Q$ du polynôme $(X^2-2)(X^2-3)$. En effet, les racines de ce polynôme sont $\pm\sqrt 2$, $\pm\sqrt 3$, et l'extension est engendrée par elles. D'après le cours (proposition 9 du chapitre 6), un corps de décomposition est une extension normale. Donc $\mathbb Q(\sqrt 2,\sqrt 3)/\mathbb Q$ est normale.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> On termine en indiquant clairement le corps obtenu, son degré ou la propriété d’extension démontrée.</div></div>
+</div>
+<div class="exo">
+<strong>S4.</strong> Déterminer un polynôme minimal de $\sqrt 2 + \sqrt 3$ sur $\mathbb Q$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Fixer une convention de calcul, effectuer les images ou les réductions explicitement, puis seulement ensuite reconnaître l’objet obtenu.</div>
+      Posons $\theta = \sqrt 2 + \sqrt 3$. Alors $\theta^2 = 5 + 2\sqrt 6$, donc $\sqrt 6 = \frac{\theta^2-5}{2} \in \mathbb Q(\theta)$. Ensuite,
+      $$\theta^3 = (\sqrt 2 + \sqrt 3)^3 = 2\sqrt 2 + 3\cdot 2\sqrt 3 + 3\cdot \sqrt 2 \cdot 3 + 3\sqrt 3 = 11\sqrt 2 + 9\sqrt 3.$$
+      On résout le système linéaire $\theta = \sqrt 2 + \sqrt 3$, $\theta^3 = 11\sqrt 2 + 9\sqrt 3$, ce qui donne $\sqrt 2 = \frac{\theta^3-9\theta}{2}$ et $\sqrt 3 = \frac{11\theta-\theta^3}{2}$.<br/>
+      Ainsi $\mathbb Q(\sqrt 2,\sqrt 3) \subset \mathbb Q(\theta)$, l'inclusion réciproque étant évidente. Donc $[\mathbb Q(\theta):\mathbb Q] = 4$.<br/>
+      Pour trouver un polynôme annulateur de degré $4$, on peut éliminer $\sqrt 6$ de $\theta^2 = 5 + 2\sqrt 6$ :
+      $$\theta^2-5 = 2\sqrt 6 \;\Longrightarrow\; (\theta^2-5)^2 = 24 \;\Longrightarrow\; \theta^4 -10\theta^2 +25 -24 =0 \;\Longrightarrow\; \theta^4 -10\theta^2 +1 =0.$$
+      Le polynôme $P(X)=X^4-10X^2+1 \in \mathbb Q[X]$ annule $\theta$. Il est unitaire, de degré $4$, égal au degré de l'extension. Montrons qu'il est irréductible (ce qui en fera le polynôme minimal). Il n'a pas de racine rationnelle ($\pm1$ ne sont pas racines). Cherchons une factorisation en produit de deux polynômes de degré $2$ :
+      $$X^4-10X^2+1 = (X^2+aX+b)(X^2-aX+c) = X^4 + (b+c-a^2)X^2 + a(c-b)X + bc.$$
+      On doit avoir $a(c-b)=0$, donc $a=0$ ou $b=c$. Si $a=0$, alors $b+c=-10$, $bc=1$, impossible dans $\mathbb Q$. Si $b=c$, alors $a(c-b)=0$ automatique, $b^2=1$ donc $b=\pm1$, et $2b - a^2 = -10$ donne $a^2 = 2b+10$. Pour $b=1$, $a^2=12$, pas de $a\in\mathbb Q$. Pour $b=-1$, $a^2=8$, pas de $a\in\mathbb Q$. Ainsi $P$ n'est pas factorisable en deux quadratiques rationnels. Il est donc irréductible sur $\mathbb Q$ et c'est le polynôme minimal de $\theta$.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Pour les degrés $2$ ou $3$, l’absence de racine dans le corps suffit à conclure à l’irréductibilité ; ce n’est plus vrai en degré supérieur.</div><div class="conclusion"><span class="label">Conclusion.</span> On termine en indiquant clairement le corps obtenu, son degré ou la propriété d’extension démontrée.</div></div>
+</div>
+<h2>🚀 Approfondissement</h2>
+<div class="exo">
+<strong>A1.</strong> Soit $L/K$ une extension finie de caractéristique nulle. Montrer que $L/K$ est galoisienne si et seulement si $L$ est un corps de décomposition sur $K$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
+<strong>($\Rightarrow$)</strong> Si $L/K$ est galoisienne (normale et séparable), comme elle est finie, elle est engendrée par un nombre fini d'éléments algébriques (base finie). Soient $\alpha_1,\dots,\alpha_r$ des générateurs de $L$ sur $K$, et $m_i$ leurs polynômes minimaux. Par normalité, chaque $m_i$ se scinde dans $L$. Le produit $P = m_1\cdots m_r \in K[X]$ est scindé dans $L$ et $L$ est engendré par ses racines (qui incluent les $\alpha_i$). Donc $L$ est un corps de décomposition de $P$ sur $K$.<br/>
+<strong>($\Leftarrow$)</strong> Si $L$ est le corps de décomposition d'un polynôme $P\in K[X]$, alors $L/K$ est normale. En caractéristique nulle, toute extension algébrique finie est séparable. Donc $L/K$ est normale et séparable, c'est-à-dire galoisienne.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Une famille génératrice ne suffit pas : lorsqu’on parle de base, il faut aussi justifier l’unicité de l’écriture, ou utiliser un argument de dimension.</div><div class="conclusion"><span class="label">Conclusion.</span> On termine en indiquant clairement le corps obtenu, son degré ou la propriété d’extension démontrée.</div></div>
+</div>
+<div class="exo">
+<strong>A2.</strong> Étudier l'extension $\mathbb Q(\sqrt[4]{2})/\mathbb Q$ : est-elle normale ? Quel corps faut-il ajouter pour obtenir le corps de décomposition de $X^4-2$ ?<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Trouver d’abord un polynôme annulateur, puis prouver son irréductibilité pour garantir qu’il est minimal.</div>
+      • <strong>Normalité :</strong> $\mathbb Q(\sqrt[4]{2}) \subset \mathbb R$. Le polynôme $X^4-2$ est irréductible sur $\mathbb Q$ (Eisenstein avec $p=2$). L'une de ses racines est $\sqrt[4]{2} \in \mathbb Q(\sqrt[4]{2})$, mais les racines complexes $\pm i\sqrt[4]{2}$ ne sont pas réelles, donc pas dans $\mathbb Q(\sqrt[4]{2})$. Ainsi le polynôme minimal de $\sqrt[4]{2}$ ne se scinde pas dans l'extension ; elle n'est pas normale.<br/>
+      • <strong>Corps de décomposition :</strong> Les racines de $X^4-2$ sont $\sqrt[4]{2}, -\sqrt[4]{2}, i\sqrt[4]{2}, -i\sqrt[4]{2}$. Pour les obtenir toutes, il faut ajouter $i$ à $\mathbb Q(\sqrt[4]{2})$. Le corps de décomposition est donc $\mathbb Q(\sqrt[4]{2}, i)$. Son degré sur $\mathbb Q$ est $8$ (car $[\mathbb Q(\sqrt[4]{2}):\mathbb Q]=4$ et $i\notin \mathbb R \supset \mathbb Q(\sqrt[4]{2})$ donc $[\mathbb Q(\sqrt[4]{2},i):\mathbb Q(\sqrt[4]{2})]=2$).
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Pour les degrés $2$ ou $3$, l’absence de racine dans le corps suffit à conclure à l’irréductibilité ; ce n’est plus vrai en degré supérieur.</div><div class="conclusion"><span class="label">Conclusion.</span> On termine en indiquant clairement le corps obtenu, son degré ou la propriété d’extension démontrée.</div></div>
+</div>
+<div class="exo">
+<strong>A3.</strong> Comparer les extensions $\mathbb Q(\sqrt 2,\sqrt 3)/\mathbb Q$ et $\mathbb Q(\sqrt[3]{2},\zeta_3)/\mathbb Q$ du point de vue de la normalité.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Lister d’abord les candidats imposés par les théorèmes de structure ou de degré, puis vérifier que la liste est complète.</div>
+      • $\mathbb Q(\sqrt 2,\sqrt 3)$ est le corps de décomposition de $(X^2-2)(X^2-3)$ sur $\mathbb Q$ : il contient toutes les racines de ces polynômes et en est engendré. C'est donc une extension normale.<br/>
+      • $\mathbb Q(\sqrt[3]{2},\zeta_3)$ est le corps de décomposition de $X^3-2$ sur $\mathbb Q$, car il contient les trois racines $\sqrt[3]{2}, \zeta_3\sqrt[3]{2}, \zeta_3^2\sqrt[3]{2}$ et en est engendré. C'est donc également une extension normale.<br/>
+      En revanche, si l'on compare leurs sous-extensions naturelles : $\mathbb Q(\sqrt 2)/\mathbb Q$ est normale (toute quadratique l'est), alors que $\mathbb Q(\sqrt[3]{2})/\mathbb Q$ n'est pas normale. La différence de comportement des sous-extensions provient du groupe de Galois : celui de $\mathbb Q(\sqrt 2,\sqrt 3)$ est $V_4$ (abélien, tous les sous-groupes sont distingués), tandis que celui de $\mathbb Q(\sqrt[3]{2},\zeta_3)$ est $S_3$, où les sous-groupes d'ordre $2$ ne sont pas distingués, ce qui correspond à $\mathbb Q(\sqrt[3]{2})$ non galoisienne.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Attention à l’ordre de composition : ici les permutations se composent de droite à gauche.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+</div>
+</body>
+</html>

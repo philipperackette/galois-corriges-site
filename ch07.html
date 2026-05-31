@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<title>Corrigés — Chapitre 7 : Groupe de Galois d'une extension</title>
+<script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+<script async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<style>
+
+    :root { --accent:#8a2d18; --soft:#fff7f2; --line:#ead8cf; --ink:#222; --muted:#5f5f5f; }
+    body { max-width: 900px; margin: 32px auto; padding: 0 18px 40px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.65; hyphens: auto; color: var(--ink); background:#fff; }
+    h1 { text-align: center; line-height:1.25; margin-bottom: 1.2em; }
+    h2 { border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-top: 2.2em; }
+    .intro, .mode { background: #f8f8f8; border-left: 5px solid var(--accent); padding: 0.9em 1em; margin: 1.2em 0 1.6em; }
+    .exo { margin: 1.6em 0 2.2em; padding: 1em 1.1em; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+    .exo > strong:first-child { color: var(--accent); font-size: 1.05em; }
+    .sol { margin-left: 0; margin-top: 0.8em; }
+    .methode, .vigilance, .conclusion { margin: .75em 0; padding: .65em .8em; border-radius: 8px; }
+    .methode { background: #f4f7ff; border-left: 4px solid #4867aa; }
+    .vigilance { background: #fff8e8; border-left: 4px solid #c7861b; }
+    .conclusion { background: var(--soft); border-left: 4px solid var(--accent); }
+    .label { font-weight: 700; color: #333; }
+    code { background:#f5f5f5; padding:.1em .25em; border-radius:4px; }
+    a { color: var(--accent); }
+  </style>
+</head>
+<body>
+<h1>Corrigés — Chapitre 7 : Groupe de Galois d'une extension</h1><div class="intro"><p><span class="label">Objectif pédagogique.</span> Les solutions mettent en évidence le principe galoisien : un automorphisme fixe le corps de base et permute les racines en respectant toutes les relations polynomiales à coefficients dans ce corps.</p></div><div class="mode"><p><span class="label">Mode de lecture.</span> Pour chaque exercice, lire d’abord la méthode, refaire le calcul sans regarder la solution, puis comparer avec le point de vigilance.</p></div>
+<h2>✏️ Vérification</h2>
+<div class="exo">
+<strong>V1.</strong> Déterminer tous les $\mathbb Q$-automorphismes de $\mathbb Q(\sqrt 5)$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Fixer une convention de calcul, effectuer les images ou les réductions explicitement, puis seulement ensuite reconnaître l’objet obtenu.</div>
+      Tout élément de $\mathbb Q(\sqrt 5)$ s'écrit $a+b\sqrt 5$ avec $a,b\in\mathbb Q$. Un $\mathbb Q$-automorphisme $\sigma$ doit fixer $\mathbb Q$ et envoyer $\sqrt 5$ sur une racine de son polynôme minimal $X^2-5$, c'est-à-dire $\pm\sqrt 5$. Les deux seuls $\mathbb Q$-automorphismes sont donc :
+      $$\sigma_1(a+b\sqrt 5)=a+b\sqrt 5\quad(\text{identité}),\qquad \sigma_2(a+b\sqrt 5)=a-b\sqrt 5.$$
+      Ils sont distincts et $\sigma_2\circ\sigma_2=\mathrm{Id}$, donc $\mathrm{Gal}(\mathbb Q(\sqrt 5)/\mathbb Q)\simeq \{\pm1\}\simeq \mathbb Z/2\mathbb Z$.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Un automorphisme au-dessus de $K$ fixe les coefficients de $K$ ; c’est exactement ce qui permet de transporter l’équation $P(\alpha)=0$.</div><div class="conclusion"><span class="label">Conclusion.</span> La solution se clôt en identifiant le polynôme ou la factorisation cherchée, avec la raison qui garantit son unicité ou son irréductibilité.</div></div>
+</div>
+<div class="exo">
+<strong>V2.</strong> Montrer que tout $\mathbb Q$-automorphisme de $\mathbb Q(\sqrt 2,\sqrt 3)$ est déterminé par les images de $\sqrt 2$ et de $\sqrt 3$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
+      $\mathbb Q(\sqrt 2,\sqrt 3)$ est engendré sur $\mathbb Q$ par $\sqrt 2$ et $\sqrt 3$. Par conséquent, un $\mathbb Q$-automorphisme $\sigma$ est entièrement déterminé par les images $\sigma(\sqrt 2)$ et $\sigma(\sqrt 3)$, car tout élément est une combinaison $\mathbb Q$-linéaire de $\{1,\sqrt 2,\sqrt 3,\sqrt 6\}$ et $\sigma$ respecte les opérations algébriques (en particulier $\sigma(\sqrt 6)=\sigma(\sqrt 2)\sigma(\sqrt 3)$). Une fois ces deux images fixées, $\sigma$ est entièrement déterminé.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Un automorphisme au-dessus de $K$ fixe les coefficients de $K$ ; c’est exactement ce qui permet de transporter l’équation $P(\alpha)=0$.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+</div>
+<div class="exo">
+<strong>V3.</strong> Soit $\alpha$ une racine de $P\in K[X]$ dans une extension $L/K$. Montrer directement que, pour tout $\sigma\in\mathrm{Gal}(L/K)$, l'élément $\sigma(\alpha)$ est encore racine de $P$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Penser en termes d’espaces vectoriels : une base donne le degré, et une tour donne un produit de degrés.</div>
+      Écrivons $P(X)=a_nX^n+\cdots+a_0$ avec $a_i\in K$. Comme $\sigma$ est un $K$-automorphisme, $\sigma(a_i)=a_i$. Alors
+      $$P(\sigma(\alpha)) = \sum a_i \sigma(\alpha)^i = \sigma\!\left(\sum a_i \alpha^i\right) = \sigma(P(\alpha)) = \sigma(0)=0.$$
+      Donc $\sigma(\alpha)$ est aussi racine de $P$.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Un automorphisme au-dessus de $K$ fixe les coefficients de $K$ ; c’est exactement ce qui permet de transporter l’équation $P(\alpha)=0$.</div><div class="conclusion"><span class="label">Conclusion.</span> On termine en indiquant clairement le corps obtenu, son degré ou la propriété d’extension démontrée.</div></div>
+</div>
+<div class="exo">
+<strong>V4.</strong> Calculer le cardinal de $\mathrm{Gal}(\mathbb Q(i)/\mathbb Q)$ et vérifier que l'extension est galoisienne.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Fixer une convention de calcul, effectuer les images ou les réductions explicitement, puis seulement ensuite reconnaître l’objet obtenu.</div>
+      Comme en V1, le polynôme minimal de $i$ sur $\mathbb Q$ est $X^2+1$. Ses racines sont $i$ et $-i$, toutes deux dans $\mathbb Q(i)$. Les seuls $\mathbb Q$-automorphismes sont l'identité et la conjugaison $a+bi\mapsto a-bi$. Donc $|\mathrm{Gal}(\mathbb Q(i)/\mathbb Q)| = 2$.
+      Par ailleurs $[\mathbb Q(i):\mathbb Q] = 2$, donc on a l'égalité $|\mathrm{Gal}| = [L:K]$. L'extension est donc galoisienne (normale + séparable, car caractéristique nulle).
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Un automorphisme au-dessus de $K$ fixe les coefficients de $K$ ; c’est exactement ce qui permet de transporter l’équation $P(\alpha)=0$.</div><div class="conclusion"><span class="label">Conclusion.</span> On termine en indiquant clairement le corps obtenu, son degré ou la propriété d’extension démontrée.</div></div>
+</div>
+<div class="exo">
+<strong>V5.</strong> Expliquer pourquoi $\mathbb Q(\sqrt[3]{2})/\mathbb Q$ n'est pas galoisienne.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Trouver d’abord un polynôme annulateur, puis prouver son irréductibilité pour garantir qu’il est minimal.</div>
+      Le polynôme minimal de $\sqrt[3]{2}$ sur $\mathbb Q$ est $X^3-2$, de degré $3$, donc $[\mathbb Q(\sqrt[3]{2}):\mathbb Q]=3$. Les autres racines de $X^3-2$ sont $j\sqrt[3]{2}$ et $j^2\sqrt[3]{2}$, avec $j=e^{2i\pi/3}$, qui ne sont pas réelles donc n'appartiennent pas à $\mathbb Q(\sqrt[3]{2})\subset\mathbb R$. Ainsi l'unique $\mathbb Q$-automorphisme est l'identité et $|\mathrm{Gal}|=1 &lt; 3$. L'extension n'est donc pas galoisienne.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Une famille génératrice ne suffit pas : lorsqu’on parle de base, il faut aussi justifier l’unicité de l’écriture, ou utiliser un argument de dimension.</div><div class="conclusion"><span class="label">Conclusion.</span> On termine en indiquant clairement le corps obtenu, son degré ou la propriété d’extension démontrée.</div></div>
+</div>
+<h2>🔧 Structurants</h2>
+<div class="exo">
+<strong>S1.</strong> Soit $L=K(\alpha)$, où $\alpha$ est algébrique sur $K$. Montrer qu'un $K$-morphisme $L\to\mathbb C$ est entièrement déterminé par l'image de $\alpha$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Isoler la définition utile, écrire les hypothèses sous forme exploitable, puis conclure par une phrase qui répond exactement à la question.</div>
+      Tout élément de $L$ est de la forme $P(\alpha)$ avec $P\in K[X]$ (ou plus généralement une fraction rationnelle, mais $\alpha$ étant algébrique, $L=K[\alpha]$). Soit $\sigma:L\to\mathbb C$ un $K$-morphisme. Alors pour tout $x = \sum a_i \alpha^i$, on a $\sigma(x) = \sum \sigma(a_i) \sigma(\alpha)^i = \sum a_i \sigma(\alpha)^i$. Ainsi $\sigma$ est entièrement déterminé par la valeur $\sigma(\alpha)$. (En particulier, $\sigma(\alpha)$ doit être un conjugué de $\alpha$ sur $K$.)
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+</div>
+<div class="exo">
+<strong>S2.</strong> Soit $L$ le corps de décomposition de $(X^2-2)(X^2-3)$ sur $\mathbb Q$. Montrer que $\mathrm{Gal}(L/\mathbb Q)\simeq V_4$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
+      $L = \mathbb Q(\sqrt 2,\sqrt 3)$. Ses éléments sont déterminés par les images de $\sqrt 2$ et $\sqrt 3$, qui doivent être $\pm\sqrt 2$ et $\pm\sqrt 3$ respectivement. On a donc quatre automorphismes :
+      $\mathrm{Id},\ \sigma(\sqrt 2)=-\sqrt 2,\sigma(\sqrt 3)=\sqrt 3$,
+      $\tau(\sqrt 2)=\sqrt 2,\tau(\sqrt 3)=-\sqrt 3$,
+      $\sigma\tau(\sqrt 2)=-\sqrt 2,\sigma\tau(\sqrt 3)=-\sqrt 3$.
+      Chacun est d'ordre $2$ et ils commutent. C'est exactement le groupe de Klein $V_4 \simeq \mathbb Z/2\mathbb Z \times \mathbb Z/2\mathbb Z$.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Un automorphisme au-dessus de $K$ fixe les coefficients de $K$ ; c’est exactement ce qui permet de transporter l’équation $P(\alpha)=0$.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+</div>
+<div class="exo">
+<strong>S3.</strong> Dans $L=\mathbb Q(\sqrt[3]{2},j)$, vérifier explicitement que les applications $\rho$ et $\tau$ définies par $\rho(\alpha)=j\alpha,\ \rho(j)=j$ et $\tau(\alpha)=\alpha,\ \tau(j)=j^2$ satisfont $\rho^3=\tau^2=\mathrm{Id}$ et $\tau\rho\tau = \rho^{-1}$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Isoler la définition utile, écrire les hypothèses sous forme exploitable, puis conclure par une phrase qui répond exactement à la question.</div>
+      Posons $\alpha=\sqrt[3]{2}$, $j=e^{2i\pi/3}$. On a $j^3=1$, $1+j+j^2=0$.
+      <ul>
+<li>$\rho^2(\alpha)=\rho(j\alpha)=j\rho(\alpha)=j^2\alpha$, $\rho^3(\alpha)=j^3\alpha=\alpha$, et $\rho(j)=j$ donc $\rho^3=\mathrm{Id}$.</li>
+<li>$\tau^2(\alpha)=\tau(\alpha)=\alpha$, $\tau^2(j)=\tau(j^2)= (j^2)^2 = j^4 = j$, donc $\tau^2=\mathrm{Id}$.</li>
+<li>Calcul de $\tau\rho\tau$ : appliquons à $\alpha$ : $\tau(\rho(\tau(\alpha))) = \tau(\rho(\alpha)) = \tau(j\alpha) = \tau(j)\tau(\alpha) = j^2\alpha$. Appliquons à $j$ : $\tau(\rho(\tau(j))) = \tau(\rho(j^2)) = \tau(j^2) = j^4 = j$. 
+          Pour $\rho^{-1}$ : $\rho^{-1}(\alpha) = j^2\alpha$, $\rho^{-1}(j)=j$. On observe que $\tau\rho\tau$ et $\rho^{-1}$ coïncident sur les générateurs $\alpha$ et $j$, donc $\tau\rho\tau = \rho^{-1}$.</li>
+</ul>
+<div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+</div>
+<div class="exo">
+<strong>S4.</strong> Démontrer que $\mathrm{Gal}(\mathbb Q(\zeta_5)/\mathbb Q)$ est cyclique d'ordre $4$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
+      $\zeta_5 = e^{2i\pi/5}$, polynôme minimal $\Phi_5(X)=X^4+X^3+X^2+X+1$ (irréductible, exercice ou admis chapitre 13). Donc $[\mathbb Q(\zeta_5):\mathbb Q]=4$. Tout $\mathbb Q$-automorphisme est déterminé par $\zeta_5 \mapsto \zeta_5^a$ avec $a$ premier à $5$ (car on doit envoyer une racine primitive sur une autre). Les $a$ possibles sont $1,2,3,4$ (mod $5$), soit $(\mathbb Z/5\mathbb Z)^\times$, qui est cyclique d'ordre $4$ (engendré par $2$ par exemple). On a donc $\mathrm{Gal}(\mathbb Q(\zeta_5)/\mathbb Q) \simeq (\mathbb Z/5\mathbb Z)^\times$, cyclique d'ordre $4$.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Pour les degrés $2$ ou $3$, l’absence de racine dans le corps suffit à conclure à l’irréductibilité ; ce n’est plus vrai en degré supérieur.</div><div class="conclusion"><span class="label">Conclusion.</span> La solution se clôt en identifiant le polynôme ou la factorisation cherchée, avec la raison qui garantit son unicité ou son irréductibilité.</div></div>
+</div>
+<div class="exo">
+<strong>S5.</strong> Reprendre la preuve du lemme de Dedekind dans le cas de deux morphismes seulement. Où utilise-t-on l'hypothèse que les morphismes sont distincts ?<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Isoler la définition utile, écrire les hypothèses sous forme exploitable, puis conclure par une phrase qui répond exactement à la question.</div>
+      Soient $\sigma,\tau : L\to M$ deux morphismes de corps distincts. On veut montrer qu'ils sont linéairement indépendants sur $M$ : si
+      $$c_1\sigma(x)+c_2\tau(x)=0\quad\text{pour tout }x\in L,$$
+      alors $c_1=c_2=0$. Comme $\sigma$ et $\tau$ sont distincts, il existe $a\in L$ tel que $\sigma(a)\neq\tau(a)$. Spécialisons la relation universelle en $ax$, où $x\in L$ est quelconque ; comme $\sigma$ et $\tau$ sont des morphismes, $\sigma(ax)=\sigma(a)\sigma(x)$ et $\tau(ax)=\tau(a)\tau(x)$. On obtient :
+      $$c_1\sigma(a)\sigma(x)+c_2\tau(a)\tau(x)=0.\qquad(*)$$
+      Multiplions la relation initiale par $\tau(a)$ :
+      $$c_1\tau(a)\sigma(x)+c_2\tau(a)\tau(x)=0.$$
+      Soustrayons cette dernière de $(*)$ : le terme en $\tau(x)$ disparaît, et il reste, pour tout $x\in L$,
+      $$c_1\bigl(\sigma(a)-\tau(a)\bigr)\sigma(x)=0.$$
+      Spécialisons en $x=1$ : comme $\sigma(1)=1$, on obtient $c_1(\sigma(a)-\tau(a))=0$. Or $\sigma(a)-\tau(a)\neq 0$ par hypothèse, donc $c_1=0$. La relation initiale devient $c_2\tau(x)=0$ pour tout $x$ ; en $x=1$ cela donne $c_2=0$.
+      <br/>L'hypothèse $\sigma\neq\tau$ intervient à la deuxième ligne, dans le choix de l'élément $a$ tel que $\sigma(a)\neq\tau(a)$. Sans elle, le facteur $\sigma(a)-\tau(a)$ pourrait être nul et l'argument s'effondrerait.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> On termine en indiquant clairement le corps obtenu, son degré ou la propriété d’extension démontrée.</div></div>
+</div>
+<h2>🚀 Approfondissement</h2>
+<div class="exo">
+<strong>A1.</strong> Soit $p$ un nombre premier impair.<br/>
+    (a) Montrer que tout automorphisme de $\mathbb Q(\zeta_p)/\mathbb Q$ est de la forme $\zeta_p \mapsto \zeta_p^a$ avec $a\in(\mathbb Z/p\mathbb Z)^\times$. En déduire une injection $\mathrm{Gal}(\mathbb Q(\zeta_p)/\mathbb Q) \hookrightarrow (\mathbb Z/p\mathbb Z)^\times$.<br/>
+    (b) On admet que $[\mathbb Q(\zeta_p):\mathbb Q] = p-1$. Montrer alors que l'injection précédente est un isomorphisme.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
+      (a) $\zeta_p$ est une racine primitive $p$-ième de l'unité, de polynôme minimal $\Phi_p(X)=X^{p-1}+\cdots+X+1$ (irréductible). Un $\mathbb Q$-automorphisme $\sigma$ doit envoyer $\zeta_p$ sur une autre racine primitive, donc sur $\zeta_p^a$ où $1\le a \le p-1$, $a$ premier avec $p$. L'application $\sigma \mapsto a \bmod p$ est un morphisme injectif (car $\sigma$ est déterminé par $\sigma(\zeta_p)$) de groupes $\mathrm{Gal}(\mathbb Q(\zeta_p)/\mathbb Q) \to (\mathbb Z/p\mathbb Z)^\times$. L'injectivité provient du fait que si $\sigma(\zeta_p)=\zeta_p$, alors $\sigma$ est l'identité sur le corps engendré, donc sur $\mathbb Q(\zeta_p)$.<br/>
+      (b) Si le degré de l'extension est $p-1$, l'extension est galoisienne (car corps de décomposition) donc $|\mathrm{Gal}| = [\mathbb Q(\zeta_p):\mathbb Q] = p-1$. Or $|(\mathbb Z/p\mathbb Z)^\times| = p-1$. L'injection entre deux ensembles finis de même cardinal est donc une bijection, d'où l'isomorphisme.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Pour les degrés $2$ ou $3$, l’absence de racine dans le corps suffit à conclure à l’irréductibilité ; ce n’est plus vrai en degré supérieur.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+</div>
+<div class="exo">
+<strong>A2.</strong> Soit $L/K$ une extension finie. Montrer que si $L/K$ est galoisienne et si $\alpha\in L$, alors tous les conjugués de $\alpha$ sur $K$ qui appartiennent à une clôture algébrique de $K$ appartiennent déjà à $L$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
+      Par définition, $L/K$ galoisienne signifie normale et séparable. La normalité dit précisément : tout polynôme irréductible $P\in K[X]$ ayant une racine dans $L$ se scinde dans $L[X]$. Soit $\alpha\in L$ et $m_\alpha$ son polynôme minimal sur $K$, qui est irréductible. Les conjugués de $\alpha$ sur $K$ (dans une clôture algébrique $\overline K$) sont exactement les racines de $m_\alpha$. Comme $\alpha\in L$ et $L/K$ est normale, $m_\alpha$ se scinde dans $L$, donc tous ses conjugués sont dans $L$. Ainsi, tous les conjugués de $\alpha$ sur $K$ sont déjà dans $L$.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Pour les degrés $2$ ou $3$, l’absence de racine dans le corps suffit à conclure à l’irréductibilité ; ce n’est plus vrai en degré supérieur.</div><div class="conclusion"><span class="label">Conclusion.</span> On termine en indiquant clairement le corps obtenu, son degré ou la propriété d’extension démontrée.</div></div>
+</div>
+<div class="exo">
+<strong>A3.</strong> Chercher les sous-groupes de $S_3$ et anticiper, sans démonstration complète, les sous-corps intermédiaires que l'on devrait obtenir pour l'extension $\mathbb Q(\sqrt[3]{2},j)/\mathbb Q$.<br/>
+<div class="sol"><div class="methode"><span class="label">Méthode.</span> Penser en termes d’espaces vectoriels : une base donne le degré, et une tour donne un produit de degrés.</div>
+      Le groupe de Galois de cette extension est $S_3$ (d'ordre $6$). Les sous-groupes de $S_3$ sont :
+      <ul>
+<li>$\{\mathrm{Id}\}$ : ordre 1, correspond au corps total $\mathbb Q(\sqrt[3]{2},j)$.</li>
+<li>Le sous-groupe alterné $A_3 = \langle (123) \rangle$ : ordre 3, distingué dans $S_3$. Il fixe $j$ (car les automorphismes d'ordre 3 agissent sur les racines cubiques de 2 sans toucher $j$). Le corps fixé devrait être $\mathbb Q(j)$, degré $2$ sur $\mathbb Q$.</li>
+<li>Les trois sous-groupes d'ordre 2 : $\langle (12) \rangle, \langle (13) \rangle, \langle (23) \rangle$, correspondant aux transpositions. Aucun n'est distingué. Ces sous-groupes fixent respectivement $\sqrt[3]{2}, j\sqrt[3]{2}, j^2\sqrt[3]{2}$. Leurs corps fixes sont donc $\mathbb Q(\sqrt[3]{2})$, $\mathbb Q(j\sqrt[3]{2})$, $\mathbb Q(j^2\sqrt[3]{2})$, chacun de degré $3$ sur $\mathbb Q$ et non galoisiens (car les sous-groupes ne sont pas distingués).</li>
+<li>$S_3$ lui-même : ordre 6, fixe $\mathbb Q$.</li>
+</ul>
+      La correspondance de Galois inverse les inclusions : les plus petits sous-groupes correspondent aux plus grands corps. C'est exactement ce qu'on retrouvera au chapitre 8.
+    <div class="vigilance"><span class="label">Point de vigilance.</span> Attention à l’ordre de composition : ici les permutations se composent de droite à gauche.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+</div>
+</body>
+</html>
