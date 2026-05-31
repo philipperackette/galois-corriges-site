@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Corrigés — Théorie de Galois</title>
+<style>
+:root{--bg:#0e1a44;--panel:#fbfaf4;--ink:#171717;--teal:#0f5b55;--garnet:#8a1d2c;--blue:#1d4f91;--gold:#c79b2b;--line:#d8d2c4}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#f3f1ea;color:var(--ink)}
+header{background:var(--bg);color:white;padding:24px;border-bottom:5px solid var(--gold)}
+header h1{margin:0;font-size:1.6rem;font-weight:700}
+header p{margin:.4rem 0 0;opacity:.9;font-size:1rem}
+main{padding:24px;max-width:900px;margin:0 auto}
+.intro{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:24px;box-shadow:0 2px 10px #0001}
+.intro p{margin:.5rem 0;line-height:1.6}
+h2{font-size:1.15rem;color:var(--teal);margin:0 0 14px}
+.parts{display:flex;flex-direction:column;gap:20px}
+.part-block{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 20px;box-shadow:0 1px 6px #0001}
+.part-label{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--garnet);margin-bottom:10px}
+.ch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.ch-card{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:#fefcf6;text-decoration:none;color:var(--ink);transition:all .15s}
+.ch-card:hover{border-color:var(--teal);background:#f0fff8;box-shadow:0 2px 8px #0f5b5514}
+.ch-num{font-size:.8rem;color:var(--garnet);font-weight:700;margin-bottom:4px}
+.ch-title{font-size:.92rem;font-weight:600;line-height:1.35}
+.ch-count{font-size:.8rem;color:#666;margin-top:6px}
+footer{text-align:center;padding:24px;color:#888;font-size:.85rem}
+</style>
+</head><body>
+<header>
+  <h1>Corrigés des exercices</h1>
+  <p>Théorie de Galois — Philippe Rackette</p>
+</header>
+<main>
+<div class="intro">
+  <h2>Mode d'emploi</h2>
+  <p>Ce site contient les solutions détaillées des exercices proposés dans le manuel <em>Théorie de Galois — Un parcours rigoureux et pédagogique</em>.</p>
+  <p>Les corrigés sont organisés par chapitre. Chaque page propose la solution complète, avec les étapes intermédiaires. Ils sont destinés à être consultés <em>après</em> avoir travaillé l'exercice : la solution n'a de valeur que si elle confirme ou corrige un raisonnement déjà esquissé.</p>
+  <p>Pour tout retour sur les corrigés ou les exercices, contacter l'auteur via la page GitHub du projet.</p>
+</div>
+
+<div class="parts">
+
+  <div class="part-block">
+    <div class="part-label">Partie I — Du CAPESien au théoricien des corps</div>
+    <div class="ch-grid">
+      <a class="ch-card" href="ch01.html">
+        <div class="ch-num">Chapitre 1</div>
+        <div class="ch-title">Groupes : symétries, quotients et actions</div>
+        <div class="ch-count">Exercices A1 – A8</div>
+      </a>
+      <a class="ch-card" href="ch02.html">
+        <div class="ch-num">Chapitre 2</div>
+        <div class="ch-title">Anneaux, idéaux et corps</div>
+        <div class="ch-count">Exercices B1 – B8</div>
+      </a>
+      <a class="ch-card" href="ch03.html">
+        <div class="ch-num">Chapitre 3</div>
+        <div class="ch-title">Arithmétique des polynômes</div>
+        <div class="ch-count">Exercices C1 – C9</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="part-block">
+    <div class="part-label">Partie II — Extensions de corps</div>
+    <div class="ch-grid">
+      <a class="ch-card" href="ch04.html">
+        <div class="ch-num">Chapitre 4</div>
+        <div class="ch-title">Extensions de corps</div>
+        <div class="ch-count">Exercices D1 – D6</div>
+      </a>
+      <a class="ch-card" href="ch05.html">
+        <div class="ch-num">Chapitre 5</div>
+        <div class="ch-title">Corps de rupture, décomposition et clôture</div>
+        <div class="ch-count">Exercices E1 – E5</div>
+      </a>
+      <a class="ch-card" href="ch06.html">
+        <div class="ch-num">Chapitre 6</div>
+        <div class="ch-title">Séparabilité, normalité, élément primitif</div>
+        <div class="ch-count">Exercices F1 – F6</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="part-block">
+    <div class="part-label">Partie III — Théorie de Galois</div>
+    <div class="ch-grid">
+      <a class="ch-card" href="ch07.html">
+        <div class="ch-num">Chapitre 7</div>
+        <div class="ch-title">Groupe de Galois d'une extension</div>
+        <div class="ch-count">Exercices G1 – G7</div>
+      </a>
+      <a class="ch-card" href="ch08.html">
+        <div class="ch-num">Chapitre 8</div>
+        <div class="ch-title">La correspondance de Galois</div>
+        <div class="ch-count">Exercices H1 – H8</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="part-block">
+    <div class="part-label">Palier de motivation — Calculs effectifs</div>
+    <div class="ch-grid">
+      <a class="ch-card" href="ch09.html">
+        <div class="ch-num">Chapitre 9</div>
+        <div class="ch-title">Calculs effectifs de groupes de Galois</div>
+        <div class="ch-count">Exercices I1 – I5</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="part-block">
+    <div class="part-label">Partie IV — Résolubilité par radicaux et Abel-Ruffini</div>
+    <div class="ch-grid">
+      <a class="ch-card" href="ch10.html">
+        <div class="ch-num">Chapitre 10</div>
+        <div class="ch-title">Groupes résolubles</div>
+        <div class="ch-count">Exercices J1 – J6</div>
+      </a>
+      <a class="ch-card" href="ch11.html">
+        <div class="ch-num">Chapitre 11</div>
+        <div class="ch-title">Extensions par radicaux</div>
+        <div class="ch-count">Exercices K1 – K5</div>
+      </a>
+      <a class="ch-card" href="ch12.html">
+        <div class="ch-num">Chapitre 12</div>
+        <div class="ch-title">Résolution explicite et Abel-Ruffini</div>
+        <div class="ch-count">Exercices L1 – L7</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="part-block">
+    <div class="part-label">Partie V — Cyclotomie et constructions</div>
+    <div class="ch-grid">
+      <a class="ch-card" href="ch13.html">
+        <div class="ch-num">Chapitre 13</div>
+        <div class="ch-title">Polynômes cyclotomiques</div>
+        <div class="ch-count">Exercices M1 – M6</div>
+      </a>
+      <a class="ch-card" href="ch14.html">
+        <div class="ch-num">Chapitre 14</div>
+        <div class="ch-title">Règle, compas et constructions</div>
+        <div class="ch-count">Exercices N1 – N6</div>
+      </a>
+    </div>
+  </div>
+
+</div>
+</main>
+<footer>Corrigés — Théorie de Galois · Philippe Rackette · 2026</footer>
+</body></html>
