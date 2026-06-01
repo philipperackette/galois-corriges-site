@@ -1,251 +1,184 @@
 <!DOCTYPE html>
-
 <html lang="fr">
 <head>
 <meta charset="utf-8"/>
-<title>Corrigés — Chapitre 12 : Résolution explicite et théorème d'Abel-Ruffini</title>
-<script>
-    window.MathJax = {
-      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
-      svg: { fontCache: 'global' }
-    };
-  </script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Corrigés — Chapitre 12 : Le théorème d'Abel-Ruffini</title>
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']]},svg:{fontCache:'global'}};</script>
 <script async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <style>
-:root{
-  --navy:#0e1a44;
-  --gold:#c79b2b;
-  --cream:#f4f0e7;
-  --card:#fffdf8;
-  --ink:#1f1f1f;
-  --muted:#555;
-  --teal:#0b6058;
-  --blue:#1d4f91;
-  --garnet:#8a1d2c;
-  --line:#d8d0c1;
-  --soft-blue:#f2f6ff;
-  --soft-gold:#fff7df;
-  --soft-green:#eefbf7;
-}
-*{box-sizing:border-box}
-html{background:var(--cream)}
-body{
-  margin:0;
-  padding:0 0 48px;
-  max-width:none;
-  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-  line-height:1.62;
-  color:var(--ink);
-  background:var(--cream);
-  hyphens:auto;
-}
-body::before{
-  content:"Corrigés pédagogiques";
-  display:block;
-  padding:28px clamp(22px,5vw,64px) 26px;
-  color:#fff;
-  background:var(--navy);
-  border-bottom:7px solid var(--gold);
-  font-size:1.95rem;
-  line-height:1.15;
-  font-weight:800;
-  letter-spacing:-.02em;
-  box-shadow:0 2px 10px rgba(0,0,0,.18);
-}
-h1{
-  max-width:1120px;
-  margin:32px auto 22px;
-  padding:0 clamp(18px,3vw,28px);
-  color:var(--navy);
-  font-size:clamp(1.9rem,3.2vw,3rem);
-  line-height:1.14;
-  font-weight:800;
-  letter-spacing:-.035em;
-}
-h2{
-  max-width:1120px;
-  margin:42px auto 18px;
-  padding:0 clamp(18px,3vw,28px) 10px;
-  color:var(--teal);
-  border-bottom:2px solid var(--line);
-  font-size:1.55rem;
-  line-height:1.25;
-}
-p, ol, ul{max-width:1120px;margin-left:auto;margin-right:auto}
-.intro,.mode{
-  max-width:1120px;
-  margin:20px auto;
-  padding:22px 24px;
-  background:var(--card);
-  border:1px solid var(--line);
-  border-left:7px solid var(--gold);
-  border-radius:14px;
-  box-shadow:0 2px 12px rgba(14,26,68,.08);
-}
-.mode{border-left-color:var(--blue);background:#f8fbff}
-.intro p,.mode p{margin:0;max-width:none}
-ol{
-  max-width:1120px;
-  margin-top:26px;
-  padding:22px 30px 22px 52px;
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:16px;
-  box-shadow:0 2px 12px rgba(14,26,68,.08);
-}
-li{margin:.38em 0}
-.exo{
-  max-width:1120px;
-  margin:24px auto 30px;
-  padding:24px 26px;
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:16px;
-  box-shadow:0 2px 12px rgba(14,26,68,.10);
-}
+:root{--navy:#0e1a44;--gold:#c79b2b;--cream:#f4f0e7;--card:#fffdf8;--ink:#1f1f1f;--muted:#555;--teal:#0b6058;--blue:#1d4f91;--garnet:#8a1d2c;--line:#d8d0c1;--soft-blue:#f2f6ff;--soft-gold:#fff7df;--soft-green:#eefbf7;}
+*{box-sizing:border-box}html{background:var(--cream)}
+body{margin:0;padding:0 0 48px;max-width:none;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.62;color:var(--ink);background:var(--cream);hyphens:auto;}
+body::before{content:"Corrigés pédagogiques";display:block;padding:28px clamp(22px,5vw,64px) 26px;color:#fff;background:var(--navy);border-bottom:7px solid var(--gold);font-size:1.95rem;line-height:1.15;font-weight:800;letter-spacing:-.02em;box-shadow:0 2px 10px rgba(0,0,0,.18);}
+h1{max-width:1120px;margin:32px auto 22px;padding:0 clamp(18px,3vw,28px);color:var(--navy);font-size:clamp(1.9rem,3.2vw,3rem);line-height:1.14;font-weight:800;letter-spacing:-.035em;}
+h2{max-width:1120px;margin:42px auto 18px;padding:0 clamp(18px,3vw,28px) 10px;color:var(--teal);border-bottom:2px solid var(--line);font-size:1.55rem;line-height:1.25;}
+p,ol,ul{max-width:1120px;margin-left:auto;margin-right:auto}
+.mode{max-width:1120px;margin:20px auto;padding:22px 24px;background:#f8fbff;border:1px solid var(--line);border-left:7px solid var(--blue);border-radius:14px;box-shadow:0 2px 12px rgba(14,26,68,.08);}
+.mode p{margin:0;max-width:none}
+.exo{max-width:1120px;margin:24px auto 30px;padding:24px 26px;background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:0 2px 12px rgba(14,26,68,.10);}
 .exo>strong:first-child{color:var(--garnet);font-weight:800;font-size:1.05em}
-.sol{margin-left:0;margin-top:14px}
-.methode,.vigilance,.conclusion{
-  margin:14px 0;
-  padding:14px 16px;
-  border-radius:10px;
-  border:1px solid transparent;
-}
-.methode{background:var(--soft-blue);border-left:5px solid var(--blue)}
+.enonce{margin:2px 0 14px}.sol{margin-top:6px}.sol p{max-width:none;margin:.55em 0}
+.vigilance,.conclusion,.lien{margin:14px 0;padding:13px 16px;border-radius:10px;border:1px solid transparent;}
 .vigilance{background:var(--soft-gold);border-left:5px solid var(--gold)}
 .conclusion{background:var(--soft-green);border-left:5px solid var(--teal)}
-.label{font-weight:800;color:var(--navy)}
-code{
-  background:#fff;
-  border:1px solid var(--line);
-  padding:.1em .28em;
-  border-radius:5px;
-}
-a{color:var(--teal);font-weight:750;text-decoration-thickness:.08em;text-underline-offset:.16em}
-a:hover{color:var(--garnet)}
-@media (max-width:720px){
-  body::before{font-size:1.45rem;padding:22px 18px 20px}
-  h1{font-size:1.7rem;margin-top:26px}
-  .intro,.mode,.exo,ol{margin-left:14px;margin-right:14px}
-  .exo{padding:18px}
-}
-
-body.index::before{content:"Corrigés pédagogiques"}
-body.chapter::before{content:"Théorie de Galois"}
+.lien{background:#f6f1fb;border-left:5px solid #6b3fa0}
+.label{font-weight:800;color:var(--navy)}.lien .label{color:#5a2d8a}.ref{color:#5a2d8a;font-weight:600}.qed{color:var(--teal);font-weight:700}
 </style>
 </head>
-<body class="chapter">
-<h1>Corrigés — Chapitre 12 : Résolution explicite et théorème d'Abel-Ruffini</h1><div class="intro"><p><span class="label">Objectif pédagogique.</span> Les corrigés replacent Abel-Ruffini dans la chaîne logique : groupe de Galois, résolubilité du groupe, résolubilité par radicaux, puis obstruction générale en degré cinq.</p></div><div class="mode"><p><span class="label">Mode de lecture.</span> Pour chaque exercice, lire d’abord la méthode, refaire le calcul sans regarder la solution, puis comparer avec le point de vigilance.</p></div>
+<body>
+<div style="max-width:1120px;margin:12px auto 0;padding:0 clamp(18px,3vw,28px)">
+<a href="index.html" style="color:#8a2d18;text-decoration:none;font-size:.92rem">&larr; Retour à l'index des corrigés</a>
+</div>
+
+<h1>Chapitre 12 — Le théorème d'Abel-Ruffini</h1>
+
+<div class="mode">
+<p><strong>Comment lire ces corrigés.</strong> C'est l'aboutissement du livre. Tous les fils convergent : la résolubilité par radicaux (chapitre 11) équivaut à la résolubilité du groupe de Galois ; or $S_5$ n'est pas résoluble (chapitre 10) ; donc l'équation générale de degré $5$ n'est pas résoluble par radicaux. On exhibe en outre une quintique <em>explicite</em>, $X^5-6X+3$, de groupe $S_5$. Renvois en violet aux résultats nommés du chapitre 12, et rappels des chapitres 10-11.</p>
+</div>
+
 <h2>✏️ Vérification</h2>
+
 <div class="exo">
-<strong>V1.</strong> Montrer que $S_3$ est résoluble.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      On a la chaîne $\{e\} \triangleleft A_3 \triangleleft S_3$.
-      $A_3 \simeq \mathbb Z/3\mathbb Z$ (abélien), $S_3/A_3 \simeq \{\pm 1\} \simeq \mathbb Z/2\mathbb Z$ (abélien).
-      Les quotients successifs sont abéliens, donc $S_3$ est résoluble.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Attention à l’ordre de composition : ici les permutations se composent de droite à gauche.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+<strong>V1.</strong>
+<div class="enonce">Montrer que $S_3$ est résoluble.</div>
+<div class="sol">
+<p>La chaîne $\{e\}\trianglelefteq A_3\trianglelefteq S_3$ a pour quotients $A_3\simeq\mathbb Z/3\mathbb Z$ et $S_3/A_3\simeq\mathbb Z/2\mathbb Z$, tous deux abéliens. Donc $S_3$ est résoluble (chapitre 10). <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Conséquence.</span> Toute cubique est résoluble par radicaux (formule de Cardan). C'est le <span class="ref">théorème de Galois sur les radicaux</span> appliqué à $S_3$ résoluble.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>V2.</strong> Montrer que $S_4$ est résoluble en utilisant la chaîne $\{e\} \triangleleft V_4 \triangleleft A_4 \triangleleft S_4$.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      Vérifions les quotients :
-      <ul>
-<li>$V_4 / \{e\} \simeq V_4$ (abélien, isomorphe à $\mathbb Z/2\mathbb Z \times \mathbb Z/2\mathbb Z$).</li>
-<li>$A_4 / V_4$ : $|A_4|=12$, $|V_4|=4$, quotient d'ordre $3$, nécessairement cyclique $\mathbb Z/3\mathbb Z$ (abélien).</li>
-<li>$S_4 / A_4 \simeq \{\pm 1\} \simeq \mathbb Z/2\mathbb Z$ (abélien).</li>
-</ul>
-      Tous les quotients sont abéliens, donc $S_4$ est résoluble.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Ne pas confondre le polynôme $P$ avec sa classe : dans le quotient, la classe de $P$ est nulle.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+<strong>V2.</strong>
+<div class="enonce">Montrer que $S_4$ est résoluble en utilisant la chaîne $\{e\}\trianglelefteq V_4\trianglelefteq A_4\trianglelefteq S_4$.</div>
+<div class="sol">
+<p>Quotients de la chaîne : $V_4$ (abélien), $A_4/V_4\simeq\mathbb Z/3\mathbb Z$, $S_4/A_4\simeq\mathbb Z/2\mathbb Z$. Tous abéliens, donc $S_4$ est résoluble (chapitre 10, V5). <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Conséquence.</span> Toute quartique est résoluble par radicaux (méthode de Ferrari). $S_4$ est le dernier groupe symétrique résoluble : c'est pourquoi le degré $4$ est la limite des formules générales.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>V3.</strong> Rappeler pourquoi $S_5$ n'est pas résoluble.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Dans un quotient, remplacer la classe de $X$ par un élément vérifiant la relation imposée par le polynôme, puis réduire les puissances.</div>
-      La suite dérivée de $S_5$ commence par $D(S_5) = A_5$ (car $S_5/A_5 \simeq \mathbb Z/2\mathbb Z$ est le plus grand quotient abélien).
-      Le groupe alterné $A_5$ est simple non abélien. Par conséquent, $D(A_5) = A_5$.
-      La suite dérivée stagne sur $A_5$ et n'atteint jamais $\{e\}$. Donc $S_5$ n'est pas résoluble.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Ne pas confondre le polynôme $P$ avec sa classe : dans le quotient, la classe de $P$ est nulle.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+<strong>V3.</strong>
+<div class="enonce">Rappeler pourquoi $S_5$ n'est pas résoluble.</div>
+<div class="sol">
+<p>$S_5$ contient $A_5$, qui est simple et non abélien (chapitre 10, A3). Un groupe simple non abélien est égal à son dérivé : $D(A_5)=A_5$. Donc la suite dérivée de $S_5$ vérifie $D(S_5)=A_5$, puis $D^{(2)}(S_5)=D(A_5)=A_5$, et stagne : elle n'atteint jamais $\{e\}$.</p>
+<p>Par le critère par la suite dérivée, $S_5$ n'est pas résoluble. <span class="qed">$\square$</span></p>
+<div class="conclusion"><span class="label">Le verrou.</span> C'est le <span class="ref">corollaire « $S_5$ n'est pas résoluble »</span>. À la différence de $S_3$ et $S_4$, aucune chaîne à quotients abéliens n'existe, faute de sous-groupe distingué propre de $A_5$. Toute la non-résolubilité du quintique en découle.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>V4.</strong> Montrer que $X^5 - 6X + 3$ est irréductible sur $\mathbb Q$.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      On applique le critère d'Eisenstein avec le nombre premier $p=3$.
-      Les coefficients sont : $a_5 = 1$, $a_4 = a_3 = a_2 = 0$, $a_1 = -6$, $a_0 = 3$.
-      Le premier $3$ ne divise pas $a_5 = 1$ ; il divise tous les autres coefficients ($0, -6, 3$).
-      De plus $p^2 = 9$ ne divise pas $a_0 = 3$.
-      Les conditions d'Eisenstein sont satisfaites, donc le polynôme est irréductible sur $\mathbb Q$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Pour les degrés $2$ ou $3$, l’absence de racine dans le corps suffit à conclure à l’irréductibilité ; ce n’est plus vrai en degré supérieur.</div><div class="conclusion"><span class="label">Conclusion.</span> La solution se clôt en identifiant le polynôme ou la factorisation cherchée, avec la raison qui garantit son unicité ou son irréductibilité.</div></div>
+<strong>V4.</strong>
+<div class="enonce">Montrer que $X^5-6X+3$ est irréductible sur $\mathbb Q$.</div>
+<div class="sol">
+<p>On applique le <strong>critère d'Eisenstein</strong> avec $p=3$ :</p>
+<p>$\bullet$ les coefficients sont $1,0,0,0,-6,3$ ; $p=3$ divise $0,0,0,-6,3$ (tous sauf le dominant $1$) ;</p>
+<p>$\bullet$ $p^2=9$ ne divise pas le terme constant $3$.</p>
+<p>Eisenstein s'applique : $X^5-6X+3$ est irréductible sur $\mathbb Q$. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Première étape vers $S_5$.</span> L'irréductibilité garantit que $\mathrm{Gal}(P)$ est transitif dans $S_5$, donc $5\mid|\mathrm{Gal}(P)|$ : le groupe contient un $5$-cycle (théorème de Cauchy). L'étape suivante (A2) consiste à trouver une transposition, via l'analyse des racines réelles.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>V5.</strong> Expliquer pourquoi un polynôme de groupe de Galois $S_5$ ne peut pas être résolu par radicaux.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Isoler la définition utile, écrire les hypothèses sous forme exploitable, puis conclure par une phrase qui répond exactement à la question.</div>
-      D'après le théorème de Galois sur les radicaux (chapitre 11), un polynôme sur $\mathbb Q$ est résoluble par radicaux si et seulement si son groupe de Galois est un groupe résoluble.
-      Or $S_5$ n'est pas résoluble (V3). Donc tout polynôme dont le groupe de Galois est isomorphe à $S_5$ n'admet pas de solution par radicaux.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Un automorphisme au-dessus de $K$ fixe les coefficients de $K$ ; c’est exactement ce qui permet de transporter l’équation $P(\alpha)=0$.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+<strong>V5.</strong>
+<div class="enonce">Expliquer pourquoi un polynôme de groupe de Galois $S_5$ ne peut pas être résolu par radicaux.</div>
+<div class="sol">
+<p>Par le <span class="ref">théorème de Galois sur les radicaux</span> (chapitre 11), un polynôme séparable est résoluble par radicaux si et seulement si son groupe de Galois est résoluble.</p>
+<p>$S_5$ n'étant pas résoluble (V3), tout polynôme de groupe $S_5$ n'est pas résoluble par radicaux. <span class="qed">$\square$</span></p>
+<div class="conclusion"><span class="label">Le pont logique.</span> C'est l'<span class="ref">obstruction par $S_5$</span> : la non-résolubilité du <em>groupe</em> entraîne la non-résolubilité de l'<em>équation</em>. Reste à montrer que de tels polynômes existent (V4 + A2) et que l'équation générale en fait partie (S4).</div>
 </div>
+</div>
+
 <h2>🔧 Structurants</h2>
+
 <div class="exo">
-<strong>S1.</strong> Soit $P \in \mathbb Q[X]$ un polynôme séparable de corps de décomposition $L$. Montrer que si $P$ est résoluble par radicaux, alors $\mathrm{Gal}(L/\mathbb Q)$ est résoluble.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      C'est exactement l'une des implications du théorème de Galois sur les radicaux (chapitre 11, théorème 7). Sa preuve consiste à partir d'une tour radicalique contenant les racines, à la plonger dans une clôture normale, à y adjoindre les racines de l'unité nécessaires, puis à utiliser la correspondance de Galois pour obtenir une chaîne de sous-groupes à quotients abéliens. On en déduit que le groupe de Galois de la clôture normale est résoluble, et donc son quotient $\mathrm{Gal}(L/\mathbb Q)$ l'est aussi (tout quotient d'un groupe résoluble est résoluble).
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Ne pas confondre le polynôme $P$ avec sa classe : dans le quotient, la classe de $P$ est nulle.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+<strong>S1.</strong>
+<div class="enonce">Soit $P\in\mathbb Q[X]$ séparable de corps de décomposition $L$. Montrer que si $P$ est résoluble par radicaux, alors $\mathrm{Gal}(L/\mathbb Q)$ est résoluble.</div>
+<div class="sol">
+<p>Supposons $P$ résoluble par radicaux : il existe une tour radicalique $\mathbb Q=K_0\subset K_1\subset\cdots\subset K_m$ avec $L\subseteq K_m$, chaque étage $K_{i+1}=K_i(\beta_i)$ vérifiant $\beta_i^{n_i}\in K_i$.</p>
+<p><strong>Normalisation.</strong> Quitte à adjoindre d'abord les racines de l'unité nécessaires (lemme de <span class="ref">normalisation de la tour radicalique</span>), on peut supposer chaque étage galoisien. Alors, par le <span class="ref">lemme « Un étage radicalique donne un quotient abélien »</span> (chapitre 11, S1), chaque $\mathrm{Gal}(K_{i+1}/K_i)$ est cyclique, donc abélien.</p>
+<p><strong>Traduction galoisienne.</strong> Par la correspondance (chapitre 8, A5), la tour de corps donne une chaîne de sous-groupes de $G_m=\mathrm{Gal}(K_m/\mathbb Q)$ à quotients abéliens : $G_m$ est résoluble.</p>
+<p>Enfin $\mathrm{Gal}(L/\mathbb Q)$ est un quotient de $G_m$ (restriction des automorphismes à $L$, qui est stable car normal). Or un quotient d'un groupe résoluble est résoluble (chapitre 10, <span class="ref">théorème « Quotient d'un groupe résoluble »</span>). Donc $\mathrm{Gal}(L/\mathbb Q)$ est résoluble. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Un sens du grand théorème.</span> C'est la moitié « radicaux $\Rightarrow$ groupe résoluble » du <span class="ref">théorème de Galois sur les radicaux</span>. La réciproque (groupe résoluble $\Rightarrow$ radicaux) utilise le lemme de Kummer pour reconstruire les radicaux étage par étage.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>S2.</strong> Soit $P \in \mathbb Q[X]$ de degré $5$, irréductible, et supposons $\mathrm{Gal}(P) \simeq A_5$. Montrer que $P$ n'est pas résoluble par radicaux.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      $A_5$ est simple non abélien, donc sa suite dérivée est $D(A_5) = A_5$. Il n'est pas résoluble. Par le théorème de Galois sur les radicaux, si $P$ était résoluble par radicaux, son groupe de Galois serait résoluble. Comme $A_5$ ne l'est pas, $P$ ne peut pas être résoluble par radicaux.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Pour les degrés $2$ ou $3$, l’absence de racine dans le corps suffit à conclure à l’irréductibilité ; ce n’est plus vrai en degré supérieur.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+<strong>S2.</strong>
+<div class="enonce">Soit $P\in\mathbb Q[X]$ de degré $5$, irréductible, avec $\mathrm{Gal}(P)\simeq A_5$. Montrer que $P$ n'est pas résoluble par radicaux.</div>
+<div class="sol">
+<p>$A_5$ est simple et non abélien (chapitre 10, A3), donc non résoluble (sa suite dérivée stagne à $A_5$). Par le <span class="ref">théorème de Galois sur les radicaux</span>, comme $\mathrm{Gal}(P)\simeq A_5$ n'est pas résoluble, $P$ n'est pas résoluble par radicaux. <span class="qed">$\square$</span></p>
+<div class="vigilance"><span class="label">$A_5$ aussi bien que $S_5$.</span> L'obstruction n'est pas propre à $S_5$ : tout groupe contenant une « brique » simple non abélienne suffit. $A_5$ (ordre $60$) est le plus petit groupe simple non abélien, donc le plus petit obstacle. Des quintiques de groupe $A_5$ existent (celles dont le discriminant est un carré).</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>S3.</strong> Montrer que si $G$ est non résoluble et si $G$ est isomorphe au groupe de Galois d'un polynôme $P$, alors $P$ n'est pas résoluble par radicaux.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      C'est une reformulation directe de l'implication logique : $P$ résoluble par radicaux $\Rightarrow$ $\mathrm{Gal}(P)$ résoluble.
-      Donc, si $\mathrm{Gal}(P)$ n'est pas résoluble, $P$ ne peut pas être résoluble par radicaux. Cette contraposée est immédiate.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Un automorphisme au-dessus de $K$ fixe les coefficients de $K$ ; c’est exactement ce qui permet de transporter l’équation $P(\alpha)=0$.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+<strong>S3.</strong>
+<div class="enonce">Montrer que si $G$ est non résoluble et isomorphe au groupe de Galois d'un polynôme $P$, alors $P$ n'est pas résoluble par radicaux.</div>
+<div class="sol">
+<p>C'est la contraposée directe de S1. Si $P$ était résoluble par radicaux, alors $\mathrm{Gal}(P)$ serait résoluble (S1). Par hypothèse $\mathrm{Gal}(P)\simeq G$ n'est pas résoluble : contradiction. Donc $P$ n'est pas résoluble par radicaux. <span class="qed">$\square$</span></p>
+<div class="conclusion"><span class="label">Énoncé général.</span> C'est la forme la plus large de l'<span class="ref">obstruction par $S_5$</span> : la non-résolubilité du groupe est une obstruction <em>absolue</em>. Le critère est purement théorie des groupes, ce qui le rend vérifiable par le calcul du groupe de Galois (chapitre 9 et factorisations modulaires, A1).</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>S4.</strong> Expliquer pourquoi l’énoncé d’Abel–Ruffini porte sur l’équation générale, et non sur chaque équation particulière de degré cinq.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Lister d’abord les candidats imposés par les théorèmes de structure ou de degré, puis vérifier que la liste est complète.</div>
-      L'équation générale de degré $n$,
-      \[
-      X^n + a_{n-1}X^{n-1} + \cdots + a_1 X + a_0 = 0,
-      \]
-      avec des coefficients $a_i$ algébriquement indépendants sur $\mathbb Q$, a pour groupe de Galois $S_n$ (toutes les permutations des racines sont réalisées par des automorphismes du corps de décomposition).
-      Le théorème d'Abel–Ruffini affirme qu'il n'existe pas de \textbf{formule générale} par radicaux qui exprime les racines en fonction des coefficients pour tout choix de ces coefficients. Cela n'empêche pas que certaines équations particulières de degré $5$ puissent avoir un groupe de Galois plus petit et résoluble (par exemple $S_5$ résoluble ou $A_5$ non). L'énoncé nie l'existence d'une formule universelle valable pour tous les polynômes de degré $5$, ce qui est équivalent à dire que le groupe de Galois générique $S_5$ n'est pas résoluble.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Attention à l’ordre de composition : ici les permutations se composent de droite à gauche.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+<strong>S4.</strong>
+<div class="enonce">Expliquer pourquoi l'énoncé d'Abel-Ruffini porte sur l'équation générale, et non sur chaque équation particulière de degré cinq.</div>
+<div class="sol">
+<p>De nombreuses quintiques particulières <em>sont</em> résolubles par radicaux : par exemple $X^5-2$ (groupe résoluble, de type produit semi-direct d'ordre $20$), ou $X^5-1$ (cyclotomique, groupe abélien). Pour celles-là, des formules par radicaux existent.</p>
+<p>L'énoncé d'<span class="ref">Abel-Ruffini</span> affirme qu'il n'existe pas de formule <em>universelle</em>, valable pour toutes les quintiques simultanément, exprimant les racines à partir des coefficients par radicaux. Cela revient à étudier l'<span class="ref">équation générale</span> de degré $5$, dont les coefficients sont des indéterminées $a_1,\dots,a_5$, et dont le <span class="ref">groupe de Galois de l'équation générale</span> est $S_5$ (le groupe symétrique complet, sur le corps des fractions rationnelles $\mathbb Q(a_1,\dots,a_5)$).</p>
+<p>Comme $S_5$ n'est pas résoluble, l'équation générale ne l'est pas : aucune formule générale par radicaux n'existe. <span class="qed">$\square$</span></p>
+<div class="vigilance"><span class="label">Nuance essentielle.</span> « Pas de formule générale » ne signifie pas « aucune équation résoluble ». La distinction <em>équation générale</em> (coefficients génériques, groupe $S_n$) vs <em>équation particulière</em> (coefficients fixés, groupe variable) est au cœur de l'énoncé correct d'Abel-Ruffini. C'est la généricité des coefficients qui force le groupe maximal $S_5$.</div>
 </div>
+</div>
+
 <h2>🚀 Approfondissement</h2>
+
 <div class="exo">
-<strong>A1.</strong> Chercher des factorisations de $X^5-6X+3$ modulo de petits nombres premiers et interpréter les degrés des facteurs comme des types de cycles.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Penser en termes d’espaces vectoriels : une base donne le degré, et une tour donne un produit de degrés.</div>
-      Soit $G=\mathrm{Gal}(P)\subset S_5$, vu comme sous-groupe de permutations des cinq racines. On combine deux ingrédients.
-      <ul>
-<li><strong>Existence d'un $5$-cycle.</strong> Le polynôme $P$ est irréductible de degré $5$ sur $\mathbb Q$ (Eisenstein en $p=3$, exo V4). Le groupe de Galois agit donc transitivement sur les $5$ racines, donc $5$ divise $|G|$. Par le théorème de Cauchy, $G$ contient un élément d'ordre $5$, c'est-à-dire un $5$-cycle.</li>
-<li><strong>Existence d'une transposition.</strong> Une étude analytique de $P(X)=X^5-6X+3$ montre qu'il possède exactement trois racines réelles et deux racines complexes conjuguées (signe de $P'$ et tableau de variations standards). La conjugaison complexe induit alors un automorphisme du corps de décomposition de $P$, qui fixe les trois racines réelles et échange les deux racines complexes : c'est une transposition dans $S_5$. Cet automorphisme appartient à $G$, qui contient donc une transposition.</li>
-</ul>
-      Or un sous-groupe de $S_p$, avec $p$ premier, transitif et contenant une transposition, est nécessairement $S_p$ tout entier (résultat classique sur les sous-groupes transitifs : un $p$-cycle et une transposition engendrent $S_p$ dès que $p$ est premier). Appliqué à $p=5$, cela donne $G=S_5$.
-      <br/><em>Remarque sur les factorisations modulo $p$.</em> Pour ce polynôme, la lecture modulo $p$ via le théorème de Dedekind est délicate et demande de prendre des premiers ne divisant pas le discriminant. L'argument analytique donné ci-dessus est plus direct et ne nécessite pas de calculs modulo. La méthode modulo $p$ reste utile dans d'autres situations, notamment pour trouver une transposition lorsque les racines sont toutes réelles.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Attention à l’ordre de composition : ici les permutations se composent de droite à gauche.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+<strong>A1.</strong>
+<div class="enonce">Chercher des factorisations de $X^5-6X+3$ modulo de petits premiers et interpréter les degrés comme types de cycles.</div>
+<div class="sol">
+<p>La réduction modulo un premier $p$ (ne divisant ni le coefficient dominant ni le discriminant) donne, par le théorème de Dedekind, un élément de $\mathrm{Gal}(P)$ dont le type de cycles correspond aux degrés des facteurs irréductibles modulo $p$.</p>
+<p>$\bullet$ <strong>Modulo $5$ :</strong> $X^5-6X+3\equiv X^5-X+3\pmod5$. C'est un polynôme d'Artin-Schreier $X^5-X-c$ avec $c\equiv2\not\equiv0$, donc irréductible sur $\mathbb F_5$. Un facteur irréductible de degré $5$ correspond à un <strong>$5$-cycle</strong> dans $\mathrm{Gal}(P)$.</p>
+<p>$\bullet$ <strong>Modulo $17$ :</strong> $X^5-6X+3$ se factorise sur $\mathbb F_{17}$ en un produit de trois facteurs de degré $1$ et d'un facteur irréductible de degré $2$, soit le type $(1)(1)(1)(2)$. Cela fournit une <strong>transposition</strong> dans $\mathrm{Gal}(P)$.</p>
+<p>Un groupe transitif de $S_5$ contenant un $5$-cycle et une transposition est forcément $S_5$ tout entier (A2). Donc $\mathrm{Gal}(X^5-6X+3)\simeq S_5$. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Méthode de Dedekind.</span> Réduire modulo plusieurs premiers révèle les types de cycles présents dans le groupe, sans calculer le corps de décomposition. C'est l'outil pratique pour <em>prouver</em> qu'une quintique a pour groupe $S_5$, donc qu'elle n'est pas résoluble (V5).</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>A2.</strong> Montrer qu’un sous-groupe transitif de $S_5$ contenant une transposition et un $5$-cycle est forcément $S_5$. Comparer avec les sous-groupes possibles de $S_5$.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Isoler la définition utile, écrire les hypothèses sous forme exploitable, puis conclure par une phrase qui répond exactement à la question.</div>
-      Soit $G \le S_5$ transitif, contenant un $5$-cycle $\sigma$ et une transposition $\tau$. Puisque $G$ est transitif, l'action sur $\{1,\dots,5\}$ est transitive. On peut renumeroter pour que $\sigma = (1\,2\,3\,4\,5)$. La transposition $\tau$ échange deux éléments. Par conjugaison par des puissances de $\sigma$, on peut amener $\tau$ à échanger $1$ et $2$ (ou $1$ et $k$). Dans $S_5$, le sous-groupe engendré par un $5$-cycle et une transposition est toujours $S_5$ si la transposition relie deux éléments consécutifs du cycle. En effet, $(1\,2)$ et $(1\,2\,3\,4\,5)$ engendrent $S_5$. Par conséquent $G = S_5$.
-      Aucun sous-groupe propre transitif de $S_5$ ne contient à la fois un $5$-cycle et une transposition. Les sous-groupes transitifs maximaux de $S_5$ sont $A_5$ (pas de transposition), le groupe affine $\mathrm{AGL}(1,5)$ d'ordre $20$ (ne contient pas de transposition, seulement des éléments d'ordre $2$ sans point fixe : doubles transpositions ?), et d'autres mais aucun ne contient de transposition à part $S_5$. Donc dès qu'on détecte un $5$-cycle et une transposition dans le groupe de Galois (via les factorisations modulo $p$), on peut conclure que le groupe est $S_5$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Un automorphisme au-dessus de $K$ fixe les coefficients de $K$ ; c’est exactement ce qui permet de transporter l’équation $P(\alpha)=0$.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+<strong>A2.</strong>
+<div class="enonce">Montrer qu'un sous-groupe transitif de $S_5$ contenant une transposition et un $5$-cycle est forcément $S_5$.</div>
+<div class="sol">
+<p>Soit $G\leq S_5$ transitif contenant un $5$-cycle $\sigma$ et une transposition $\tau=(a\,b)$.</p>
+<p><strong>Le $5$-cycle engendre les conjugués de $\tau$.</strong> Quitte à renuméroter, $\sigma=(1\,2\,3\,4\,5)$. Les conjugués successifs $\sigma^k\tau\sigma^{-k}$ donnent les transpositions $(a+k\ \ b+k)$ (indices mod $5$). Comme $5$ est premier et $\sigma$ d'ordre $5$, en partant d'une transposition $(a\,b)$ avec $b-a$ fixé, on engendre toutes les transpositions de la forme $(i\ \ i+d)$ pour $d=b-a$ fixé et $i$ variable.</p>
+<p><strong>On atteint toutes les transpositions.</strong> Les transpositions $(i\ \ i+d)$ pour $i=1,\dots,5$ permettent, par compositions, d'obtenir le « graphe » complet : comme $\gcd(d,5)=1$, ces transpositions relient tous les points entre eux. Le sous-groupe engendré agit donc comme $S_5$ sur $\{1,\dots,5\}$.</p>
+<p>Or les transpositions engendrent $S_5$ tout entier. Donc $G=S_5$. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Le <span class="ref">lemme « Sous-groupe transitif de $S_p$ »</span>.</span> Plus généralement, en degré premier $p$, un sous-groupe transitif contenant une transposition et un $p$-cycle est $S_p$. Ce critère, combiné à la méthode de Dedekind (A1), est la voie standard pour exhiber des polynômes non résolubles.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>A3.</strong> Étudier un polynôme de degré cinq résoluble par radicaux, par exemple $X^5 - a$, et comparer son groupe de Galois avec celui d’un quintique générique.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      Soit $P(X) = X^5 - 2$ (ou $X^5 - a$ avec $a$ non puissance cinquième dans $\mathbb Q$). Les racines sont $\sqrt[5]{a}, \zeta_5\sqrt[5]{a}, \dots, \zeta_5^4\sqrt[5]{a}$.
-      Le corps de décomposition est $\mathbb Q(\sqrt[5]{a}, \zeta_5)$. Calculons son degré. Le polynôme $X^5-a$ est irréductible sur $\mathbb Q$ dès que $a$ n'est pas une puissance cinquième (par exemple par Eisenstein si $a$ est sans facteur carré), donc $[\mathbb Q(\sqrt[5]{a}):\mathbb Q]=5$. D'autre part $[\mathbb Q(\zeta_5):\mathbb Q]=4$. Comme $\mathrm{pgcd}(4,5)=1$, l'intersection $\mathbb Q(\sqrt[5]{a})\cap\mathbb Q(\zeta_5)$ est une extension de $\mathbb Q$ dont le degré divise à la fois $4$ et $5$, donc vaut $1$ : l'intersection se réduit à $\mathbb Q$. Par la formule des degrés d'un compositum, $[\mathbb Q(\sqrt[5]{a},\zeta_5):\mathbb Q]=4\cdot 5=20$. Le groupe de Galois est le produit semi-direct $\mathrm{Gal} \simeq \mathrm{AGL}(1,5)$, d'ordre $20$. Il est isomorphe au groupe des transformations affines $x \mapsto bx + c$ modulo $5$, avec $b \in (\mathbb Z/5\mathbb Z)^\times$ et $c \in \mathbb Z/5\mathbb Z$. Ce groupe est résoluble (il possède un sous-groupe normal cyclique d'ordre $5$ et un quotient cyclique d'ordre $4$). Donc $X^5-a$ est résoluble par radicaux.
-      À l'inverse, un quintique générique a pour groupe de Galois $S_5$ (ordre $120$), qui n'est pas résoluble. La différence fondamentale est que le groupe de Galois de $X^5-a$ n'agit que comme les symétries affines des racines, imposées par la relation $\zeta_5$ qui lie les racines. Un polynôme générique n'a pas ces relations, toutes les permutations sont autorisées, donnant $S_5$ non résoluble.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Attention à l’ordre de composition : ici les permutations se composent de droite à gauche.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+<strong>A3.</strong>
+<div class="enonce">Étudier $X^5-a$, résoluble par radicaux, et comparer son groupe avec celui d'une quintique générique.</div>
+<div class="sol">
+<p>Soit $P=X^5-a$ ($a\in\mathbb Q^\times$, non puissance $5$-ième). Ses racines sont $\sqrt[5]a,\zeta_5\sqrt[5]a,\dots,\zeta_5^4\sqrt[5]a$. Son corps de décomposition est $\mathbb Q(\sqrt[5]a,\zeta_5)$.</p>
+<p>Le groupe de Galois est un produit semi-direct : $\mathrm{Gal}\simeq\mathbb Z/5\mathbb Z\rtimes(\mathbb Z/5\mathbb Z)^\times$, d'ordre $5\times4=20$. Ce groupe est <strong>résoluble</strong> : il a la chaîne $\{e\}\trianglelefteq\mathbb Z/5\mathbb Z\trianglelefteq G$, à quotients $\mathbb Z/5$ et $(\mathbb Z/5)^\times\simeq\mathbb Z/4$, abéliens.</p>
+<p><strong>Comparaison.</strong> Une quintique <em>générique</em> a pour groupe $S_5$ (ordre $120$, non résoluble). La quintique $X^5-a$ a un groupe bien plus petit (ordre $20$) et résoluble : c'est une équation <em>particulière</em>, résoluble par radicaux, conformément à la nuance de S4. <span class="qed">$\square$</span></p>
+<div class="conclusion"><span class="label">Le contraste éclairant.</span> $|G|=20$ (résoluble) pour $X^5-a$ contre $|S_5|=120$ (non résoluble) pour le cas générique. La différence de taille mesure la « rigidité » imposée par la forme $X^5-a$ : ses racines sont liées entre elles par $\zeta_5$, ce qui restreint fortement les permutations admissibles. La généricité, au contraire, libère toutes les permutations.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>A4.</strong> Lire une démonstration détaillée du fait que le groupe de Galois de l’équation générale de degré $n$ est $S_n$, puis identifier exactement où intervient l’indépendance algébrique des coefficients.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      Soit $P(X) = X^n + a_{n-1}X^{n-1} + \cdots + a_1 X + a_0$ le polynôme général, avec des coefficients $a_i$ algébriquement indépendants sur $\mathbb Q$ (ou sur un corps $K$). On considère le corps des fractions rationnelles $K(a_0,\dots,a_{n-1})$. Soit $L$ le corps de décomposition de $P$ sur ce corps. Les racines $r_1,\dots,r_n$ sont algébriques sur $K(a_0,\dots,a_{n-1})$ et on a $a_k = (-1)^{n-k} e_{n-k}(r_1,\dots,r_n)$ (polynômes symétriques élémentaires). L'indépendance algébrique des $a_i$ implique que les polynômes symétriques élémentaires en les $r_i$ sont algébriquement indépendants. Cela permet de montrer que toute permutation des racines induit un automorphisme du corps $L$ fixant les coefficients. En effet, le groupe de Galois agit fidèlement sur les racines ; pour toute permutation $\sigma \in S_n$, on peut définir un morphisme envoyant $r_i$ sur $r_{\sigma(i)}$ et qui respecte les relations car les seules relations entre les $r_i$ sont celles qui peuvent s'exprimer symétriquement en les $r_i$. L'indépendance algébrique des coefficients signifie qu'il n'y a pas de relation algébrique non triviale entre les $a_i$, donc pas de relation non symétrique entre les racines à coefficients dans le corps de base. Par conséquent, le groupe de Galois contient $S_n$ tout entier. Comme il est inclus dans $S_n$, il est égal à $S_n$. L'argument clé est que les coefficients sont algébriquement indépendants, donc le corps des coefficients ne voit aucune relation particulière entre les racines qui briserait la symétrie totale.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Attention à l’ordre de composition : ici les permutations se composent de droite à gauche.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+<strong>A4.</strong>
+<div class="enonce">Lire une démonstration du fait que le groupe de Galois de l'équation générale de degré $n$ est $S_n$, et identifier où intervient l'indépendance des indéterminées.</div>
+<div class="sol">
+<p>L'<span class="ref">équation générale</span> de degré $n$ est $X^n+a_1X^{n-1}+\cdots+a_n$ sur le corps $K=\mathbb Q(a_1,\dots,a_n)$ des fractions rationnelles en les coefficients vus comme <em>indéterminées indépendantes</em>. Notons $x_1,\dots,x_n$ ses racines (dans une clôture).</p>
+<p><strong>Idée de preuve.</strong> Par les relations de Viète (chapitre 3, PS3), les $a_i$ sont les polynômes symétriques élémentaires des $x_j$. Le corps de décomposition est $\mathbb Q(x_1,\dots,x_n)$, et $K=\mathbb Q(x_1,\dots,x_n)^{S_n}$ (corps des fractions symétriques). Par le <span class="ref">théorème « Groupe de Galois de l'équation générale »</span> (et le théorème d'Artin), $\mathrm{Gal}(\mathbb Q(x_1,\dots,x_n)/K)\simeq S_n$.</p>
+<p><strong>Où sert l'indépendance.</strong> C'est l'indépendance algébrique des $a_i$ (ou de façon équivalente, des $x_j$ comme indéterminées) qui garantit qu'<em>aucune</em> relation polynomiale non symétrique ne lie les racines. Sans relation, le groupe ne subit aucune contrainte et atteint son maximum $S_n$. Pour des coefficients particuliers (numériques), des relations peuvent apparaître et réduire le groupe (A3). <span class="qed">$\square$</span></p>
+<div class="conclusion"><span class="label">La synthèse finale.</span> Le groupe de l'équation générale de degré $5$ est $S_5$, non résoluble : c'est <span class="ref">Abel-Ruffini</span>. Pour $n\geq5$, $S_n$ n'est pas résoluble (chapitre 10), donc aucune formule générale par radicaux n'existe en degré $\geq5$. Les degrés $2,3,4$ (groupes $S_2,S_3,S_4$ résolubles) gardent leurs formules : tout le livre aboutit à cette ligne de partage.</div>
 </div>
+</div>
+
 </body>
 </html>

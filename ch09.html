@@ -1,235 +1,189 @@
 <!DOCTYPE html>
-
 <html lang="fr">
 <head>
 <meta charset="utf-8"/>
-<title>Corrigés — Chapitre 9 : Calculs effectifs de groupes de Galois</title>
-<script>
-    window.MathJax = {
-      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
-      svg: { fontCache: 'global' }
-    };
-  </script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Corrigés — Chapitre 9 : Calcul effectif des groupes de Galois</title>
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']]},svg:{fontCache:'global'}};</script>
 <script async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <style>
-:root{
-  --navy:#0e1a44;
-  --gold:#c79b2b;
-  --cream:#f4f0e7;
-  --card:#fffdf8;
-  --ink:#1f1f1f;
-  --muted:#555;
-  --teal:#0b6058;
-  --blue:#1d4f91;
-  --garnet:#8a1d2c;
-  --line:#d8d0c1;
-  --soft-blue:#f2f6ff;
-  --soft-gold:#fff7df;
-  --soft-green:#eefbf7;
-}
-*{box-sizing:border-box}
-html{background:var(--cream)}
-body{
-  margin:0;
-  padding:0 0 48px;
-  max-width:none;
-  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-  line-height:1.62;
-  color:var(--ink);
-  background:var(--cream);
-  hyphens:auto;
-}
-body::before{
-  content:"Corrigés pédagogiques";
-  display:block;
-  padding:28px clamp(22px,5vw,64px) 26px;
-  color:#fff;
-  background:var(--navy);
-  border-bottom:7px solid var(--gold);
-  font-size:1.95rem;
-  line-height:1.15;
-  font-weight:800;
-  letter-spacing:-.02em;
-  box-shadow:0 2px 10px rgba(0,0,0,.18);
-}
-h1{
-  max-width:1120px;
-  margin:32px auto 22px;
-  padding:0 clamp(18px,3vw,28px);
-  color:var(--navy);
-  font-size:clamp(1.9rem,3.2vw,3rem);
-  line-height:1.14;
-  font-weight:800;
-  letter-spacing:-.035em;
-}
-h2{
-  max-width:1120px;
-  margin:42px auto 18px;
-  padding:0 clamp(18px,3vw,28px) 10px;
-  color:var(--teal);
-  border-bottom:2px solid var(--line);
-  font-size:1.55rem;
-  line-height:1.25;
-}
-p, ol, ul{max-width:1120px;margin-left:auto;margin-right:auto}
-.intro,.mode{
-  max-width:1120px;
-  margin:20px auto;
-  padding:22px 24px;
-  background:var(--card);
-  border:1px solid var(--line);
-  border-left:7px solid var(--gold);
-  border-radius:14px;
-  box-shadow:0 2px 12px rgba(14,26,68,.08);
-}
-.mode{border-left-color:var(--blue);background:#f8fbff}
-.intro p,.mode p{margin:0;max-width:none}
-ol{
-  max-width:1120px;
-  margin-top:26px;
-  padding:22px 30px 22px 52px;
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:16px;
-  box-shadow:0 2px 12px rgba(14,26,68,.08);
-}
-li{margin:.38em 0}
-.exo{
-  max-width:1120px;
-  margin:24px auto 30px;
-  padding:24px 26px;
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:16px;
-  box-shadow:0 2px 12px rgba(14,26,68,.10);
-}
+:root{--navy:#0e1a44;--gold:#c79b2b;--cream:#f4f0e7;--card:#fffdf8;--ink:#1f1f1f;--muted:#555;--teal:#0b6058;--blue:#1d4f91;--garnet:#8a1d2c;--line:#d8d0c1;--soft-blue:#f2f6ff;--soft-gold:#fff7df;--soft-green:#eefbf7;}
+*{box-sizing:border-box}html{background:var(--cream)}
+body{margin:0;padding:0 0 48px;max-width:none;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.62;color:var(--ink);background:var(--cream);hyphens:auto;}
+body::before{content:"Corrigés pédagogiques";display:block;padding:28px clamp(22px,5vw,64px) 26px;color:#fff;background:var(--navy);border-bottom:7px solid var(--gold);font-size:1.95rem;line-height:1.15;font-weight:800;letter-spacing:-.02em;box-shadow:0 2px 10px rgba(0,0,0,.18);}
+h1{max-width:1120px;margin:32px auto 22px;padding:0 clamp(18px,3vw,28px);color:var(--navy);font-size:clamp(1.9rem,3.2vw,3rem);line-height:1.14;font-weight:800;letter-spacing:-.035em;}
+h2{max-width:1120px;margin:42px auto 18px;padding:0 clamp(18px,3vw,28px) 10px;color:var(--teal);border-bottom:2px solid var(--line);font-size:1.55rem;line-height:1.25;}
+p,ol,ul{max-width:1120px;margin-left:auto;margin-right:auto}
+.mode{max-width:1120px;margin:20px auto;padding:22px 24px;background:#f8fbff;border:1px solid var(--line);border-left:7px solid var(--blue);border-radius:14px;box-shadow:0 2px 12px rgba(14,26,68,.08);}
+.mode p{margin:0;max-width:none}
+.exo{max-width:1120px;margin:24px auto 30px;padding:24px 26px;background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:0 2px 12px rgba(14,26,68,.10);}
 .exo>strong:first-child{color:var(--garnet);font-weight:800;font-size:1.05em}
-.sol{margin-left:0;margin-top:14px}
-.methode,.vigilance,.conclusion{
-  margin:14px 0;
-  padding:14px 16px;
-  border-radius:10px;
-  border:1px solid transparent;
-}
-.methode{background:var(--soft-blue);border-left:5px solid var(--blue)}
+.enonce{margin:2px 0 14px}.sol{margin-top:6px}.sol p{max-width:none;margin:.55em 0}
+.vigilance,.conclusion,.lien{margin:14px 0;padding:13px 16px;border-radius:10px;border:1px solid transparent;}
 .vigilance{background:var(--soft-gold);border-left:5px solid var(--gold)}
 .conclusion{background:var(--soft-green);border-left:5px solid var(--teal)}
-.label{font-weight:800;color:var(--navy)}
-code{
-  background:#fff;
-  border:1px solid var(--line);
-  padding:.1em .28em;
-  border-radius:5px;
-}
-a{color:var(--teal);font-weight:750;text-decoration-thickness:.08em;text-underline-offset:.16em}
-a:hover{color:var(--garnet)}
-@media (max-width:720px){
-  body::before{font-size:1.45rem;padding:22px 18px 20px}
-  h1{font-size:1.7rem;margin-top:26px}
-  .intro,.mode,.exo,ol{margin-left:14px;margin-right:14px}
-  .exo{padding:18px}
-}
-
-body.index::before{content:"Corrigés pédagogiques"}
-body.chapter::before{content:"Théorie de Galois"}
+.lien{background:#f6f1fb;border-left:5px solid #6b3fa0}
+.label{font-weight:800;color:var(--navy)}.lien .label{color:#5a2d8a}.ref{color:#5a2d8a;font-weight:600}.qed{color:var(--teal);font-weight:700}
+table.corr{border-collapse:collapse;margin:12px auto;max-width:680px;font-size:.93rem}
+table.corr td,table.corr th{border:1px solid var(--line);padding:6px 11px;text-align:center}
+table.corr th{background:#e8e3d7;color:var(--teal)}
 </style>
 </head>
-<body class="chapter">
-<h1>Corrigés — Chapitre 9 : Calculs effectifs de groupes de Galois</h1><div class="intro"><p><span class="label">Objectif pédagogique.</span> Les solutions privilégient les calculs effectifs : factorisations, actions sur les racines et détermination concrète de groupes de Galois dans les exemples accessibles.</p></div><div class="mode"><p><span class="label">Mode de lecture.</span> Pour chaque exercice, lire d’abord la méthode, refaire le calcul sans regarder la solution, puis comparer avec le point de vigilance.</p></div>
+<body>
+<div style="max-width:1120px;margin:12px auto 0;padding:0 clamp(18px,3vw,28px)">
+<a href="index.html" style="color:#8a2d18;text-decoration:none;font-size:.92rem">&larr; Retour à l'index des corrigés</a>
+</div>
+
+<h1>Chapitre 9 — Calcul effectif des groupes de Galois</h1>
+
+<div class="mode">
+<p><strong>Comment lire ces corrigés.</strong> Ce chapitre rend le groupe de Galois <em>calculable</em> en degrés $3$ et $4$. Outil central : le <strong>discriminant</strong> $\Delta$, dont le caractère carré ou non distingue $A_n$ de $S_n$ (<span class="ref">proposition « Discriminant et groupe alterné »</span>). En degré $4$, la <strong>résolvante cubique</strong> raffine l'analyse. Renvois en violet aux deux résultats nommés du chapitre, complétés par des rappels des chapitres 7-8. On prépare la classification qui débouchera sur Abel-Ruffini.</p>
+</div>
+
 <h2>✏️ Vérification</h2>
+
 <div class="exo">
-<strong>V1.</strong> Calculer le discriminant de $X^3-2$ et retrouver que son groupe de Galois est isomorphe à $S_3$.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Fixer une convention de calcul, effectuer les images ou les réductions explicitement, puis seulement ensuite reconnaître l’objet obtenu.</div>
-      $P(X) = X^3-2$, de la forme $X^3+pX+q$ avec $p=0$, $q=-2$.
-      Le discriminant d'une cubique $X^3+pX+q$ est $\Delta = -4p^3 - 27q^2$.
-      Ici $\Delta = -4(0)^3 - 27(-2)^2 = -108$.
-      $-108$ n'est pas un carré dans $\mathbb Q$ (seul signe négatif ne peut être un carré de rationnel). Comme $P$ est irréductible (Eisenstein $p=2$), son groupe de Galois est un sous-groupe transitif de $S_3$. Le discriminant n'étant pas un carré, le groupe n'est pas contenu dans $A_3$. Les seuls sous-groupes transitifs de $S_3$ sont $S_3$ et $A_3$. Donc $\mathrm{Gal}(P) \simeq S_3$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Attention à l’ordre de composition : ici les permutations se composent de droite à gauche.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+<strong>V1.</strong>
+<div class="enonce">Calculer le discriminant de $X^3-2$ et retrouver que son groupe de Galois est $S_3$.</div>
+<div class="sol">
+<p>Pour une cubique $X^3+pX+q$, le discriminant vaut $\Delta=-4p^3-27q^2$. Ici $p=0$, $q=-2$ :</p>
+<p style="text-align:center">$\Delta=-4\cdot0-27\cdot(-2)^2=-108.$</p>
+<p>$X^3-2$ est irréductible (Eisenstein), donc son groupe $G$ est transitif dans $S_3$ : c'est $A_3$ ou $S_3$ (V3, V4). Le <span class="ref">critère en degré 3</span> tranche selon que $\Delta$ est un carré dans $\mathbb Q$ :</p>
+<p>$\Delta=-108<0$ n'est pas un carré (un carré rationnel est $\geq0$). Donc $G\not\subseteq A_3$, c'est-à-dire $G=S_3$. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Cohérence.</span> On retrouve par le calcul ce que la structure explicite donnait au chapitre 7 (S3) : $\mathrm{Gal}(\mathbb Q(\sqrt[3]2,j)/\mathbb Q)\simeq S_3$. Le discriminant $-108=-4\cdot27$ encode l'apparition de $j=\sqrt{-3}/\ldots$ : $\sqrt\Delta\propto\sqrt{-3}$ engendre le corps quadratique $\mathbb Q(j)$ fixé par $A_3$.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>V2.</strong> Vérifier que $X^3-3X-1$ est irréductible sur $\mathbb Q$ et que son discriminant vaut $81$.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Penser en termes d’espaces vectoriels : une base donne le degré, et une tour donne un produit de degrés.</div>
-      • Irréductibilité : les racines rationnelles possibles sont $\pm 1$. $1^3-3-1 = -3 \neq 0$, $(-1)^3+3-1 = 1 \neq 0$. Le polynôme n'a pas de racine dans $\mathbb Q$, il est de degré $3$, donc irréductible.<br/>
-      • Discriminant : $p=-3$, $q=-1$. $\Delta = -4(-3)^3 - 27(-1)^2 = -4(-27) - 27 = 108 - 27 = 81$.
-      $81 = 9^2$ est un carré dans $\mathbb Q$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Pour les degrés $2$ ou $3$, l’absence de racine dans le corps suffit à conclure à l’irréductibilité ; ce n’est plus vrai en degré supérieur.</div><div class="conclusion"><span class="label">Conclusion.</span> La solution se clôt en identifiant le polynôme ou la factorisation cherchée, avec la raison qui garantit son unicité ou son irréductibilité.</div></div>
+<strong>V2.</strong>
+<div class="enonce">Vérifier que $X^3-3X-1$ est irréductible sur $\mathbb Q$ et que son discriminant vaut $81$.</div>
+<div class="sol">
+<p><strong>Irréductibilité.</strong> Degré $3$ : il suffit de l'absence de racine rationnelle. Les racines rationnelles possibles (racines entières divisant le terme constant) sont $\pm1$ : $P(1)=1-3-1=-3\neq0$, $P(-1)=-1+3-1=1\neq0$. Pas de racine rationnelle, donc $P$ irréductible.</p>
+<p><strong>Discriminant.</strong> Avec $p=-3$, $q=-1$ :</p>
+<p style="text-align:center">$\Delta=-4p^3-27q^2=-4(-27)-27(1)=108-27=81.$</p>
+<p>Et $81=9^2$ est un carré parfait. <span class="qed">$\square$</span></p>
+<div class="conclusion"><span class="label">Annonce de S1.</span> Comme $\Delta=81$ est un carré, le groupe de Galois sera $A_3$ (cyclique d'ordre $3$), traité en S1. Cette cubique « casdusquare » a ses trois racines réelles : $2\cos(2\pi/9),2\cos(8\pi/9),2\cos(14\pi/9)$, liées à la trisection de l'angle.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>V3.</strong> Expliquer pourquoi une cubique irréductible a un groupe de Galois transitif dans $S_3$.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Trouver d’abord un polynôme annulateur, puis prouver son irréductibilité pour garantir qu’il est minimal.</div>
-      Soit $P \in \mathbb Q[X]$ irréductible de degré $3$, $L$ son corps de décomposition. Le groupe $\mathrm{Gal}(L/\mathbb Q)$ permute les trois racines distinctes (car $P$ est séparable en caractéristique nulle). L'action est transitive : l'irréductibilité de $P$ implique que le polynôme minimal de chaque racine est $P$, et pour toute paire de racines $\alpha, \beta$, il existe un $\mathbb Q$-plongement $\mathbb Q(\alpha) \to \mathbb Q(\beta)$ envoyant $\alpha$ sur $\beta$, qui se prolonge à $L$ (car $L/\mathbb Q$ est normale). Donc le groupe de Galois contient un élément envoyant $\alpha$ sur $\beta$. L'action est transitive, donc le groupe est un sous-groupe transitif de $S_3$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Attention à l’ordre de composition : ici les permutations se composent de droite à gauche.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+<strong>V3.</strong>
+<div class="enonce">Expliquer pourquoi une cubique irréductible a un groupe de Galois transitif dans $S_3$.</div>
+<div class="sol">
+<p>Soit $P$ une cubique irréductible sur $K$, de racines $\alpha_1,\alpha_2,\alpha_3$ dans son corps de décomposition $L$. Le groupe $G=\mathrm{Gal}(L/K)$ se plonge dans $S_3$ par son action sur les racines (chapitre 7, <span class="ref">plongement dans un groupe symétrique</span>).</p>
+<p>Cette action est <em>transitive</em> : pour deux racines $\alpha_i,\alpha_j$, il existe $\sigma\in G$ avec $\sigma(\alpha_i)=\alpha_j$. En effet, $\alpha_i$ et $\alpha_j$ ont le même polynôme minimal $P$ (irréductible), donc sont conjuguées ; le lemme de prolongement fournit un automorphisme les échangeant. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Irréductibilité = transitivité.</span> C'est un principe général : $P$ est irréductible ssi $G$ agit transitivement sur ses racines. La transitivité force $3\mid|G|$ (la taille d'une orbite divise $|G|$), ce qui élimine d'emblée les petits sous-groupes de $S_3$.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>V4.</strong> Montrer que les seuls sous-groupes transitifs de $S_3$ sont $A_3$ et $S_3$.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      L'ordre de $S_3$ est $6$. Ses sous-groupes sont d'ordre $1,2,3,6$.
-      Un sous-groupe d'ordre $1$ ou $2$ n'est pas transitif (il n'y a pas assez d'éléments pour envoyer une racine sur n'importe quelle autre). L'ordre $3$ correspond à $A_3$, qui agit transitivement sur les trois racines (car un $3$-cycle cyclique les permute circulairement). L'ordre $6$ est $S_3$, transitif. Les seuls sous-groupes transitifs sont bien $A_3$ et $S_3$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Attention à l’ordre de composition : ici les permutations se composent de droite à gauche.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+<strong>V4.</strong>
+<div class="enonce">Montrer que les seuls sous-groupes transitifs de $S_3$ sont $A_3$ et $S_3$.</div>
+<div class="sol">
+<p>Un sous-groupe transitif $G\leq S_3$ agit transitivement sur $\{1,2,3\}$. La taille de l'orbite (ici $3$) divise $|G|$ (relation orbite-stabilisateur), donc $3\mid|G|$.</p>
+<p>Les sous-groupes de $S_3$ (chapitre 1, A3) ont pour ordres $1,2,3,6$. La condition $3\mid|G|$ ne retient que les ordres $3$ et $6$ : c'est-à-dire $A_3$ (ordre $3$) et $S_3$ (ordre $6$). Réciproquement, ces deux-là sont bien transitifs. <span class="qed">$\square$</span></p>
+<div class="conclusion"><span class="label">La dichotomie en degré 3.</span> Pour une cubique irréductible, $G\in\{A_3,S_3\}$. Le discriminant départage : carré $\Rightarrow A_3$, non carré $\Rightarrow S_3$. C'est l'objet des structurants S1-S2.</div>
 </div>
+</div>
+
 <h2>🔧 Structurants</h2>
+
 <div class="exo">
-<strong>S1.</strong> Soit $P$ une cubique irréductible de discriminant carré. Montrer que son groupe de Galois est cyclique d'ordre $3$.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      Puisque $P$ est irréductible, son groupe de Galois $G$ est un sous-groupe transitif de $S_3$. Les seuls sous-groupes transitifs sont $A_3$ et $S_3$. Le discriminant est un carré, ce qui équivaut à $G \subset A_3$. Or $A_3$ est de cardinal $3$ et est transitif. Donc $G = A_3 \simeq \mathbb Z/3\mathbb Z$, cyclique d'ordre $3$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Attention à l’ordre de composition : ici les permutations se composent de droite à gauche.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+<strong>S1.</strong>
+<div class="enonce">Soit $P$ une cubique irréductible de discriminant carré. Montrer que son groupe de Galois est cyclique d'ordre $3$.</div>
+<div class="sol">
+<p>Par V3-V4, $G\in\{A_3,S_3\}$. La <span class="ref">proposition « Discriminant et groupe alterné »</span> dit que $G\subseteq A_n$ si et seulement si $\Delta$ est un carré dans $K$ (car $\sqrt\Delta=\prod_{i<j}(\alpha_i-\alpha_j)$ est fixé par $G$ exactement quand $G\subseteq A_n$).</p>
+<p>Ici $\Delta$ est un carré, donc $G\subseteq A_3$. Combiné à $G\in\{A_3,S_3\}$, cela force $G=A_3$. Or $A_3\simeq\mathbb Z/3\mathbb Z$ est cyclique d'ordre $3$. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Exemple concret.</span> $X^3-3X-1$ (V2) a $\Delta=81=9^2$ : son groupe est donc $A_3$. C'est une extension cyclique cubique, totalement réelle, du type qui apparaît dans la trisection de l'angle (chapitre 14).</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>S2.</strong> Soit $P$ une cubique irréductible de discriminant non carré. Montrer que son groupe de Galois est isomorphe à $S_3$.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      Comme ci-dessus, $G$ transitif $\implies G \simeq A_3$ ou $S_3$. Le discriminant non carré signifie que $G \not\subset A_3$. Donc $G \neq A_3$, et par conséquent $G \simeq S_3$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Attention à l’ordre de composition : ici les permutations se composent de droite à gauche.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+<strong>S2.</strong>
+<div class="enonce">Soit $P$ une cubique irréductible de discriminant non carré. Montrer que son groupe de Galois est $S_3$.</div>
+<div class="sol">
+<p>De nouveau $G\in\{A_3,S_3\}$. Par la <span class="ref">proposition « Discriminant et groupe alterné »</span>, $\Delta$ non carré signifie $G\not\subseteq A_3$. La seule possibilité restante est $G=S_3$. <span class="qed">$\square$</span></p>
+<div class="conclusion"><span class="label">Le critère complet.</span> Pour une cubique irréductible sur $\mathbb Q$ : $\boxed{\Delta\text{ carré}\iff G=A_3\ ;\quad \Delta\text{ non carré}\iff G=S_3.}$ C'est le <span class="ref">critère en degré 3</span> sous sa forme opératoire. Exemple : $X^3-2$ a $\Delta=-108$ non carré, donc $S_3$ (V1).</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>S3.</strong> Pour un polynôme quartique irréductible, expliquer pourquoi le groupe de Galois doit être un sous-groupe transitif de $S_4$.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Trouver d’abord un polynôme annulateur, puis prouver son irréductibilité pour garantir qu’il est minimal.</div>
-      Même argument qu'en degré $3$. L'irréductibilité de degré $4$ garantit que les quatre racines sont distinctes (séparable, caractéristique nulle). Pour toute racine $\alpha$, son polynôme minimal est $P$, degré $4$. Pour toute autre racine $\beta$, il existe un $\mathbb Q$-plongement $\mathbb Q(\alpha) \to \mathbb Q(\beta)$ envoyant $\alpha$ sur $\beta$. Puisque $P$ est scindé dans le corps de décomposition $L$, et que $L/\mathbb Q$ est normale, ce plongement se prolonge en un automorphisme de $L$. Ainsi le groupe de Galois agit transitivement sur $\{ \alpha_1,\alpha_2,\alpha_3,\alpha_4 \}$. C'est donc un sous-groupe transitif de $S_4$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Pour les degrés $2$ ou $3$, l’absence de racine dans le corps suffit à conclure à l’irréductibilité ; ce n’est plus vrai en degré supérieur.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+<strong>S3.</strong>
+<div class="enonce">Pour un polynôme quartique irréductible, expliquer pourquoi le groupe de Galois est un sous-groupe transitif de $S_4$.</div>
+<div class="sol">
+<p>Soit $P$ quartique irréductible, de racines $\alpha_1,\dots,\alpha_4$. Le groupe $G=\mathrm{Gal}(L/\mathbb Q)$ agit fidèlement sur ces $4$ racines (un automorphisme fixant les quatre racines fixe $L$), d'où un plongement $G\hookrightarrow S_4$.</p>
+<p>L'irréductibilité entraîne (comme en V3) que $G$ agit transitivement : toutes les racines sont conjuguées. Donc $G$ est un sous-groupe <em>transitif</em> de $S_4$, et en particulier $4\mid|G|$. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Vers la classification.</span> Les sous-groupes transitifs de $S_4$ sont au nombre de cinq (A1) : $S_4,A_4,D_4,V_4,C_4$. Le discriminant et la résolvante cubique (S4) permettent de les distinguer. C'est le degré le plus riche encore entièrement traitable « à la main ».</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>S4.</strong> Calculer la résolvante cubique de $X^4-2$. Interpréter ce que sa factorisation suggère sur le groupe de Galois.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Fixer une convention de calcul, effectuer les images ou les réductions explicitement, puis seulement ensuite reconnaître l’objet obtenu.</div>
-      $P(X) = X^4 - 2 = X^4 + 0\cdot X^3 + 0\cdot X^2 + 0\cdot X - 2$. Donc $a=0, b=0, c=0, d=-2$.
-      La résolvante cubique est $R(Y) = Y^3 - b Y^2 + (ac-4d)Y + (4bd - a^2 d - c^2)$.
-      Ici : $Y^3 - 0\cdot Y^2 + (0 - 4(-2)) Y + (0 - 0 - 0) = Y^3 + 8Y = Y(Y^2+8)$.
-      La résolvante possède une racine rationnelle $Y=0$ et deux racines irrationnelles $\pm \sqrt{-8} = \pm 2i\sqrt{2}$.
-      En théorie, le degré de la résolvante cubique correspond au nombre de partitions des quatre racines en deux paires. Une racine rationnelle signifie que le groupe de Galois stabilise une telle partition. Cela force le groupe à être contenu dans un sous-groupe de $S_4$ isomorphe à $D_4$ (le stabilisateur d'une partition). Combiné avec le degré $8$ de l'extension de décomposition (exemple traité), on conclut que le groupe est $D_4$. La factorisation suggère donc une structure diédrale ($D_4$).
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Une famille génératrice ne suffit pas : lorsqu’on parle de base, il faut aussi justifier l’unicité de l’écriture, ou utiliser un argument de dimension.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+<strong>S4.</strong>
+<div class="enonce">Calculer la résolvante cubique de $X^4-2$ et interpréter sa factorisation.</div>
+<div class="sol">
+<p>Pour une quartique $X^4+pX^2+qX+r$, la résolvante cubique est $R(Y)=Y^3-pY^2-4rY+(4pr-q^2)$. Pour $X^4-2$ : $p=0,q=0,r=-2$, d'où</p>
+<p style="text-align:center">$R(Y)=Y^3-4(-2)Y+0=Y^3+8Y=Y(Y^2+8).$</p>
+<p>La résolvante se factorise en $Y\cdot(Y^2+8)$ : elle a <em>une</em> racine rationnelle ($Y=0$) et deux racines irrationnelles ($\pm2i\sqrt2$).</p>
+<p>Interprétation : la résolvante cubique a exactement une racine rationnelle, ce qui correspond au cas où $G$ est le groupe diédral $D_4$ (ordre $8$). <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Confirmation.</span> On retrouve le résultat du chapitre 6 (A2) : $\mathrm{Gal}(\mathbb Q(\sqrt[4]2,i)/\mathbb Q)\simeq D_4$. La résolvante factorisée en $1+2$ (une racine rationnelle, un facteur quadratique irréductible) est la signature de $D_4$ parmi les cinq groupes transitifs. A2 reprend ce calcul en détail.</div>
 </div>
+</div>
+
 <h2>🚀 Approfondissement</h2>
+
 <div class="exo">
-<strong>A1.</strong> Déterminer les cinq sous-groupes transitifs de $S_4$ à conjugaison près.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Fixer une convention de calcul, effectuer les images ou les réductions explicitement, puis seulement ensuite reconnaître l’objet obtenu.</div>
-      Les sous-groupes transitifs de $S_4$ (pour l'action naturelle sur $\{1,2,3,4\}$) sont :
-      <ul>
-<li>$C_4$ : engendré par un $4$-cycle $(1234)$, d'ordre $4$.</li>
-<li>$V_4$ (le groupe de Klein) : $\{ \mathrm{Id}, (12)(34), (13)(24), (14)(23)\}$, d'ordre $4$. Il n'est pas cyclique, il est distingué dans $S_4$.</li>
-<li>$D_4$ : le groupe diédral d'ordre $8$, par exemple engendré par $(1234)$ et $(13)$.</li>
-<li>$A_4$ : le groupe alterné d'ordre $12$.</li>
-<li>$S_4$ : ordre $24$.</li>
-</ul>
-      Tout sous-groupe transitif de $S_4$ est conjugué à l'un de ces cinq.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+<strong>A1.</strong>
+<div class="enonce">Déterminer les cinq sous-groupes transitifs de $S_4$ à conjugaison près.</div>
+<div class="sol">
+<p>Un sous-groupe transitif $G\leq S_4$ vérifie $4\mid|G|$, donc $|G|\in\{4,8,12,24\}$. À conjugaison près :</p>
+<table class="corr">
+<tr><th>Groupe</th><th>Ordre</th><th>Description</th></tr>
+<tr><td>$S_4$</td><td>$24$</td><td>tout le groupe symétrique</td></tr>
+<tr><td>$A_4$</td><td>$12$</td><td>permutations paires</td></tr>
+<tr><td>$D_4$</td><td>$8$</td><td>symétries du carré (Sylow-$2$)</td></tr>
+<tr><td>$V_4$</td><td>$4$</td><td>$\{e,(12)(34),(13)(24),(14)(23)\}$</td></tr>
+<tr><td>$C_4$</td><td>$4$</td><td>cyclique engendré par un $4$-cycle, ex. $\langle(1234)\rangle$</td></tr>
+</table>
+<p>Ce sont les cinq sous-groupes transitifs de $S_4$ à conjugaison près. (Le $V_4$ retenu est le sous-groupe distingué formé des doubles transpositions ; les autres copies de $V_4$ ne sont pas transitives.) <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Le tableau de classification.</span> Pour identifier $G$ parmi ces cinq : on regarde si $\Delta$ est carré (distingue $\{A_4,V_4\}$ de $\{S_4,D_4,C_4\}$), puis la factorisation de la résolvante cubique. Ce dictionnaire complet est le cœur calculatoire du chapitre.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>A2.</strong> Étudier le groupe de Galois de $X^4-2$ sur $\mathbb Q$.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Penser en termes d’espaces vectoriels : une base donne le degré, et une tour donne un produit de degrés.</div>
-      (Ceci correspond à l'exemple détaillé du chapitre 9). Racines : $\pm \sqrt[4]{2}, \pm i\sqrt[4]{2}$. Corps de décomposition $L = \mathbb Q(\sqrt[4]{2}, i)$, degré $8$. Irréductibilité par Eisenstein $p=2$ $\implies$ transitivité. Discriminant $\Delta = 4^4 \cdot 2^3 = 2048$, non carré, donc groupe non contenu dans $A_4$. Résolvante cubique $Y^3+8Y = Y(Y^2+8)$ indique une factorisation de type $(1,2)$ sur $\mathbb Q$ (une racine rationnelle et un facteur quadratique irréductible). Cela correspond à un groupe qui stabilise une partition, donc contenu dans un $D_4$. Avec le cardinal $8$, le groupe est $D_4$. Conclusion : $\mathrm{Gal}(X^4-2/\mathbb Q) \simeq D_4$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Pour les degrés $2$ ou $3$, l’absence de racine dans le corps suffit à conclure à l’irréductibilité ; ce n’est plus vrai en degré supérieur.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+<strong>A2.</strong>
+<div class="enonce">Étudier le groupe de Galois de $X^4-2$ sur $\mathbb Q$.</div>
+<div class="sol">
+<p><strong>Irréductible :</strong> Eisenstein en $p=2$. Donc $G$ est transitif dans $S_4$ (S3).</p>
+<p><strong>Corps de décomposition :</strong> $\mathbb Q(\sqrt[4]2,i)$, de degré $8$ (chapitre 6, A2). Comme l'extension est galoisienne, $|G|=8$.</p>
+<p>Parmi les cinq sous-groupes transitifs (A1), seul $D_4$ est d'ordre $8$. Donc</p>
+<p style="text-align:center">$\mathrm{Gal}(X^4-2/\mathbb Q)\simeq D_4.$</p>
+<p>La résolvante cubique (S4) confirme : $R(Y)=Y(Y^2+8)$ a exactement une racine rationnelle, signature de $D_4$. <span class="qed">$\square$</span></p>
+<div class="vigilance"><span class="label">Méthode robuste.</span> Deux voies concordent : le <em>degré du corps de décomposition</em> ($=8$ donc $D_4$) et la <em>résolvante</em>. Les faire coïncider sécurise le résultat. Les quatre racines $\pm\sqrt[4]2,\pm i\sqrt[4]2$ forment un carré dans $\mathbb C$, dont $D_4$ est précisément le groupe de symétries.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>A3.</strong> Chercher un exemple de quartique irréductible dont le groupe de Galois est $V_4$.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Trouver d’abord un polynôme annulateur, puis prouver son irréductibilité pour garantir qu’il est minimal.</div>
-      Un exemple classique est $P(X) = X^4+1$. Ses racines sont $\zeta_8, \zeta_8^3, \zeta_8^5, \zeta_8^7$ where $\zeta_8 = e^{2\pi i/8}$. Le corps de décomposition est $\mathbb Q(\zeta_8)$, de degré $\varphi(8)=4$. Le groupe de Galois est $(\mathbb Z/8\mathbb Z)^\times \simeq \{ \pm 1, \pm 3\} \simeq C_2 \times C_2 \simeq V_4$. Le polynôme $X^4+1$ est irréductible sur $\mathbb Q$ (par Eisenstein sur $(X+1)^4+1$). Son groupe de Galois est bien $V_4$. Autre exemple : $X^4-10X^2+1$ (le polynôme minimal de $\sqrt 2 + \sqrt 3$ vu en exo S4 ch6), de groupe $V_4$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Pour les degrés $2$ ou $3$, l’absence de racine dans le corps suffit à conclure à l’irréductibilité ; ce n’est plus vrai en degré supérieur.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+<strong>A3.</strong>
+<div class="enonce">Chercher un exemple de quartique irréductible dont le groupe de Galois est $V_4$.</div>
+<div class="sol">
+<p>Considérons $P=X^4-10X^2+1$, polynôme minimal de $\sqrt2+\sqrt3$ (chapitre 6, S4). Il est irréductible sur $\mathbb Q$ (de degré $4$, c'est le minimal d'un élément de degré $4$).</p>
+<p>Son corps de décomposition est $\mathbb Q(\sqrt2,\sqrt3)$ (les racines sont $\pm\sqrt2\pm\sqrt3$), de degré $4$. Donc $|G|=4$, et $G$ est transitif. Parmi les transitifs d'ordre $4$ (A1), $G$ est $V_4$ ou $C_4$.</p>
+<p>Comme $\mathrm{Gal}(\mathbb Q(\sqrt2,\sqrt3)/\mathbb Q)\simeq V_4$ (chapitre 7, S2), on a</p>
+<p style="text-align:center">$\mathrm{Gal}(X^4-10X^2+1/\mathbb Q)\simeq V_4.$ <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Reconnaître $V_4$ vs $C_4$.</span> Les deux ont l'ordre $4$, mais $V_4$ a tous ses éléments d'ordre $\leq2$ (le corps est « bi-quadratique » $\mathbb Q(\sqrt2,\sqrt3)$), tandis que $C_4$ est cyclique (corps cyclique, comme le sous-corps réel de $\mathbb Q(\zeta_5)$). Le discriminant est un carré dans les deux cas ; c'est la résolvante (scindée pour $V_4$) qui les sépare.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>A4.</strong> Préparer le chapitre suivant : montrer que $S_3$ et $S_4$ sont résolubles, mais conjecturer pourquoi $S_5$ risque de ne pas l'être.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      $S_3$ est résoluble car $\{e\} \triangleleft A_3 \triangleleft S_3$, avec $A_3 \simeq \mathbb Z/3\mathbb Z$ et $S_3/A_3 \simeq \mathbb Z/2\mathbb Z$, tous abéliens.
-      $S_4$ est résoluble car $\{e\} \triangleleft V_4 \triangleleft A_4 \triangleleft S_4$, avec $V_4$ abélien, $A_4/V_4 \simeq \mathbb Z/3\mathbb Z$, $S_4/A_4 \simeq \mathbb Z/2\mathbb Z$.
-      Pour $S_5$, la suite dérivée donne $D(S_5) = A_5$, et $A_5$ est simple non abélien. La suite dérivée reste alors bloquée sur $A_5$ et n'atteint jamais $\{e\}$. Cela suggère que $S_5$ n'est pas résoluble.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Attention à l’ordre de composition : ici les permutations se composent de droite à gauche.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+<strong>A4.</strong>
+<div class="enonce">Préparer le chapitre suivant : montrer que $S_3$ et $S_4$ sont résolubles, et conjecturer pourquoi $S_5$ risque de ne pas l'être.</div>
+<div class="sol">
+<p><strong>$S_3$ résoluble.</strong> La chaîne $\{e\}\trianglelefteq A_3\trianglelefteq S_3$ a pour quotients $A_3/\{e\}\simeq\mathbb Z/3\mathbb Z$ et $S_3/A_3\simeq\mathbb Z/2\mathbb Z$, tous deux abéliens. Donc $S_3$ est résoluble.</p>
+<p><strong>$S_4$ résoluble.</strong> La chaîne $\{e\}\trianglelefteq V_4\trianglelefteq A_4\trianglelefteq S_4$ a pour quotients $V_4$ (abélien), $A_4/V_4\simeq\mathbb Z/3\mathbb Z$, $S_4/A_4\simeq\mathbb Z/2\mathbb Z$, tous abéliens. Donc $S_4$ est résoluble.</p>
+<p><strong>Pourquoi $S_5$ pose problème.</strong> La même stratégie buterait sur $A_5$ : pour poursuivre la chaîne sous $A_5$, il faudrait un sous-groupe distingué propre non trivial. Or $A_5$ semble n'en avoir aucun (il est <em>simple</em>). Sans étage intermédiaire, on ne peut pas « abélianiser » par tranches : $S_5$ ne serait pas résoluble. <span class="qed">$\square$</span></p>
+<div class="conclusion"><span class="label">Le point de bascule.</span> Tout repose sur la simplicité de $A_5$, démontrée au chapitre 10. C'est elle qui interdit la chaîne à quotients abéliens, donc rend $S_5$ non résoluble, donc l'équation générale de degré $5$ non résoluble par radicaux (chapitre 12). Le passage de $4$ à $5$ est la frontière de toute la théorie.</div>
 </div>
+</div>
+
 </body>
 </html>

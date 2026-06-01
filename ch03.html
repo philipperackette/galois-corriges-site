@@ -1,274 +1,260 @@
 <!DOCTYPE html>
-
 <html lang="fr">
 <head>
 <meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Corrigés — Chapitre 3 : Arithmétique des polynômes</title>
 <script>
-    window.MathJax = {
-      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
-      svg: { fontCache: 'global' }
-    };
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }, svg: { fontCache: 'global' } };
   </script>
 <script async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <style>
-:root{
-  --navy:#0e1a44;
-  --gold:#c79b2b;
-  --cream:#f4f0e7;
-  --card:#fffdf8;
-  --ink:#1f1f1f;
-  --muted:#555;
-  --teal:#0b6058;
-  --blue:#1d4f91;
-  --garnet:#8a1d2c;
-  --line:#d8d0c1;
-  --soft-blue:#f2f6ff;
-  --soft-gold:#fff7df;
-  --soft-green:#eefbf7;
-}
-*{box-sizing:border-box}
-html{background:var(--cream)}
-body{
-  margin:0;
-  padding:0 0 48px;
-  max-width:none;
-  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-  line-height:1.62;
-  color:var(--ink);
-  background:var(--cream);
-  hyphens:auto;
-}
-body::before{
-  content:"Corrigés pédagogiques";
-  display:block;
-  padding:28px clamp(22px,5vw,64px) 26px;
-  color:#fff;
-  background:var(--navy);
-  border-bottom:7px solid var(--gold);
-  font-size:1.95rem;
-  line-height:1.15;
-  font-weight:800;
-  letter-spacing:-.02em;
-  box-shadow:0 2px 10px rgba(0,0,0,.18);
-}
-h1{
-  max-width:1120px;
-  margin:32px auto 22px;
-  padding:0 clamp(18px,3vw,28px);
-  color:var(--navy);
-  font-size:clamp(1.9rem,3.2vw,3rem);
-  line-height:1.14;
-  font-weight:800;
-  letter-spacing:-.035em;
-}
-h2{
-  max-width:1120px;
-  margin:42px auto 18px;
-  padding:0 clamp(18px,3vw,28px) 10px;
-  color:var(--teal);
-  border-bottom:2px solid var(--line);
-  font-size:1.55rem;
-  line-height:1.25;
-}
+:root{--navy:#0e1a44;--gold:#c79b2b;--cream:#f4f0e7;--card:#fffdf8;--ink:#1f1f1f;--muted:#555;--teal:#0b6058;--blue:#1d4f91;--garnet:#8a1d2c;--line:#d8d0c1;--soft-blue:#f2f6ff;--soft-gold:#fff7df;--soft-green:#eefbf7;}
+*{box-sizing:border-box}html{background:var(--cream)}
+body{margin:0;padding:0 0 48px;max-width:none;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.62;color:var(--ink);background:var(--cream);hyphens:auto;}
+body::before{content:"Corrigés pédagogiques";display:block;padding:28px clamp(22px,5vw,64px) 26px;color:#fff;background:var(--navy);border-bottom:7px solid var(--gold);font-size:1.95rem;line-height:1.15;font-weight:800;letter-spacing:-.02em;box-shadow:0 2px 10px rgba(0,0,0,.18);}
+h1{max-width:1120px;margin:32px auto 22px;padding:0 clamp(18px,3vw,28px);color:var(--navy);font-size:clamp(1.9rem,3.2vw,3rem);line-height:1.14;font-weight:800;letter-spacing:-.035em;}
+h2{max-width:1120px;margin:42px auto 18px;padding:0 clamp(18px,3vw,28px) 10px;color:var(--teal);border-bottom:2px solid var(--line);font-size:1.55rem;line-height:1.25;}
 p, ol, ul{max-width:1120px;margin-left:auto;margin-right:auto}
-.intro,.mode{
-  max-width:1120px;
-  margin:20px auto;
-  padding:22px 24px;
-  background:var(--card);
-  border:1px solid var(--line);
-  border-left:7px solid var(--gold);
-  border-radius:14px;
-  box-shadow:0 2px 12px rgba(14,26,68,.08);
-}
-.mode{border-left-color:var(--blue);background:#f8fbff}
-.intro p,.mode p{margin:0;max-width:none}
-ol{
-  max-width:1120px;
-  margin-top:26px;
-  padding:22px 30px 22px 52px;
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:16px;
-  box-shadow:0 2px 12px rgba(14,26,68,.08);
-}
-li{margin:.38em 0}
-.exo{
-  max-width:1120px;
-  margin:24px auto 30px;
-  padding:24px 26px;
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:16px;
-  box-shadow:0 2px 12px rgba(14,26,68,.10);
-}
+.mode{max-width:1120px;margin:20px auto;padding:22px 24px;background:#f8fbff;border:1px solid var(--line);border-left:7px solid var(--blue);border-radius:14px;box-shadow:0 2px 12px rgba(14,26,68,.08);}
+.mode p{margin:0;max-width:none}
+.exo{max-width:1120px;margin:24px auto 30px;padding:24px 26px;background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:0 2px 12px rgba(14,26,68,.10);}
 .exo>strong:first-child{color:var(--garnet);font-weight:800;font-size:1.05em}
-.sol{margin-left:0;margin-top:14px}
-.methode,.vigilance,.conclusion{
-  margin:14px 0;
-  padding:14px 16px;
-  border-radius:10px;
-  border:1px solid transparent;
-}
-.methode{background:var(--soft-blue);border-left:5px solid var(--blue)}
+.enonce{margin:2px 0 14px}
+.sol{margin-top:6px}.sol p{max-width:none;margin:.55em 0}
+.vigilance,.conclusion,.lien{margin:14px 0;padding:13px 16px;border-radius:10px;border:1px solid transparent;}
 .vigilance{background:var(--soft-gold);border-left:5px solid var(--gold)}
 .conclusion{background:var(--soft-green);border-left:5px solid var(--teal)}
-.label{font-weight:800;color:var(--navy)}
-code{
-  background:#fff;
-  border:1px solid var(--line);
-  padding:.1em .28em;
-  border-radius:5px;
-}
-a{color:var(--teal);font-weight:750;text-decoration-thickness:.08em;text-underline-offset:.16em}
-a:hover{color:var(--garnet)}
-@media (max-width:720px){
-  body::before{font-size:1.45rem;padding:22px 18px 20px}
-  h1{font-size:1.7rem;margin-top:26px}
-  .intro,.mode,.exo,ol{margin-left:14px;margin-right:14px}
-  .exo{padding:18px}
-}
-
-body.index::before{content:"Corrigés pédagogiques"}
-body.chapter::before{content:"Théorie de Galois"}
+.lien{background:#f6f1fb;border-left:5px solid #6b3fa0}
+.label{font-weight:800;color:var(--navy)}.lien .label{color:#5a2d8a}
+.ref{color:#5a2d8a;font-weight:600}
+.qed{color:var(--teal);font-weight:700}
 </style>
 </head>
-<body class="chapter">
-<h1>Corrigés — Chapitre 3 : Arithmétique des polynômes</h1><div class="intro"><p><span class="label">Objectif pédagogique.</span> Les corrigés rendent explicite le rôle de la division euclidienne : elle produit les pgcd, les relations de Bézout, la principalité et les critères d’irréductibilité utilisés ensuite pour construire des corps.</p></div><div class="mode"><p><span class="label">Mode de lecture.</span> Pour chaque exercice, lire d’abord la méthode, refaire le calcul sans regarder la solution, puis comparer avec le point de vigilance.</p></div>
-<h2>🔹 Polynômes symétriques</h2>
-<div class="exo">
-<strong>PS1.</strong> Exprimer $x_1^2 + x_2^2 + x_3^2$ en fonction des polynômes symétriques élémentaires $e_1,e_2,e_3$.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Isoler la définition utile, écrire les hypothèses sous forme exploitable, puis conclure par une phrase qui répond exactement à la question.</div>
-      On a $e_1 = x_1+x_2+x_3$, $e_2 = x_1x_2 + x_1x_3 + x_2x_3$, $e_3 = x_1x_2x_3$.<br/>
-      $(x_1+x_2+x_3)^2 = x_1^2+x_2^2+x_3^2 + 2(x_1x_2+x_1x_3+x_2x_3)$.<br/>
-      Donc $x_1^2+x_2^2+x_3^2 = (x_1+x_2+x_3)^2 - 2(x_1x_2+x_1x_3+x_2x_3) = e_1^2 - 2e_2$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La solution se clôt en identifiant le polynôme ou la factorisation cherchée, avec la raison qui garantit son unicité ou son irréductibilité.</div></div>
+<body>
+<div style="max-width:1120px;margin:12px auto 0;padding:0 clamp(18px,3vw,28px)">
+<a href="index.html" style="color:#8a2d18;text-decoration:none;font-size:.92rem">&larr; Retour à l'index des corrigés</a>
 </div>
-<div class="exo">
-<strong>PS2.</strong> Exprimer $x_1x_2 + x_1x_3 + x_2x_3$ comme coefficient d’un polynôme $(X-x_1)(X-x_2)(X-x_3)$.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Isoler la définition utile, écrire les hypothèses sous forme exploitable, puis conclure par une phrase qui répond exactement à la question.</div>
-      En développant :
-      $$(X-x_1)(X-x_2)(X-x_3) = X^3 - (x_1+x_2+x_3) X^2 + (x_1x_2 + x_1x_3 + x_2x_3) X - x_1x_2x_3.$$
-      Ainsi $x_1x_2+x_1x_3+x_2x_3$ est exactement le coefficient de $X$ (au signe près, ici $+$). C’est le polynôme symétrique élémentaire $e_2$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La solution se clôt en identifiant le polynôme ou la factorisation cherchée, avec la raison qui garantit son unicité ou son irréductibilité.</div></div>
+
+<h1>Chapitre 3 — Arithmétique des polynômes</h1>
+
+<div class="mode">
+<p><strong>Comment lire ces corrigés.</strong> Le chapitre installe l'analogie entre $\mathbb Z$ et $K[X]$ : division euclidienne, Bézout, principalité, irréductibilité. Les renvois en violet pointent les résultats nommés du chapitre 3. On insistera sur le critère de degré pour l'irréductibilité (valable seulement en degré $2$ ou $3$) et sur les outils d'irréductibilité sur $\mathbb Q$ (Gauss, Eisenstein), qui prépareront le calcul effectif des groupes de Galois (chapitre 9).</p>
 </div>
+
+<h2>🔢 Polynômes symétriques</h2>
+
 <div class="exo">
-<strong>PS3.</strong> Pour $P = X^3 + aX^2 + bX + c$, écrire les relations entre $a,b,c$ et les polynômes symétriques élémentaires en les trois racines formelles de $P$.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Isoler la définition utile, écrire les hypothèses sous forme exploitable, puis conclure par une phrase qui répond exactement à la question.</div>
-      Si les racines sont $x_1,x_2,x_3$, on a :
-      $$P(X) = (X-x_1)(X-x_2)(X-x_3) = X^3 - e_1 X^2 + e_2 X - e_3.$$
-      Par identification avec $X^3 + aX^2 + bX + c$, on obtient :
-      $$e_1 = -a,\qquad e_2 = b,\qquad e_3 = -c.$$
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La solution se clôt en identifiant le polynôme ou la factorisation cherchée, avec la raison qui garantit son unicité ou son irréductibilité.</div></div>
+<strong>PS1.</strong>
+<div class="enonce">Exprimer $x_1^2+x_2^2+x_3^2$ en fonction des polynômes symétriques élémentaires $e_1,e_2,e_3$.</div>
+<div class="sol">
+<p>Rappel des élémentaires : $e_1=x_1+x_2+x_3$, $e_2=x_1x_2+x_1x_3+x_2x_3$, $e_3=x_1x_2x_3$.</p>
+<p>On part de l'identité $e_1^2=(x_1+x_2+x_3)^2=\sum x_i^2+2\sum_{i&lt;j}x_ix_j$, soit</p>
+<p style="text-align:center">$e_1^2=(x_1^2+x_2^2+x_3^2)+2e_2.$</p>
+<p>D'où</p>
+<p style="text-align:center">$x_1^2+x_2^2+x_3^2=e_1^2-2e_2.$ <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Lien avec le cours.</span> Cette réécriture illustre le <span class="ref">théorème fondamental des polynômes symétriques</span> : tout polynôme symétrique en $x_1,\dots,x_n$ s'exprime de façon unique comme polynôme en $e_1,\dots,e_n$. C'est ce qui rendra « calculables » les quantités invariantes par le groupe de Galois (résolvantes, discriminant au chapitre 9).</div>
 </div>
+</div>
+
+<div class="exo">
+<strong>PS2.</strong>
+<div class="enonce">Exprimer $x_1x_2+x_1x_3+x_2x_3$ comme coefficient du polynôme $(X-x_1)(X-x_2)(X-x_3)$.</div>
+<div class="sol">
+<p>On développe le produit :</p>
+<p style="text-align:center">$(X-x_1)(X-x_2)(X-x_3)=X^3-e_1X^2+e_2X-e_3.$</p>
+<p>Le coefficient de $X$ est donc $e_2=x_1x_2+x_1x_3+x_2x_3$ (au signe près déjà inclus : ici $+e_2$). <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Relations de Viète.</span> Les coefficients d'un polynôme unitaire scindé sont, au signe alterné près, les polynômes symétriques élémentaires de ses racines. Cette correspondance coefficients $\leftrightarrow$ fonctions symétriques des racines est le socle calculatoire de toute la théorie : le groupe de Galois agit sur les racines mais <em>fixe</em> les coefficients, donc fixe les $e_k$.</div>
+</div>
+</div>
+
+<div class="exo">
+<strong>PS3.</strong>
+<div class="enonce">Pour $P=X^3+aX^2+bX+c$, écrire les relations entre $a,b,c$ et les polynômes symétriques élémentaires des trois racines formelles.</div>
+<div class="sol">
+<p>Si $x_1,x_2,x_3$ sont les racines (formelles) de $P$, alors $P=(X-x_1)(X-x_2)(X-x_3)$. En identifiant avec le développement de PS2 :</p>
+<p style="text-align:center">$a=-e_1,\qquad b=e_2,\qquad c=-e_3.$</p>
+<p>Autrement dit $x_1+x_2+x_3=-a$, $\;x_1x_2+x_1x_3+x_2x_3=b$, $\;x_1x_2x_3=-c$. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Pourquoi c'est décisif.</span> Toute expression symétrique des racines est donc un polynôme en $a,b,c$, à coefficients rationnels si $a,b,c\in\mathbb Q$. C'est exactement la raison pour laquelle le groupe de Galois (qui permute les racines mais fixe $\mathbb Q$) laisse invariantes ces quantités : on le retrouvera en construisant le discriminant et la résolvante (chapitre 9).</div>
+</div>
+</div>
+
 <h2>✏️ Vérification</h2>
+
 <div class="exo">
-<strong>V1.</strong> Effectuer la division euclidienne de $X^4 + X + 1$ par $X^2 + 1$ dans $\mathbb Q[X]$.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Isoler la définition utile, écrire les hypothèses sous forme exploitable, puis conclure par une phrase qui répond exactement à la question.</div>
-      On cherche $Q,R$ avec $\deg R &lt; 2$. On essaie $Q = X^2 - 1$.
-      $$(X^2+1)(X^2-1) = X^4 - 1.$$
-      Alors $A = BQ + R$ donne $X^4 + X + 1 = (X^4 - 1) + (X + 2)$.
-      Donc $Q = X^2 - 1$ et $R = X + 2$. Vérification : $\deg R = 1 &lt; 2$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+<strong>V1.</strong>
+<div class="enonce">Effectuer la division euclidienne de $X^4+X+1$ par $X^2+1$ dans $\mathbb Q[X]$.</div>
+<div class="sol">
+<p>On applique la <span class="ref">division euclidienne dans $K[X]$</span> : il existe un unique couple $(Q,R)$ avec $X^4+X+1=(X^2+1)Q+R$ et $\deg R<2$.</p>
+<p>$\bullet$ $X^4=(X^2+1)\cdot X^2-X^2$, donc $X^4+X+1=(X^2+1)X^2-X^2+X+1$.</p>
+<p>$\bullet$ $-X^2=(X^2+1)\cdot(-1)+1$, donc $-X^2+X+1=(X^2+1)(-1)+X+2$.</p>
+<p>En regroupant : $X^4+X+1=(X^2+1)(X^2-1)+(X+2)$.</p>
+<p>Donc $Q=X^2-1$ et $R=X+2$. <span class="qed">$\square$</span></p>
 </div>
+</div>
+
 <div class="exo">
-<strong>V2.</strong> Montrer que $2$ est racine de $X^3 - 3X^2 + 4$, puis factoriser ce polynôme par $X-2$.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      $P(2) = 8 - 12 + 4 = 0$, donc $2$ est racine.<br/>
-      Division euclidienne : $X^3-3X^2+4 = (X-2)(X^2 - X - 2)$ (on peut identifier ou poser la division).<br/>
-      Vérification : $(X-2)(X^2 - X - 2) = X^3 - X^2 - 2X - 2X^2 + 2X + 4 = X^3 - 3X^2 + 4$.<br/>
-      Enfin, $X^2 - X - 2 = (X-2)(X+1)$. Donc la factorisation complète dans $\mathbb Q[X]$ est $P(X) = (X-2)^2 (X+1)$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La solution se clôt en identifiant le polynôme ou la factorisation cherchée, avec la raison qui garantit son unicité ou son irréductibilité.</div></div>
+<strong>V2.</strong>
+<div class="enonce">Montrer que $2$ est racine de $X^3-3X^2+4$, puis factoriser par $X-2$.</div>
+<div class="sol">
+<p>$\bullet$ Évaluation : $2^3-3\cdot 2^2+4=8-12+4=0$. Donc $2$ est racine.</p>
+<p>$\bullet$ Par le <span class="ref">corollaire « Racine et facteur linéaire »</span>, $X-2$ divise le polynôme. La division donne</p>
+<p style="text-align:center">$X^3-3X^2+4=(X-2)(X^2-X-2)=(X-2)(X-2)(X+1)=(X-2)^2(X+1).$</p>
+<p>(On a factorisé $X^2-X-2=(X-2)(X+1)$.) <span class="qed">$\square$</span></p>
+<div class="vigilance"><span class="label">Racine double.</span> $2$ est racine double ! On le voit en poussant la factorisation. Le <span class="ref">corollaire « Nombre de racines »</span> rappelle qu'un polynôme de degré $3$ a au plus $3$ racines comptées avec multiplicité : ici $2,2,-1$.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>V3.</strong> Calculer $\gcd(X^3-1, X^2+X+1)$ dans $\mathbb Q[X]$.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Fixer une convention de calcul, effectuer les images ou les réductions explicitement, puis seulement ensuite reconnaître l’objet obtenu.</div>
-      $X^3-1 = (X-1)(X^2+X+1)$. Donc $X^2+X+1$ divise $X^3-1$.
-      Par conséquent, le pgcd (unitaire) est $X^2+X+1$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+<strong>V3.</strong>
+<div class="enonce">Calculer $\gcd(X^3-1,\,X^2+X+1)$ dans $\mathbb Q[X]$.</div>
+<div class="sol">
+<p>On applique l'<span class="ref">algorithme d'Euclide</span>. On remarque que $X^3-1=(X-1)(X^2+X+1)$, donc</p>
+<p style="text-align:center">$X^3-1=(X^2+X+1)\cdot(X-1)+0.$</p>
+<p>Le reste est nul dès la première division : le pgcd est le dernier reste non nul, à savoir $X^2+X+1$, rendu unitaire (il l'est déjà).</p>
+<p>Donc $\gcd(X^3-1,X^2+X+1)=X^2+X+1$. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Interprétation.</span> Le pgcd est $X^2+X+1$ car $X^2+X+1\mid X^3-1$ : les racines communes sont les racines primitives cubiques de l'unité $j,j^2$ (et non $1$). Cette factorisation $X^3-1=(X-1)(X^2+X+1)$ est le premier cas de décomposition cyclotomique, développée au chapitre 13.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>V4.</strong> Montrer que $X^2-2$ est irréductible dans $\mathbb Q[X]$.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      C'est un polynôme de degré $2$. S'il était réductible, il aurait un facteur de degré $1$, donc une racine dans $\mathbb Q$. Les racines possibles sont des fractions $\frac{p}{q}$ avec $p \mid 2$ et $q \mid 1$, donc $\pm 1, \pm 2$. Aucun de ces nombres n'annule $X^2-2$ (car $1^2=1$, $2^2=4$). Ainsi il n'a pas de racine rationnelle, il est irréductible sur $\mathbb Q$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Pour les degrés $2$ ou $3$, l’absence de racine dans le corps suffit à conclure à l’irréductibilité ; ce n’est plus vrai en degré supérieur.</div><div class="conclusion"><span class="label">Conclusion.</span> La solution se clôt en identifiant le polynôme ou la factorisation cherchée, avec la raison qui garantit son unicité ou son irréductibilité.</div></div>
+<strong>V4.</strong>
+<div class="enonce">Montrer que $X^2-2$ est irréductible dans $\mathbb Q[X]$.</div>
+<div class="sol">
+<p>$X^2-2$ est de degré $2$. Par le critère de degré (exercice S2 ci-dessous : en degré $2$ ou $3$, irréductible $\iff$ sans racine dans le corps), il suffit de montrer qu'il n'a pas de racine rationnelle.</p>
+<p>Si $X^2-2$ avait une racine $r\in\mathbb Q$, alors $r^2=2$. Or $\sqrt 2$ est irrationnel : en effet, si $\sqrt2=p/q$ avec $\gcd(p,q)=1$, alors $p^2=2q^2$, donc $2\mid p^2$ puis $2\mid p$, d'où $4\mid p^2=2q^2$, donc $2\mid q^2$ et $2\mid q$ — contradiction avec $\gcd(p,q)=1$.</p>
+<p>Donc $X^2-2$ n'a pas de racine rationnelle, et étant de degré $2$, il est irréductible sur $\mathbb Q$. <span class="qed">$\square$</span></p>
 </div>
+</div>
+
 <div class="exo">
-<strong>V5.</strong> Montrer que $X^4+1$ n’a pas de racine rationnelle. Cela suffit-il à prouver son irréductibilité sur $\mathbb Q$ ?<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      $X^4+1 &gt; 0$ pour tout réel $X$, donc pas de racine réelle, a fortiori pas de racine rationnelle.<br/>
-<strong>Non, cela ne suffit pas.</strong> Un polynôme de degré $4$ peut se factoriser en un produit de deux polynômes de degré $2$ sans racine réelle. Par exemple dans $\mathbb R[X]$, $X^4+1 = (X^2+\sqrt2 X+1)(X^2-\sqrt2 X+1)$. Sur $\mathbb Q$, il faut regarder si une telle factorisation existe avec des coefficients rationnels. L'absence de racine ne garantit pas l'irréductibilité pour un degré $&gt; 3$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Une famille génératrice ne suffit pas : lorsqu’on parle de base, il faut aussi justifier l’unicité de l’écriture, ou utiliser un argument de dimension.</div><div class="conclusion"><span class="label">Conclusion.</span> La solution se clôt en identifiant le polynôme ou la factorisation cherchée, avec la raison qui garantit son unicité ou son irréductibilité.</div></div>
+<strong>V5.</strong>
+<div class="enonce">Montrer que $X^4+1$ n'a pas de racine rationnelle. Cela suffit-il à prouver son irréductibilité sur $\mathbb Q$ ?</div>
+<div class="sol">
+<p><strong>Pas de racine rationnelle.</strong> Pour tout $x\in\mathbb R$, $x^4+1\geq 1>0$ : aucun réel, donc aucun rationnel, n'annule $X^4+1$.</p>
+<p><strong>Cela ne suffit pas.</strong> Le critère « pas de racine $\Rightarrow$ irréductible » ne vaut qu'en degré $2$ ou $3$. En degré $4$, un polynôme peut n'avoir aucune racine tout en se factorisant en deux quadratiques. C'est exactement le cas ici :</p>
+<p style="text-align:center">$X^4+1=(X^2+\sqrt2\,X+1)(X^2-\sqrt2\,X+1)\ \text{sur }\mathbb R.$</p>
+<p>Sur $\mathbb Q$, $X^4+1$ est néanmoins irréductible (c'est le polynôme cyclotomique $\Phi_8$), mais cela demande un autre argument que l'absence de racine.</p>
+<div class="vigilance"><span class="label">Erreur classique à éviter.</span> « Pas de racine donc irréductible » est <strong>faux</strong> dès le degré $4$. La justification correcte invoque le degré : une factorisation non triviale d'un degré $2$ ou $3$ comporte forcément un facteur linéaire, donc une racine. Pour $X^4+1$, l'irréductibilité sur $\mathbb Q$ se prouve par réduction modulo un premier ou via la théorie cyclotomique (chapitre 13).</div>
 </div>
+</div>
+
 <h2>🔧 Structurants</h2>
+
 <div class="exo">
-<strong>S1.</strong> Démontrer le théorème du reste en utilisant uniquement la division euclidienne.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Penser en termes d’espaces vectoriels : une base donne le degré, et une tour donne un produit de degrés.</div>
-      Soit $P \in K[X]$ et $\alpha \in K$. La division euclidienne de $P$ par $X-\alpha$ (polynôme unitaire de degré $1$) donne $P = (X-\alpha) Q + R$ avec $R = 0$ ou $\deg R &lt; 1$, donc $R$ est une constante $r \in K$.<br/>
-      En évaluant en $\alpha$ : $P(\alpha) = (\alpha-\alpha) Q(\alpha) + r = r$.<br/>
-      Donc le reste de la division de $P$ par $X-\alpha$ est $P(\alpha)$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Une famille génératrice ne suffit pas : lorsqu’on parle de base, il faut aussi justifier l’unicité de l’écriture, ou utiliser un argument de dimension.</div><div class="conclusion"><span class="label">Conclusion.</span> La solution se clôt en identifiant le polynôme ou la factorisation cherchée, avec la raison qui garantit son unicité ou son irréductibilité.</div></div>
+<strong>S1.</strong>
+<div class="enonce">Démontrer le théorème du reste en utilisant uniquement la division euclidienne.</div>
+<div class="sol">
+<p>Soit $P\in K[X]$ et $\alpha\in K$. La <span class="ref">division euclidienne dans $K[X]$</span> de $P$ par $X-\alpha$ donne $P=(X-\alpha)Q+R$ avec $\deg R<\deg(X-\alpha)=1$, donc $R$ est une constante $r\in K$.</p>
+<p>En évaluant en $\alpha$ : $P(\alpha)=(\alpha-\alpha)Q(\alpha)+r=r$.</p>
+<p>Donc le reste de la division de $P$ par $X-\alpha$ est exactement $P(\alpha)$ : c'est le <span class="ref">théorème du reste</span>. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Conséquence immédiate.</span> $\alpha$ est racine de $P$ ($P(\alpha)=0$) si et seulement si $X-\alpha\mid P$ : c'est le <span class="ref">corollaire « Racine et facteur linéaire »</span>, utilisé sans cesse pour factoriser (V2) et pour borner le nombre de racines.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>S2.</strong> Montrer que si $P \in K[X]$ est de degré $2$ ou $3$, alors $P$ est réductible si et seulement s’il a une racine dans $K$.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      ($\Rightarrow$) Si $P$ est réductible, il s'écrit $P = AB$ avec $\deg A, \deg B \ge 1$. Comme $\deg P \le 3$, l'un des facteurs est nécessairement de degré $1$, disons $A = aX + b$ avec $a \neq 0$. Alors $\alpha = -b/a \in K$ est racine de $A$ donc de $P$.<br/>
-      ($\Leftarrow$) Si $P(\alpha)=0$, alors $X-\alpha$ divise $P$ (théorème du reste), donc $P$ se factorise avec le facteur $X-\alpha$ ; il est réductible.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Une famille génératrice ne suffit pas : lorsqu’on parle de base, il faut aussi justifier l’unicité de l’écriture, ou utiliser un argument de dimension.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+<strong>S2.</strong>
+<div class="enonce">Montrer que si $P\in K[X]$ est de degré $2$ ou $3$, alors $P$ est réductible si et seulement s'il a une racine dans $K$.</div>
+<div class="sol">
+<p>($\Leftarrow$) Si $P$ a une racine $\alpha\in K$, alors $X-\alpha\mid P$ (théorème du reste), et comme $\deg P\geq 2$, ce facteur est non trivial : $P$ est réductible.</p>
+<p>($\Rightarrow$) Supposons $P$ réductible : $P=AB$ avec $1\leq\deg A,\deg B<\deg P$. Comme $\deg A+\deg B=\deg P\in\{2,3\}$, l'un des facteurs est de degré $1$ (impossible d'écrire $2$ ou $3$ comme somme de deux entiers $\geq 2$). Un facteur de degré $1$, disons $aX+b$, fournit la racine $\alpha=-b/a\in K$.</p>
+<p>D'où l'équivalence. <span class="qed">$\square$</span></p>
+<div class="vigilance"><span class="label">La borne $\deg\leq 3$ est essentielle.</span> L'argument « la somme des degrés vaut $2$ ou $3$ force un facteur linéaire » tombe dès le degré $4$ : on peut avoir $4=2+2$ sans facteur de degré $1$. C'est précisément le piège de V5. Ce critère ne doit jamais être invoqué en degré $\geq 4$.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>S3.</strong> Démontrer que tout idéal non nul de $K[X]$ possède un unique générateur unitaire.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      Soit $I \neq \{0\}$ un idéal de $K[X]$. Montrons d'abord l'existence. Soit $P$ un polynôme non nul de degré minimal dans $I$. En le multipliant par l'inverse de son coefficient dominant, on obtient un polynôme unitaire $P_0 \in I$ de même degré minimal.<br/>
-      Alors $I = (P_0)$. En effet, $P_0 \in I$ donc $(P_0) \subseteq I$. Réciproquement, pour tout $A \in I$, division euclidienne : $A = P_0 Q + R$ avec $\deg R &lt; \deg P_0$ ou $R=0$. Comme $R = A - P_0 Q \in I$, par minimalité du degré de $P_0$, on doit avoir $R=0$, donc $A \in (P_0)$.<br/>
-      Unicité : si $(P_0) = (Q_0)$ avec $P_0, Q_0$ unitaires, alors $P_0$ divise $Q_0$ et $Q_0$ divise $P_0$, donc $P_0 = c Q_0$ avec $c \in K^\times$. Les coefficients dominants étant $1$, $c=1$, donc $P_0 = Q_0$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Une famille génératrice ne suffit pas : lorsqu’on parle de base, il faut aussi justifier l’unicité de l’écriture, ou utiliser un argument de dimension.</div><div class="conclusion"><span class="label">Conclusion.</span> La solution se clôt en identifiant le polynôme ou la factorisation cherchée, avec la raison qui garantit son unicité ou son irréductibilité.</div></div>
+<strong>S3.</strong>
+<div class="enonce">Démontrer que tout idéal non nul de $K[X]$ possède un unique générateur unitaire.</div>
+<div class="sol">
+<p>Soit $I\neq\{0\}$ un idéal de $K[X]$.</p>
+<p><strong>Existence.</strong> L'ensemble des degrés des polynômes non nuls de $I$ est une partie non vide de $\mathbb N$ ; soit $D$ un polynôme de $I$ de degré minimal. Quitte à diviser par son coefficient dominant, on peut le supposer unitaire. Montrons $I=(D)$.</p>
+<p>$(D)\subseteq I$ est clair. Inversement, soit $P\in I$ ; division euclidienne $P=DQ+R$ avec $\deg R<\deg D$. Alors $R=P-DQ\in I$ (car $P\in I$, $DQ\in(D)\subseteq I$). Si $R\neq 0$, c'est un élément de $I$ de degré $<\deg D$, contredisant la minimalité. Donc $R=0$ et $P=DQ\in(D)$. Ainsi $I=(D)$.</p>
+<p><strong>Unicité.</strong> Si $(D)=(D')$ avec $D,D'$ unitaires, ils se divisent mutuellement : $D'=\lambda D$ avec $\lambda\in K^\times$. L'égalité des coefficients dominants ($1=\lambda\cdot 1$) impose $\lambda=1$, donc $D=D'$. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Le cœur du chapitre.</span> C'est la preuve que $K[X]$ est un <span class="ref">anneau principal</span> ($K[X]$ est principal). L'argument — plus petit degré, puis division euclidienne — est le calque exact de celui pour $\mathbb Z$ (chapitre 2, V5). Cette principalité fonde l'existence du pgcd et le théorème de Bézout.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>S4.</strong> Montrer que si $P$ est irréductible dans $K[X]$, alors la classe de $X$ dans $K[X]/(P)$ est racine de $P$.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      Notons $\pi : K[X] \to K[X]/(P)$ la projection canonique et $\alpha = \pi(X)$. Comme $\pi$ est un morphisme, $P(\alpha) = \pi(P(X))$. Or $P(X) \in (P)$, donc $\pi(P(X)) = \overline{P} = \overline{0}$. Ainsi $P(\alpha)=0$ dans le quotient, $\alpha$ est racine de $P$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Pour les degrés $2$ ou $3$, l’absence de racine dans le corps suffit à conclure à l’irréductibilité ; ce n’est plus vrai en degré supérieur.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+<strong>S4.</strong>
+<div class="enonce">Montrer que si $P$ est irréductible dans $K[X]$, alors la classe de $X$ dans $K[X]/(P)$ est racine de $P$.</div>
+<div class="sol">
+<p>Notons $x=\overline X$ la classe de $X$ dans $K[X]/(P)$. Le morphisme de passage au quotient étant un morphisme d'anneaux, pour $P=\sum a_k X^k$ on a</p>
+<p style="text-align:center">$P(x)=\sum_k a_k x^k=\overline{\textstyle\sum_k a_k X^k}=\overline P=\bar 0.$</p>
+<p>Donc $x$ est racine de $P$. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Lien avec le cours.</span> Comme $P$ est irréductible, $(P)$ est maximal (<span class="ref">proposition « Irréductible et idéal maximal »</span>), donc $K[X]/(P)$ est un corps (<span class="ref">corollaire « Quotient par un irréductible »</span>). On obtient ainsi un corps contenant une racine de $P$ : c'est le corps de rupture (chapitre 5), généralisation de la construction de $\mathbb C$ vue au chapitre 2 (A2).</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>S5.</strong> Montrer que $X^4 - 2$ est irréductible sur $\mathbb Q$.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      Appliquons le critère d'Eisenstein avec $p=2$. Le polynôme $X^4 - 2$ a ses coefficients : $a_4 = 1$, $a_3=a_2=a_1=0$, $a_0=-2$. Le nombre premier $p=2$ ne divise pas $a_4$, divise tous les autres coefficients, et $p^2=4$ ne divise pas $a_0=-2$. Le critère d'Eisenstein s'applique, donc $X^4-2$ est irréductible dans $\mathbb Q[X]$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Pour les degrés $2$ ou $3$, l’absence de racine dans le corps suffit à conclure à l’irréductibilité ; ce n’est plus vrai en degré supérieur.</div><div class="conclusion"><span class="label">Conclusion.</span> La solution se clôt en identifiant le polynôme ou la factorisation cherchée, avec la raison qui garantit son unicité ou son irréductibilité.</div></div>
+<strong>S5.</strong>
+<div class="enonce">Montrer que $X^4-2$ est irréductible sur $\mathbb Q$.</div>
+<div class="sol">
+<p>On applique le <span class="ref">critère d'Eisenstein</span> avec le premier $p=2$ :</p>
+<p>$\bullet$ $p=2$ divise tous les coefficients sauf le dominant : ici les coefficients sont $1,0,0,0,-2$, et $2\mid 0$, $2\mid(-2)$, $2\nmid 1$.</p>
+<p>$\bullet$ $p^2=4$ ne divise pas le coefficient constant $-2$.</p>
+<p>Le critère d'Eisenstein s'applique : $X^4-2$ est irréductible sur $\mathbb Q$. <span class="qed">$\square$</span></p>
+<div class="vigilance"><span class="label">Pas par absence de racine.</span> Inutile (et insuffisant, cf. V5) de chercher les racines : Eisenstein donne l'irréductibilité directement, sans factorisation à exclure. C'est l'outil de référence en degré $\geq 4$.</div>
+<div class="lien"><span class="label">Vers la suite.</span> Eisenstein repose sur le <span class="ref">lemme de Gauss</span> (irréductibilité sur $\mathbb Z$ et sur $\mathbb Q$ coïncident). Le polynôme $X^4-2$ servira de fil rouge : son groupe de Galois est $D_4$ (chapitres 8 et 9), illustrant qu'irréductibilité de degré $4$ et richesse du groupe vont de pair.</div>
 </div>
-<h2>🚀 Vers Abel-Ruffini</h2>
+</div>
+
+<h2>🚀 Approfondissement</h2>
+
 <div class="exo">
-<strong>A1.</strong> Montrer que $\mathbb Q[X]/(X^2+1)$ est un corps dans lequel l’équation $X^2+1 = 0$ possède une solution.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      $X^2+1$ est irréductible sur $\mathbb Q$ (pas de racine rationnelle, degré $2$). Comme $\mathbb Q[X]$ est principal, l'idéal $(X^2+1)$ est maximal, donc le quotient est un corps. La classe de $X$ dans ce quotient, notée $\alpha$, vérifie $\alpha^2+1 = \overline{X^2+1} = 0$, donc est une solution de l'équation.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Pour les degrés $2$ ou $3$, l’absence de racine dans le corps suffit à conclure à l’irréductibilité ; ce n’est plus vrai en degré supérieur.</div><div class="conclusion"><span class="label">Conclusion.</span> On termine en indiquant clairement le corps obtenu, son degré ou la propriété d’extension démontrée.</div></div>
+<strong>A1.</strong>
+<div class="enonce">Montrer que $\mathbb Q[X]/(X^2+1)$ est un corps dans lequel $X^2+1=0$ a une solution.</div>
+<div class="sol">
+<p>$X^2+1$ est de degré $2$ sans racine rationnelle (il n'a même pas de racine réelle), donc irréductible sur $\mathbb Q$ (critère de degré, S2). Par le <span class="ref">corollaire « Quotient par un irréductible »</span>, $\mathbb Q[X]/(X^2+1)$ est un corps.</p>
+<p>La classe $x=\overline X$ y vérifie $x^2+1=\overline{X^2+1}=\bar 0$ (S4), donc $x^2=-1$ : l'équation a une solution dans le quotient. Ce corps est isomorphe à $\mathbb Q(i)$. <span class="qed">$\square$</span></p>
 </div>
+</div>
+
 <div class="exo">
-<strong>A2.</strong> Montrer que $\mathbb Q[X]/(X^3-2)$ est un corps dans lequel $X^3-2$ possède une racine.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      $X^3-2$ est irréductible sur $\mathbb Q$ par le critère d'Eisenstein avec $p=2$. Donc l'idéal $(X^3-2)$ est maximal, le quotient est un corps. L'élément $\alpha = \overline{X}$ vérifie $\alpha^3 - 2 = \overline{X^3-2} = 0$, donc $\alpha$ est racine de $X^3-2$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Pour les degrés $2$ ou $3$, l’absence de racine dans le corps suffit à conclure à l’irréductibilité ; ce n’est plus vrai en degré supérieur.</div><div class="conclusion"><span class="label">Conclusion.</span> On termine en indiquant clairement le corps obtenu, son degré ou la propriété d’extension démontrée.</div></div>
+<strong>A2.</strong>
+<div class="enonce">Montrer que $\mathbb Q[X]/(X^3-2)$ est un corps dans lequel $X^3-2$ possède une racine.</div>
+<div class="sol">
+<p>$X^3-2$ est de degré $3$ ; il n'a pas de racine rationnelle ($\sqrt[3]2\notin\mathbb Q$, car une racine $p/q$ irréductible donnerait $p^3=2q^3$, forçant $2\mid p$ puis $8\mid 2q^3$, donc $2\mid q$, contradiction). En degré $3$, l'absence de racine suffit (S2) : $X^3-2$ est irréductible sur $\mathbb Q$. On peut aussi invoquer Eisenstein en $p=2$.</p>
+<p>Donc $\mathbb Q[X]/(X^3-2)$ est un corps (quotient par un irréductible), et la classe $\alpha=\overline X$ y vérifie $\alpha^3=2$. <span class="qed">$\square$</span></p>
 </div>
+</div>
+
 <div class="exo">
-<strong>A3.</strong> Soit $\alpha$ la classe de $X$ dans $\mathbb Q[X]/(X^3-2)$. Montrer que tout élément du quotient s’écrit de manière unique sous la forme $a + b\alpha + c\alpha^2$, avec $a,b,c \in \mathbb Q$.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      Le polynôme minimal de $\alpha$ sur $\mathbb Q$ est $X^3-2$, de degré $3$. Le quotient $\mathbb Q[X]/(X^3-2)$ est une extension simple de $\mathbb Q$, de degré $3$. Une base de ce $\mathbb Q$-espace vectoriel est $1, \alpha, \alpha^2$ (car tout polynôme se réduit modulo $X^3-2$ à un polynôme de degré $\le 2$). Donc tout élément s'écrit de façon unique $a + b\alpha + c\alpha^2$. L'unicité vient de l'indépendance linéaire de $1,\alpha,\alpha^2$ sur $\mathbb Q$, qui découle de l'irréductibilité du polynôme minimal.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Ne pas confondre le polynôme $P$ avec sa classe : dans le quotient, la classe de $P$ est nulle.</div><div class="conclusion"><span class="label">Conclusion.</span> On termine en indiquant clairement le corps obtenu, son degré ou la propriété d’extension démontrée.</div></div>
+<strong>A3.</strong>
+<div class="enonce">Soit $\alpha$ la classe de $X$ dans $\mathbb Q[X]/(X^3-2)$. Montrer que tout élément du quotient s'écrit de manière unique $a+b\alpha+c\alpha^2$ avec $a,b,c\in\mathbb Q$.</div>
+<div class="sol">
+<p>Soit $\bar P$ un élément du quotient, représenté par $P\in\mathbb Q[X]$. La division euclidienne de $P$ par $X^3-2$ donne $P=(X^3-2)Q+R$ avec $\deg R<3$, soit $R=a+bX+cX^2$. En passant au quotient, $\bar P=\bar R=a+b\alpha+c\alpha^2$ (car $\overline{X^3-2}=\bar 0$).</p>
+<p><strong>Existence</strong> de l'écriture : acquise ci-dessus.</p>
+<p><strong>Unicité :</strong> si $a+b\alpha+c\alpha^2=a'+b'\alpha+c'\alpha^2$, alors $(a-a')+(b-b')X+(c-c')X^2\in(X^3-2)$. Mais ce polynôme est de degré $\leq 2<3=\deg(X^3-2)$ ; le seul multiple de $X^3-2$ de degré $<3$ est $0$. Donc $a=a'$, $b=b'$, $c=c'$.</p>
+<p>Ainsi $(1,\alpha,\alpha^2)$ est une base de $\mathbb Q[X]/(X^3-2)$ sur $\mathbb Q$. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Premier calcul de degré.</span> On vient de montrer $[\mathbb Q(\sqrt[3]2):\mathbb Q]=3$ par une base explicite. C'est le cas modèle de la <span class="ref">base naturelle d'une extension simple algébrique</span> (chapitre 4) : pour $P$ irréductible de degré $n$, $(1,\alpha,\dots,\alpha^{n-1})$ est une base du corps de rupture.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>A4.</strong> Factoriser $X^3-1$ sur $\mathbb Q$, puis sur $\mathbb C$. Identifier les racines primitives troisièmes de l’unité.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Isoler la définition utile, écrire les hypothèses sous forme exploitable, puis conclure par une phrase qui répond exactement à la question.</div>
-      Sur $\mathbb Q$ : $X^3-1 = (X-1)(X^2+X+1)$.<br/>
-      Sur $\mathbb C$ : $X^2+X+1 = (X - j)(X - j^2)$ où $j = e^{2i\pi/3} = -\frac12 + i\frac{\sqrt3}{2}$.<br/>
-      Les racines primitives troisièmes de l'unité sont $j$ et $j^2$. (La racine $1$ n'est pas primitive car son ordre est $1$.)
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+<strong>A4.</strong>
+<div class="enonce">Factoriser $X^3-1$ sur $\mathbb Q$, puis sur $\mathbb C$. Identifier les racines primitives troisièmes de l'unité.</div>
+<div class="sol">
+<p><strong>Sur $\mathbb Q$.</strong> $1$ est racine évidente, donc $X-1\mid X^3-1$ et</p>
+<p style="text-align:center">$X^3-1=(X-1)(X^2+X+1).$</p>
+<p>Le facteur $X^2+X+1$ est irréductible sur $\mathbb Q$ (degré $2$, discriminant $-3<0$, pas de racine réelle).</p>
+<p><strong>Sur $\mathbb C$.</strong> Les racines de $X^2+X+1$ sont $j=e^{2i\pi/3}=\tfrac{-1+i\sqrt3}{2}$ et $j^2=\bar j=e^{-2i\pi/3}$. Donc</p>
+<p style="text-align:center">$X^3-1=(X-1)(X-j)(X-j^2).$</p>
+<p>Les <strong>racines primitives</strong> troisièmes de l'unité sont $j$ et $j^2$ (celles d'ordre exactement $3$ ; $1$ est d'ordre $1$). On a $1+j+j^2=0$. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Lien avec le cours.</span> $X^2+X+1$ est le polynôme cyclotomique $\Phi_3$, et $j$ une <span class="ref">racine $n$-ième de l'unité</span> primitive. Ces racines reviendront partout : dans le groupe de Galois de $X^3-2$ (où $j$ est indispensable), et dans toute la cyclotomie (chapitre 13).</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>A5.</strong> Expliquer pourquoi l’irréductibilité de $X^5-2$ sur $\mathbb Q$ ne suffit pas, à elle seule, à comprendre toutes les symétries de ses racines.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Penser en termes d’espaces vectoriels : une base donne le degré, et une tour donne un produit de degrés.</div>
-      L'irréductibilité indique que le degré de l'extension engendrée par une racine est $5$, mais elle ne décrit pas le groupe de Galois complet. Les cinq racines de $X^5-2$ sont $\sqrt[5]{2}, \zeta_5\sqrt[5]{2}, \zeta_5^2\sqrt[5]{2}, \zeta_5^3\sqrt[5]{2}, \zeta_5^4\sqrt[5]{2}$. Les relations entre elles font intervenir les racines cinquièmes de l'unité. Le corps de décomposition est $\mathbb Q(\sqrt[5]{2},\zeta_5)$, dont le degré sur $\mathbb Q$ est $20$, et le groupe de Galois n'est pas $S_5$ mais un sous-groupe résoluble (le groupe affine $\mathrm{AGL}(1,5)$). L'irréductibilité seule ne révèle pas cette structure plus fine : elle donne seulement l'information que le groupe est transitif, mais pas sa nature exacte.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Une famille génératrice ne suffit pas : lorsqu’on parle de base, il faut aussi justifier l’unicité de l’écriture, ou utiliser un argument de dimension.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+<strong>A5.</strong>
+<div class="enonce">Expliquer pourquoi l'irréductibilité de $X^5-2$ sur $\mathbb Q$ ne suffit pas, à elle seule, à comprendre toutes les symétries de ses racines.</div>
+<div class="sol">
+<p>Par Eisenstein ($p=2$), $X^5-2$ est irréductible sur $\mathbb Q$ : cela garantit que toutes ses racines sont « algébriquement équivalentes » sur $\mathbb Q$, et que $[\mathbb Q(\sqrt[5]2):\mathbb Q]=5$.</p>
+<p>Mais les cinq racines complexes sont $\sqrt[5]2,\ \zeta\sqrt[5]2,\ \zeta^2\sqrt[5]2,\ \zeta^3\sqrt[5]2,\ \zeta^4\sqrt[5]2$, où $\zeta=e^{2i\pi/5}$. L'irréductibilité ne dit rien sur la <em>position relative</em> de ces racines, qui fait intervenir $\zeta$. Or $\zeta\notin\mathbb Q(\sqrt[5]2)$ : le corps engendré par une seule racine réelle ne contient pas les autres.</p>
+<p>Comprendre les symétries demande le <strong>corps de décomposition</strong> $\mathbb Q(\sqrt[5]2,\zeta)$, de degré $20$ sur $\mathbb Q$, et son groupe de Galois (d'ordre $20$, non abélien). L'irréductibilité ne capte que le degré $5$ d'<em>une</em> racine, pas l'architecture globale.</p>
+<div class="lien"><span class="label">Annonce du programme.</span> C'est toute la différence entre <em>adjoindre une racine</em> (corps de rupture, degré $5$) et <em>adjoindre toutes les racines</em> (corps de décomposition, degré $20$). Cette distinction, esquissée ici, structure les chapitres 5 à 8 et culmine dans la correspondance de Galois.</div>
 </div>
+</div>
+
 </body>
 </html>

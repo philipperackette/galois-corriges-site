@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-
 <html lang="fr">
 <head>
 <meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Corrigés — Chapitre 1 : Groupes, symétries et calculs</title>
 <script>
     window.MathJax = {
@@ -13,265 +13,263 @@
 <script async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <style>
 :root{
-  --navy:#0e1a44;
-  --gold:#c79b2b;
-  --cream:#f4f0e7;
-  --card:#fffdf8;
-  --ink:#1f1f1f;
-  --muted:#555;
-  --teal:#0b6058;
-  --blue:#1d4f91;
-  --garnet:#8a1d2c;
-  --line:#d8d0c1;
-  --soft-blue:#f2f6ff;
-  --soft-gold:#fff7df;
-  --soft-green:#eefbf7;
+  --navy:#0e1a44;--gold:#c79b2b;--cream:#f4f0e7;--card:#fffdf8;--ink:#1f1f1f;
+  --muted:#555;--teal:#0b6058;--blue:#1d4f91;--garnet:#8a1d2c;--line:#d8d0c1;
+  --soft-blue:#f2f6ff;--soft-gold:#fff7df;--soft-green:#eefbf7;
 }
 *{box-sizing:border-box}
 html{background:var(--cream)}
 body{
-  margin:0;
-  padding:0 0 48px;
-  max-width:none;
+  margin:0;padding:0 0 48px;max-width:none;
   font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-  line-height:1.62;
-  color:var(--ink);
-  background:var(--cream);
-  hyphens:auto;
+  line-height:1.62;color:var(--ink);background:var(--cream);hyphens:auto;
 }
 body::before{
-  content:"Corrigés pédagogiques";
-  display:block;
-  padding:28px clamp(22px,5vw,64px) 26px;
-  color:#fff;
-  background:var(--navy);
-  border-bottom:7px solid var(--gold);
-  font-size:1.95rem;
-  line-height:1.15;
-  font-weight:800;
-  letter-spacing:-.02em;
-  box-shadow:0 2px 10px rgba(0,0,0,.18);
+  content:"Corrigés pédagogiques";display:block;
+  padding:28px clamp(22px,5vw,64px) 26px;color:#fff;background:var(--navy);
+  border-bottom:7px solid var(--gold);font-size:1.95rem;line-height:1.15;
+  font-weight:800;letter-spacing:-.02em;box-shadow:0 2px 10px rgba(0,0,0,.18);
 }
-h1{
-  max-width:1120px;
-  margin:32px auto 22px;
-  padding:0 clamp(18px,3vw,28px);
-  color:var(--navy);
-  font-size:clamp(1.9rem,3.2vw,3rem);
-  line-height:1.14;
-  font-weight:800;
-  letter-spacing:-.035em;
-}
-h2{
-  max-width:1120px;
-  margin:42px auto 18px;
-  padding:0 clamp(18px,3vw,28px) 10px;
-  color:var(--teal);
-  border-bottom:2px solid var(--line);
-  font-size:1.55rem;
-  line-height:1.25;
-}
+h1{max-width:1120px;margin:32px auto 22px;padding:0 clamp(18px,3vw,28px);
+  color:var(--navy);font-size:clamp(1.9rem,3.2vw,3rem);line-height:1.14;
+  font-weight:800;letter-spacing:-.035em;}
+h2{max-width:1120px;margin:42px auto 18px;padding:0 clamp(18px,3vw,28px) 10px;
+  color:var(--teal);border-bottom:2px solid var(--line);font-size:1.55rem;line-height:1.25;}
 p, ol, ul{max-width:1120px;margin-left:auto;margin-right:auto}
-.intro,.mode{
-  max-width:1120px;
-  margin:20px auto;
-  padding:22px 24px;
-  background:var(--card);
-  border:1px solid var(--line);
-  border-left:7px solid var(--gold);
-  border-radius:14px;
-  box-shadow:0 2px 12px rgba(14,26,68,.08);
-}
+.intro,.mode{max-width:1120px;margin:20px auto;padding:22px 24px;background:var(--card);
+  border:1px solid var(--line);border-left:7px solid var(--gold);border-radius:14px;
+  box-shadow:0 2px 12px rgba(14,26,68,.08);}
 .mode{border-left-color:var(--blue);background:#f8fbff}
 .intro p,.mode p{margin:0;max-width:none}
-ol{
-  max-width:1120px;
-  margin-top:26px;
-  padding:22px 30px 22px 52px;
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:16px;
-  box-shadow:0 2px 12px rgba(14,26,68,.08);
-}
-li{margin:.38em 0}
-.exo{
-  max-width:1120px;
-  margin:24px auto 30px;
-  padding:24px 26px;
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:16px;
-  box-shadow:0 2px 12px rgba(14,26,68,.10);
-}
+.exo{max-width:1120px;margin:24px auto 30px;padding:24px 26px;background:var(--card);
+  border:1px solid var(--line);border-radius:16px;box-shadow:0 2px 12px rgba(14,26,68,.10);}
 .exo>strong:first-child{color:var(--garnet);font-weight:800;font-size:1.05em}
-.sol{margin-left:0;margin-top:14px}
-.methode,.vigilance,.conclusion{
-  margin:14px 0;
-  padding:14px 16px;
-  border-radius:10px;
-  border:1px solid transparent;
+.enonce{margin:2px 0 14px}
+.sol{margin-left:0;margin-top:6px}
+.sol p{max-width:none;margin:.55em 0}
+.methode,.vigilance,.conclusion,.lien{
+  margin:14px 0;padding:13px 16px;border-radius:10px;border:1px solid transparent;
 }
 .methode{background:var(--soft-blue);border-left:5px solid var(--blue)}
 .vigilance{background:var(--soft-gold);border-left:5px solid var(--gold)}
 .conclusion{background:var(--soft-green);border-left:5px solid var(--teal)}
+.lien{background:#f6f1fb;border-left:5px solid #6b3fa0}
 .label{font-weight:800;color:var(--navy)}
-code{
-  background:#fff;
-  border:1px solid var(--line);
-  padding:.1em .28em;
-  border-radius:5px;
-}
-a{color:var(--teal);font-weight:750;text-decoration-thickness:.08em;text-underline-offset:.16em}
-a:hover{color:var(--garnet)}
-@media (max-width:720px){
-  body::before{font-size:1.45rem;padding:22px 18px 20px}
-  h1{font-size:1.7rem;margin-top:26px}
-  .intro,.mode,.exo,ol{margin-left:14px;margin-right:14px}
-  .exo{padding:18px}
-}
-
-body.index::before{content:"Corrigés pédagogiques"}
-body.chapter::before{content:"Théorie de Galois"}
+.lien .label{color:#5a2d8a}
+.ref{color:#5a2d8a;font-weight:600}
+code{background:#fff;border:1px solid var(--line);border-radius:6px;padding:.05em .35em;font-size:.92em}
+.qed{color:var(--teal);font-weight:700}
 </style>
 </head>
-<body class="chapter">
-<h1>Corrigés — Chapitre 1 : Groupes, symétries et calculs</h1><div class="intro"><p><span class="label">Objectif pédagogique.</span> Les corrigés détaillent les vérifications de groupe, les calculs dans les groupes de permutations et les premières preuves abstraites. L’idée centrale est toujours la même : identifier clairement la loi, le neutre, les inverses et les propriétés de stabilité.</p></div><div class="mode"><p><span class="label">Mode de lecture.</span> Pour chaque exercice, lire d’abord la méthode, refaire le calcul sans regarder la solution, puis comparer avec le point de vigilance.</p></div>
+<body>
+<div style="max-width:1120px;margin:12px auto 0;padding:0 clamp(18px,3vw,28px)">
+<a href="index.html" style="color:#8a2d18;text-decoration:none;font-size:.92rem">&larr; Retour à l'index des corrigés</a>
+</div>
+
+<h1>Chapitre 1 — Groupes, symétries et calculs</h1>
+
+<div class="mode">
+<p><strong>Comment lire ces corrigés.</strong> Chaque solution est rédigée comme une copie aboutie, et signale en violet les résultats du chapitre 1 qu'elle mobilise (définitions, propositions, théorème de Lagrange). On travaille avec la convention de composition du cours : pour deux permutations, $(\sigma\tau)(x)=\sigma(\tau(x))$, c'est-à-dire « $\tau$ d'abord, puis $\sigma$ ». Avant de lire une solution, il est vivement conseillé d'avoir cherché l'exercice : le corrigé n'a de valeur que pour confirmer ou redresser un raisonnement déjà esquissé.</p>
+</div>
+
+<!-- ============================================================ -->
 <h2>✏️ Vérification</h2>
+
 <div class="exo">
-<strong>V1.</strong> Montrer que $(\mathbb Z, +)$ est un groupe abélien.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      • L’addition des entiers est associative : $(a+b)+c = a+(b+c)$ pour tous $a,b,c\in\mathbb Z$.<br/>
-      • L’élément $0$ est neutre : $a+0 = 0+a = a$ pour tout $a$.<br/>
-      • Tout $a$ possède un inverse additif : $a + (-a) = 0$.<br/>
-      • La loi $+$ est commutative : $a+b = b+a$.<br/>
-      Ainsi $(\mathbb Z,+)$ est bien un groupe abélien.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+<strong>V1.</strong>
+<div class="enonce">Montrer que $(\mathbb Z, +)$ est un groupe abélien.</div>
+<div class="sol">
+<p>On vérifie les axiomes de la <span class="ref">définition « Groupe »</span>, puis la commutativité de la <span class="ref">définition « Groupe abélien »</span>.</p>
+<p><strong>Loi interne.</strong> Pour tous $a,b\in\mathbb Z$, on a $a+b\in\mathbb Z$ : la somme de deux entiers est un entier.</p>
+<p><strong>Associativité.</strong> Pour tous $a,b,c\in\mathbb Z$, $(a+b)+c=a+(b+c)$ ; c'est une propriété connue de l'addition des entiers.</p>
+<p><strong>Élément neutre.</strong> L'entier $0$ vérifie $a+0=0+a=a$ pour tout $a$. C'est le neutre.</p>
+<p><strong>Inverse (ici opposé).</strong> Pour $a\in\mathbb Z$, l'entier $-a\in\mathbb Z$ vérifie $a+(-a)=(-a)+a=0$. Tout élément admet donc un symétrique.</p>
+<p><strong>Commutativité.</strong> Pour tous $a,b\in\mathbb Z$, $a+b=b+a$.</p>
+<p>Les quatre premiers points établissent que $(\mathbb Z,+)$ est un groupe ; le dernier qu'il est abélien. <span class="qed">$\square$</span></p>
 </div>
+</div>
+
 <div class="exo">
-<strong>V2.</strong> Montrer que $\mathbb Q^\times$, muni de la multiplication, est un groupe abélien.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      • Le produit de deux rationnels non nuls est un rationnel non nul : la loi est interne.<br/>
-      • La multiplication est associative et commutative dans $\mathbb Q$.<br/>
-      • L’élément $1$ est neutre pour la multiplication.<br/>
-      • Tout $a \in \mathbb Q^\times$ a pour inverse $\frac{1}{a}$, qui est encore un rationnel non nul.<br/>
-      Donc $\mathbb Q^\times$ est un groupe abélien.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+<strong>V2.</strong>
+<div class="enonce">Montrer que $\mathbb Q^\times=\mathbb Q\setminus\{0\}$, muni de la multiplication, est un groupe abélien.</div>
+<div class="sol">
+<p><strong>Loi interne.</strong> Le produit de deux rationnels non nuls est un rationnel non nul : si $x,y\neq 0$ alors $xy\neq 0$ (un corps est intègre, on y reviendra au chapitre 2). Donc $\times$ est bien une loi interne sur $\mathbb Q^\times$.</p>
+<p><strong>Associativité.</strong> Le produit des rationnels est associatif.</p>
+<p><strong>Neutre.</strong> $1\in\mathbb Q^\times$ vérifie $1\cdot x=x\cdot 1=x$.</p>
+<p><strong>Inverse.</strong> Pour $x=p/q\in\mathbb Q^\times$ (avec $p,q\neq 0$), l'élément $q/p$ appartient à $\mathbb Q^\times$ et vérifie $x\cdot(q/p)=1$.</p>
+<p><strong>Commutativité.</strong> $xy=yx$ pour tous rationnels.</p>
+<p>Ainsi $(\mathbb Q^\times,\times)$ est un groupe abélien. <span class="qed">$\square$</span></p>
+<div class="vigilance"><span class="label">Point de vigilance.</span> Il est indispensable d'exclure $0$ : il n'a pas d'inverse multiplicatif. C'est précisément pour cela qu'on note $\mathbb Q^\times$ et non $\mathbb Q$. L'ensemble $(\mathbb Q,\times)$ tout entier n'est <em>pas</em> un groupe.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>V3.</strong> Dans $S_3$, calculer $(12)(23)$ et $(23)(12)$ (composition de droite à gauche).<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Fixer une convention de calcul, effectuer les images ou les réductions explicitement, puis seulement ensuite reconnaître l’objet obtenu.</div>
-      Rappel : on applique d’abord la permutation de droite, puis celle de gauche.<br/>
-      • $(12)(23)$ : on suit les images.<br/>
-      $1 \xmapsto{(23)} 1 \xmapsto{(12)} 2$,<br/>
-      $2 \xmapsto{(23)} 3 \xmapsto{(12)} 3$,<br/>
-      $3 \xmapsto{(23)} 2 \xmapsto{(12)} 1$.<br/>
-      Donc $(12)(23) = (1\,2\,3) = (123)$.<br/><br/>
-      • $(23)(12)$ :<br/>
-      $1 \xmapsto{(12)} 2 \xmapsto{(23)} 3$,<br/>
-      $2 \xmapsto{(12)} 1 \xmapsto{(23)} 1$,<br/>
-      $3 \xmapsto{(12)} 3 \xmapsto{(23)} 2$.<br/>
-      Donc $(23)(12) = (1\,3\,2) = (132)$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Attention à l’ordre de composition : ici les permutations se composent de droite à gauche.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+<strong>V3.</strong>
+<div class="enonce">Dans $S_3$, calculer $(1\,2)(2\,3)$ et $(2\,3)(1\,2)$ (composition de droite à gauche).</div>
+<div class="sol">
+<p>Convention du cours : dans un produit, on applique d'abord la permutation de droite, puis celle de gauche.</p>
+<p><strong>Calcul de $(1\,2)(2\,3)$.</strong> On suit chaque élément :</p>
+<p style="margin-left:1.5em">
+$1 \xmapsto{(2\,3)} 1 \xmapsto{(1\,2)} 2$,<br/>
+$2 \xmapsto{(2\,3)} 3 \xmapsto{(1\,2)} 3$,<br/>
+$3 \xmapsto{(2\,3)} 2 \xmapsto{(1\,2)} 1$.
+</p>
+<p>L'image envoie $1\mapsto 2\mapsto 3\mapsto 1$, soit $(1\,2)(2\,3)=(1\,2\,3)$.</p>
+<p><strong>Calcul de $(2\,3)(1\,2)$.</strong></p>
+<p style="margin-left:1.5em">
+$1 \xmapsto{(1\,2)} 2 \xmapsto{(2\,3)} 3$,<br/>
+$2 \xmapsto{(1\,2)} 1 \xmapsto{(2\,3)} 1$,<br/>
+$3 \xmapsto{(1\,2)} 3 \xmapsto{(2\,3)} 2$.
+</p>
+<p>On obtient $1\mapsto 3$, $2\mapsto 1$, $3\mapsto 2$, soit $(2\,3)(1\,2)=(1\,3\,2)$.</p>
+<div class="conclusion"><span class="label">Ce que l'exemple montre.</span> $(1\,2)(2\,3)=(1\,2\,3)$ mais $(2\,3)(1\,2)=(1\,3\,2)$ : les deux résultats diffèrent. C'est la preuve concrète que $S_3$ <strong>n'est pas abélien</strong>, le premier groupe non commutatif du livre. On remarque au passage la relation $sr=r^{-1}s$ caractéristique des groupes diédraux.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>V4.</strong> Donner l’ordre des éléments $(12)$, $(123)$ et $\mathrm{Id}$ dans $S_3$.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Isoler la définition utile, écrire les hypothèses sous forme exploitable, puis conclure par une phrase qui répond exactement à la question.</div>
-      • $(12)^2 = \mathrm{Id}$ ⇒ ordre $2$.<br/>
-      • $(123)^3 = \mathrm{Id}$ (et $(123)^2=(132) \neq \mathrm{Id}$) ⇒ ordre $3$.<br/>
-      • $\mathrm{Id}$ est l’identité : ordre $1$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Attention à l’ordre de composition : ici les permutations se composent de droite à gauche.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+<strong>V4.</strong>
+<div class="enonce">Donner l'ordre des éléments $(1\,2)$, $(1\,2\,3)$ et $\mathrm{Id}$ dans $S_3$.</div>
+<div class="sol">
+<p>L'ordre d'un élément est le plus petit entier $k\geq 1$ tel que $g^k=e$ (<span class="ref">définition « Ordre d'un élément »</span>). Pour une permutation, c'est le ppcm des longueurs de ses cycles.</p>
+<p>$\bullet$ $(1\,2)$ est une transposition : $(1\,2)^2=\mathrm{Id}$, et $(1\,2)\neq\mathrm{Id}$. Son ordre est $2$.</p>
+<p>$\bullet$ $(1\,2\,3)$ est un $3$-cycle : $(1\,2\,3)^2=(1\,3\,2)\neq\mathrm{Id}$ et $(1\,2\,3)^3=\mathrm{Id}$. Son ordre est $3$.</p>
+<p>$\bullet$ $\mathrm{Id}$ est le neutre : son ordre est $1$ (c'est le seul élément d'ordre $1$).</p>
+<div class="lien"><span class="label">Lien avec le cours.</span> Le théorème de Lagrange impose que l'ordre d'un élément divise $|S_3|=6$. On retrouve bien $1,2,3\mid 6$. Aucun élément de $S_3$ n'est d'ordre $6$ : $S_3$ n'est donc pas cyclique.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>V5.</strong> Montrer que $2\mathbb Z$ est un sous-groupe de $(\mathbb Z,+)$.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      • $0 = 2\cdot0 \in 2\mathbb Z$.<br/>
-      • Si $2m, 2n \in 2\mathbb Z$, alors $2m+2n = 2(m+n) \in 2\mathbb Z$.<br/>
-      • L’opposé de $2m$ est $-2m = 2(-m) \in 2\mathbb Z$.<br/>
-      Ces trois conditions montrent que $2\mathbb Z \le (\mathbb Z,+)$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+<strong>V5.</strong>
+<div class="enonce">Montrer que $2\mathbb Z$ est un sous-groupe de $(\mathbb Z,+)$.</div>
+<div class="sol">
+<p>On applique le <span class="ref">critère pratique de sous-groupe</span> : une partie $H$ non vide est un sous-groupe si elle est stable par produit et par passage à l'inverse (ici : par somme et par opposé).</p>
+<p>$\bullet$ <strong>Non vide.</strong> $0=2\cdot 0\in 2\mathbb Z$.</p>
+<p>$\bullet$ <strong>Stable par somme.</strong> Si $2m,2n\in 2\mathbb Z$, alors $2m+2n=2(m+n)\in 2\mathbb Z$.</p>
+<p>$\bullet$ <strong>Stable par opposé.</strong> L'opposé de $2m$ est $-2m=2(-m)\in 2\mathbb Z$.</p>
+<p>Donc $2\mathbb Z\leq(\mathbb Z,+)$. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Lien avec le cours.</span> La <span class="ref">proposition « Sous-groupes de $(\mathbb Z,+)$ »</span> affirme que tout sous-groupe de $\mathbb Z$ est de la forme $n\mathbb Z$ pour un unique $n\geq 0$. L'exercice en vérifie le cas $n=2$. C'est ce résultat qui fonde, au chapitre 2, la description des idéaux de $\mathbb Z$.</div>
 </div>
+</div>
+
+<!-- ============================================================ -->
 <h2>🔧 Structurants</h2>
+
 <div class="exo">
-<strong>S1.</strong> Unicité de l’élément neutre dans un groupe.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Isoler la définition utile, écrire les hypothèses sous forme exploitable, puis conclure par une phrase qui répond exactement à la question.</div>
-      Soient $e$ et $e'$ deux éléments neutres. Alors $e = e\,e'$ (car $e'$ est neutre) et $e\,e' = e'$ (car $e$ est neutre). Donc $e = e'$. L’élément neutre est unique.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+<strong>S1.</strong>
+<div class="enonce">Unicité de l'élément neutre dans un groupe.</div>
+<div class="sol">
+<p>C'est la première moitié de la <span class="ref">proposition « Unicité du neutre et de l'inverse »</span>. Soient $e$ et $e'$ deux éléments neutres de $G$.</p>
+<p>Puisque $e'$ est neutre, $e=e\,e'$. Puisque $e$ est neutre, $e\,e'=e'$. En combinant, $e=e\,e'=e'$.</p>
+<p>Le neutre est donc unique. <span class="qed">$\square$</span></p>
+<div class="vigilance"><span class="label">Finesse de l'argument.</span> On évalue le produit $e\,e'$ de deux façons, en utilisant <em>chaque</em> élément dans son rôle de neutre. Cet argument n'utilise ni l'associativité ni l'existence d'inverses : il vaut dans tout magma unifère.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>S2.</strong> Unicité de l’inverse d’un élément dans un groupe.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Isoler la définition utile, écrire les hypothèses sous forme exploitable, puis conclure par une phrase qui répond exactement à la question.</div>
-      Soit $x \in G$ et supposons qu’il existe $y,z \in G$ tels que $xy = yx = e$ et $xz = zx = e$. Alors :
-      $$ y = y\,e = y\,(x z) = (y x) z = e\,z = z.$$
-      Donc l’inverse est unique.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+<strong>S2.</strong>
+<div class="enonce">Unicité de l'inverse d'un élément dans un groupe.</div>
+<div class="sol">
+<p>Seconde moitié de la <span class="ref">proposition « Unicité du neutre et de l'inverse »</span>. Soit $x\in G$, et supposons que $y$ et $z$ soient deux inverses de $x$ : $xy=yx=e$ et $xz=zx=e$.</p>
+<p>On calcule, en s'appuyant sur l'associativité :</p>
+<p style="text-align:center">$y=y\,e=y\,(xz)=(yx)\,z=e\,z=z.$</p>
+<p>Donc $y=z$ : l'inverse est unique. <span class="qed">$\square$</span></p>
+<div class="vigilance"><span class="label">Où sert l'associativité ?</span> Tout repose sur l'égalité $y(xz)=(yx)z$. Sans associativité, l'unicité de l'inverse tombe en défaut. C'est l'unicité prouvée ici qui légitime la notation $x^{-1}$.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>S3.</strong> L’image d’un morphisme est un sous-groupe.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Isoler la définition utile, écrire les hypothèses sous forme exploitable, puis conclure par une phrase qui répond exactement à la question.</div>
-      Soit $f : G \to G'$ un morphisme de groupes. Notons $H = f(G)$.<br/>
-      • $e_{G'} = f(e_G) \in H$.<br/>
-      • Si $a,b \in H$, il existe $x,y \in G$ tels que $a = f(x), b = f(y)$. Alors $ab = f(x)f(y) = f(xy) \in H$.<br/>
-      • Pour $a = f(x) \in H$, $a^{-1} = f(x)^{-1} = f(x^{-1}) \in H$ car $x^{-1} \in G$.<br/>
-      Donc $H$ est un sous-groupe de $G'$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+<strong>S3.</strong>
+<div class="enonce">L'image d'un morphisme est un sous-groupe.</div>
+<div class="sol">
+<p>Soit $f:G\to G'$ un morphisme de groupes (<span class="ref">définition « Morphisme de groupes »</span>) et $H=f(G)=\mathrm{Im}\,f$. On applique le <span class="ref">critère pratique de sous-groupe</span> à $H\subseteq G'$.</p>
+<p>$\bullet$ <strong>Non vide.</strong> Par la <span class="ref">proposition « Propriétés immédiates des morphismes »</span>, $f(e_G)=e_{G'}$, donc $e_{G'}\in H$.</p>
+<p>$\bullet$ <strong>Stable par produit.</strong> Soient $a,b\in H$ ; il existe $x,y\in G$ tels que $a=f(x)$, $b=f(y)$. Alors $ab=f(x)f(y)=f(xy)\in H$.</p>
+<p>$\bullet$ <strong>Stable par inverse.</strong> Pour $a=f(x)\in H$, on a $a^{-1}=f(x)^{-1}=f(x^{-1})\in H$, toujours par les propriétés des morphismes.</p>
+<p>Donc $\mathrm{Im}\,f\leq G'$. <span class="qed">$\square$</span></p>
 </div>
+</div>
+
 <div class="exo">
-<strong>S4.</strong> Le noyau d’un morphisme de groupes est un sous-groupe distingué.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Isoler la définition utile, écrire les hypothèses sous forme exploitable, puis conclure par une phrase qui répond exactement à la question.</div>
-      Soit $f: G \to G'$ un morphisme. On sait que $\ker f \le G$ (exercice S3). Montrons qu’il est distingué.<br/>
-      Soit $n \in \ker f$ et $g \in G$. Alors
-      $$ f(g n g^{-1}) = f(g) f(n) f(g)^{-1} = f(g)\, e_{G'}\, f(g)^{-1} = e_{G'}.$$
-      Donc $g n g^{-1} \in \ker f$, ce qui signifie exactement $\ker f \triangleleft G$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+<strong>S4.</strong>
+<div class="enonce">Le noyau d'un morphisme de groupes est un sous-groupe distingué.</div>
+<div class="sol">
+<p>C'est la <span class="ref">proposition « Le noyau est distingué »</span>. Soit $f:G\to G'$ un morphisme et $\ker f=\{g\in G\mid f(g)=e_{G'}\}$.</p>
+<p><strong>Étape 1 : $\ker f$ est un sous-groupe.</strong> On vérifie le critère. $f(e_G)=e_{G'}$ donc $e_G\in\ker f$. Si $a,b\in\ker f$, alors $f(ab)=f(a)f(b)=e_{G'}e_{G'}=e_{G'}$, donc $ab\in\ker f$. Enfin $f(a^{-1})=f(a)^{-1}=e_{G'}$, donc $a^{-1}\in\ker f$.</p>
+<p><strong>Étape 2 : $\ker f$ est distingué.</strong> Par la <span class="ref">définition « Sous-groupe distingué »</span>, il faut montrer $gng^{-1}\in\ker f$ pour tous $g\in G$ et $n\in\ker f$. Or</p>
+<p style="text-align:center">$f(gng^{-1})=f(g)\,f(n)\,f(g)^{-1}=f(g)\,e_{G'}\,f(g)^{-1}=e_{G'}.$</p>
+<p>Donc $gng^{-1}\in\ker f$, ce qui signifie exactement $\ker f\trianglelefteq G$. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Pourquoi c'est central.</span> Ce résultat est le pivot de toute la théorie : les sous-groupes distingués sont <em>exactement</em> les noyaux de morphismes. Combiné à la construction du quotient (§1.D), il prépare le premier théorème d'isomorphisme, puis, transposé aux corps, toute la correspondance de Galois.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>S5.</strong> Si $g$ est d’ordre $n$, montrer que $g^k = e \iff n \mid k$.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      ($\Leftarrow$) Si $n \mid k$, alors $k = qn$, donc $g^k = (g^n)^q = e^q = e$.<br/>
-      ($\Rightarrow$) Supposons $g^k = e$. Division euclidienne : $k = qn + r$ avec $0 \le r &lt; n$.
-      Alors $e = g^k = g^{qn+r} = (g^n)^q g^r = g^r$.
-      Par minimalité de $n$, $r = 0$, donc $n \mid k$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+<strong>S5.</strong>
+<div class="enonce">Si $g$ est d'ordre $n$, montrer que $g^k=e\iff n\mid k$.</div>
+<div class="sol">
+<p>Notons $n$ l'ordre de $g$, c'est-à-dire le plus petit entier $\geq 1$ tel que $g^n=e$.</p>
+<p>($\Leftarrow$) Si $n\mid k$, écrivons $k=qn$. Alors $g^k=(g^n)^q=e^q=e$.</p>
+<p>($\Rightarrow$) Supposons $g^k=e$. La division euclidienne de $k$ par $n$ donne $k=qn+r$ avec $0\leq r<n$. Alors</p>
+<p style="text-align:center">$e=g^k=g^{qn+r}=(g^n)^q\,g^r=e\,g^r=g^r.$</p>
+<p>Ainsi $g^r=e$ avec $0\leq r<n$. Par <strong>minimalité</strong> de $n$, la seule possibilité est $r=0$, donc $n\mid k$. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Lien avec le cours.</span> Cette caractérisation est utilisée dans la <span class="ref">proposition « Structure des groupes cycliques »</span> : elle dit que l'application $k\mapsto g^k$ se factorise en un isomorphisme $\mathbb Z/n\mathbb Z\xrightarrow{\sim}\langle g\rangle$. L'argument de division euclidienne est le même que celui qui décrit les sous-groupes de $\mathbb Z$ (V5).</div>
 </div>
+</div>
+
+<!-- ============================================================ -->
 <h2>🚀 Approfondissement</h2>
+
 <div class="exo">
-<strong>A1.</strong> Tout groupe cyclique est abélien.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Isoler la définition utile, écrire les hypothèses sous forme exploitable, puis conclure par une phrase qui répond exactement à la question.</div>
-      Soit $G = \langle a \rangle$. Deux éléments quelconques de $G$ s’écrivent $a^m$ et $a^n$, avec $m,n \in \mathbb Z$. Alors
-      $$ a^m a^n = a^{m+n} = a^{n+m} = a^n a^m.$$
-      Le groupe est donc abélien.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+<strong>A1.</strong>
+<div class="enonce">Tout groupe cyclique est abélien.</div>
+<div class="sol">
+<p>Soit $G=\langle a\rangle$ un groupe monogène (<span class="ref">définition « Groupe monogène, groupe cyclique »</span>). Par la <span class="ref">description du sous-groupe engendré par un élément</span>, tout élément de $G$ s'écrit $a^k$ pour un certain $k\in\mathbb Z$.</p>
+<p>Soient $a^m,a^n\in G$. Alors</p>
+<p style="text-align:center">$a^m a^n=a^{m+n}=a^{n+m}=a^n a^m,$</p>
+<p>l'égalité centrale venant de la commutativité de l'addition dans $\mathbb Z$. Donc $G$ est abélien. <span class="qed">$\square$</span></p>
+<div class="vigilance"><span class="label">Attention à la réciproque.</span> Elle est fausse : le groupe de Klein $V_4$ est abélien mais pas cyclique (tous ses éléments non neutres sont d'ordre $2$). « Cyclique » est strictement plus fort qu'« abélien ».</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>A2.</strong> Tout sous-groupe d’un groupe cyclique est cyclique.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Isoler la définition utile, écrire les hypothèses sous forme exploitable, puis conclure par une phrase qui répond exactement à la question.</div>
-      Soit $G = \langle a \rangle$ un groupe cyclique, et $H \le G$. Si $H = \{e\}$, il est cyclique. Sinon, soit $d$ le plus petit entier $&gt;0$ tel que $a^d \in H$. Montrons $H = \langle a^d \rangle$.<br/>
-      • $\langle a^d \rangle \subset H$ car $H$ est un sous-groupe contenant $a^d$.<br/>
-      • Soit $h = a^k \in H$. Division euclidienne : $k = qd + r$, $0 \le r &lt; d$. Alors $a^r = a^k (a^d)^{-q} \in H$. Par minimalité de $d$, $r=0$, donc $k = qd$ et $h = (a^d)^q \in \langle a^d \rangle$.<br/>
-      Ainsi $H$ est cyclique (engendré par $a^d$).
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+<strong>A2.</strong>
+<div class="enonce">Tout sous-groupe d'un groupe cyclique est cyclique.</div>
+<div class="sol">
+<p>Soit $G=\langle a\rangle$ cyclique et $H\leq G$. Si $H=\{e\}$, il est cyclique (engendré par $e$). Supposons $H\neq\{e\}$.</p>
+<p><strong>Choix du générateur.</strong> L'ensemble $\{k\geq 1\mid a^k\in H\}$ est une partie non vide de $\mathbb N^\ast$ (si $a^k\in H$ avec $k\neq 0$, alors $a^{-k}=(a^k)^{-1}\in H$, donc on peut prendre $k>0$). Soit $d$ son plus petit élément. Montrons $H=\langle a^d\rangle$.</p>
+<p>$\bullet$ <strong>$\langle a^d\rangle\subseteq H$</strong> : $H$ est un sous-groupe contenant $a^d$, donc toutes ses puissances.</p>
+<p>$\bullet$ <strong>$H\subseteq\langle a^d\rangle$</strong> : soit $h=a^k\in H$. Division euclidienne $k=qd+r$, $0\leq r<d$. Alors $a^r=a^{k-qd}=a^k(a^d)^{-q}\in H$. Par minimalité de $d$, on a $r=0$, donc $h=(a^d)^q\in\langle a^d\rangle$.</p>
+<p>Ainsi $H=\langle a^d\rangle$ est cyclique. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Filiation.</span> C'est l'exacte transposition multiplicative de la <span class="ref">proposition « Sous-groupes de $(\mathbb Z,+)$ »</span> ($H=d\mathbb Z$). Le même schéma — choisir le plus petit exposant positif, puis diviser — reviendra pour montrer que $K[X]$ est principal (chapitre 3).</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>A3.</strong> Décrire tous les sous-groupes de $S_3$.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Lister d’abord les candidats imposés par les théorèmes de structure ou de degré, puis vérifier que la liste est complète.</div>
-      $S_3 = \{ \mathrm{Id}, (12), (13), (23), (123), (132) \}$.<br/>
-      • Sous-groupe trivial : $\{\mathrm{Id}\}$.<br/>
-      • Sous-groupes d’ordre $2$ (engendrés par une transposition) :<br/>
-      $\{ \mathrm{Id}, (12) \}$, $\{ \mathrm{Id}, (13) \}$, $\{ \mathrm{Id}, (23) \}$.<br/>
-      • Sous-groupe d’ordre $3$ (groupe alterné $A_3$) : $\{ \mathrm{Id}, (123), (132) \}$.<br/>
-      • $S_3$ lui-même, d’ordre $6$.<br/>
-      Ce sont les six sous-groupes de $S_3$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Attention à l’ordre de composition : ici les permutations se composent de droite à gauche.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+<strong>A3.</strong>
+<div class="enonce">Décrire tous les sous-groupes de $S_3$.</div>
+<div class="sol">
+<p>On a $S_3=\{\mathrm{Id},(1\,2),(1\,3),(2\,3),(1\,2\,3),(1\,3\,2)\}$, d'ordre $6$. Par le <strong>théorème de Lagrange</strong>, l'ordre de tout sous-groupe divise $6$ : il vaut $1,2,3$ ou $6$. On les passe en revue.</p>
+<p>$\bullet$ <strong>Ordre $1$ :</strong> seul $\{\mathrm{Id}\}$.</p>
+<p>$\bullet$ <strong>Ordre $2$ :</strong> un tel sous-groupe est engendré par un élément d'ordre $2$, c'est-à-dire une transposition. Il y en a trois :</p>
+<p style="margin-left:1.5em">$\{\mathrm{Id},(1\,2)\}$, $\{\mathrm{Id},(1\,3)\}$, $\{\mathrm{Id},(2\,3)\}$.</p>
+<p>$\bullet$ <strong>Ordre $3$ :</strong> engendré par un élément d'ordre $3$. Les deux $3$-cycles $(1\,2\,3)$ et $(1\,3\,2)$ sont inverses l'un de l'autre et engendrent le même sous-groupe : $A_3=\{\mathrm{Id},(1\,2\,3),(1\,3\,2)\}$. C'est le seul sous-groupe d'ordre $3$.</p>
+<p>$\bullet$ <strong>Ordre $6$ :</strong> $S_3$ tout entier.</p>
+<p>Au total, <strong>six sous-groupes</strong>. Ce dénombrement est la <span class="ref">proposition « Sous-groupes propres de $S_3$ »</span>.</p>
+<div class="lien"><span class="label">Pour aller plus loin.</span> Parmi eux, seuls $\{\mathrm{Id}\}$, $A_3$ et $S_3$ sont distingués : les trois sous-groupes d'ordre $2$ ne le sont pas (l'applet « treillis de sous-groupes » le visualise, et la conjugaison $(1\,2\,3)(1\,2)(1\,2\,3)^{-1}=(2\,3)$ le confirme). $A_3$ est distingué car d'indice $2$.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>A4.</strong> Le stabilisateur d’un point pour une action de groupe est un sous-groupe.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Isoler la définition utile, écrire les hypothèses sous forme exploitable, puis conclure par une phrase qui répond exactement à la question.</div>
-      Soit un groupe $G$ agissant sur un ensemble $X$, et $x \in X$. Posons $H = \mathrm{Stab}_G(x) = \{g \in G \mid g\cdot x = x\}$.<br/>
-      • $e \cdot x = x \Rightarrow e \in H$.<br/>
-      • Si $g,h \in H$, alors $(gh)\cdot x = g\cdot (h\cdot x) = g\cdot x = x$, donc $gh \in H$.<br/>
-      • Si $g \in H$, $g^{-1}\cdot x = g^{-1}\cdot (g\cdot x) = (g^{-1}g)\cdot x = e\cdot x = x$, donc $g^{-1} \in H$.<br/>
-      Ainsi $H$ est un sous-groupe de $G$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+<strong>A4.</strong>
+<div class="enonce">Le stabilisateur d'un point, pour une action de groupe, est un sous-groupe.</div>
+<div class="sol">
+<p>Soit $G$ agissant sur un ensemble $X$, et $x\in X$. Posons $\mathrm{Stab}_G(x)=\{g\in G\mid g\cdot x=x\}$. On applique le critère de sous-groupe, en utilisant les deux axiomes d'une action : $e\cdot x=x$ et $(gh)\cdot x=g\cdot(h\cdot x)$.</p>
+<p>$\bullet$ <strong>Non vide.</strong> $e\cdot x=x$, donc $e\in\mathrm{Stab}_G(x)$.</p>
+<p>$\bullet$ <strong>Stable par produit.</strong> Si $g,h\in\mathrm{Stab}_G(x)$, alors $(gh)\cdot x=g\cdot(h\cdot x)=g\cdot x=x$, donc $gh\in\mathrm{Stab}_G(x)$.</p>
+<p>$\bullet$ <strong>Stable par inverse.</strong> Si $g\cdot x=x$, on applique $g^{-1}$ : $g^{-1}\cdot(g\cdot x)=g^{-1}\cdot x$, c'est-à-dire $(g^{-1}g)\cdot x=g^{-1}\cdot x$, soit $x=g^{-1}\cdot x$. Donc $g^{-1}\in\mathrm{Stab}_G(x)$.</p>
+<p>Ainsi $\mathrm{Stab}_G(x)\leq G$. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Horizon.</span> Le stabilisateur est la brique de la relation orbite–stabilisateur. Dans la théorie de Galois, le groupe $\mathrm{Gal}(L/K)$ agit sur les racines d'un polynôme ; le stabilisateur d'une racine correspond, par la correspondance de Galois, à un sous-corps intermédiaire (chapitre 8).</div>
 </div>
+</div>
+
 </body>
 </html>

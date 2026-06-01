@@ -1,272 +1,215 @@
 <!DOCTYPE html>
-
 <html lang="fr">
 <head>
 <meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Corrigés — Chapitre 2 : Anneaux, idéaux et corps</title>
 <script>
-    window.MathJax = {
-      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
-      svg: { fontCache: 'global' }
-    };
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }, svg: { fontCache: 'global' } };
   </script>
 <script async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <style>
-:root{
-  --navy:#0e1a44;
-  --gold:#c79b2b;
-  --cream:#f4f0e7;
-  --card:#fffdf8;
-  --ink:#1f1f1f;
-  --muted:#555;
-  --teal:#0b6058;
-  --blue:#1d4f91;
-  --garnet:#8a1d2c;
-  --line:#d8d0c1;
-  --soft-blue:#f2f6ff;
-  --soft-gold:#fff7df;
-  --soft-green:#eefbf7;
-}
-*{box-sizing:border-box}
-html{background:var(--cream)}
-body{
-  margin:0;
-  padding:0 0 48px;
-  max-width:none;
-  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-  line-height:1.62;
-  color:var(--ink);
-  background:var(--cream);
-  hyphens:auto;
-}
-body::before{
-  content:"Corrigés pédagogiques";
-  display:block;
-  padding:28px clamp(22px,5vw,64px) 26px;
-  color:#fff;
-  background:var(--navy);
-  border-bottom:7px solid var(--gold);
-  font-size:1.95rem;
-  line-height:1.15;
-  font-weight:800;
-  letter-spacing:-.02em;
-  box-shadow:0 2px 10px rgba(0,0,0,.18);
-}
-h1{
-  max-width:1120px;
-  margin:32px auto 22px;
-  padding:0 clamp(18px,3vw,28px);
-  color:var(--navy);
-  font-size:clamp(1.9rem,3.2vw,3rem);
-  line-height:1.14;
-  font-weight:800;
-  letter-spacing:-.035em;
-}
-h2{
-  max-width:1120px;
-  margin:42px auto 18px;
-  padding:0 clamp(18px,3vw,28px) 10px;
-  color:var(--teal);
-  border-bottom:2px solid var(--line);
-  font-size:1.55rem;
-  line-height:1.25;
-}
+:root{--navy:#0e1a44;--gold:#c79b2b;--cream:#f4f0e7;--card:#fffdf8;--ink:#1f1f1f;--muted:#555;--teal:#0b6058;--blue:#1d4f91;--garnet:#8a1d2c;--line:#d8d0c1;--soft-blue:#f2f6ff;--soft-gold:#fff7df;--soft-green:#eefbf7;}
+*{box-sizing:border-box}html{background:var(--cream)}
+body{margin:0;padding:0 0 48px;max-width:none;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.62;color:var(--ink);background:var(--cream);hyphens:auto;}
+body::before{content:"Corrigés pédagogiques";display:block;padding:28px clamp(22px,5vw,64px) 26px;color:#fff;background:var(--navy);border-bottom:7px solid var(--gold);font-size:1.95rem;line-height:1.15;font-weight:800;letter-spacing:-.02em;box-shadow:0 2px 10px rgba(0,0,0,.18);}
+h1{max-width:1120px;margin:32px auto 22px;padding:0 clamp(18px,3vw,28px);color:var(--navy);font-size:clamp(1.9rem,3.2vw,3rem);line-height:1.14;font-weight:800;letter-spacing:-.035em;}
+h2{max-width:1120px;margin:42px auto 18px;padding:0 clamp(18px,3vw,28px) 10px;color:var(--teal);border-bottom:2px solid var(--line);font-size:1.55rem;line-height:1.25;}
 p, ol, ul{max-width:1120px;margin-left:auto;margin-right:auto}
-.intro,.mode{
-  max-width:1120px;
-  margin:20px auto;
-  padding:22px 24px;
-  background:var(--card);
-  border:1px solid var(--line);
-  border-left:7px solid var(--gold);
-  border-radius:14px;
-  box-shadow:0 2px 12px rgba(14,26,68,.08);
-}
-.mode{border-left-color:var(--blue);background:#f8fbff}
-.intro p,.mode p{margin:0;max-width:none}
-ol{
-  max-width:1120px;
-  margin-top:26px;
-  padding:22px 30px 22px 52px;
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:16px;
-  box-shadow:0 2px 12px rgba(14,26,68,.08);
-}
-li{margin:.38em 0}
-.exo{
-  max-width:1120px;
-  margin:24px auto 30px;
-  padding:24px 26px;
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:16px;
-  box-shadow:0 2px 12px rgba(14,26,68,.10);
-}
+.mode{max-width:1120px;margin:20px auto;padding:22px 24px;background:#f8fbff;border:1px solid var(--line);border-left:7px solid var(--blue);border-radius:14px;box-shadow:0 2px 12px rgba(14,26,68,.08);}
+.mode p{margin:0;max-width:none}
+.exo{max-width:1120px;margin:24px auto 30px;padding:24px 26px;background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:0 2px 12px rgba(14,26,68,.10);}
 .exo>strong:first-child{color:var(--garnet);font-weight:800;font-size:1.05em}
-.sol{margin-left:0;margin-top:14px}
-.methode,.vigilance,.conclusion{
-  margin:14px 0;
-  padding:14px 16px;
-  border-radius:10px;
-  border:1px solid transparent;
-}
-.methode{background:var(--soft-blue);border-left:5px solid var(--blue)}
+.enonce{margin:2px 0 14px}
+.sol{margin-top:6px}.sol p{max-width:none;margin:.55em 0}
+.vigilance,.conclusion,.lien{margin:14px 0;padding:13px 16px;border-radius:10px;border:1px solid transparent;}
 .vigilance{background:var(--soft-gold);border-left:5px solid var(--gold)}
 .conclusion{background:var(--soft-green);border-left:5px solid var(--teal)}
-.label{font-weight:800;color:var(--navy)}
-code{
-  background:#fff;
-  border:1px solid var(--line);
-  padding:.1em .28em;
-  border-radius:5px;
-}
-a{color:var(--teal);font-weight:750;text-decoration-thickness:.08em;text-underline-offset:.16em}
-a:hover{color:var(--garnet)}
-@media (max-width:720px){
-  body::before{font-size:1.45rem;padding:22px 18px 20px}
-  h1{font-size:1.7rem;margin-top:26px}
-  .intro,.mode,.exo,ol{margin-left:14px;margin-right:14px}
-  .exo{padding:18px}
-}
-
-body.index::before{content:"Corrigés pédagogiques"}
-body.chapter::before{content:"Théorie de Galois"}
+.lien{background:#f6f1fb;border-left:5px solid #6b3fa0}
+.label{font-weight:800;color:var(--navy)}.lien .label{color:#5a2d8a}
+.ref{color:#5a2d8a;font-weight:600}
+.qed{color:var(--teal);font-weight:700}
 </style>
 </head>
-<body class="chapter">
-<h1>Corrigés — Chapitre 2 : Anneaux, idéaux et corps</h1><div class="intro"><p><span class="label">Objectif pédagogique.</span> Les solutions insistent sur le passage des anneaux aux idéaux, puis aux quotients. Pour chaque quotient, il faut garder deux questions séparées : quelle relation impose-t-on, et quelle structure obtient-on ?</p></div><div class="mode"><p><span class="label">Mode de lecture.</span> Pour chaque exercice, lire d’abord la méthode, refaire le calcul sans regarder la solution, puis comparer avec le point de vigilance.</p></div>
+<body>
+<div style="max-width:1120px;margin:12px auto 0;padding:0 clamp(18px,3vw,28px)">
+<a href="index.html" style="color:#8a2d18;text-decoration:none;font-size:.92rem">&larr; Retour à l'index des corrigés</a>
+</div>
+
+<h1>Chapitre 2 — Anneaux, idéaux et corps</h1>
+
+<div class="mode">
+<p><strong>Comment lire ces corrigés.</strong> Les solutions renvoient en violet aux résultats nommés du chapitre 2. Le fil conducteur du chapitre est la correspondance entre <em>propriétés d'un idéal</em> $I$ et <em>nature du quotient</em> $A/I$ : intègre pour $I$ premier, corps pour $I$ maximal. C'est cette mécanique qui, appliquée à $K[X]$ au chapitre 3, fabriquera les corps d'extension.</p>
+</div>
+
 <h2>✏️ Vérification</h2>
+
 <div class="exo">
-<strong>V1.</strong> Montrer que $\mathbb Z$ est un anneau commutatif.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      • $(\mathbb Z, +)$ est un groupe abélien (vu au chapitre 1).<br/>
-      • La multiplication est associative : $(ab)c = a(bc)$.<br/>
-      • Distributivité : $a(b+c) = ab+ac$ et $(a+b)c = ac+bc$.<br/>
-      • L'élément $1$ est neutre pour la multiplication : $1\cdot a = a\cdot 1 = a$.<br/>
-      • La multiplication est commutative : $ab = ba$.<br/>
-      Donc $\mathbb Z$ est bien un anneau commutatif unitaire.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+<strong>V1.</strong>
+<div class="enonce">Montrer que $\mathbb Z$ est un anneau commutatif.</div>
+<div class="sol">
+<p>On vérifie la <span class="ref">définition « Anneau »</span> puis la commutativité de la multiplication (<span class="ref">définition « Anneau commutatif »</span>).</p>
+<p>$\bullet$ $(\mathbb Z,+)$ est un groupe abélien (chapitre 1, V1).</p>
+<p>$\bullet$ La multiplication est associative et possède le neutre $1$.</p>
+<p>$\bullet$ La multiplication est distributive sur l'addition : $a(b+c)=ab+ac$ et $(a+b)c=ac+bc$.</p>
+<p>$\bullet$ Enfin $ab=ba$ pour tous $a,b\in\mathbb Z$.</p>
+<p>Donc $(\mathbb Z,+,\times)$ est un anneau commutatif. <span class="qed">$\square$</span></p>
 </div>
+</div>
+
 <div class="exo">
-<strong>V2.</strong> Déterminer les éléments inversibles de $\mathbb Z/8\mathbb Z$.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Fixer une convention de calcul, effectuer les images ou les réductions explicitement, puis seulement ensuite reconnaître l’objet obtenu.</div>
-      Dans $\mathbb Z/n\mathbb Z$, une classe $\overline a$ est inversible si et seulement si $\gcd(a,n)=1$.
-      Pour $n=8$, les entiers $a$ entre $0$ et $7$ premiers avec $8$ sont $1,3,5,7$.<br/>
-      Vérifions : $1\cdot1=1$, $3\cdot3=9\equiv1$, $5\cdot5=25\equiv1$, $7\cdot7=49\equiv1$.<br/>
-      Les inversibles de $\mathbb Z/8\mathbb Z$ sont donc $\overline 1,\overline 3,\overline 5,\overline 7$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+<strong>V2.</strong>
+<div class="enonce">Déterminer les éléments inversibles de $\mathbb Z/8\mathbb Z$.</div>
+<div class="sol">
+<p>Un élément $\bar a\in\mathbb Z/8\mathbb Z$ est inversible si et seulement si $\gcd(a,8)=1$ (un inverse de $\bar a$ correspond à une relation de Bézout $au+8v=1$).</p>
+<p>Les entiers de $\{0,\dots,7\}$ premiers avec $8$ sont $1,3,5,7$. On vérifie : $3\cdot 3=9\equiv 1$, $5\cdot 5=25\equiv 1$, $7\cdot 7=49\equiv 1$. Chacun est son propre inverse.</p>
+<p>Donc $(\mathbb Z/8\mathbb Z)^\times=\{\bar 1,\bar 3,\bar 5,\bar 7\}$, de cardinal $4=\varphi(8)$.</p>
+<div class="lien"><span class="label">Lien avec le cours.</span> Par la <span class="ref">proposition « Les inversibles forment un groupe »</span>, cet ensemble est un groupe pour la multiplication. Ici $(\mathbb Z/8\mathbb Z)^\times\simeq\mathbb Z/2\mathbb Z\times\mathbb Z/2\mathbb Z$ (tout élément est d'ordre $2$) : il n'est pas cyclique. L'applet « calculatrice ℤ/nℤ » permet de le visualiser.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>V3.</strong> Montrer que $\mathbb Z/6\mathbb Z$ n'est pas intègre.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      Dans $\mathbb Z/6\mathbb Z$, on a $\overline 2 \neq \overline 0$ et $\overline 3 \neq \overline 0$, mais $\overline 2 \cdot \overline 3 = \overline 6 = \overline 0$.
-      Le produit de deux éléments non nuls est nul, donc $\mathbb Z/6\mathbb Z$ possède des diviseurs de zéro.
-      Un anneau intègre n'a pas de diviseurs de zéro non nuls, donc $\mathbb Z/6\mathbb Z$ n'est pas intègre.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+<strong>V3.</strong>
+<div class="enonce">Montrer que $\mathbb Z/6\mathbb Z$ n'est pas intègre.</div>
+<div class="sol">
+<p>Un anneau est <span class="ref">intègre</span> s'il est non nul et sans diviseur de zéro. Or dans $\mathbb Z/6\mathbb Z$ :</p>
+<p style="text-align:center">$\bar 2\cdot\bar 3=\bar 6=\bar 0,$</p>
+<p>avec $\bar 2\neq\bar 0$ et $\bar 3\neq\bar 0$. Les classes $\bar 2$ et $\bar 3$ sont donc des <span class="ref">diviseurs de zéro</span>, et $\mathbb Z/6\mathbb Z$ n'est pas intègre. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Lien avec le cours.</span> Plus généralement, $\mathbb Z/n\mathbb Z$ est intègre si et seulement si $n$ est premier — et dans ce cas c'est même un corps. Le cas $n=6$ composé illustre l'échec, à comparer avec la <span class="ref">proposition « Idéal premier et quotient intègre »</span> : $6\mathbb Z$ n'est pas un idéal premier de $\mathbb Z$ car $6=2\cdot 3$.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>V4.</strong> Montrer que tout corps possède exactement deux idéaux : $\{0\}$ et lui-même.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      Soit $K$ un corps. Les idéaux $\{0\}$ et $K$ sont toujours des idéaux.<br/>
-      Supposons que $I$ soit un idéal non nul de $K$. Alors il existe $a \in I$, $a \neq 0$. Comme $K$ est un corps, $a$ est inversible : il existe $b \in K$ tel que $ab = 1$.
-      Puisque $I$ est un idéal, $1 = b a \in I$. Pour tout $x \in K$, $x = x\cdot 1 \in I$, donc $I = K$.<br/>
-      Ainsi les seuls idéaux de $K$ sont $\{0\}$ et $K$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> On termine en indiquant clairement le corps obtenu, son degré ou la propriété d’extension démontrée.</div></div>
+<strong>V4.</strong>
+<div class="enonce">Montrer que tout corps possède exactement deux idéaux : $\{0\}$ et lui-même.</div>
+<div class="sol">
+<p>Soit $K$ un corps et $I$ un idéal de $K$. Supposons $I\neq\{0\}$ : il existe $a\in I$ avec $a\neq 0$.</p>
+<p>Comme $K$ est un corps, $a$ est inversible. Par la <span class="ref">définition « Idéal »</span> (absorption : $r\cdot a\in I$ pour tout $r\in K$), on a $a^{-1}\cdot a=1\in I$. Dès lors, pour tout $x\in K$, $x=x\cdot 1\in I$. Donc $I=K$.</p>
+<p>Les seuls idéaux sont $\{0\}$ et $K$. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Lien avec le cours.</span> C'est la traduction, pour $K$ lui-même, du fait que $\{0\}$ est un idéal <em>maximal</em> de $K$. Réciproquement, cette propriété caractérise les corps parmi les anneaux commutatifs, et elle est au cœur de la <span class="ref">proposition « Idéal maximal et quotient corps »</span>.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>V5.</strong> Vérifier que $n\mathbb Z$ est un idéal de $\mathbb Z$.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Isoler la définition utile, écrire les hypothèses sous forme exploitable, puis conclure par une phrase qui répond exactement à la question.</div>
-      • $0 = n\cdot 0 \in n\mathbb Z$.<br/>
-      • Si $nk, n\ell \in n\mathbb Z$, alors $nk - n\ell = n(k-\ell) \in n\mathbb Z$, donc c'est un sous-groupe de $(\mathbb Z,+)$.<br/>
-      • Pour tout $a \in \mathbb Z$ et $nk \in n\mathbb Z$, $a (nk) = n (ak) \in n\mathbb Z$.<br/>
-      Donc $n\mathbb Z$ est bien un idéal (principal) de $\mathbb Z$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+<strong>V5.</strong>
+<div class="enonce">Vérifier que $n\mathbb Z$ est un idéal de $\mathbb Z$.</div>
+<div class="sol">
+<p>On vérifie la <span class="ref">définition « Idéal »</span> : $n\mathbb Z$ est un sous-groupe additif (chapitre 1, V5) absorbant pour la multiplication.</p>
+<p>$\bullet$ <strong>Sous-groupe additif :</strong> déjà établi ($0\in n\mathbb Z$, stable par somme et opposé).</p>
+<p>$\bullet$ <strong>Absorption :</strong> pour $r\in\mathbb Z$ et $nk\in n\mathbb Z$, on a $r\cdot(nk)=n(rk)\in n\mathbb Z$.</p>
+<p>Donc $n\mathbb Z$ est un idéal de $\mathbb Z$. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Lien avec le cours.</span> Tous les idéaux de $\mathbb Z$ sont de cette forme : $\mathbb Z$ est un <span class="ref">anneau principal</span>. La preuve reprend l'argument du plus petit élément positif, déjà vu pour les sous-groupes de $(\mathbb Z,+)$, et qui resservira pour $K[X]$ (chapitre 3, S3).</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>V6.</strong> Montrer qu'un morphisme unitaire de corps est injectif.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Isoler la définition utile, écrire les hypothèses sous forme exploitable, puis conclure par une phrase qui répond exactement à la question.</div>
-      Soit $f : K \to L$ un morphisme de corps (donc $f(1_K)=1_L$). Son noyau $\ker f$ est un idéal de $K$.
-      Puisque $f(1_K)=1_L \neq 0_L$, $1_K \notin \ker f$, donc $\ker f \neq K$.
-      D'après l'exercice V4, les seuls idéaux d'un corps sont $\{0\}$ et le corps entier. Donc $\ker f = \{0\}$.
-      Un morphisme de corps de noyau trivial est injectif.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> On termine en indiquant clairement le corps obtenu, son degré ou la propriété d’extension démontrée.</div></div>
+<strong>V6.</strong>
+<div class="enonce">Montrer qu'un morphisme unitaire de corps est injectif.</div>
+<div class="sol">
+<p>Soit $f:K\to L$ un morphisme d'anneaux unitaire entre deux corps (donc $f(1_K)=1_L\neq 0$). Son noyau $\ker f$ est un idéal de $K$ (<span class="ref">proposition « Le noyau d'un morphisme est un idéal »</span>).</p>
+<p>Par V4, les seuls idéaux de $K$ sont $\{0\}$ et $K$. Si $\ker f=K$, alors $f(1_K)=0$, ce qui contredit $f(1_K)=1_L\neq 0$. Donc $\ker f=\{0\}$, c'est-à-dire $f$ injectif.</p>
+<p><span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Pourquoi c'est essentiel.</span> Tout morphisme de corps est donc un plongement : un corps ne peut s'envoyer dans un autre qu'en s'y injectant. C'est ce qui autorisera, dans toute la théorie de Galois, à identifier $K$ à son image dans une extension $L$, et à voir les automorphismes comme des permutations « rigides » des racines.</div>
 </div>
+</div>
+
 <h2>🔧 Structurants</h2>
+
 <div class="exo">
-<strong>S1.</strong> Montrer que le noyau d'un morphisme d'anneaux est un idéal.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      Soit $f : A \to B$ un morphisme d'anneaux commutatifs. Le noyau $\ker f = \{ a \in A \mid f(a)=0 \}$.<br/>
-      • C'est un sous-groupe de $(A,+)$ car $f(a)=0, f(b)=0 \Rightarrow f(a-b)=0$.<br/>
-      • Pour tout $a \in A$ et $x \in \ker f$, $f(ax) = f(a)f(x) = f(a)\cdot 0 = 0$, donc $ax \in \ker f$.<br/>
-      Ainsi $\ker f$ est un idéal de $A$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+<strong>S1.</strong>
+<div class="enonce">Montrer que le noyau d'un morphisme d'anneaux est un idéal.</div>
+<div class="sol">
+<p>C'est la <span class="ref">proposition « Le noyau d'un morphisme est un idéal »</span>. Soit $f:A\to B$ un morphisme d'anneaux et $I=\ker f=\{a\in A\mid f(a)=0\}$.</p>
+<p>$\bullet$ <strong>Sous-groupe additif.</strong> $f(0)=0$ donc $0\in I$. Si $a,b\in I$, $f(a-b)=f(a)-f(b)=0$, donc $a-b\in I$.</p>
+<p>$\bullet$ <strong>Absorption.</strong> Soient $r\in A$ et $a\in I$. Alors $f(ra)=f(r)f(a)=f(r)\cdot 0=0$, donc $ra\in I$ (et de même $ar\in I$).</p>
+<p>Donc $\ker f$ est un idéal de $A$. <span class="qed">$\square$</span></p>
+<div class="vigilance"><span class="label">Idéal, pas seulement sous-anneau.</span> L'absorption $ra\in I$ utilise un $r$ <em>quelconque</em> de $A$, pas seulement un élément de $I$. C'est ce qui distingue un idéal d'un sous-anneau : $\ker f$ est un idéal, alors que $\mathrm{Im}\,f$ n'est « que » un sous-anneau (S2).</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>S2.</strong> Montrer que l'image d'un morphisme d'anneaux est un sous-anneau.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      Soit $f : A \to B$ un morphisme d'anneaux. L'image $\operatorname{Im} f = \{ f(a) \mid a \in A\}$.<br/>
-      • $f(0_A) = 0_B$ et $f(1_A) = 1_B$, donc $0_B,1_B \in \operatorname{Im} f$.<br/>
-      • Si $x = f(a), y = f(b)$, alors $x - y = f(a-b) \in \operatorname{Im} f$ et $xy = f(ab) \in \operatorname{Im} f$.<br/>
-      Donc $\operatorname{Im} f$ est stable par différence et produit, contient l'unité : c'est un sous-anneau de $B$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+<strong>S2.</strong>
+<div class="enonce">Montrer que l'image d'un morphisme d'anneaux est un sous-anneau.</div>
+<div class="sol">
+<p>Soit $f:A\to B$ un morphisme d'anneaux et $\mathrm{Im}\,f=f(A)$. On applique la <span class="ref">définition « Sous-anneau »</span>.</p>
+<p>$\bullet$ $f(1_A)=1_B\in\mathrm{Im}\,f$.</p>
+<p>$\bullet$ Pour $f(x),f(y)\in\mathrm{Im}\,f$ : $f(x)-f(y)=f(x-y)\in\mathrm{Im}\,f$ et $f(x)f(y)=f(xy)\in\mathrm{Im}\,f$.</p>
+<p>Donc $\mathrm{Im}\,f$ est stable par différence et produit et contient $1_B$ : c'est un sous-anneau de $B$. <span class="qed">$\square$</span></p>
+<div class="vigilance"><span class="label">Ce n'est pas un idéal en général.</span> $\mathrm{Im}\,f$ n'absorbe pas la multiplication par un $b\in B$ arbitraire. Exemple : $\mathbb Z\hookrightarrow\mathbb Q$ a pour image $\mathbb Z$, qui est un sous-anneau de $\mathbb Q$ mais pas un idéal ($\tfrac12\cdot 1=\tfrac12\notin\mathbb Z$).</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>S3.</strong> Démontrer que si $A/I$ est un corps, alors $I$ est maximal.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      Soit $I$ un idéal de $A$ tel que $A/I$ soit un corps. Soit $J$ un idéal de $A$ tel que $I \subsetneq J \subseteq A$.
-      Il existe $a \in J \setminus I$. Dans $A/I$, la classe $\overline a = a+I$ est non nulle, donc inversible car $A/I$ est un corps.
-      Il existe $\overline b \in A/I$ tel que $\overline a \overline b = \overline 1$, soit $ab - 1 \in I \subset J$.
-      Comme $a \in J$, $ab \in J$, et $ab - (ab - 1) = 1 \in J$. Donc $J = A$.
-      Ainsi aucun idéal strict ne contient $I$ à part $A$, donc $I$ est maximal.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> On termine en indiquant clairement le corps obtenu, son degré ou la propriété d’extension démontrée.</div></div>
+<strong>S3.</strong>
+<div class="enonce">Démontrer que si $A/I$ est un corps, alors $I$ est maximal.</div>
+<div class="sol">
+<p>C'est un sens de la <span class="ref">proposition « Idéal maximal et quotient corps »</span>. On suppose $A$ commutatif unitaire et $A/I$ un corps ; en particulier $A/I\neq\{0\}$, donc $I\neq A$.</p>
+<p>Soit $J$ un idéal avec $I\subsetneq J\subseteq A$. Montrons $J=A$. Comme $I\subsetneq J$, il existe $a\in J\setminus I$ : sa classe $\bar a$ est non nulle dans $A/I$. Comme $A/I$ est un corps, $\bar a$ est inversible : il existe $\bar b$ tel que $\bar a\bar b=\bar 1$, c'est-à-dire $ab-1\in I\subseteq J$.</p>
+<p>Or $ab\in J$ (car $a\in J$ et $J$ idéal), donc $1=ab-(ab-1)\in J$. Un idéal contenant $1$ est l'anneau entier : $J=A$.</p>
+<p>Aucun idéal ne s'intercale strictement entre $I$ et $A$ : $I$ est <span class="ref">maximal</span>. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">L'équivalence complète.</span> La réciproque (si $I$ maximal alors $A/I$ corps) se démontre symétriquement. Ensemble, elles donnent : <em>$I$ maximal $\iff A/I$ corps</em>. C'est l'outil qui transforme « $P$ irréductible » en « $K[X]/(P)$ est un corps » au chapitre 3.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>S4.</strong> Démontrer que si $A/I$ est intègre, alors $I$ est premier.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      Soit $I$ un idéal tel que $A/I$ soit intègre. Supposons $ab \in I$. Alors dans $A/I$, $\overline a \overline b = \overline 0$.
-      Comme $A/I$ est intègre, $\overline a = \overline 0$ ou $\overline b = \overline 0$, c'est-à-dire $a \in I$ ou $b \in I$.
-      De plus $I \neq A$ car $A/I$ non nul. Donc $I$ est premier.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+<strong>S4.</strong>
+<div class="enonce">Démontrer que si $A/I$ est intègre, alors $I$ est premier.</div>
+<div class="sol">
+<p>Un sens de la <span class="ref">proposition « Idéal premier et quotient intègre »</span>. On suppose $A/I$ intègre ; en particulier $A/I\neq\{0\}$, donc $I\neq A$.</p>
+<p>Soient $a,b\in A$ tels que $ab\in I$. En passant au quotient, $\bar a\bar b=\overline{ab}=\bar 0$. Comme $A/I$ est intègre, $\bar a=\bar 0$ ou $\bar b=\bar 0$, c'est-à-dire $a\in I$ ou $b\in I$.</p>
+<p>C'est exactement la définition d'un idéal <span class="ref">premier</span>. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Hiérarchie.</span> Combiné à S3 et au <span class="ref">corollaire « Un idéal maximal est premier »</span> (tout corps est intègre, donc maximal $\Rightarrow$ premier), on obtient la chaîne d'implications : <em>maximal $\Rightarrow$ premier</em>, sans réciproque en général (dans $\mathbb Z$, $\{0\}$ est premier mais pas maximal).</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>S5.</strong> Montrer que si $K$ est un corps et $\alpha \in K$, alors $K[X]/(X-\alpha) \simeq K$.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      Soit $\varphi : K[X] \to K$ le morphisme d'évaluation $\varphi(P) = P(\alpha)$.
-      Il est surjectif car pour tout $a \in K$, le polynôme constant $a$ vérifie $\varphi(a) = a$.
-      Son noyau est $\{ P \in K[X] \mid P(\alpha)=0 \}$.
-      Comme $X-\alpha$ est irréductible et $P(\alpha)=0 \iff X-\alpha \mid P$, on a $\ker \varphi = (X-\alpha)$.
-      Par le premier théorème d'isomorphisme, $K[X]/(X-\alpha) \simeq \operatorname{Im} \varphi = K$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Pour les degrés $2$ ou $3$, l’absence de racine dans le corps suffit à conclure à l’irréductibilité ; ce n’est plus vrai en degré supérieur.</div><div class="conclusion"><span class="label">Conclusion.</span> On termine en indiquant clairement le corps obtenu, son degré ou la propriété d’extension démontrée.</div></div>
+<strong>S5.</strong>
+<div class="enonce">Montrer que si $K$ est un corps et $\alpha\in K$, alors $K[X]/(X-\alpha)\simeq K$.</div>
+<div class="sol">
+<p>Considérons le morphisme d'évaluation en $\alpha$ :</p>
+<p style="text-align:center">$\mathrm{ev}_\alpha:K[X]\to K,\qquad P\mapsto P(\alpha).$</p>
+<p>C'est un morphisme d'anneaux surjectif (les polynômes constants atteignent tout $K$). Son noyau est l'ensemble des $P$ tels que $P(\alpha)=0$, c'est-à-dire les multiples de $X-\alpha$ (par le théorème du reste, chapitre 3) : $\ker(\mathrm{ev}_\alpha)=(X-\alpha)$.</p>
+<p>Le premier théorème d'isomorphisme donne alors $K[X]/(X-\alpha)\simeq\mathrm{Im}(\mathrm{ev}_\alpha)=K$. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Modèle à retenir.</span> Quotienter $K[X]$ par le polynôme $X-\alpha$ « réalise » l'évaluation en $\alpha$. C'est le cas le plus simple de la <span class="ref">construction de corps par quotient</span> : au chapitre 3, on remplacera $X-\alpha$ par un irréductible de degré $\geq 2$ pour <em>créer</em> une racine qui n'existait pas dans $K$.</div>
 </div>
-<h2>🚀 Vers Abel-Ruffini</h2>
+</div>
+
+<h2>🚀 Approfondissement</h2>
+
 <div class="exo">
-<strong>A1.</strong> Dans $\mathbb R[X]/(X^2+1)$, montrer que la classe de $X$ vérifie $x^2 = -1$.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      Notons $\overline X$ la classe de $X$ dans le quotient $Q = \mathbb R[X]/(X^2+1)$.
-      Dans $Q$, le polynôme $X^2+1$ est dans l'idéal, donc $\overline{X^2+1} = \overline 0$.
-      Or $\overline{X^2+1} = \overline X^2 + \overline 1$. Donc $\overline X^2 + \overline 1 = \overline 0$, soit $\overline X^2 = -\overline 1$.
-      Ainsi la classe de $X$ est un élément dont le carré vaut l'opposé de l'unité : c'est une racine de $X^2+1$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Ne pas confondre le polynôme $P$ avec sa classe : dans le quotient, la classe de $P$ est nulle.</div><div class="conclusion"><span class="label">Conclusion.</span> La solution se clôt en identifiant le polynôme ou la factorisation cherchée, avec la raison qui garantit son unicité ou son irréductibilité.</div></div>
+<strong>A1.</strong>
+<div class="enonce">Dans $\mathbb R[X]/(X^2+1)$, montrer que la classe $x$ de $X$ vérifie $x^2=-1$.</div>
+<div class="sol">
+<p>Notons $x=\overline X$ la classe de $X$ dans $A=\mathbb R[X]/(X^2+1)$. Par définition du quotient, deux polynômes ont même classe ssi leur différence est multiple de $X^2+1$.</p>
+<p>Or $X^2-(-1)=X^2+1\in(X^2+1)$, donc $\overline{X^2}=\overline{-1}$, c'est-à-dire</p>
+<p style="text-align:center">$x^2=\overline{X^2}=\overline{-1}=-1.$</p>
+<p>La classe $x$ est donc une racine carrée de $-1$ dans $A$. <span class="qed">$\square$</span></p>
 </div>
+</div>
+
 <div class="exo">
-<strong>A2.</strong> Expliquer pourquoi le quotient $\mathbb R[X]/(X^2+1)$ permet de construire un corps contenant une racine de $X^2+1$.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Dans un quotient, remplacer la classe de $X$ par un élément vérifiant la relation imposée par le polynôme, puis réduire les puissances.</div>
-      $X^2+1$ est irréductible dans $\mathbb R[X]$ car il n'a pas de racine réelle.
-      Par la proposition 22 du chapitre, l'idéal $(X^2+1)$ est donc maximal, et le quotient $\mathbb R[X]/(X^2+1)$ est un corps.
-      Comme montré en A1, la classe de $X$ dans ce quotient est une racine de $X^2+1$.
-      Ce corps contient $\mathbb R$ (via les constantes) et une racine de $X^2+1$ ; il est isomorphe à $\mathbb C$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Pour les degrés $2$ ou $3$, l’absence de racine dans le corps suffit à conclure à l’irréductibilité ; ce n’est plus vrai en degré supérieur.</div><div class="conclusion"><span class="label">Conclusion.</span> On termine en indiquant clairement le corps obtenu, son degré ou la propriété d’extension démontrée.</div></div>
+<strong>A2.</strong>
+<div class="enonce">Expliquer pourquoi $\mathbb R[X]/(X^2+1)$ permet de construire un corps contenant une racine de $X^2+1$.</div>
+<div class="sol">
+<p><strong>C'est un corps.</strong> Le polynôme $X^2+1$ est irréductible sur $\mathbb R$ (pas de racine réelle, et un facteur non trivial d'un degré $2$ serait linéaire, donc fournirait une racine). Par la <span class="ref">proposition « Construction de corps par quotient »</span> (un irréductible engendre un idéal maximal, et le quotient par un maximal est un corps), $A=\mathbb R[X]/(X^2+1)$ est un corps.</p>
+<p><strong>Il contient une racine.</strong> D'après A1, l'élément $x=\overline X$ vérifie $x^2+1=0$. Donc $A$ contient une racine de $X^2+1$ qui n'existait pas dans $\mathbb R$.</p>
+<p>Ce corps est précisément $\mathbb C$ : tout élément s'écrit uniquement $a+bx$ avec $a,b\in\mathbb R$, et $x$ joue le rôle de $i$. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Le procédé fondateur.</span> On a fabriqué un corps strictement plus grand que $\mathbb R$ en y forçant l'existence d'une racine. C'est le mécanisme du <em>corps de rupture</em> (chapitre 5), généralisation directe de cette construction à un irréductible quelconque.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>A3.</strong> Soit $K$ un corps et $P \in K[X]$. Expliquer pourquoi la classe de $X$ dans $K[X]/(P)$ est une racine de $P$.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Dans un quotient, remplacer la classe de $X$ par un élément vérifiant la relation imposée par le polynôme, puis réduire les puissances.</div>
-      Notons $\pi : K[X] \to K[X]/(P)$ la projection canonique et $x = \pi(X)$.
-      Alors $P(x) = P(\pi(X)) = \pi(P(X))$ (car $\pi$ est un morphisme d'anneaux).
-      Or $\pi(P(X)) = \overline{P(X)}$ est la classe nulle, puisque $P(X) \in (P)$.
-      Donc $P(x) = 0$ dans le quotient : la classe de $X$ est bien racine de $P$.
-      C'est la construction fondamentale des extensions de corps.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Ne pas confondre le polynôme $P$ avec sa classe : dans le quotient, la classe de $P$ est nulle.</div><div class="conclusion"><span class="label">Conclusion.</span> On termine en indiquant clairement le corps obtenu, son degré ou la propriété d’extension démontrée.</div></div>
+<strong>A3.</strong>
+<div class="enonce">Soit $K$ un corps et $P\in K[X]$. Expliquer pourquoi la classe de $X$ dans $K[X]/(P)$ est une racine de $P$.</div>
+<div class="sol">
+<p>Écrivons $P=\sum_{k=0}^{n} a_k X^k$ avec $a_k\in K$, et notons $x=\overline X$ la classe de $X$ dans $K[X]/(P)$. Les coefficients $a_k\in K$ s'identifient à leurs classes constantes.</p>
+<p>L'application $P\mapsto\overline P$ étant un morphisme d'anneaux, elle commute aux sommes et aux produits :</p>
+<p style="text-align:center">$P(x)=\sum_{k=0}^{n} a_k\,x^k=\overline{\textstyle\sum_k a_k X^k}=\overline P=\bar 0,$</p>
+<p>la dernière égalité car $P\in(P)$. Donc $x$ est racine de $P$ dans le quotient. <span class="qed">$\square$</span></p>
+<div class="vigilance"><span class="label">Subtilité.</span> Cela vaut pour <em>tout</em> $P$, irréductible ou non. Mais le quotient n'est un corps que si $P$ est irréductible. Si $P$ est réductible, $K[X]/(P)$ contient certes une racine de $P$, mais possède aussi des diviseurs de zéro (par exemple $\mathbb R[X]/(X^2-1)$, où $\overline{X-1}\cdot\overline{X+1}=\bar 0$).</div>
+<div class="lien"><span class="label">Vers le chapitre 5.</span> Cet énoncé est le germe abstrait du corps de rupture : pour $P$ irréductible, $K[X]/(P)$ est un corps contenant une racine de $P$, et c'est le plus petit possible. La construction ne dépend d'aucun plongement préalable dans $\mathbb C$.</div>
 </div>
+</div>
+
 </body>
 </html>
