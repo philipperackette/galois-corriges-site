@@ -12,25 +12,129 @@
   </script>
 <script async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <style>
+:root{
+  --navy:#0e1a44;
+  --gold:#c79b2b;
+  --cream:#f4f0e7;
+  --card:#fffdf8;
+  --ink:#1f1f1f;
+  --muted:#555;
+  --teal:#0b6058;
+  --blue:#1d4f91;
+  --garnet:#8a1d2c;
+  --line:#d8d0c1;
+  --soft-blue:#f2f6ff;
+  --soft-gold:#fff7df;
+  --soft-green:#eefbf7;
+}
+*{box-sizing:border-box}
+html{background:var(--cream)}
+body{
+  margin:0;
+  padding:0 0 48px;
+  max-width:none;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  line-height:1.62;
+  color:var(--ink);
+  background:var(--cream);
+  hyphens:auto;
+}
+body::before{
+  content:"Corrigés pédagogiques";
+  display:block;
+  padding:28px clamp(22px,5vw,64px) 26px;
+  color:#fff;
+  background:var(--navy);
+  border-bottom:7px solid var(--gold);
+  font-size:1.95rem;
+  line-height:1.15;
+  font-weight:800;
+  letter-spacing:-.02em;
+  box-shadow:0 2px 10px rgba(0,0,0,.18);
+}
+h1{
+  max-width:1120px;
+  margin:32px auto 22px;
+  padding:0 clamp(18px,3vw,28px);
+  color:var(--navy);
+  font-size:clamp(1.9rem,3.2vw,3rem);
+  line-height:1.14;
+  font-weight:800;
+  letter-spacing:-.035em;
+}
+h2{
+  max-width:1120px;
+  margin:42px auto 18px;
+  padding:0 clamp(18px,3vw,28px) 10px;
+  color:var(--teal);
+  border-bottom:2px solid var(--line);
+  font-size:1.55rem;
+  line-height:1.25;
+}
+p, ol, ul{max-width:1120px;margin-left:auto;margin-right:auto}
+.intro,.mode{
+  max-width:1120px;
+  margin:20px auto;
+  padding:22px 24px;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-left:7px solid var(--gold);
+  border-radius:14px;
+  box-shadow:0 2px 12px rgba(14,26,68,.08);
+}
+.mode{border-left-color:var(--blue);background:#f8fbff}
+.intro p,.mode p{margin:0;max-width:none}
+ol{
+  max-width:1120px;
+  margin-top:26px;
+  padding:22px 30px 22px 52px;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:16px;
+  box-shadow:0 2px 12px rgba(14,26,68,.08);
+}
+li{margin:.38em 0}
+.exo{
+  max-width:1120px;
+  margin:24px auto 30px;
+  padding:24px 26px;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:16px;
+  box-shadow:0 2px 12px rgba(14,26,68,.10);
+}
+.exo>strong:first-child{color:var(--garnet);font-weight:800;font-size:1.05em}
+.sol{margin-left:0;margin-top:14px}
+.methode,.vigilance,.conclusion{
+  margin:14px 0;
+  padding:14px 16px;
+  border-radius:10px;
+  border:1px solid transparent;
+}
+.methode{background:var(--soft-blue);border-left:5px solid var(--blue)}
+.vigilance{background:var(--soft-gold);border-left:5px solid var(--gold)}
+.conclusion{background:var(--soft-green);border-left:5px solid var(--teal)}
+.label{font-weight:800;color:var(--navy)}
+code{
+  background:#fff;
+  border:1px solid var(--line);
+  padding:.1em .28em;
+  border-radius:5px;
+}
+a{color:var(--teal);font-weight:750;text-decoration-thickness:.08em;text-underline-offset:.16em}
+a:hover{color:var(--garnet)}
+@media (max-width:720px){
+  body::before{font-size:1.45rem;padding:22px 18px 20px}
+  h1{font-size:1.7rem;margin-top:26px}
+  .intro,.mode,.exo,ol{margin-left:14px;margin-right:14px}
+  .exo{padding:18px}
+}
 
-    :root { --accent:#8a2d18; --soft:#fff7f2; --line:#ead8cf; --ink:#222; --muted:#5f5f5f; }
-    body { max-width: 900px; margin: 32px auto; padding: 0 18px 40px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.65; hyphens: auto; color: var(--ink); background:#fff; }
-    h1 { text-align: center; line-height:1.25; margin-bottom: 1.2em; }
-    h2 { border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-top: 2.2em; }
-    .intro, .mode { background: #f8f8f8; border-left: 5px solid var(--accent); padding: 0.9em 1em; margin: 1.2em 0 1.6em; }
-    .exo { margin: 1.6em 0 2.2em; padding: 1em 1.1em; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
-    .exo > strong:first-child { color: var(--accent); font-size: 1.05em; }
-    .sol { margin-left: 0; margin-top: 0.8em; }
-    .methode, .vigilance, .conclusion { margin: .75em 0; padding: .65em .8em; border-radius: 8px; }
-    .methode { background: #f4f7ff; border-left: 4px solid #4867aa; }
-    .vigilance { background: #fff8e8; border-left: 4px solid #c7861b; }
-    .conclusion { background: var(--soft); border-left: 4px solid var(--accent); }
-    .label { font-weight: 700; color: #333; }
-    code { background:#f5f5f5; padding:.1em .25em; border-radius:4px; }
-    a { color: var(--accent); }
-  </style>
+body.index::before{content:"Corrigés pédagogiques"}
+body.chapter::before{content:"Théorie de Galois"}
+</style>
 </head>
-<body>
+<body class="chapter">
 <h1>Corrigés — Chapitre 14 : Constructions à la règle et au compas</h1><div class="intro"><p><span class="label">Objectif pédagogique.</span> Les corrigés relient les constructions à la règle et au compas aux extensions quadratiques successives. La question devient alors : le degré pertinent est-il une puissance de deux ?</p></div><div class="mode"><p><span class="label">Mode de lecture.</span> Pour chaque exercice, lire d’abord la méthode, refaire le calcul sans regarder la solution, puis comparer avec le point de vigilance.</p></div>
 <h2>✏️ Vérification</h2>
 <div class="exo">
