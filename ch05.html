@@ -34,13 +34,13 @@ p,ol,ul{max-width:1120px;margin-left:auto;margin-right:auto}
 <h1>Chapitre 5 — Corps de rupture, de décomposition et clôture</h1>
 
 <div class="mode">
-<p><strong>Comment lire ces corrigés.</strong> Le chapitre 5 est avant tout théorique : il n'y a pas d'exercices numérotés dans le livre, mais quatre objectifs explicites (distinguer rupture et décomposition, justifier l'unicité, comprendre pourquoi $\mathbb Q(\sqrt[3]2)$ ne décompose pas $X^3-2$). On propose ci-dessous quatre exercices types qui les couvrent, avec renvois en violet aux résultats nommés du chapitre. La distinction <em>rupture / décomposition</em> est le pivot de tout ce qui suit : la théorie de Galois se déploie sur le corps de décomposition.</p>
+<p><strong>Comment lire ces corrigés.</strong> Le chapitre 5 est avant tout théorique : il n'y a pas d'exercices numérotés dans le livre, mais quatre objectifs explicites (distinguer rupture et décomposition, justifier l'unicité, comprendre pourquoi $\mathbb Q(\sqrt[3]2)$ ne décompose pas $X^3-2$). Les quatre exercices du chapitre, corrigés ci-dessous, couvrent ces points ; les renvois en violet pointent les résultats nommés du chapitre. La distinction <em>rupture / décomposition</em> est le pivot de tout ce qui suit : la théorie de Galois se déploie sur le corps de décomposition.</p>
 </div>
 
-<h2>🔧 Exercices types</h2>
+<h2>🔧 Exercices</h2>
 
 <div class="exo">
-<strong>Exercice A — Rupture contre décomposition.</strong>
+<strong>S1.</strong> <strong>Rupture contre décomposition.</strong>
 <div class="enonce">Pour $P=X^3-2$ sur $\mathbb Q$, décrire un corps de rupture, puis le corps de décomposition. Comparer leurs degrés.</div>
 <div class="sol">
 <p><strong>Corps de rupture.</strong> $X^3-2$ est irréductible sur $\mathbb Q$ (Eisenstein, $p=2$). Un <span class="ref">corps de rupture</span> est obtenu en adjoignant <em>une</em> racine : $\mathbb Q(\sqrt[3]2)$, de degré $3$ sur $\mathbb Q$ par la <span class="ref">construction d'un corps de rupture</span>. Ce corps, plongé dans $\mathbb R$, ne contient que la racine réelle $\sqrt[3]2$.</p>
@@ -53,18 +53,18 @@ p,ol,ul{max-width:1120px;margin-left:auto;margin-right:auto}
 </div>
 
 <div class="exo">
-<strong>Exercice B — Construction par quotient.</strong>
+<strong>S2.</strong> <strong>Construction par quotient.</strong>
 <div class="enonce">Soit $P\in K[X]$ irréductible. Construire un corps de rupture sans supposer l'existence d'une clôture algébrique.</div>
 <div class="sol">
 <p>On pose directement $L=K[X]/(P)$. Comme $P$ est irréductible, l'idéal $(P)$ est maximal (chapitre 3), donc $L$ est un corps (<span class="ref">construction d'un corps de rupture</span> via le quotient).</p>
 <p>L'application composée $K\hookrightarrow K[X]\twoheadrightarrow L$ plonge $K$ dans $L$. La classe $\alpha=\overline X$ vérifie $P(\alpha)=\overline P=\bar0$ : c'est une racine de $P$ dans $L$. De plus $L=K(\alpha)$ et $[L:K]=\deg P$.</p>
 <p>On a donc construit un corps de rupture <em>de l'intérieur</em>, sans plongement préalable dans $\mathbb C$. <span class="qed">$\square$</span></p>
-<div class="lien"><span class="label">Pourquoi cette construction compte.</span> Sur $\mathbb Q$ ou $\mathbb R$, on peut chercher les racines dans $\mathbb C$. Mais sur un corps abstrait (par exemple $\mathbb F_p$ ou un corps de fonctions), aucun « grand corps » n'est donné a priori. Le quotient fabrique la racine algébriquement. C'est la même idée qu'au chapitre 2 (A2 : construction de $\mathbb C$) et chapitre 4 (Exercice 3).</div>
+<div class="lien"><span class="label">Pourquoi cette construction compte.</span> Sur $\mathbb Q$ ou $\mathbb R$, on peut chercher les racines dans $\mathbb C$. Mais sur un corps abstrait (par exemple $\mathbb F_p$ ou un corps de fonctions), aucun « grand corps » n'est donné a priori. Le quotient fabrique la racine algébriquement. C'est la même idée qu'au chapitre 2 (A2 : construction de $\mathbb C$) et chapitre 4 (V3).</div>
 </div>
 </div>
 
 <div class="exo">
-<strong>Exercice C — Unicité à isomorphisme près.</strong>
+<strong>S3.</strong> <strong>Unicité à isomorphisme près.</strong>
 <div class="enonce">Expliquer pourquoi le corps de décomposition d'un polynôme est unique à isomorphisme près, et quel rôle y joue le lemme de prolongement.</div>
 <div class="sol">
 <p>Soient $D$ et $D'$ deux corps de décomposition de $P$ sur $K$. L'objectif est de construire un $K$-isomorphisme $D\to D'$.</p>
@@ -76,7 +76,7 @@ p,ol,ul{max-width:1120px;margin-left:auto;margin-right:auto}
 </div>
 
 <div class="exo">
-<strong>Exercice D — Clôture algébrique.</strong>
+<strong>A1.</strong> <strong>Clôture algébrique.</strong>
 <div class="enonce">Qu'est-ce qu'une clôture algébrique de $K$ ? Pourquoi $\overline{\mathbb Q}$ (clôture de $\mathbb Q$ dans $\mathbb C$) n'est-il pas égal à $\mathbb C$ ?</div>
 <div class="sol">
 <p>Une <span class="ref">clôture algébrique</span> $\overline K$ est une extension algébrique de $K$ qui est algébriquement close : tout polynôme non constant de $\overline K[X]$ y est scindé. Elle contient, en un sens, les racines de tous les polynômes à coefficients dans $K$.</p>
@@ -85,5 +85,6 @@ p,ol,ul{max-width:1120px;margin-left:auto;margin-right:auto}
 </div>
 </div>
 
+<!-- VSA-OK -->
 </body>
 </html>

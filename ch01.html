@@ -239,7 +239,7 @@ $3 \xmapsto{(1\,2)} 3 \xmapsto{(2\,3)} 2$.
 <p>$\bullet$ <strong>$\langle a^d\rangle\subseteq H$</strong> : $H$ est un sous-groupe contenant $a^d$, donc toutes ses puissances.</p>
 <p>$\bullet$ <strong>$H\subseteq\langle a^d\rangle$</strong> : soit $h=a^k\in H$. Division euclidienne $k=qd+r$, $0\leq r<d$. Alors $a^r=a^{k-qd}=a^k(a^d)^{-q}\in H$. Par minimalité de $d$, on a $r=0$, donc $h=(a^d)^q\in\langle a^d\rangle$.</p>
 <p>Ainsi $H=\langle a^d\rangle$ est cyclique. <span class="qed">$\square$</span></p>
-<div class="lien"><span class="label">Filiation.</span> C'est l'exacte transposition multiplicative de la <span class="ref">proposition « Sous-groupes de $(\mathbb Z,+)$ »</span> ($H=d\mathbb Z$). Le même schéma — choisir le plus petit exposant positif, puis diviser — reviendra pour montrer que $K[X]$ est principal (chapitre 3).</div>
+<div class="lien"><span class="label">Filiation.</span> C'est l'exacte transposition multiplicative de la <span class="ref">proposition « Sous-groupes de $(\mathbb Z,+)$ »</span> ($H=d\mathbb Z$). Le même schéma (choisir le plus petit exposant positif, puis diviser) reviendra pour montrer que $K[X]$ est principal (chapitre 3).</div>
 </div>
 </div>
 
@@ -260,14 +260,46 @@ $3 \xmapsto{(1\,2)} 3 \xmapsto{(2\,3)} 2$.
 
 <div class="exo">
 <strong>A4.</strong>
-<div class="enonce">Le stabilisateur d'un point, pour une action de groupe, est un sous-groupe.</div>
+<div class="enonce">Soit $G$ un groupe agissant sur $X$ et $x\in X$. Montrer que le noyau de l'action est l'intersection de tous les stabilisateurs : $\ker\rho=\bigcap_{x\in X}\mathrm{Stab}_G(x)$.</div>
 <div class="sol">
-<p>Soit $G$ agissant sur un ensemble $X$, et $x\in X$. Posons $\mathrm{Stab}_G(x)=\{g\in G\mid g\cdot x=x\}$. On applique le critère de sous-groupe, en utilisant les deux axiomes d'une action : $e\cdot x=x$ et $(gh)\cdot x=g\cdot(h\cdot x)$.</p>
-<p>$\bullet$ <strong>Non vide.</strong> $e\cdot x=x$, donc $e\in\mathrm{Stab}_G(x)$.</p>
-<p>$\bullet$ <strong>Stable par produit.</strong> Si $g,h\in\mathrm{Stab}_G(x)$, alors $(gh)\cdot x=g\cdot(h\cdot x)=g\cdot x=x$, donc $gh\in\mathrm{Stab}_G(x)$.</p>
-<p>$\bullet$ <strong>Stable par inverse.</strong> Si $g\cdot x=x$, on applique $g^{-1}$ : $g^{-1}\cdot(g\cdot x)=g^{-1}\cdot x$, c'est-à-dire $(g^{-1}g)\cdot x=g^{-1}\cdot x$, soit $x=g^{-1}\cdot x$. Donc $g^{-1}\in\mathrm{Stab}_G(x)$.</p>
-<p>Ainsi $\mathrm{Stab}_G(x)\leq G$. <span class="qed">$\square$</span></p>
-<div class="lien"><span class="label">Horizon.</span> Le stabilisateur est la brique de la relation orbite–stabilisateur. Dans la théorie de Galois, le groupe $\mathrm{Gal}(L/K)$ agit sur les racines d'un polynôme ; le stabilisateur d'une racine correspond, par la correspondance de Galois, à un sous-corps intermédiaire (chapitre 8).</div>
+<p>Le noyau de l'action $\rho:G\to\mathfrak S(X)$ est l'ensemble des éléments agissant trivialement sur <em>tout</em> $X$ (<span class="ref">définition « Noyau, fidélité et transitivité d'une action »</span>) :</p>
+<p style="text-align:center">$\ker\rho=\{g\in G\mid g\cdot x=x\ \text{pour tout }x\in X\}.$</p>
+<p>Or « $g\cdot x=x$ pour tout $x$ » signifie exactement que $g$ appartient à $\mathrm{Stab}_G(x)$ pour chaque $x$, c'est-à-dire à leur intersection :</p>
+<p style="text-align:center">$g\in\ker\rho\iff \forall x\in X,\ g\in\mathrm{Stab}_G(x)\iff g\in\bigcap_{x\in X}\mathrm{Stab}_G(x).$</p>
+<p>D'où l'égalité $\ker\rho=\bigcap_{x\in X}\mathrm{Stab}_G(x)$. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Lien avec le cours.</span> Chaque $\mathrm{Stab}_G(x)$ est un sous-groupe (<span class="ref">proposition « Le stabilisateur est un sous-groupe »</span>) ; une intersection de sous-groupes étant un sous-groupe, on retrouve que $\ker\rho\trianglelefteq G$. C'est cohérent avec le fait que tout noyau de morphisme est distingué (S4) : $\ker\rho$ est le noyau du morphisme $\rho:G\to\mathfrak S(X)$.</div>
+</div>
+</div>
+
+<div class="exo">
+<strong>A5.</strong>
+<div class="enonce">Théorème de Cayley. Soit $G$ un groupe fini. Pour $g\in G$, on note $\lambda_g:G\to G$ l'application $x\mapsto gx$. Montrer que $\lambda:g\mapsto\lambda_g$ est un morphisme injectif de $G$ dans $\mathfrak S(G)$. En déduire que tout groupe fini d'ordre $n$ est isomorphe à un sous-groupe de $S_n$.</div>
+<div class="sol">
+<p><strong>Chaque $\lambda_g$ est une bijection.</strong> L'application $\lambda_{g^{-1}}$ est sa réciproque : $\lambda_g\circ\lambda_{g^{-1}}(x)=g(g^{-1}x)=x$ et de même dans l'autre sens. Donc $\lambda_g\in\mathfrak S(G)$ (groupe des bijections de $G$).</p>
+<p><strong>$\lambda$ est un morphisme.</strong> Pour tous $g,h\in G$ et tout $x$,</p>
+<p style="text-align:center">$\lambda_{gh}(x)=(gh)x=g(hx)=\lambda_g\bigl(\lambda_h(x)\bigr)=(\lambda_g\circ\lambda_h)(x),$</p>
+<p>donc $\lambda_{gh}=\lambda_g\circ\lambda_h$. C'est bien un morphisme de $G$ dans $\mathfrak S(G)$ (<span class="ref">définition « Morphisme de groupes »</span>).</p>
+<p><strong>$\lambda$ est injectif.</strong> Par le <span class="ref">critère « Injectivité et noyau »</span>, il suffit de montrer $\ker\lambda=\{e\}$. Si $\lambda_g=\mathrm{id}$, alors $gx=x$ pour tout $x$ ; en $x=e$, $g=e$. Donc $\ker\lambda=\{e\}$.</p>
+<p><strong>Conclusion.</strong> $\lambda$ réalise un isomorphisme de $G$ sur son image $\lambda(G)\leq\mathfrak S(G)$ (S3 : l'image d'un morphisme est un sous-groupe). Si $|G|=n$, alors $\mathfrak S(G)\cong S_n$ après numérotation des éléments de $G$, donc $G$ est isomorphe à un sous-groupe de $S_n$. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Portée du résultat.</span> C'est le <span class="ref">théorème de Cayley</span> : tout groupe fini « se voit » comme groupe de permutations. Il justifie a posteriori l'importance de $S_n$, et c'est le prototype de l'idée maîtresse de la théorie de Galois, où un groupe abstrait $\mathrm{Gal}(L/K)$ se réalise comme groupe de permutations des racines (chapitre 7).</div>
+</div>
+</div>
+
+<div class="exo">
+<strong>A6.</strong>
+<div class="enonce">Vérifier explicitement la formule orbite-stabilisateur pour l'action de $S_3$ sur $\mu_3=\{1,j,j^2\}$ en chaque point.</div>
+<div class="sol">
+<p>On identifie $S_3$ au groupe des permutations des trois racines cubiques $\mu_3=\{1,j,j^2\}$. La <span class="ref">formule orbite-stabilisateur</span> affirme, pour chaque $x$, que $|\mathcal O(x)|\cdot|\mathrm{Stab}_{S_3}(x)|=|S_3|=6$.</p>
+<p><strong>Orbites.</strong> L'action est transitive : toute racine peut être envoyée sur toute autre par une permutation. Il y a donc une seule orbite, $\mathcal O(x)=\{1,j,j^2\}$, de cardinal $3$, pour chacun des trois points.</p>
+<p><strong>Stabilisateurs.</strong> Le stabilisateur d'un point est l'ensemble des permutations qui le fixent, c'est-à-dire l'identité et l'unique transposition échangeant les deux autres :</p>
+<p style="margin-left:1.5em">
+$\mathrm{Stab}(1)=\{\mathrm{id},(j\ j^2)\}$,<br/>
+$\mathrm{Stab}(j)=\{\mathrm{id},(1\ j^2)\}$,<br/>
+$\mathrm{Stab}(j^2)=\{\mathrm{id},(1\ j)\}$.
+</p>
+<p>Chacun est de cardinal $2$.</p>
+<p><strong>Vérification.</strong> En chaque point : $|\mathcal O(x)|\cdot|\mathrm{Stab}(x)|=3\times 2=6=|S_3|$. La formule est confirmée. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Lien avec le cours.</span> Cette action de $S_3$ sur trois racines est le modèle réduit de l'action d'un groupe de Galois sur les racines d'un polynôme (<span class="ref">définition « Action de groupe »</span>). La formule orbite-stabilisateur, vérifiée ici à la main, deviendra un outil de comptage central pour relier degré d'extension et cardinal du groupe de Galois (chapitres 7 et 8).</div>
 </div>
 </div>
 
