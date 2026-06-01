@@ -1,262 +1,192 @@
 <!DOCTYPE html>
-
 <html lang="fr">
 <head>
 <meta charset="utf-8"/>
-<title>Corrigés — Chapitre 14 : Constructions à la règle et au compas</title>
-<script>
-    window.MathJax = {
-      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
-      svg: { fontCache: 'global' }
-    };
-  </script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Corrigés — Chapitre 14 : Constructibilité à la règle et au compas</title>
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']]},svg:{fontCache:'global'}};</script>
 <script async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <style>
-:root{
-  --navy:#0e1a44;
-  --gold:#c79b2b;
-  --cream:#f4f0e7;
-  --card:#fffdf8;
-  --ink:#1f1f1f;
-  --muted:#555;
-  --teal:#0b6058;
-  --blue:#1d4f91;
-  --garnet:#8a1d2c;
-  --line:#d8d0c1;
-  --soft-blue:#f2f6ff;
-  --soft-gold:#fff7df;
-  --soft-green:#eefbf7;
-}
-*{box-sizing:border-box}
-html{background:var(--cream)}
-body{
-  margin:0;
-  padding:0 0 48px;
-  max-width:none;
-  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-  line-height:1.62;
-  color:var(--ink);
-  background:var(--cream);
-  hyphens:auto;
-}
-body::before{
-  content:"Corrigés pédagogiques";
-  display:block;
-  padding:28px clamp(22px,5vw,64px) 26px;
-  color:#fff;
-  background:var(--navy);
-  border-bottom:7px solid var(--gold);
-  font-size:1.95rem;
-  line-height:1.15;
-  font-weight:800;
-  letter-spacing:-.02em;
-  box-shadow:0 2px 10px rgba(0,0,0,.18);
-}
-h1{
-  max-width:1120px;
-  margin:32px auto 22px;
-  padding:0 clamp(18px,3vw,28px);
-  color:var(--navy);
-  font-size:clamp(1.9rem,3.2vw,3rem);
-  line-height:1.14;
-  font-weight:800;
-  letter-spacing:-.035em;
-}
-h2{
-  max-width:1120px;
-  margin:42px auto 18px;
-  padding:0 clamp(18px,3vw,28px) 10px;
-  color:var(--teal);
-  border-bottom:2px solid var(--line);
-  font-size:1.55rem;
-  line-height:1.25;
-}
-p, ol, ul{max-width:1120px;margin-left:auto;margin-right:auto}
-.intro,.mode{
-  max-width:1120px;
-  margin:20px auto;
-  padding:22px 24px;
-  background:var(--card);
-  border:1px solid var(--line);
-  border-left:7px solid var(--gold);
-  border-radius:14px;
-  box-shadow:0 2px 12px rgba(14,26,68,.08);
-}
-.mode{border-left-color:var(--blue);background:#f8fbff}
-.intro p,.mode p{margin:0;max-width:none}
-ol{
-  max-width:1120px;
-  margin-top:26px;
-  padding:22px 30px 22px 52px;
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:16px;
-  box-shadow:0 2px 12px rgba(14,26,68,.08);
-}
-li{margin:.38em 0}
-.exo{
-  max-width:1120px;
-  margin:24px auto 30px;
-  padding:24px 26px;
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:16px;
-  box-shadow:0 2px 12px rgba(14,26,68,.10);
-}
+:root{--navy:#0e1a44;--gold:#c79b2b;--cream:#f4f0e7;--card:#fffdf8;--ink:#1f1f1f;--muted:#555;--teal:#0b6058;--blue:#1d4f91;--garnet:#8a1d2c;--line:#d8d0c1;--soft-blue:#f2f6ff;--soft-gold:#fff7df;--soft-green:#eefbf7;}
+*{box-sizing:border-box}html{background:var(--cream)}
+body{margin:0;padding:0 0 48px;max-width:none;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.62;color:var(--ink);background:var(--cream);hyphens:auto;}
+body::before{content:"Corrigés pédagogiques";display:block;padding:28px clamp(22px,5vw,64px) 26px;color:#fff;background:var(--navy);border-bottom:7px solid var(--gold);font-size:1.95rem;line-height:1.15;font-weight:800;letter-spacing:-.02em;box-shadow:0 2px 10px rgba(0,0,0,.18);}
+h1{max-width:1120px;margin:32px auto 22px;padding:0 clamp(18px,3vw,28px);color:var(--navy);font-size:clamp(1.9rem,3.2vw,3rem);line-height:1.14;font-weight:800;letter-spacing:-.035em;}
+h2{max-width:1120px;margin:42px auto 18px;padding:0 clamp(18px,3vw,28px) 10px;color:var(--teal);border-bottom:2px solid var(--line);font-size:1.55rem;line-height:1.25;}
+p,ol,ul{max-width:1120px;margin-left:auto;margin-right:auto}
+.mode{max-width:1120px;margin:20px auto;padding:22px 24px;background:#f8fbff;border:1px solid var(--line);border-left:7px solid var(--blue);border-radius:14px;box-shadow:0 2px 12px rgba(14,26,68,.08);}
+.mode p{margin:0;max-width:none}
+.exo{max-width:1120px;margin:24px auto 30px;padding:24px 26px;background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:0 2px 12px rgba(14,26,68,.10);}
 .exo>strong:first-child{color:var(--garnet);font-weight:800;font-size:1.05em}
-.sol{margin-left:0;margin-top:14px}
-.methode,.vigilance,.conclusion{
-  margin:14px 0;
-  padding:14px 16px;
-  border-radius:10px;
-  border:1px solid transparent;
-}
-.methode{background:var(--soft-blue);border-left:5px solid var(--blue)}
+.enonce{margin:2px 0 14px}.sol{margin-top:6px}.sol p{max-width:none;margin:.55em 0}
+.vigilance,.conclusion,.lien{margin:14px 0;padding:13px 16px;border-radius:10px;border:1px solid transparent;}
 .vigilance{background:var(--soft-gold);border-left:5px solid var(--gold)}
 .conclusion{background:var(--soft-green);border-left:5px solid var(--teal)}
-.label{font-weight:800;color:var(--navy)}
-code{
-  background:#fff;
-  border:1px solid var(--line);
-  padding:.1em .28em;
-  border-radius:5px;
-}
-a{color:var(--teal);font-weight:750;text-decoration-thickness:.08em;text-underline-offset:.16em}
-a:hover{color:var(--garnet)}
-@media (max-width:720px){
-  body::before{font-size:1.45rem;padding:22px 18px 20px}
-  h1{font-size:1.7rem;margin-top:26px}
-  .intro,.mode,.exo,ol{margin-left:14px;margin-right:14px}
-  .exo{padding:18px}
-}
-
-body.index::before{content:"Corrigés pédagogiques"}
-body.chapter::before{content:"Théorie de Galois"}
+.lien{background:#f6f1fb;border-left:5px solid #6b3fa0}
+.label{font-weight:800;color:var(--navy)}.lien .label{color:#5a2d8a}.ref{color:#5a2d8a;font-weight:600}.qed{color:var(--teal);font-weight:700}
 </style>
 </head>
-<body class="chapter">
-<h1>Corrigés — Chapitre 14 : Constructions à la règle et au compas</h1><div class="intro"><p><span class="label">Objectif pédagogique.</span> Les corrigés relient les constructions à la règle et au compas aux extensions quadratiques successives. La question devient alors : le degré pertinent est-il une puissance de deux ?</p></div><div class="mode"><p><span class="label">Mode de lecture.</span> Pour chaque exercice, lire d’abord la méthode, refaire le calcul sans regarder la solution, puis comparer avec le point de vigilance.</p></div>
+<body>
+<div style="max-width:1120px;margin:12px auto 0;padding:0 clamp(18px,3vw,28px)">
+<a href="index.html" style="color:#8a2d18;text-decoration:none;font-size:.92rem">&larr; Retour à l'index des corrigés</a>
+</div>
+
+<h1>Chapitre 14 — Constructibilité à la règle et au compas</h1>
+
+<div class="mode">
+<p><strong>Comment lire ces corrigés.</strong> Ce dernier chapitre applique toute la machinerie galoisienne à une question géométrique millénaire : que peut-on construire à la règle et au compas ? La réponse tient en un critère de degré (<span class="ref">théorème de Wantzel</span> : un nombre constructible a un degré qui est une puissance de $2$) raffiné par la théorie de Galois. Il résout les trois problèmes grecs (duplication, trisection, quadrature) et caractérise les polygones constructibles (<span class="ref">théorème de Gauss-Wantzel</span>). Renvois en violet aux résultats nommés du chapitre 14.</p>
+</div>
+
 <h2>✏️ Vérification</h2>
+
 <div class="exo">
-<strong>V1.</strong> Montrer que si $x$ et $y$ sont constructibles, alors $x+y$, $x-y$, $xy$ et $x/y$ (pour $y\neq0$) sont constructibles.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      Par hypothèse, les points $(x,0)$ et $(y,0)$ sont constructibles.
-      <ul>
-<li><strong>$x+y$ :</strong> C'est la longueur obtenue en reportant bout à bout les segments de longueur $x$ et $y$ sur une droite. Constructible.</li>
-<li><strong>$x-y$ :</strong> De même, en reportant dans l'autre sens.</li>
-<li><strong>$xy$ :</strong> Utiliser le théorème de Thalès avec des droites parallèles et le segment unité $[0,1]$ connu. La construction classique du produit de deux longueurs donne un point d'abscisse $xy$.</li>
-<li><strong>$x/y$ :</strong> Construction duale de la division.</li>
-</ul>
-      Toutes ces opérations se ramènent à des intersections de droites et de cercles, donc les résultats sont constructibles.
-      Ainsi l'ensemble des nombres constructibles forme un sous-corps de $\mathbb R$ (contenant $\mathbb Q$).
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> On termine en indiquant clairement le corps obtenu, son degré ou la propriété d’extension démontrée.</div></div>
+<strong>V1.</strong>
+<div class="enonce">Montrer que si $x$ et $y$ sont constructibles, alors $x+y$, $x-y$, $xy$ et $x/y$ (pour $y\neq0$) le sont.</div>
+<div class="sol">
+<p>C'est la <span class="ref">proposition « Stabilité élémentaire »</span>. On rappelle les constructions géométriques classiques :</p>
+<p>$\bullet$ <strong>$x+y$ et $x-y$ :</strong> report de longueurs sur une droite au compas.</p>
+<p>$\bullet$ <strong>$xy$ :</strong> par le théorème de Thalès, on construit le quatrième proportionnel. Avec un segment unité, $1:x=y:xy$ donne $xy$.</p>
+<p>$\bullet$ <strong>$x/y$ :</strong> de même, $y:x=1:(x/y)$ donne $x/y$ par Thalès.</p>
+<p>Donc l'ensemble des nombres constructibles est stable par les quatre opérations. <span class="qed">$\square$</span></p>
+<div class="conclusion"><span class="label">C'est un corps.</span> La stabilité par $+,-,\times,\div$ signifie que les <span class="ref">nombres constructibles</span> forment un sous-corps de $\mathbb R$, contenant $\mathbb Q$. En ajoutant la stabilité par racine carrée (constructible aussi, par le théorème de la hauteur), on obtient la structure exacte décrite par la <span class="ref">tour quadratique</span>.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>V2.</strong> Montrer que le triangle équilatéral est constructible.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      On part de deux points $O=(0,0)$ et $I=(1,0)$ qui définissent l'unité. Le triangle équilatéral de côté $1$ peut être construit en traçant les cercles de rayon $1$ centrés en $O$ et $I$ ; leur intersection (au-dessus de l'axe) donne le troisième sommet $(\frac12,\frac{\sqrt3}{2})$. Ce point est constructible car on a construit $\sqrt3$ par la méthode classique (hauteur d'un triangle équilatéral). Donc le triangle équilatéral est constructible.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+<strong>V2.</strong>
+<div class="enonce">Montrer que le triangle équilatéral est constructible.</div>
+<div class="sol">
+<p>Construire le triangle équilatéral revient à construire l'angle de $60°$, ou de façon équivalente le nombre $\cos(60°)=\tfrac12$ et $\sin(60°)=\tfrac{\sqrt3}{2}$.</p>
+<p>Or $\tfrac12\in\mathbb Q$ est constructible, et $\sqrt3$ est constructible (racine carrée de l'entier $3$). Donc le sommet du triangle équilatéral, de coordonnées $(\tfrac12,\tfrac{\sqrt3}{2})$, est constructible. Concrètement : deux arcs de cercle de même rayon se coupant donnent le troisième sommet. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Polygone à 3 côtés.</span> Le triangle équilatéral est le polygone régulier à $3$ côtés. Sa constructibilité s'explique par $\varphi(3)=2$, puissance de $2$ : c'est le cas le plus simple du critère de Gauss-Wantzel (V3, S4).</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>V3.</strong> Calculer $\varphi(3)$, $\varphi(4)$, $\varphi(5)$, $\varphi(6)$, $\varphi(7)$, $\varphi(8)$, $\varphi(9)$, et déterminer quels polygones réguliers correspondants sont constructibles.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Fixer une convention de calcul, effectuer les images ou les réductions explicitement, puis seulement ensuite reconnaître l’objet obtenu.</div>
-<ul>
-<li>$\varphi(3)=2$ (puissance de $2$) → triangle équilatéral constructible.</li>
-<li>$\varphi(4)=2$ → carré constructible.</li>
-<li>$\varphi(5)=4 = 2^2$ → pentagone régulier constructible.</li>
-<li>$\varphi(6) = \varphi(2)\varphi(3) = 1\cdot 2 = 2$ → hexagone régulier constructible.</li>
-<li>$\varphi(7)=6$ n'est pas une puissance de $2$ → heptagone régulier non constructible.</li>
-<li>$\varphi(8)=4$ → octogone régulier constructible.</li>
-<li>$\varphi(9)=6$ → ennéagone régulier non constructible.</li>
-</ul>
-<div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+<strong>V3.</strong>
+<div class="enonce">Calculer $\varphi(n)$ pour $n=3,\dots,9$ et déterminer quels polygones réguliers sont constructibles.</div>
+<div class="sol">
+<p>L'indicatrice d'Euler $\varphi(n)$, et le critère « polygone à $n$ côtés constructible $\iff\varphi(n)$ est une puissance de $2$ » :</p>
+<p style="margin-left:1em">$\varphi(3)=2=2^1$ &rarr; <strong>constructible</strong></p>
+<p style="margin-left:1em">$\varphi(4)=2=2^1$ &rarr; <strong>constructible</strong></p>
+<p style="margin-left:1em">$\varphi(5)=4=2^2$ &rarr; <strong>constructible</strong></p>
+<p style="margin-left:1em">$\varphi(6)=2=2^1$ &rarr; <strong>constructible</strong></p>
+<p style="margin-left:1em">$\varphi(7)=6=2\cdot3$ &rarr; <strong>non constructible</strong></p>
+<p style="margin-left:1em">$\varphi(8)=4=2^2$ &rarr; <strong>constructible</strong></p>
+<p style="margin-left:1em">$\varphi(9)=6=2\cdot3$ &rarr; <strong>non constructible</strong></p>
+<p>Sont constructibles les polygones à $3,4,5,6,8$ côtés ; ne le sont pas ceux à $7$ et $9$ côtés. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Le critère de Gauss.</span> $\varphi(n)$ puissance de $2$ équivaut à $n=2^k p_1\cdots p_r$ avec les $p_i$ premiers de Fermat distincts. L'heptagone ($n=7$) échoue car $7$ n'est pas de Fermat ; l'ennéagone ($n=9=3^2$) échoue car le facteur $3$ y apparaît au carré. C'est le <span class="ref">théorème de Gauss-Wantzel</span> (S4, A2).</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>V4.</strong> Vérifier que $8X^3 - 6X - 1$ n'a pas de racine rationnelle.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Isoler la définition utile, écrire les hypothèses sous forme exploitable, puis conclure par une phrase qui répond exactement à la question.</div>
-      Les racines rationnelles possibles d'un polynôme à coefficients entiers sont de la forme $\frac{p}{q}$ avec $p \mid 1$ et $q \mid 8$, donc parmi $\pm 1, \pm \frac12, \pm \frac14, \pm \frac18$.
-      <ul>
-<li>$x=1$ : $8-6-1=1 \neq 0$.</li>
-<li>$x=-1$ : $-8+6-1=-3 \neq 0$.</li>
-<li>$x=\frac12$ : $8\cdot\frac18 - 6\cdot\frac12 -1 = 1-3-1 = -3 \neq 0$.</li>
-<li>$x=-\frac12$ : $-1+3-1=1 \neq 0$.</li>
-<li>$x=\frac14$ : $8\cdot\frac{1}{64} - 6\cdot\frac14 -1 = \frac18 - \frac32 -1 \neq 0$.</li>
-<li>$x=-\frac14$ : $8\cdot(-\frac{1}{64}) + \frac32 -1 = -\frac18 + \frac32 -1 \neq 0$.</li>
-<li>$x=\frac18$ : $8\cdot\frac{1}{512} - 6\cdot\frac18 -1 = \frac{1}{64} - \frac34 -1 \neq 0$.</li>
-<li>$x=-\frac18$ : $-\frac{1}{64} + \frac34 -1 \neq 0$.</li>
-</ul>
-      Aucune racine rationnelle, donc le polynôme n'a pas de racine dans $\mathbb Q$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La solution se clôt en identifiant le polynôme ou la factorisation cherchée, avec la raison qui garantit son unicité ou son irréductibilité.</div></div>
+<strong>V4.</strong>
+<div class="enonce">Vérifier que $8X^3-6X-1$ n'a pas de racine rationnelle.</div>
+<div class="sol">
+<p>Par le théorème des racines rationnelles, une racine $p/q$ (irréductible) de $8X^3-6X-1$ aurait $p\mid1$ et $q\mid8$, donc $p/q\in\{\pm1,\pm\tfrac12,\pm\tfrac14,\pm\tfrac18\}$. On teste :</p>
+<p style="margin-left:1em">$P(1)=8-6-1=1\neq0$ ; $P(-1)=-8+6-1=-3\neq0$ ;</p>
+<p style="margin-left:1em">$P(\tfrac12)=1-3-1=-3\neq0$ ; $P(-\tfrac12)=-1+3-1=1\neq0$ ;</p>
+<p style="margin-left:1em">$P(\tfrac14)=\tfrac18-\tfrac32-1\neq0$ ; etc. (aucune ne convient).</p>
+<p>Aucune racine rationnelle. Comme $8X^3-6X-1$ est de degré $3$, il est donc irréductible sur $\mathbb Q$. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Pourquoi ce polynôme ?</span> En posant $c=\cos20°$, l'identité $\cos3\theta=4\cos^3\theta-3\cos\theta$ avec $3\theta=60°$ donne $4c^3-3c=\tfrac12$, soit $8c^3-6c-1=0$. Donc $\cos20°$ est racine de ce polynôme irréductible : $[\mathbb Q(\cos20°):\mathbb Q]=3$. Ce degré $3$ (non puissance de $2$) est la clé de l'impossibilité de la trisection (S1).</div>
 </div>
+</div>
+
 <h2>🔧 Structurants</h2>
+
 <div class="exo">
-<strong>S1.</strong> Soit $x$ constructible et algébrique sur $\mathbb Q$. Montrer que le degré de son polynôme minimal est une puissance de $2$.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      Puisque $x$ est constructible, il existe une tour quadratique $\mathbb Q = K_0 \subset K_1 \subset \cdots \subset K_m$ telle que $x \in K_m$. Chaque $[K_i:K_{i-1}] \le 2$.
-      Le degré $[K_m:\mathbb Q]$ est un produit de facteurs $1$ ou $2$, donc une puissance de $2$.
-      Comme $\mathbb Q(x) \subset K_m$, on a $[\mathbb Q(x):\mathbb Q] \mid [K_m:\mathbb Q]$. Donc le degré du polynôme minimal de $x$ divise une puissance de $2$, c'est donc une puissance de $2$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Une famille génératrice ne suffit pas : lorsqu’on parle de base, il faut aussi justifier l’unicité de l’écriture, ou utiliser un argument de dimension.</div><div class="conclusion"><span class="label">Conclusion.</span> La solution se clôt en identifiant le polynôme ou la factorisation cherchée, avec la raison qui garantit son unicité ou son irréductibilité.</div></div>
+<strong>S1.</strong>
+<div class="enonce">Soit $x$ constructible et algébrique sur $\mathbb Q$. Montrer que le degré de son polynôme minimal est une puissance de $2$.</div>
+<div class="sol">
+<p>Par la <span class="ref">caractérisation algébrique des nombres constructibles</span>, $x$ constructible signifie qu'il existe une <span class="ref">tour quadratique</span></p>
+<p style="text-align:center">$\mathbb Q=K_0\subset K_1\subset\cdots\subset K_m,\quad [K_{i+1}:K_i]=2,\quad x\in K_m.$</p>
+<p>Par la multiplicativité des degrés (chapitre 4), $[K_m:\mathbb Q]=\prod_i[K_{i+1}:K_i]=2^m$.</p>
+<p>Comme $\mathbb Q\subseteq\mathbb Q(x)\subseteq K_m$, le degré $[\mathbb Q(x):\mathbb Q]$ divise $2^m$ (multiplicativité), donc est lui-même une puissance de $2$. Or $[\mathbb Q(x):\mathbb Q]=\deg\mu_x$. Donc $\deg\mu_x$ est une puissance de $2$. <span class="qed">$\square$</span></p>
+<div class="conclusion"><span class="label">Le théorème de Wantzel.</span> C'est le <span class="ref">théorème de Wantzel</span> : condition <em>nécessaire</em> de constructibilité. Il suffit pour les impossibilités classiques : duplication du cube ($\sqrt[3]2$, degré $3$), trisection de $60°$ ($\cos20°$, degré $3$ par V4). Aucun n'est une puissance de $2$, donc aucun n'est constructible.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>S2.</strong> Montrer que le polygone régulier à $15$ côtés est constructible.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      $15 = 3 \times 5$, produits de deux premiers de Fermat distincts.
-      $\varphi(15) = \varphi(3)\varphi(5) = 2 \cdot 4 = 8$, qui est une puissance de $2$ ($2^3$).
-      D'après le théorème de Gauss-Wantzel, le polygone régulier à $15$ côtés est constructible.
-      (On peut aussi le construire en combinant les constructions du triangle équilatéral et du pentagone régulier, car $3$ et $5$ sont premiers entre eux.)
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+<strong>S2.</strong>
+<div class="enonce">Montrer que le polygone régulier à $15$ côtés est constructible.</div>
+<div class="sol">
+<p>On a $15=3\cdot5$, produit de deux premiers de Fermat distincts ($3=F_0$, $5=F_1$). Calculons $\varphi(15)=\varphi(3)\varphi(5)=2\cdot4=8=2^3$, une puissance de $2$.</p>
+<p>Par le <span class="ref">théorème de Gauss-Wantzel</span>, le polygone à $15$ côtés est constructible. <strong>Construction explicite :</strong> comme $\gcd(3,5)=1$, une relation de Bézout $2\cdot3-1\cdot5=1$ donne $\tfrac{1}{15}=\tfrac{2}{5}-\tfrac{1}{3}$, soit l'angle $\tfrac{2\pi}{15}=2\cdot\tfrac{2\pi}{5}-\tfrac{2\pi}{3}$. On construit donc l'angle du pentadécagone en combinant ceux du pentagone et du triangle, tous deux constructibles. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Combinaison de polygones.</span> C'est le mécanisme de A1 : si les polygones à $m$ et $n$ côtés sont constructibles et $\gcd(m,n)=1$, alors celui à $mn$ côtés l'est. La constructibilité du $15$-gone était déjà connue d'Euclide.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>S3.</strong> Montrer que le polygone régulier à $21$ côtés n'est pas constructible.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      $21 = 3 \times 7$. $\varphi(21) = \varphi(3)\varphi(7) = 2 \cdot 6 = 12$, qui n'est pas une puissance de $2$.
-      Par le critère de Gauss-Wantzel (condition nécessaire), le polygone régulier à $21$ côtés n'est pas constructible.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+<strong>S3.</strong>
+<div class="enonce">Montrer que le polygone régulier à $21$ côtés n'est pas constructible.</div>
+<div class="sol">
+<p>On a $21=3\cdot7$. Calculons $\varphi(21)=\varphi(3)\varphi(7)=2\cdot6=12=2^2\cdot3$.</p>
+<p>$12$ n'est pas une puissance de $2$ (il a le facteur premier $3$). Par le <span class="ref">théorème de Gauss-Wantzel</span>, le polygone à $21$ côtés <strong>n'est pas constructible</strong>. <span class="qed">$\square$</span></p>
+<div class="vigilance"><span class="label">Le coupable est $7$.</span> L'obstruction vient du facteur $7$, qui n'est pas un premier de Fermat ($\varphi(7)=6$ contient un $3$). Dès qu'un facteur premier non-Fermat (ou un premier de Fermat au carré) apparaît dans $n$, le polygone cesse d'être constructible. Comparer avec le $15$-gone (S2), constructible car $3$ et $5$ sont tous deux de Fermat.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>S4.</strong> Soit $p$ un nombre premier impair. Montrer que le polygone régulier à $p$ côtés est constructible si et seulement si $p$ est un premier de Fermat.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      Pour $p$ premier impair, $\varphi(p) = p-1$.
-      D'après le théorème de Gauss-Wantzel, le polygone régulier à $p$ côtés est constructible si et seulement si $\varphi(p) = p-1$ est une puissance de $2$.
-      Un nombre premier $p$ tel que $p-1$ soit une puissance de $2$ est exactement un nombre premier de Fermat (car si $p-1 = 2^k$, alors $p = 2^k+1$ ; pour que $p$ soit premier, $k$ doit être une puissance de $2$, donc $p = 2^{2^m}+1$).
-      Réciproquement, tout premier de Fermat $p = 2^{2^m}+1$ vérifie bien $\varphi(p) = p-1 = 2^{2^m}$, une puissance de $2$. Donc le polygone est constructible si et seulement si $p$ est un premier de Fermat.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+<strong>S4.</strong>
+<div class="enonce">Soit $p$ premier impair. Montrer que le polygone à $p$ côtés est constructible si et seulement si $p$ est un premier de Fermat.</div>
+<div class="sol">
+<p>Construire le $p$-gone régulier équivaut à construire $\zeta_p=e^{2i\pi/p}$ (ou $\cos\tfrac{2\pi}{p}$). Le degré de $\cos\tfrac{2\pi}{p}$ sur $\mathbb Q$ est $\tfrac{p-1}{2}$ (degré du sous-corps réel de $\mathbb Q(\zeta_p)$, chapitre 13).</p>
+<p>$\bullet$ <strong>Si constructible :</strong> par Wantzel (S1), $\tfrac{p-1}{2}$ est une puissance de $2$, donc $p-1=2^{k+1}$, soit $p=2^{k+1}+1$. Pour qu'un nombre $2^m+1$ soit premier, il faut que $m$ soit lui-même une puissance de $2$ (sinon $2^m+1$ admet un facteur). Donc $p=2^{2^s}+1$ est un <span class="ref">nombre premier de Fermat</span>.</p>
+<p>$\bullet$ <strong>Réciproque :</strong> si $p=2^{2^s}+1$ est de Fermat, alors $[\mathbb Q(\zeta_p):\mathbb Q]=p-1=2^{2^s}$ est une puissance de $2$. Le groupe $\mathrm{Gal}(\mathbb Q(\zeta_p)/\mathbb Q)\simeq(\mathbb Z/p\mathbb Z)^\times$ est cyclique d'ordre $2^{2^s}$ (chapitre 13), donc admet une chaîne de sous-groupes d'indices $2$. Par la correspondance de Galois, cela fournit une tour quadratique atteignant $\zeta_p$ : le polygone est constructible.</p>
+<p>D'où l'équivalence. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Le pont Galois-géométrie.</span> C'est le <span class="ref">critère galoisien de constructibilité</span> dans sa forme la plus frappante. La constructibilité (géométrie) équivaut à l'existence d'une tour quadratique (corps), elle-même équivalente à ce que le groupe soit un $2$-groupe (théorie des groupes). Gauss a ainsi construit le $17$-gone ($17=F_2$) à $19$ ans.</div>
 </div>
+</div>
+
 <h2>🚀 Approfondissement</h2>
+
 <div class="exo">
-<strong>A1.</strong> Montrer que si deux polygones réguliers à $m$ et $n$ côtés sont constructibles et si $\gcd(m,n)=1$, alors le polygone régulier à $mn$ côtés est constructible.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      Si le polygone à $m$ côtés est constructible, alors $\zeta_m$ est constructible (ou plus précisément ses coordonnées). De même pour $n$. Comme $\gcd(m,n)=1$, les racines primitives $mn$-ièmes de l'unité peuvent s'exprimer comme combinaison de $\zeta_m$ et $\zeta_n$ (car $(\mathbb Z/mn\mathbb Z)^\times \simeq (\mathbb Z/m\mathbb Z)^\times \times (\mathbb Z/n\mathbb Z)^\times$ par le lemme chinois). Ainsi $\zeta_{mn}$ est constructible, donc le polygone régulier à $mn$ côtés est constructible.
-      Algébriquement, $\varphi(mn) = \varphi(m)\varphi(n)$ est produit de deux puissances de $2$, donc une puissance de $2$, ce qui suffit.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+<strong>A1.</strong>
+<div class="enonce">Montrer que si les polygones à $m$ et $n$ côtés sont constructibles et $\gcd(m,n)=1$, alors celui à $mn$ côtés l'est.</div>
+<div class="sol">
+<p>Constructibles signifie que les angles $\tfrac{2\pi}{m}$ et $\tfrac{2\pi}{n}$ le sont. Comme $\gcd(m,n)=1$, le théorème de Bézout fournit des entiers $u,v$ tels que $um+vn=1$. En divisant par $mn$ :</p>
+<p style="text-align:center">$\frac{1}{mn}=\frac{u}{n}+\frac{v}{m},\qquad\text{soit}\qquad\frac{2\pi}{mn}=u\cdot\frac{2\pi}{n}+v\cdot\frac{2\pi}{m}.$</p>
+<p>L'angle $\tfrac{2\pi}{mn}$ est donc une combinaison entière d'angles constructibles. Comme l'ensemble des angles constructibles est stable par addition et soustraction (report au compas), $\tfrac{2\pi}{mn}$ est constructible : le $mn$-gone l'est. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Multiplicativité de la constructibilité.</span> C'est la brique combinatoire derrière Gauss-Wantzel : la constructibilité du $n$-gone se ramène, via la factorisation $n=2^k p_1\cdots p_r$, à celle des $p_i$-gones (premiers de Fermat) et du carré (bissection d'angle). Le $15$-gone (S2) en est l'illustration.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>A2.</strong> Expliquer pourquoi le fait que $F_5 = 2^{32}+1$ soit composé implique que le polygone régulier à $F_5$ côtés n'est pas constructible.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Isoler la définition utile, écrire les hypothèses sous forme exploitable, puis conclure par une phrase qui répond exactement à la question.</div>
-      $F_5 = 2^{2^5}+1$ est un nombre de Fermat, mais il n'est pas premier (il est divisible par $641$). Si le polygone à $F_5$ côtés était constructible, alors d'après le théorème de Gauss-Wantzel, $F_5$ devrait être de la forme $2^a p_1\cdots p_r$ avec des premiers de Fermat distincts. Comme $F_5$ est un nombre de Fermat (même s'il est composé), il n'a que des facteurs premiers impairs qui ne sont pas tous des premiers de Fermat distincts ? En réalité, $F_5$ admet des facteurs premiers qui ne sont pas de Fermat (par exemple $641$ n'est pas un premier de Fermat). Donc $\varphi(F_5)$ n'est pas une puissance de $2$, ce qui rend le polygone non constructible.
-      Plus directement, un polygone régulier à $n$ côtés est constructible si et seulement si $n$ est produit d'une puissance de $2$ et de \textbf{premiers} de Fermat distincts. Ici $n = F_5$ est un nombre de Fermat mais composé, donc il n'est pas un premier de Fermat, et il ne figure pas dans la liste des $n$ autorisés (car dans la décomposition, les premiers de Fermat doivent être distincts et figurer à la puissance $1$). Puisque $F_5$ n'est pas premier, il ne satisfait pas la condition nécessaire et suffisante.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La dernière phrase doit reformuler le résultat sous la forme exacte demandée par l’exercice.</div></div>
+<strong>A2.</strong>
+<div class="enonce">Expliquer pourquoi le fait que $F_5=2^{32}+1$ soit composé implique que le polygone à $F_5$ côtés n'est pas constructible.</div>
+<div class="sol">
+<p>$F_5=2^{32}+1=4\,294\,967\,297=641\times6\,700\,417$ : il est composé (Euler, 1732). Notons $n=F_5$.</p>
+<p>Le critère de constructibilité du $n$-gone porte sur $\varphi(n)$. Si $n=F_5$ était premier, on aurait $\varphi(n)=n-1=2^{32}$, puissance de $2$, et le polygone serait constructible. Mais $n$ étant composé, $n=641\times6700417$ avec ces deux facteurs premiers, et</p>
+<p style="text-align:center">$\varphi(F_5)=(641-1)(6700417-1)=640\times6700416.$</p>
+<p>Or $640=2^7\cdot5$ contient le facteur $5$ : $\varphi(F_5)$ n'est pas une puissance de $2$. Donc le polygone à $F_5$ côtés <strong>n'est pas constructible</strong>. <span class="qed">$\square$</span></p>
+<div class="vigilance"><span class="label">Primalité indispensable.</span> Le critère de Gauss-Wantzel exige des premiers de Fermat <em>effectivement premiers</em>. Un nombre de Fermat composé comme $F_5$ ne donne pas un polygone constructible : c'est la primalité, non la simple forme $2^{2^s}+1$, qui compte. On ne connaît à ce jour que cinq premiers de Fermat ($F_0$ à $F_4$).</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>A3.</strong> On admet que tout $2$-groupe fini possède une chaîne de sous-groupes d'indices successifs $2$. Détailler la traduction de cette chaîne par la correspondance de Galois.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Penser en termes d’espaces vectoriels : une base donne le degré, et une tour donne un produit de degrés.</div>
-      Soit $L/\mathbb Q$ une extension galoisienne finie contenue dans $\mathbb R$, et supposons que $\mathrm{Gal}(L/\mathbb Q)$ soit un $2$-groupe. Comme tout $2$-groupe admet une chaîne de sous-groupes
-      $$ G = G_0 \supset G_1 \supset \cdots \supset G_m = \{1\} $$
-      avec $[G_i : G_{i+1}] = 2$.
-      Par la correspondance de Galois, les corps fixes $K_i = L^{G_i}$ forment une tour
-      $$ \mathbb Q = L^{G_0} \subset L^{G_1} \subset \cdots \subset L^{G_m} = L. $$
-      Le groupe de Galois de $L/K_i$ est $G_i$, donc $[L : K_i] = |G_i|$. L'indice $[K_{i+1} : K_i]$ est égal à $[G_i : G_{i+1}] = 2$.
-      Donc la tour d'extensions est une tour quadratique. Par le théorème de caractérisation des nombres constructibles, tout élément de $L$ est constructible.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Un automorphisme au-dessus de $K$ fixe les coefficients de $K$ ; c’est exactement ce qui permet de transporter l’équation $P(\alpha)=0$.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+<strong>A3.</strong>
+<div class="enonce">On admet que tout $2$-groupe fini possède une chaîne de sous-groupes d'indices successifs $2$. Détailler la traduction de cette chaîne en tour de corps.</div>
+<div class="sol">
+<p>Soit $L/\mathbb Q$ galoisienne avec $G=\mathrm{Gal}(L/\mathbb Q)$ un $2$-groupe, $|G|=2^m$. Par hypothèse, il existe une chaîne</p>
+<p style="text-align:center">$G=H_0\supset H_1\supset\cdots\supset H_m=\{e\},\qquad [H_i:H_{i+1}]=2.$</p>
+<p>Par la correspondance de Galois (chapitre 8), qui renverse les inclusions, on obtient une tour de corps</p>
+<p style="text-align:center">$\mathbb Q=L^{H_0}\subset L^{H_1}\subset\cdots\subset L^{H_m}=L,$</p>
+<p>avec $[L^{H_{i+1}}:L^{H_i}]=[H_i:H_{i+1}]=2$. Chaque étage est quadratique : c'est une <span class="ref">tour quadratique</span>. Par la caractérisation algébrique des nombres constructibles (S1), tout élément de $L$ est donc constructible. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">La condition suffisante.</span> C'est le sens « $2$-groupe $\Rightarrow$ constructible » du <span class="ref">critère galoisien de constructibilité</span> (et de la <span class="ref">condition suffisante cyclotomique</span>). Combiné à Wantzel (S1, sens nécessaire), il donne l'équivalence complète : <em>$x$ constructible $\iff$ le groupe de Galois de la clôture galoisienne de $\mathbb Q(x)$ est un $2$-groupe</em>.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>A4.</strong> Relire le chapitre 13 pour $n=5$. Identifier explicitement le sous-corps réel $\mathbb Q(\zeta_5+\zeta_5^{-1})$ et expliquer pourquoi cela suffit à construire le pentagone régulier.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Isoler la définition utile, écrire les hypothèses sous forme exploitable, puis conclure par une phrase qui répond exactement à la question.</div>
-      Pour $n=5$, $\zeta_5 = e^{2i\pi/5}$. La conjugaison complexe envoie $\zeta_5$ sur $\zeta_5^{-1}$. Le sous-corps fixé par cette conjugaison est le sous-corps réel maximal de $\mathbb Q(\zeta_5)$, à savoir $\mathbb Q(\zeta_5 + \zeta_5^{-1})$.
-      Comme montré dans l'exercice S5 du chapitre 13, $\zeta_5 + \zeta_5^{-1} = 2\cos(2\pi/5) = \frac{\sqrt{5}-1}{2}$, donc ce sous-corps est $\mathbb Q(\sqrt{5})$.
-      Pour construire le pentagone régulier, il suffit de construire le point $(\cos(2\pi/5), \sin(2\pi/5))$. Connaître $\cos(2\pi/5) = \frac{\sqrt{5}-1}{4}$ permet de construire cet angle. Puisque $\sqrt{5}$ est constructible (par une tour quadratique), $\cos(2\pi/5)$ l'est aussi. On peut alors reporter cette longueur sur le cercle unité pour obtenir le pentagone.
-      Ainsi, l'identification du sous-corps réel et la constructibilité de $\sqrt{5}$ (qui découle d'une tour quadratique) montrent que le pentagone régulier est constructible.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> On termine en indiquant clairement le corps obtenu, son degré ou la propriété d’extension démontrée.</div></div>
+<strong>A4.</strong>
+<div class="enonce">Relire le chapitre 13 pour $n=5$ : identifier le sous-corps réel $\mathbb Q(\zeta_5+\zeta_5^{-1})$ et expliquer pourquoi cela donne la constructibilité du pentagone.</div>
+<div class="sol">
+<p>Du chapitre 13 (S5) : $\mathbb Q(\zeta_5+\zeta_5^{-1})=\mathbb Q(\sqrt5)$, le sous-corps réel de $\mathbb Q(\zeta_5)$. On a la tour</p>
+<p style="text-align:center">$\mathbb Q\subset\mathbb Q(\sqrt5)\subset\mathbb Q(\zeta_5),$</p>
+<p>de degrés $2$ et $2$ (car $[\mathbb Q(\zeta_5):\mathbb Q]=4$ et $[\mathbb Q(\zeta_5):\mathbb Q(\sqrt5)]=2$). Chaque étage est quadratique : c'est une tour quadratique.</p>
+<p>En particulier $\cos\tfrac{2\pi}{5}=\tfrac{\zeta_5+\zeta_5^{-1}}{2}=\dfrac{-1+\sqrt5}{4}$ s'exprime avec une seule racine carrée, donc est constructible. Le sommet du pentagone, de coordonnées $(\cos\tfrac{2\pi}{5},\sin\tfrac{2\pi}{5})$, est constructible (l'ordonnée l'est aussi, par $\sin^2+\cos^2=1$ et stabilité par racine carrée). <span class="qed">$\square$</span></p>
+<div class="conclusion"><span class="label">Aboutissement du livre.</span> Le pentagone est constructible parce que $\mathbb Q(\zeta_5)$ se décompose en une tour quadratique, elle-même reflet de $(\mathbb Z/5\mathbb Z)^\times\simeq\mathbb Z/4\mathbb Z$ (un $2$-groupe). La théorie de Galois, partie de la résolution des équations, referme ici la boucle sur une question géométrique vieille de deux mille ans : tout converge dans le <span class="ref">théorème de Gauss-Wantzel</span>.</p></div>
 </div>
+</div>
+
 </body>
 </html>

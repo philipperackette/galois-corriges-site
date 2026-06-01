@@ -1,129 +1,89 @@
 <!DOCTYPE html>
-<html lang="fr"><head><meta charset="UTF-8"><title>Corrigés — Chapitre 5 : Corps de rupture, corps de décomposition et clôture algébrique</title>
-<script>window.MathJax={tex:{inlineMath:[["$","$"],["\(","\)"]]},svg:{fontCache:"global"}};</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Corrigés — Chapitre 5 : Corps de rupture, de décomposition et clôture</title>
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']]},svg:{fontCache:'global'}};</script>
+<script async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <style>
-:root{
-  --navy:#0e1a44;
-  --gold:#c79b2b;
-  --cream:#f4f0e7;
-  --card:#fffdf8;
-  --ink:#1f1f1f;
-  --muted:#555;
-  --teal:#0b6058;
-  --blue:#1d4f91;
-  --garnet:#8a1d2c;
-  --line:#d8d0c1;
-  --soft-blue:#f2f6ff;
-  --soft-gold:#fff7df;
-  --soft-green:#eefbf7;
-}
-*{box-sizing:border-box}
-html{background:var(--cream)}
-body{
-  margin:0;
-  padding:0 0 48px;
-  max-width:none;
-  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-  line-height:1.62;
-  color:var(--ink);
-  background:var(--cream);
-  hyphens:auto;
-}
-body::before{
-  content:"Corrigés pédagogiques";
-  display:block;
-  padding:28px clamp(22px,5vw,64px) 26px;
-  color:#fff;
-  background:var(--navy);
-  border-bottom:7px solid var(--gold);
-  font-size:1.95rem;
-  line-height:1.15;
-  font-weight:800;
-  letter-spacing:-.02em;
-  box-shadow:0 2px 10px rgba(0,0,0,.18);
-}
-h1{
-  max-width:1120px;
-  margin:32px auto 22px;
-  padding:0 clamp(18px,3vw,28px);
-  color:var(--navy);
-  font-size:clamp(1.9rem,3.2vw,3rem);
-  line-height:1.14;
-  font-weight:800;
-  letter-spacing:-.035em;
-}
-h2{
-  max-width:1120px;
-  margin:42px auto 18px;
-  padding:0 clamp(18px,3vw,28px) 10px;
-  color:var(--teal);
-  border-bottom:2px solid var(--line);
-  font-size:1.55rem;
-  line-height:1.25;
-}
-p, ol, ul{max-width:1120px;margin-left:auto;margin-right:auto}
-.intro,.mode{
-  max-width:1120px;
-  margin:20px auto;
-  padding:22px 24px;
-  background:var(--card);
-  border:1px solid var(--line);
-  border-left:7px solid var(--gold);
-  border-radius:14px;
-  box-shadow:0 2px 12px rgba(14,26,68,.08);
-}
-.mode{border-left-color:var(--blue);background:#f8fbff}
-.intro p,.mode p{margin:0;max-width:none}
-ol{
-  max-width:1120px;
-  margin-top:26px;
-  padding:22px 30px 22px 52px;
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:16px;
-  box-shadow:0 2px 12px rgba(14,26,68,.08);
-}
-li{margin:.38em 0}
-.exo{
-  max-width:1120px;
-  margin:24px auto 30px;
-  padding:24px 26px;
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:16px;
-  box-shadow:0 2px 12px rgba(14,26,68,.10);
-}
+:root{--navy:#0e1a44;--gold:#c79b2b;--cream:#f4f0e7;--card:#fffdf8;--ink:#1f1f1f;--muted:#555;--teal:#0b6058;--blue:#1d4f91;--garnet:#8a1d2c;--line:#d8d0c1;--soft-blue:#f2f6ff;--soft-gold:#fff7df;--soft-green:#eefbf7;}
+*{box-sizing:border-box}html{background:var(--cream)}
+body{margin:0;padding:0 0 48px;max-width:none;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.62;color:var(--ink);background:var(--cream);hyphens:auto;}
+body::before{content:"Corrigés pédagogiques";display:block;padding:28px clamp(22px,5vw,64px) 26px;color:#fff;background:var(--navy);border-bottom:7px solid var(--gold);font-size:1.95rem;line-height:1.15;font-weight:800;letter-spacing:-.02em;box-shadow:0 2px 10px rgba(0,0,0,.18);}
+h1{max-width:1120px;margin:32px auto 22px;padding:0 clamp(18px,3vw,28px);color:var(--navy);font-size:clamp(1.9rem,3.2vw,3rem);line-height:1.14;font-weight:800;letter-spacing:-.035em;}
+h2{max-width:1120px;margin:42px auto 18px;padding:0 clamp(18px,3vw,28px) 10px;color:var(--teal);border-bottom:2px solid var(--line);font-size:1.55rem;line-height:1.25;}
+p,ol,ul{max-width:1120px;margin-left:auto;margin-right:auto}
+.mode{max-width:1120px;margin:20px auto;padding:22px 24px;background:#f8fbff;border:1px solid var(--line);border-left:7px solid var(--blue);border-radius:14px;box-shadow:0 2px 12px rgba(14,26,68,.08);}
+.mode p{margin:0;max-width:none}
+.exo{max-width:1120px;margin:24px auto 30px;padding:24px 26px;background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:0 2px 12px rgba(14,26,68,.10);}
 .exo>strong:first-child{color:var(--garnet);font-weight:800;font-size:1.05em}
-.sol{margin-left:0;margin-top:14px}
-.methode,.vigilance,.conclusion{
-  margin:14px 0;
-  padding:14px 16px;
-  border-radius:10px;
-  border:1px solid transparent;
-}
-.methode{background:var(--soft-blue);border-left:5px solid var(--blue)}
+.enonce{margin:2px 0 14px}.sol{margin-top:6px}.sol p{max-width:none;margin:.55em 0}
+.vigilance,.conclusion,.lien{margin:14px 0;padding:13px 16px;border-radius:10px;border:1px solid transparent;}
 .vigilance{background:var(--soft-gold);border-left:5px solid var(--gold)}
 .conclusion{background:var(--soft-green);border-left:5px solid var(--teal)}
-.label{font-weight:800;color:var(--navy)}
-code{
-  background:#fff;
-  border:1px solid var(--line);
-  padding:.1em .28em;
-  border-radius:5px;
-}
-a{color:var(--teal);font-weight:750;text-decoration-thickness:.08em;text-underline-offset:.16em}
-a:hover{color:var(--garnet)}
-@media (max-width:720px){
-  body::before{font-size:1.45rem;padding:22px 18px 20px}
-  h1{font-size:1.7rem;margin-top:26px}
-  .intro,.mode,.exo,ol{margin-left:14px;margin-right:14px}
-  .exo{padding:18px}
-}
+.lien{background:#f6f1fb;border-left:5px solid #6b3fa0}
+.label{font-weight:800;color:var(--navy)}.lien .label{color:#5a2d8a}.ref{color:#5a2d8a;font-weight:600}.qed{color:var(--teal);font-weight:700}
+</style>
+</head>
+<body>
+<div style="max-width:1120px;margin:12px auto 0;padding:0 clamp(18px,3vw,28px)">
+<a href="index.html" style="color:#8a2d18;text-decoration:none;font-size:.92rem">&larr; Retour à l'index des corrigés</a>
+</div>
 
-body.index::before{content:"Corrigés pédagogiques"}
-body.chapter::before{content:"Théorie de Galois"}
-</style></head><body class="chapter">
-<h1>Corrigés — Chapitre 5 : Corps de rupture, corps de décomposition et clôture algébrique</h1>
-<div class="intro"><p><span class="label">Repère.</span> Ce chapitre sert de transition entre les extensions simples et les corps de décomposition.</p></div>
-<div class="exo"><strong>Repère.</strong> Ce chapitre ne comporte pas encore de corrigé autonome.<div class="sol"><div class="methode"><span class="label">Méthode.</span> Retenir les distinctions entre corps de rupture, corps de décomposition et clôture algébrique.</div><div class="vigilance"><span class="label">Point de vigilance.</span> Un corps de rupture ajoute une racine d’un polynôme irréductible ; un corps de décomposition contient toutes les racines du polynôme considéré.</div><div class="conclusion"><span class="label">Conclusion.</span> Cette page sert de repère pour maintenir la continuité des corrigés chapitre par chapitre.</div></div></div>
-</body></html>
+<h1>Chapitre 5 — Corps de rupture, de décomposition et clôture</h1>
+
+<div class="mode">
+<p><strong>Comment lire ces corrigés.</strong> Le chapitre 5 est avant tout théorique : il n'y a pas d'exercices numérotés dans le livre, mais quatre objectifs explicites (distinguer rupture et décomposition, justifier l'unicité, comprendre pourquoi $\mathbb Q(\sqrt[3]2)$ ne décompose pas $X^3-2$). On propose ci-dessous quatre exercices types qui les couvrent, avec renvois en violet aux résultats nommés du chapitre. La distinction <em>rupture / décomposition</em> est le pivot de tout ce qui suit : la théorie de Galois se déploie sur le corps de décomposition.</p>
+</div>
+
+<h2>🔧 Exercices types</h2>
+
+<div class="exo">
+<strong>Exercice A — Rupture contre décomposition.</strong>
+<div class="enonce">Pour $P=X^3-2$ sur $\mathbb Q$, décrire un corps de rupture, puis le corps de décomposition. Comparer leurs degrés.</div>
+<div class="sol">
+<p><strong>Corps de rupture.</strong> $X^3-2$ est irréductible sur $\mathbb Q$ (Eisenstein, $p=2$). Un <span class="ref">corps de rupture</span> est obtenu en adjoignant <em>une</em> racine : $\mathbb Q(\sqrt[3]2)$, de degré $3$ sur $\mathbb Q$ par la <span class="ref">construction d'un corps de rupture</span>. Ce corps, plongé dans $\mathbb R$, ne contient que la racine réelle $\sqrt[3]2$.</p>
+<p><strong>Corps de décomposition.</strong> Les trois racines complexes sont $\sqrt[3]2,\ j\sqrt[3]2,\ j^2\sqrt[3]2$ où $j=e^{2i\pi/3}$. Le <span class="ref">corps de décomposition</span> doit contenir les trois, donc aussi $j=\dfrac{j\sqrt[3]2}{\sqrt[3]2}$. C'est</p>
+<p style="text-align:center">$D=\mathbb Q(\sqrt[3]2,\,j).$</p>
+<p>Calcul du degré : $[\mathbb Q(\sqrt[3]2):\mathbb Q]=3$ et $[\mathbb Q(\sqrt[3]2,j):\mathbb Q(\sqrt[3]2)]=2$ (car $j$ a pour minimal $X^2+X+1$, irréductible sur le corps réel $\mathbb Q(\sqrt[3]2)$). Par multiplicativité, $[D:\mathbb Q]=6$.</p>
+<div class="vigilance"><span class="label">Le point à ne jamais oublier.</span> Un corps de rupture suffit à <em>adjoindre une racine</em>, mais ne contient pas forcément les autres. Ici $\mathbb Q(\sqrt[3]2)$ (degré $3$) ne décompose pas $X^3-2$ : il manque $j$. Le corps de décomposition (degré $6$) est strictement plus grand. C'est l'objectif explicite du chapitre.</div>
+<div class="lien"><span class="label">Vers Galois.</span> Le degré $6$ du corps de décomposition annonce $|\mathrm{Gal}(D/\mathbb Q)|=6$, soit $S_3$ : c'est l'exemple central des chapitres 7 et 8. La théorie de Galois vit sur le corps de décomposition, jamais sur un simple corps de rupture (qui n'est pas normal).</div>
+</div>
+</div>
+
+<div class="exo">
+<strong>Exercice B — Construction par quotient.</strong>
+<div class="enonce">Soit $P\in K[X]$ irréductible. Construire un corps de rupture sans supposer l'existence d'une clôture algébrique.</div>
+<div class="sol">
+<p>On pose directement $L=K[X]/(P)$. Comme $P$ est irréductible, l'idéal $(P)$ est maximal (chapitre 3), donc $L$ est un corps (<span class="ref">construction d'un corps de rupture</span> via le quotient).</p>
+<p>L'application composée $K\hookrightarrow K[X]\twoheadrightarrow L$ plonge $K$ dans $L$. La classe $\alpha=\overline X$ vérifie $P(\alpha)=\overline P=\bar0$ : c'est une racine de $P$ dans $L$. De plus $L=K(\alpha)$ et $[L:K]=\deg P$.</p>
+<p>On a donc construit un corps de rupture <em>de l'intérieur</em>, sans plongement préalable dans $\mathbb C$. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Pourquoi cette construction compte.</span> Sur $\mathbb Q$ ou $\mathbb R$, on peut chercher les racines dans $\mathbb C$. Mais sur un corps abstrait (par exemple $\mathbb F_p$ ou un corps de fonctions), aucun « grand corps » n'est donné a priori. Le quotient fabrique la racine algébriquement. C'est la même idée qu'au chapitre 2 (A2 : construction de $\mathbb C$) et chapitre 4 (Exercice 3).</div>
+</div>
+</div>
+
+<div class="exo">
+<strong>Exercice C — Unicité à isomorphisme près.</strong>
+<div class="enonce">Expliquer pourquoi le corps de décomposition d'un polynôme est unique à isomorphisme près, et quel rôle y joue le lemme de prolongement.</div>
+<div class="sol">
+<p>Soient $D$ et $D'$ deux corps de décomposition de $P$ sur $K$. L'objectif est de construire un $K$-isomorphisme $D\to D'$.</p>
+<p>L'outil est le <span class="ref">lemme de prolongement</span> : un isomorphisme entre deux corps $K\to K'$ se prolonge en un isomorphisme entre corps de rupture d'un polynôme irréductible et de son image. En adjoignant les racines une à une, on prolonge l'identité $\mathrm{id}_K$ de proche en proche, jusqu'à un isomorphisme $D\xrightarrow{\sim}D'$ fixant $K$.</p>
+<p>C'est l'<span class="ref">unicité du corps de décomposition</span> : $D$ et $D'$ sont $K$-isomorphes. <span class="qed">$\square$</span></p>
+<div class="vigilance"><span class="label">« Unique à isomorphisme près », pas « unique ».</span> Il peut exister plusieurs sous-corps de $\mathbb C$ qui décomposent $P$, mais ils sont tous abstraitement identiques. Le nombre de prolongements possibles à chaque étape (lié au degré) préfigure le cardinal du groupe de Galois (chapitre 7, inégalité fondamentale).</div>
+<div class="lien"><span class="label">Charnière vers Galois.</span> Le lemme de prolongement, compté finement, donne le nombre de $K$-plongements de $D$ dans une clôture : c'est exactement $|\mathrm{Gal}(D/K)|$ quand l'extension est séparable. Ce comptage est au cœur du chapitre 7.</div>
+</div>
+</div>
+
+<div class="exo">
+<strong>Exercice D — Clôture algébrique.</strong>
+<div class="enonce">Qu'est-ce qu'une clôture algébrique de $K$ ? Pourquoi $\overline{\mathbb Q}$ (clôture de $\mathbb Q$ dans $\mathbb C$) n'est-il pas égal à $\mathbb C$ ?</div>
+<div class="sol">
+<p>Une <span class="ref">clôture algébrique</span> $\overline K$ est une extension algébrique de $K$ qui est algébriquement close : tout polynôme non constant de $\overline K[X]$ y est scindé. Elle contient, en un sens, les racines de tous les polynômes à coefficients dans $K$.</p>
+<p><strong>$\overline{\mathbb Q}\neq\mathbb C$.</strong> Le corps $\overline{\mathbb Q}$ des nombres algébriques (racines de polynômes à coefficients rationnels) est dénombrable : il y a une infinité dénombrable de polynômes dans $\mathbb Q[X]$, chacun ayant un nombre fini de racines. Or $\mathbb C$ est non dénombrable. Donc $\overline{\mathbb Q}\subsetneq\mathbb C$ : il existe des nombres complexes <em>transcendants</em> (comme $\pi$ ou $e$), non algébriques sur $\mathbb Q$. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Lien avec le cours.</span> Les <span class="ref">propriétés de $\overline K$</span> garantissent que tout corps de décomposition se plonge dans une clôture fixée, ce qui permet de « travailler dans $\mathbb C$ » sur $\mathbb Q$ sans perte de généralité. La construction générale (pour un corps abstrait) repose sur le lemme de Zorn, détaillée à l'annexe Steinitz.</div>
+</div>
+</div>
+
+</body>
+</html>

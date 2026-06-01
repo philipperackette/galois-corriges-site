@@ -1,237 +1,196 @@
 <!DOCTYPE html>
-
 <html lang="fr">
 <head>
 <meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Corrigés — Chapitre 11 : Extensions par radicaux</title>
-<script>
-    window.MathJax = {
-      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
-      svg: { fontCache: 'global' }
-    };
-  </script>
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']]},svg:{fontCache:'global'}};</script>
 <script async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <style>
-:root{
-  --navy:#0e1a44;
-  --gold:#c79b2b;
-  --cream:#f4f0e7;
-  --card:#fffdf8;
-  --ink:#1f1f1f;
-  --muted:#555;
-  --teal:#0b6058;
-  --blue:#1d4f91;
-  --garnet:#8a1d2c;
-  --line:#d8d0c1;
-  --soft-blue:#f2f6ff;
-  --soft-gold:#fff7df;
-  --soft-green:#eefbf7;
-}
-*{box-sizing:border-box}
-html{background:var(--cream)}
-body{
-  margin:0;
-  padding:0 0 48px;
-  max-width:none;
-  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-  line-height:1.62;
-  color:var(--ink);
-  background:var(--cream);
-  hyphens:auto;
-}
-body::before{
-  content:"Corrigés pédagogiques";
-  display:block;
-  padding:28px clamp(22px,5vw,64px) 26px;
-  color:#fff;
-  background:var(--navy);
-  border-bottom:7px solid var(--gold);
-  font-size:1.95rem;
-  line-height:1.15;
-  font-weight:800;
-  letter-spacing:-.02em;
-  box-shadow:0 2px 10px rgba(0,0,0,.18);
-}
-h1{
-  max-width:1120px;
-  margin:32px auto 22px;
-  padding:0 clamp(18px,3vw,28px);
-  color:var(--navy);
-  font-size:clamp(1.9rem,3.2vw,3rem);
-  line-height:1.14;
-  font-weight:800;
-  letter-spacing:-.035em;
-}
-h2{
-  max-width:1120px;
-  margin:42px auto 18px;
-  padding:0 clamp(18px,3vw,28px) 10px;
-  color:var(--teal);
-  border-bottom:2px solid var(--line);
-  font-size:1.55rem;
-  line-height:1.25;
-}
-p, ol, ul{max-width:1120px;margin-left:auto;margin-right:auto}
-.intro,.mode{
-  max-width:1120px;
-  margin:20px auto;
-  padding:22px 24px;
-  background:var(--card);
-  border:1px solid var(--line);
-  border-left:7px solid var(--gold);
-  border-radius:14px;
-  box-shadow:0 2px 12px rgba(14,26,68,.08);
-}
-.mode{border-left-color:var(--blue);background:#f8fbff}
-.intro p,.mode p{margin:0;max-width:none}
-ol{
-  max-width:1120px;
-  margin-top:26px;
-  padding:22px 30px 22px 52px;
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:16px;
-  box-shadow:0 2px 12px rgba(14,26,68,.08);
-}
-li{margin:.38em 0}
-.exo{
-  max-width:1120px;
-  margin:24px auto 30px;
-  padding:24px 26px;
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:16px;
-  box-shadow:0 2px 12px rgba(14,26,68,.10);
-}
+:root{--navy:#0e1a44;--gold:#c79b2b;--cream:#f4f0e7;--card:#fffdf8;--ink:#1f1f1f;--muted:#555;--teal:#0b6058;--blue:#1d4f91;--garnet:#8a1d2c;--line:#d8d0c1;--soft-blue:#f2f6ff;--soft-gold:#fff7df;--soft-green:#eefbf7;}
+*{box-sizing:border-box}html{background:var(--cream)}
+body{margin:0;padding:0 0 48px;max-width:none;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.62;color:var(--ink);background:var(--cream);hyphens:auto;}
+body::before{content:"Corrigés pédagogiques";display:block;padding:28px clamp(22px,5vw,64px) 26px;color:#fff;background:var(--navy);border-bottom:7px solid var(--gold);font-size:1.95rem;line-height:1.15;font-weight:800;letter-spacing:-.02em;box-shadow:0 2px 10px rgba(0,0,0,.18);}
+h1{max-width:1120px;margin:32px auto 22px;padding:0 clamp(18px,3vw,28px);color:var(--navy);font-size:clamp(1.9rem,3.2vw,3rem);line-height:1.14;font-weight:800;letter-spacing:-.035em;}
+h2{max-width:1120px;margin:42px auto 18px;padding:0 clamp(18px,3vw,28px) 10px;color:var(--teal);border-bottom:2px solid var(--line);font-size:1.55rem;line-height:1.25;}
+p,ol,ul{max-width:1120px;margin-left:auto;margin-right:auto}
+.mode{max-width:1120px;margin:20px auto;padding:22px 24px;background:#f8fbff;border:1px solid var(--line);border-left:7px solid var(--blue);border-radius:14px;box-shadow:0 2px 12px rgba(14,26,68,.08);}
+.mode p{margin:0;max-width:none}
+.exo{max-width:1120px;margin:24px auto 30px;padding:24px 26px;background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:0 2px 12px rgba(14,26,68,.10);}
 .exo>strong:first-child{color:var(--garnet);font-weight:800;font-size:1.05em}
-.sol{margin-left:0;margin-top:14px}
-.methode,.vigilance,.conclusion{
-  margin:14px 0;
-  padding:14px 16px;
-  border-radius:10px;
-  border:1px solid transparent;
-}
-.methode{background:var(--soft-blue);border-left:5px solid var(--blue)}
+.enonce{margin:2px 0 14px}.sol{margin-top:6px}.sol p{max-width:none;margin:.55em 0}
+.vigilance,.conclusion,.lien{margin:14px 0;padding:13px 16px;border-radius:10px;border:1px solid transparent;}
 .vigilance{background:var(--soft-gold);border-left:5px solid var(--gold)}
 .conclusion{background:var(--soft-green);border-left:5px solid var(--teal)}
-.label{font-weight:800;color:var(--navy)}
-code{
-  background:#fff;
-  border:1px solid var(--line);
-  padding:.1em .28em;
-  border-radius:5px;
-}
-a{color:var(--teal);font-weight:750;text-decoration-thickness:.08em;text-underline-offset:.16em}
-a:hover{color:var(--garnet)}
-@media (max-width:720px){
-  body::before{font-size:1.45rem;padding:22px 18px 20px}
-  h1{font-size:1.7rem;margin-top:26px}
-  .intro,.mode,.exo,ol{margin-left:14px;margin-right:14px}
-  .exo{padding:18px}
-}
-
-body.index::before{content:"Corrigés pédagogiques"}
-body.chapter::before{content:"Théorie de Galois"}
+.lien{background:#f6f1fb;border-left:5px solid #6b3fa0}
+.label{font-weight:800;color:var(--navy)}.lien .label{color:#5a2d8a}.ref{color:#5a2d8a;font-weight:600}.qed{color:var(--teal);font-weight:700}
 </style>
 </head>
-<body class="chapter">
-<h1>Corrigés — Chapitre 11 : Extensions par radicaux</h1><div class="intro"><p><span class="label">Objectif pédagogique.</span> Les solutions détaillent le lien entre radicaux et tours d’extensions. L’idée pédagogique est de distinguer la construction d’une racine, l’extension engendrée et le contrôle galoisien correspondant.</p></div><div class="mode"><p><span class="label">Mode de lecture.</span> Pour chaque exercice, lire d’abord la méthode, refaire le calcul sans regarder la solution, puis comparer avec le point de vigilance.</p></div>
+<body>
+<div style="max-width:1120px;margin:12px auto 0;padding:0 clamp(18px,3vw,28px)">
+<a href="index.html" style="color:#8a2d18;text-decoration:none;font-size:.92rem">&larr; Retour à l'index des corrigés</a>
+</div>
+
+<h1>Chapitre 11 — Extensions par radicaux</h1>
+
+<div class="mode">
+<p><strong>Comment lire ces corrigés.</strong> Ce chapitre fait le pont entre « résoluble par radicaux » (notion concrète : on adjoint des racines $n$-ièmes) et « groupe résoluble » (notion abstraite du chapitre 10). La clé est le <span class="ref">lemme « Kummer cyclique »</span> : en présence des racines de l'unité, adjoindre $\sqrt[n]a$ donne une extension cyclique. Le <span class="ref">théorème de Galois sur les radicaux</span> en déduit l'équivalence : $P$ résoluble par radicaux $\iff$ $\mathrm{Gal}(P)$ résoluble. Renvois en violet aux résultats nommés du chapitre 11.</p>
+</div>
+
 <h2>✏️ Vérification</h2>
+
 <div class="exo">
-<strong>V1.</strong> Montrer que $\sqrt[3]{5}$ est exprimable par radicaux sur $\mathbb Q$.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      Par définition, $\sqrt[3]{5}$ est une racine du polynôme $X^3 - 5$. On a directement la tour radicalique
-      \[
-      \mathbb Q \subset \mathbb Q(\sqrt[3]{5})
-      \]
-      car $(\sqrt[3]{5})^3 = 5 \in \mathbb Q$. L'élément est donc exprimable par radicaux.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> La solution se clôt en identifiant le polynôme ou la factorisation cherchée, avec la raison qui garantit son unicité ou son irréductibilité.</div></div>
+<strong>V1.</strong>
+<div class="enonce">Montrer que $\sqrt[3]5$ est exprimable par radicaux sur $\mathbb Q$.</div>
+<div class="sol">
+<p>Par définition d'une <span class="ref">expression par radicaux</span>, il faut exhiber une suite finie d'extractions de racines partant de $\mathbb Q$ qui atteint $\sqrt[3]5$.</p>
+<p>Ici, c'est immédiat : $\sqrt[3]5$ est une racine cubique de $5\in\mathbb Q$. Une seule extraction suffit. La tour est $\mathbb Q\subset\mathbb Q(\sqrt[3]5)$, où $(\sqrt[3]5)^3=5\in\mathbb Q$. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Définition en acte.</span> $\sqrt[3]5$ est le prototype du <em>radical</em> : un élément $\beta$ tel que $\beta^n\in K$. La <span class="ref">tour radicalique</span> la plus simple n'a qu'un étage. Tout l'enjeu du chapitre est de comprendre quand <em>toutes</em> les racines d'un polynôme s'atteignent ainsi.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>V2.</strong> Donner une tour radicalique contenant $\sqrt{1+\sqrt 3}$.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Isoler la définition utile, écrire les hypothèses sous forme exploitable, puis conclure par une phrase qui répond exactement à la question.</div>
-      On construit d'abord $\sqrt 3$, puis la racine carrée de $1+\sqrt 3$ :
-      \[
-      \mathbb Q \subset \mathbb Q(\sqrt 3) \subset \mathbb Q\!\left(\sqrt 3, \sqrt{1+\sqrt 3}\right).
-      \]
-      Au premier étage, $(\sqrt 3)^2 = 3 \in \mathbb Q$. Au second, $\left(\sqrt{1+\sqrt 3}\right)^2 = 1+\sqrt 3 \in \mathbb Q(\sqrt 3)$. L'élément cherché appartient au dernier corps, donc est exprimable par radicaux.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> On termine en indiquant clairement le corps obtenu, son degré ou la propriété d’extension démontrée.</div></div>
+<strong>V2.</strong>
+<div class="enonce">Donner une tour radicalique contenant $\sqrt{1+\sqrt3}$.</div>
+<div class="sol">
+<p>On construit la tour étage par étage, chaque étage adjoignant une racine d'un élément du précédent :</p>
+<p style="text-align:center">$\mathbb Q\ \subset\ \mathbb Q(\sqrt3)\ \subset\ \mathbb Q\big(\sqrt3,\ \sqrt{1+\sqrt3}\big).$</p>
+<p>$\bullet$ Étage 1 : $\sqrt3$ vérifie $(\sqrt3)^2=3\in\mathbb Q$ (radical d'ordre $2$).</p>
+<p>$\bullet$ Étage 2 : en posant $\beta=\sqrt{1+\sqrt3}$, on a $\beta^2=1+\sqrt3\in\mathbb Q(\sqrt3)$ (radical d'ordre $2$ sur le corps précédent).</p>
+<p>Cette tour est radicalique et contient $\sqrt{1+\sqrt3}$. <span class="qed">$\square$</span></p>
+<div class="conclusion"><span class="label">Radicaux imbriqués.</span> L'expression $\sqrt{1+\sqrt3}$ est un radical <em>emboîté</em> : il faut d'abord disposer de $\sqrt3$ pour donner un sens à $1+\sqrt3$, puis en extraire la racine. C'est exactement la structure en étages d'une <span class="ref">tour radicalique</span>.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>V3.</strong> Soit $K$ un corps contenant $\zeta_n$, et soit $\beta^n = a \in K$. Montrer que toutes les racines de $X^n - a$ appartiennent à $K(\beta)$.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      Les racines de $X^n - a$ sont $\beta, \zeta_n \beta, \zeta_n^2 \beta, \dots, \zeta_n^{n-1}\beta$. Comme $\zeta_n \in K \subset K(\beta)$, toutes ces racines sont dans $K(\beta)$ (stable par multiplication).
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Le risque principal est de conclure trop vite : chaque implication utilisée doit être justifiée par une définition ou un résultat du chapitre.</div><div class="conclusion"><span class="label">Conclusion.</span> On termine en indiquant clairement le corps obtenu, son degré ou la propriété d’extension démontrée.</div></div>
+<strong>V3.</strong>
+<div class="enonce">Soit $K$ contenant $\zeta_n$, et $\beta^n=a\in K$. Montrer que toutes les racines de $X^n-a$ appartiennent à $K(\beta)$.</div>
+<div class="sol">
+<p>Les racines de $X^n-a$ dans une clôture sont $\beta,\ \zeta_n\beta,\ \zeta_n^2\beta,\dots,\zeta_n^{n-1}\beta$ : en effet $(\zeta_n^k\beta)^n=\zeta_n^{kn}\beta^n=1\cdot a=a$, et ces $n$ valeurs sont distinctes.</p>
+<p>Comme $\zeta_n\in K\subseteq K(\beta)$ et $\beta\in K(\beta)$, chaque $\zeta_n^k\beta$ appartient à $K(\beta)$. Donc $X^n-a$ est scindé dans $K(\beta)$ :</p>
+<p style="text-align:center">$X^n-a=\prod_{k=0}^{n-1}(X-\zeta_n^k\beta)\ \text{dans }K(\beta)[X].$</p>
+<p><span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Le rôle des racines de l'unité.</span> C'est <em>parce que</em> $\zeta_n\in K$ que $K(\beta)$ contient toutes les racines : l'extension $K(\beta)/K$ est alors normale (corps de décomposition de $X^n-a$), donc galoisienne. Sans $\zeta_n$, on retombe sur le défaut de $\mathbb Q(\sqrt[3]2)$ (V4). C'est le <span class="ref">lemme « Radical avec racines de l'unité »</span>.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>V4.</strong> Vérifier que $\mathbb Q(\sqrt[3]{2})/\mathbb Q$ n'est pas galoisienne.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Penser en termes d’espaces vectoriels : une base donne le degré, et une tour donne un produit de degrés.</div>
-      L'extension est de degré $3$ car $X^3-2$ est irréductible sur $\mathbb Q$. Elle n'est pas normale car elle ne contient que la racine réelle $\sqrt[3]{2}$, alors que les deux autres racines complexes $j\sqrt[3]{2}$ et $j^2\sqrt[3]{2}$ n'y sont pas. En caractéristique nulle, galoisienne $\Leftrightarrow$ normale, donc elle n'est pas galoisienne.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Pour les degrés $2$ ou $3$, l’absence de racine dans le corps suffit à conclure à l’irréductibilité ; ce n’est plus vrai en degré supérieur.</div><div class="conclusion"><span class="label">Conclusion.</span> On termine en indiquant clairement le corps obtenu, son degré ou la propriété d’extension démontrée.</div></div>
+<strong>V4.</strong>
+<div class="enonce">Vérifier que $\mathbb Q(\sqrt[3]2)/\mathbb Q$ n'est pas galoisienne.</div>
+<div class="sol">
+<p>Le minimal de $\sqrt[3]2$ est $X^3-2$, de racines $\sqrt[3]2,j\sqrt[3]2,j^2\sqrt[3]2$. Comme $\mathbb Q(\sqrt[3]2)\subset\mathbb R$, les deux racines complexes n'y figurent pas : $X^3-2$ a une racine dans le corps sans y être scindé. L'extension n'est pas normale, donc pas galoisienne. <span class="qed">$\square$</span></p>
+<div class="vigilance"><span class="label">Le manque de $\zeta_3$.</span> Le problème vient précisément de l'absence de $j=\zeta_3$ dans $\mathbb Q(\sqrt[3]2)$. C'est le contre-exemple qui motive l'hypothèse « $K$ contient $\zeta_n$ » du lemme de Kummer : sans elle, adjoindre un radical ne suffit pas à obtenir une extension galoisienne (V5).</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>V5.</strong> Expliquer pourquoi l'adjonction de $j$ rend le corps $\mathbb Q(\sqrt[3]{2},j)$ plus naturel pour étudier $X^3-2$.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Penser en termes d’espaces vectoriels : une base donne le degré, et une tour donne un produit de degrés.</div>
-      $\mathbb Q(\sqrt[3]{2},j)$ est le corps de décomposition de $X^3-2$ sur $\mathbb Q$, il contient toutes les racines et est engendré par elles. C'est une extension galoisienne (normale car corps de décomposition, séparable car caractéristique nulle). Son groupe de Galois est $S_3$, bien visible. Les symétries entre les racines sont réalisées par des automorphismes, contrairement au corps $\mathbb Q(\sqrt[3]{2})$. Étudier l'équation dans ce cadre donne accès à la correspondance de Galois et aux méthodes de la théorie.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Attention à l’ordre de composition : ici les permutations se composent de droite à gauche.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+<strong>V5.</strong>
+<div class="enonce">Expliquer pourquoi l'adjonction de $j$ rend $\mathbb Q(\sqrt[3]2,j)$ plus naturel pour étudier $X^3-2$.</div>
+<div class="sol">
+<p>En adjoignant $j=\zeta_3$, on obtient $\mathbb Q(\sqrt[3]2,j)$ qui contient les <em>trois</em> racines $\sqrt[3]2,j\sqrt[3]2,j^2\sqrt[3]2$ : c'est le corps de décomposition de $X^3-2$, donc une extension <em>galoisienne</em> de $\mathbb Q$ (degré $6$, groupe $S_3$).</p>
+<p>Sur ce corps, le groupe de Galois agit pleinement (six automorphismes au lieu d'un seul pour $\mathbb Q(\sqrt[3]2)$), et la correspondance de Galois s'applique. C'est le bon cadre pour analyser les symétries de l'équation. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Stratégie générale.</span> Pour résoudre par radicaux, on commence par adjoindre les racines de l'unité nécessaires (ici $j$), ce qui « normalise » la situation. C'est l'objet du lemme de <span class="ref">normalisation de la tour radicalique</span> : quitte à enrichir la tour par des $\zeta_n$, on peut la supposer galoisienne à chaque étage.</div>
 </div>
+</div>
+
 <h2>🔧 Structurants</h2>
+
 <div class="exo">
-<strong>S1.</strong> Démontrer que si $K$ contient $\zeta_n$, alors le groupe de Galois de $K(\beta)/K$, avec $\beta^n \in K$, s'injecte dans $\mathbb Z/n\mathbb Z$.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Commencer par traduire l’énoncé en définitions précises, puis vérifier les conditions une par une sans sauter l’étape de stabilité ou d’irréductibilité.</div>
-      Soit $a = \beta^n \in K$. Les racines de $X^n-a$ sont $\beta, \zeta_n\beta, \dots, \zeta_n^{n-1}\beta$. Soit $\sigma \in \mathrm{Gal}(K(\beta)/K)$. Alors $\sigma(\beta)^n = \sigma(\beta^n) = \sigma(a) = a$, donc $\sigma(\beta)$ est une racine de $X^n-a$ et vaut $\zeta_n^{k_\sigma} \beta$ pour un certain $k_\sigma \in \{0,\dots,n-1\}$.
-      L'application $\varphi : \sigma \mapsto k_\sigma \pmod n$ est un morphisme de groupes : si $\tau(\beta) = \zeta_n^{k_\tau}\beta$, alors $(\sigma\tau)(\beta) = \sigma(\zeta_n^{k_\tau}\beta) = \zeta_n^{k_\tau} \sigma(\beta) = \zeta_n^{k_\tau+k_\sigma} \beta$, car $\sigma$ fixe $\zeta_n \in K$.
-      L'injectivité découle du fait qu'un automorphisme de $K(\beta)$ est déterminé par l'image de $\beta$. Ainsi $\mathrm{Gal}(K(\beta)/K)$ s'identifie à un sous-groupe de $\mathbb Z/n\mathbb Z$, donc cyclique.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Un automorphisme au-dessus de $K$ fixe les coefficients de $K$ ; c’est exactement ce qui permet de transporter l’équation $P(\alpha)=0$.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+<strong>S1.</strong>
+<div class="enonce">Démontrer que si $K$ contient $\zeta_n$, alors $\mathrm{Gal}(K(\beta)/K)$, avec $\beta^n\in K$, s'injecte dans $\mathbb Z/n\mathbb Z$.</div>
+<div class="sol">
+<p>Posons $a=\beta^n\in K$. Par V3, $K(\beta)$ est le corps de décomposition de $X^n-a$, donc $K(\beta)/K$ est galoisienne. Soit $\sigma\in\mathrm{Gal}(K(\beta)/K)$.</p>
+<p>$\sigma$ envoie $\beta$ sur une racine de $X^n-a$, c'est-à-dire $\sigma(\beta)=\zeta_n^{k(\sigma)}\beta$ pour un certain $k(\sigma)\in\mathbb Z/n\mathbb Z$. Définissons $\Psi:\sigma\mapsto k(\sigma)$.</p>
+<p><strong>$\Psi$ est un morphisme.</strong> Pour $\sigma,\tau$, comme $\sigma$ fixe $\zeta_n\in K$ :</p>
+<p style="text-align:center">$\sigma\tau(\beta)=\sigma(\zeta_n^{k(\tau)}\beta)=\zeta_n^{k(\tau)}\sigma(\beta)=\zeta_n^{k(\tau)}\zeta_n^{k(\sigma)}\beta=\zeta_n^{k(\sigma)+k(\tau)}\beta.$</p>
+<p>Donc $k(\sigma\tau)=k(\sigma)+k(\tau)$ : $\Psi$ est un morphisme vers $(\mathbb Z/n\mathbb Z,+)$.</p>
+<p><strong>$\Psi$ est injectif.</strong> Si $k(\sigma)=0$, alors $\sigma(\beta)=\beta$, donc $\sigma$ fixe $K(\beta)$ entier : $\sigma=\mathrm{id}$.</p>
+<p>Donc $\mathrm{Gal}(K(\beta)/K)\hookrightarrow\mathbb Z/n\mathbb Z$. <span class="qed">$\square$</span></p>
+<div class="conclusion"><span class="label">Conséquence : groupe cyclique.</span> Un sous-groupe de $\mathbb Z/n\mathbb Z$ est cyclique. Donc $\mathrm{Gal}(K(\beta)/K)$ est cyclique, d'ordre divisant $n$. C'est exactement le contenu du <span class="ref">lemme « Un étage radicalique donne un quotient abélien »</span> : chaque marche d'une tour radicalique (avec racines de l'unité) a un groupe cyclique.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>S2.</strong> Reprendre la preuve du lemme de Kummer cyclique dans le cas $n=3$.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Trouver d’abord un polynôme annulateur, puis prouver son irréductibilité pour garantir qu’il est minimal.</div>
-      Soit $K$ contenant $\zeta_3$ (avec $\zeta_3^3=1, \zeta_3\neq1$), et $L/K$ cyclique de degré $3$, engendrée par $\sigma$ ($\sigma^3 = \mathrm{Id}$). On choisit $\beta \in L$ tel que la résolvante de Lagrange $\alpha = \beta + \zeta_3^{-1}\sigma(\beta) + \zeta_3^{-2}\sigma^2(\beta)$ soit non nulle (possible par Dedekind). Alors :
-      \[
-      \sigma(\alpha) = \sigma(\beta) + \zeta_3^{-1}\sigma^2(\beta) + \zeta_3^{-2}\beta = \zeta_3 \alpha \quad (\text{car } \zeta_3^{-2} = \zeta_3).
-      \]
-      Calculons : $\sigma(\alpha^3) = \sigma(\alpha)^3 = (\zeta_3\alpha)^3 = \zeta_3^3\,\alpha^3 = \alpha^3$, puisque $\zeta_3^3=1$. L'élément $\alpha^3$ est donc fixé par $\sigma$, et par récurrence sur l'exposant, fixé par toute puissance $\sigma^k$. Comme $\sigma$ engendre $\mathrm{Gal}(L/K)$, l'élément $\alpha^3$ appartient au corps fixé $L^{\mathrm{Gal}(L/K)}$. Or $L/K$ est galoisienne, donc le théorème fondamental donne $L^{\mathrm{Gal}(L/K)}=K$. Ainsi $\alpha^3\in K$.
-      <br/>De plus, les images de $\alpha$ par les éléments de $\mathrm{Gal}(L/K)=\{\mathrm{Id},\sigma,\sigma^2\}$ sont $\alpha,\zeta_3\alpha,\zeta_3^2\alpha$. Elles sont distinctes car $\alpha\neq 0$ et $1,\zeta_3,\zeta_3^2$ sont distincts. Ce sont des racines d'un même polynôme de $K[X]$ (le polynôme minimal de $\alpha$), qui possède donc au moins $3$ racines distinctes : son degré est au moins $3$. Mais le degré du polynôme minimal de $\alpha$ sur $K$ est aussi majoré par $[L:K]=3$. Il vaut donc exactement $3$, ce qui donne $[K(\alpha):K]=3$. Comme $K(\alpha)\subset L$ et $[L:K]=3$, on conclut $L=K(\alpha)$, avec $\alpha^3\in K$. C'est exactement le lemme de Kummer cyclique pour $n=3$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Une famille génératrice ne suffit pas : lorsqu’on parle de base, il faut aussi justifier l’unicité de l’écriture, ou utiliser un argument de dimension.</div><div class="conclusion"><span class="label">Conclusion.</span> La solution se clôt en identifiant le polynôme ou la factorisation cherchée, avec la raison qui garantit son unicité ou son irréductibilité.</div></div>
+<strong>S2.</strong>
+<div class="enonce">Reprendre la preuve du lemme de Kummer cyclique dans le cas $n=3$.</div>
+<div class="sol">
+<p>Le <span class="ref">lemme « Kummer cyclique »</span> (cas $n=3$) affirme : si $K$ contient $j=\zeta_3$ et si $L/K$ est cyclique de degré $3$, alors $L=K(\beta)$ avec $\beta^3\in K$.</p>
+<p>Soit $\sigma$ un générateur de $\mathrm{Gal}(L/K)\simeq\mathbb Z/3\mathbb Z$. On forme le <em>résolvant de Lagrange</em> : pour $x\in L$,</p>
+<p style="text-align:center">$\beta=x+j^{-1}\sigma(x)+j^{-2}\sigma^2(x).$</p>
+<p>Calculons $\sigma(\beta)$, en utilisant $\sigma(j)=j$ (car $j\in K$) et $\sigma^3=\mathrm{id}$ :</p>
+<p style="text-align:center">$\sigma(\beta)=\sigma(x)+j^{-1}\sigma^2(x)+j^{-2}x=j\big(x+j^{-1}\sigma(x)+j^{-2}\sigma^2(x)\big)=j\beta.$</p>
+<p>Donc $\sigma(\beta)=j\beta$. On en déduit $\sigma(\beta^3)=(j\beta)^3=j^3\beta^3=\beta^3$, donc $\beta^3$ est fixé par $\sigma$, c'est-à-dire $\beta^3\in K$ (par la correspondance, le corps fixe de $\langle\sigma\rangle=\mathrm{Gal}(L/K)$ est $K$).</p>
+<p>Enfin, pour un bon choix de $x$, $\beta\neq0$ ; comme $\sigma(\beta)=j\beta\neq\beta$, $\beta\notin K$, donc $K(\beta)$ est strictement plus grand que $K$ et de degré divisant $3$ : c'est $L$. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Le cœur technique du chapitre.</span> Le résolvant de Lagrange « diagonalise » l'action de $\sigma$ : il fournit un $\beta$ sur lequel $\sigma$ agit par multiplication par $j$. C'est ce qui transforme une extension cyclique en extension radicale. Réciproque de S1, ce lemme complète l'équivalence radical $\leftrightarrow$ cyclique.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>S3.</strong> Soit $L/K$ une extension cyclique de degré $2$. Montrer directement qu'il existe $a \in K$ tel que $L = K(\sqrt a)$.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Penser en termes d’espaces vectoriels : une base donne le degré, et une tour donne un produit de degrés.</div>
-      Soit $\sigma$ un générateur de $\mathrm{Gal}(L/K)$, $\sigma \neq \mathrm{Id}$, $\sigma^2 = \mathrm{Id}$. Choisissons $\beta \in L \setminus K$ (possible car $[L:K]=2$). Alors $\alpha = \beta - \sigma(\beta) \neq 0$, et $\sigma(\alpha) = \sigma(\beta) - \beta = -\alpha$. Donc $\sigma(\alpha^2) = \alpha^2$, donc $a = \alpha^2 \in K$ (corps fixe). De plus $\alpha \notin K$ (sinon $\sigma(\alpha)=\alpha=-\alpha \implies \alpha=0$). Ainsi $K(\alpha)$ contient strictement $K$, donc $L = K(\alpha)$ et $\alpha^2 = a \in K$ soit $\alpha = \sqrt a$ (à un choix de signe près). L'extension est radicale.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Une famille génératrice ne suffit pas : lorsqu’on parle de base, il faut aussi justifier l’unicité de l’écriture, ou utiliser un argument de dimension.</div><div class="conclusion"><span class="label">Conclusion.</span> On termine en indiquant clairement le corps obtenu, son degré ou la propriété d’extension démontrée.</div></div>
+<strong>S3.</strong>
+<div class="enonce">Soit $L/K$ cyclique de degré $2$. Montrer directement qu'il existe $a\in K$ tel que $L=K(\sqrt a)$.</div>
+<div class="sol">
+<p>Soit $\mathrm{Gal}(L/K)=\{\mathrm{id},\sigma\}$ avec $\sigma^2=\mathrm{id}$, $\sigma\neq\mathrm{id}$. On suppose $\mathrm{car}\,K\neq2$ (vrai en caractéristique $0$).</p>
+<p>Prenons $y\in L\setminus K$ (existe car $[L:K]=2$). Posons $\beta=y-\sigma(y)$. Alors $\sigma(\beta)=\sigma(y)-y=-\beta$. Donc $\sigma(\beta^2)=(-\beta)^2=\beta^2$, ce qui montre $\beta^2=a\in K$ (fixé par $\sigma$, donc dans le corps fixe $K$).</p>
+<p>De plus $\beta\neq0$ (sinon $y=\sigma(y)$, donc $y\in K$, exclu) et $\sigma(\beta)=-\beta\neq\beta$, donc $\beta\notin K$. Ainsi $K(\beta)=L$ avec $\beta=\sqrt a$, $a\in K$. <span class="qed">$\square$</span></p>
+<div class="conclusion"><span class="label">Kummer en degré 2.</span> C'est le cas $n=2$ du lemme de Kummer, et il ne requiert <em>pas</em> d'adjoindre $\zeta_2=-1$ (déjà dans $K$). Toute extension quadratique est radicale : $L=K(\sqrt a)$. C'est pourquoi les équations de degré $2$ se résolvent par la formule du discriminant, connue depuis l'Antiquité.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>S4.</strong> Montrer qu'un groupe abélien fini est résoluble.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Dans un quotient, remplacer la classe de $X$ par un élément vérifiant la relation imposée par le polynôme, puis réduire les puissances.</div>
-      Soit $G$ abélien fini. La suite $\{e\} \triangleleft G$ convient, car le quotient $G/\{e\} \simeq G$ est abélien. Donc $G$ est résoluble.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Ne pas confondre le polynôme $P$ avec sa classe : dans le quotient, la classe de $P$ est nulle.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+<strong>S4.</strong>
+<div class="enonce">Montrer qu'un groupe abélien fini est résoluble.</div>
+<div class="sol">
+<p>Soit $G$ abélien fini. Son groupe dérivé est trivial : $D(G)=\{e\}$ (chapitre 10, S3). Donc la suite dérivée est $G\trianglerighteq\{e\}$, qui atteint $\{e\}$ en une étape.</p>
+<p>Par le <span class="ref">critère par la suite dérivée</span> (rappelé du chapitre 10), $G$ est résoluble. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Pierre angulaire.</span> Tout groupe abélien est résoluble : c'est la base sur laquelle se construit l'équivalence du <span class="ref">théorème de Galois sur les radicaux</span>. Les quotients cycliques produits par chaque étage radical (S1) étant abéliens, une tour radicalique donne toujours un groupe résoluble.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>S5.</strong> Expliquer, à partir du théorème de Galois sur les radicaux, pourquoi un polynôme dont le groupe de Galois est $S_3$ est résoluble par radicaux.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Isoler la définition utile, écrire les hypothèses sous forme exploitable, puis conclure par une phrase qui répond exactement à la question.</div>
-      Le théorème de Galois sur les radicaux établit qu'un polynôme sur un corps de caractéristique nulle est résoluble par radicaux si et seulement si son groupe de Galois est résoluble. Or $S_3$ est résoluble (exo S4 du chapitre 10). Donc tout polynôme ayant $S_3$ comme groupe de Galois est résoluble par radicaux. C'est cohérent avec l'exemple $X^3-2$ résoluble par la formule de Cardan.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Attention à l’ordre de composition : ici les permutations se composent de droite à gauche.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+<strong>S5.</strong>
+<div class="enonce">Expliquer, à partir du théorème de Galois sur les radicaux, pourquoi un polynôme de groupe de Galois $S_3$ est résoluble par radicaux.</div>
+<div class="sol">
+<p>Le <span class="ref">théorème de Galois sur les radicaux</span> énonce : un polynôme $P$ (séparable) est résoluble par radicaux si et seulement si son groupe de Galois $\mathrm{Gal}(P)$ est résoluble.</p>
+<p>Or $S_3$ est résoluble : la chaîne $\{e\}\trianglelefteq A_3\trianglelefteq S_3$ a des quotients $\mathbb Z/3$ et $\mathbb Z/2$, abéliens (chapitre 10, S4).</p>
+<p>Donc tout polynôme de groupe $S_3$, comme $X^3-2$, est résoluble par radicaux. <span class="qed">$\square$</span></p>
+<div class="conclusion"><span class="label">Concrètement.</span> La chaîne de groupes correspond à une tour de corps : on adjoint d'abord $j$ (pour l'étage $\mathbb Z/2$ associé à $A_3\subset S_3$), puis une racine cubique (pour l'étage $\mathbb Z/3$). On retrouve la formule de Cardan : $\sqrt[3]2$ s'exprime, et les autres racines via $j$. L'applet « Frobenius mod p » illustre l'action cyclique sur les racines.</div>
 </div>
+</div>
+
 <h2>🚀 Approfondissement</h2>
+
 <div class="exo">
-<strong>A1.</strong> Étudier le cas de $\mathbb Q(\zeta_5)/\mathbb Q$ et expliquer pourquoi cette extension est radicalique après usage des racines de l'unité.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Penser en termes d’espaces vectoriels : une base donne le degré, et une tour donne un produit de degrés.</div>
-      $\mathrm{Gal}(\mathbb Q(\zeta_5)/\mathbb Q) \simeq (\mathbb Z/5\mathbb Z)^\times \simeq \mathbb Z/4\mathbb Z$, cyclique d'ordre $4$. Le corps contient déjà les racines $5$-ièmes de l'unité, mais pour appliquer le lemme de Kummer il faut disposer des racines $4$-ièmes de l'unité dans le corps de base. Ici $K = \mathbb Q$ ne contient pas $\zeta_4 = i$. On peut d'abord adjoindre $i$ (extension quadratique). L'extension totale reste une tour radicalique (chaque étage cyclique se réalise par radicaux après adjonction des racines de l'unité nécessaires). Par exemple, on peut exprimer $\zeta_5$ par radicaux en utilisant $\sqrt 5$ (qui provient de $\mathbb Q(\sqrt 5) \subset \mathbb Q(\zeta_5)$) et des racines carrées supplémentaires. Le théorème de Galois garantit que $\mathbb Q(\zeta_5)$ est contenu dans une extension radicale de $\mathbb Q$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Une famille génératrice ne suffit pas : lorsqu’on parle de base, il faut aussi justifier l’unicité de l’écriture, ou utiliser un argument de dimension.</div><div class="conclusion"><span class="label">Conclusion.</span> On termine en indiquant clairement le corps obtenu, son degré ou la propriété d’extension démontrée.</div></div>
+<strong>A1.</strong>
+<div class="enonce">Étudier $\mathbb Q(\zeta_5)/\mathbb Q$ et expliquer pourquoi cette extension est radicalique après usage des racines de l'unité.</div>
+<div class="sol">
+<p>On a $\mathrm{Gal}(\mathbb Q(\zeta_5)/\mathbb Q)\simeq(\mathbb Z/5\mathbb Z)^\times\simeq\mathbb Z/4\mathbb Z$, cyclique d'ordre $4$ (chapitre 7, S4). Cette extension est galoisienne de degré $4$.</p>
+<p><strong>Caractère radicalique.</strong> Le groupe cyclique $\mathbb Z/4\mathbb Z$ admet la chaîne $\{e\}\subset\mathbb Z/2\mathbb Z\subset\mathbb Z/4\mathbb Z$, à quotients $\mathbb Z/2,\mathbb Z/2$. Par la correspondance, $\mathbb Q(\zeta_5)$ se décompose en une tour</p>
+<p style="text-align:center">$\mathbb Q\subset\mathbb Q(\sqrt5)\subset\mathbb Q(\zeta_5),$</p>
+<p>où $\mathbb Q(\sqrt5)=\mathbb Q(\zeta_5+\zeta_5^{-1})$ est le sous-corps réel (chapitre 8, A1). Chaque étage est quadratique, donc radical (S3). Ainsi $\zeta_5$ s'exprime par radicaux : $\zeta_5=\tfrac14(-1+\sqrt5)+\tfrac{i}{4}\sqrt{10+2\sqrt5}$. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Cyclotomie et radicaux.</span> Toute extension cyclotomique $\mathbb Q(\zeta_n)/\mathbb Q$ a un groupe abélien $(\mathbb Z/n\mathbb Z)^\times$, donc résoluble : les racines de l'unité sont <em>toujours</em> exprimables par radicaux. Ce fait est utilisé en sens inverse au chapitre 14 : la constructibilité du pentagone découle de cette tour quadratique.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>A2.</strong> Soit $P \in \mathbb Q[X]$ irréductible de degré $5$. En supposant que $\mathrm{Gal}(P) \simeq S_5$, expliquer pourquoi $P$ n'est pas résoluble par radicaux.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Penser en termes d’espaces vectoriels : une base donne le degré, et une tour donne un produit de degrés.</div>
-      Le théorème de Galois sur les radicaux affirme qu'un polynôme est résoluble par radicaux si et seulement si son groupe de Galois est un groupe résoluble. Or $S_5$ n'est pas résoluble (démontré au chapitre 10). Donc $P$ ne peut pas être résoluble par radicaux. Les racines de $P$ ne peuvent pas être exprimées par des formules utilisant seulement des opérations algébriques et des extractions de racines.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Pour les degrés $2$ ou $3$, l’absence de racine dans le corps suffit à conclure à l’irréductibilité ; ce n’est plus vrai en degré supérieur.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+<strong>A2.</strong>
+<div class="enonce">Soit $P\in\mathbb Q[X]$ irréductible de degré $5$. En supposant $\mathrm{Gal}(P)\simeq S_5$, expliquer pourquoi $P$ n'est pas résoluble par radicaux.</div>
+<div class="sol">
+<p>Par le <span class="ref">théorème de Galois sur les radicaux</span>, $P$ est résoluble par radicaux si et seulement si $\mathrm{Gal}(P)$ est résoluble.</p>
+<p>Or $S_5$ n'est pas résoluble : il contient $A_5$ qui est simple non abélien (chapitre 10, A3), donc $A_5=D(A_5)$ et la suite dérivée de $S_5$ stagne à $A_5$ sans jamais atteindre $\{e\}$. Comme $\mathrm{Gal}(P)\simeq S_5$ n'est pas résoluble, $P$ n'est pas résoluble par radicaux. <span class="qed">$\square$</span></p>
+<div class="conclusion"><span class="label">L'obstruction concrète.</span> Il existe des quintiques explicites de groupe $S_5$, par exemple $X^5-6X+3$ (chapitre 12, V4) : elles n'admettent aucune formule par radicaux. C'est la traduction, pour une équation particulière, du phénomène général d'Abel-Ruffini.</div>
 </div>
+</div>
+
 <div class="exo">
-<strong>A3.</strong> Comparer les chaînes résolubles de $S_3$ et $S_4$, puis expliquer pourquoi la présence de $A_5$ change radicalement la situation au degré cinq.<br/>
-<div class="sol"><div class="methode"><span class="label">Méthode.</span> Dans un quotient, remplacer la classe de $X$ par un élément vérifiant la relation imposée par le polynôme, puis réduire les puissances.</div>
-      $S_3$ : $\{e\} \triangleleft A_3 \triangleleft S_3$, quotients $\mathbb Z/3\mathbb Z, \mathbb Z/2\mathbb Z$. $S_4$ : $\{e\} \triangleleft V_4 \triangleleft A_4 \triangleleft S_4$, quotients $V_4, \mathbb Z/3\mathbb Z, \mathbb Z/2\mathbb Z$. Tous abéliens.
-      Pour $S_5$, la suite dérivée donne $S_5 \triangleright A_5$, et $A_5$ est simple non abélien. Il n'existe pas de sous-groupe distingué non trivial dans $A_5$ permettant de continuer la chaîne avec un quotient abélien. La suite s'arrête et ne peut atteindre $\{e\}$. L'obstruction est donc que $A_5$ est simple et non abélien. Cela empêche toute chaîne de résolubilité, et par le théorème de Galois, interdit la résolubilité par radicaux de l'équation générale de degré $5$.
-    <div class="vigilance"><span class="label">Point de vigilance.</span> Attention à l’ordre de composition : ici les permutations se composent de droite à gauche.</div><div class="conclusion"><span class="label">Conclusion.</span> La conclusion doit toujours nommer la structure obtenue : groupe, sous-groupe, noyau distingué ou groupe cyclique.</div></div>
+<strong>A3.</strong>
+<div class="enonce">Comparer les chaînes résolubles de $S_3$ et $S_4$, puis expliquer pourquoi la présence de $A_5$ change radicalement la situation au degré cinq.</div>
+<div class="sol">
+<p><strong>$S_3$ :</strong> chaîne $\{e\}\trianglelefteq A_3\trianglelefteq S_3$, quotients $\mathbb Z/3,\mathbb Z/2$. Longueur $2$.</p>
+<p><strong>$S_4$ :</strong> chaîne $\{e\}\trianglelefteq V_4\trianglelefteq A_4\trianglelefteq S_4$, quotients $V_4,\mathbb Z/3,\mathbb Z/2$. Longueur $3$. Le maillon décisif est $V_4\trianglelefteq A_4$ : il fournit l'étage abélien sous $A_4$.</p>
+<p><strong>$S_5$ :</strong> la chaîne s'arrête. On a $\{e\}\trianglelefteq A_5\trianglelefteq S_5$ avec $S_5/A_5\simeq\mathbb Z/2$ abélien, mais $A_5/\{e\}=A_5$ n'est <em>pas</em> abélien. Et il n'existe aucun sous-groupe distingué propre de $A_5$ pour insérer un étage : $A_5$ est simple. Impossible donc d'obtenir une chaîne à quotients tous abéliens. <span class="qed">$\square$</span></p>
+<div class="conclusion"><span class="label">La rupture en degré 5.</span> Pour $n\leq4$, le groupe alterné $A_n$ se « casse » en morceaux abéliens ($A_3$ cyclique, $A_4$ avec $V_4$). À partir de $n=5$, $A_n$ est simple : il forme un bloc indécomposable non abélien. C'est l'unique raison pour laquelle l'équation générale devient non résoluble à partir du degré $5$, et le théorème d'Abel-Ruffini en est la conclusion (chapitre 12).</div>
 </div>
+</div>
+
 </body>
 </html>
