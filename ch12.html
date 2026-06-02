@@ -141,20 +141,21 @@ p,ol,ul{max-width:1120px;margin-left:auto;margin-right:auto}
 <p>La réduction modulo un premier $p$ (ne divisant ni le coefficient dominant ni le discriminant) donne, par le théorème de Dedekind, un élément de $\mathrm{Gal}(P)$ dont le type de cycles correspond aux degrés des facteurs irréductibles modulo $p$.</p>
 <p>$\bullet$ <strong>Modulo $5$ :</strong> $X^5-6X+3\equiv X^5-X+3\pmod5$. C'est un polynôme d'Artin-Schreier $X^5-X-c$ avec $c\equiv2\not\equiv0$, donc irréductible sur $\mathbb F_5$. Un facteur irréductible de degré $5$ correspond à un <strong>$5$-cycle</strong> dans $\mathrm{Gal}(P)$.</p>
 <p>$\bullet$ <strong>Modulo $17$ :</strong> $X^5-6X+3$ se factorise sur $\mathbb F_{17}$ en un produit de trois facteurs de degré $1$ et d'un facteur irréductible de degré $2$, soit le type $(1)(1)(1)(2)$. Cela fournit une <strong>transposition</strong> dans $\mathrm{Gal}(P)$.</p>
-<p>Un groupe transitif de $S_5$ contenant un $5$-cycle et une transposition est forcément $S_5$ tout entier (A2). Donc $\mathrm{Gal}(X^5-6X+3)\simeq S_5$. <span class="qed">$\square$</span></p>
+<p>Comme $P$ est irréductible, $\mathrm{Gal}(P)$ est transitif dans $S_5$. La factorisation modulo $17$ fournit une transposition. Par A2, un sous-groupe transitif de $S_5$ contenant une transposition est nécessairement $S_5$. Donc $\mathrm{Gal}(X^5-6X+3)\simeq S_5$. <span class="qed">$\square$</span></p>
 <div class="lien"><span class="label">Méthode de Dedekind.</span> Réduire modulo plusieurs premiers révèle les types de cycles présents dans le groupe, sans calculer le corps de décomposition. C'est l'outil pratique pour <em>prouver</em> qu'une quintique a pour groupe $S_5$, donc qu'elle n'est pas résoluble (V5).</div>
 </div>
 </div>
 
 <div class="exo">
 <strong>A2.</strong>
-<div class="enonce">Montrer qu'un sous-groupe transitif de $S_5$ contenant une transposition et un $5$-cycle est forcément $S_5$.</div>
+<div class="enonce">Montrer qu'un sous-groupe transitif de $S_5$ contenant une transposition est forcément $S_5$.</div>
 <div class="sol">
-<p>Soit $G\leq S_5$ transitif contenant un $5$-cycle $\sigma$ et une transposition $\tau=(a\,b)$.</p>
-<p><strong>Le $5$-cycle engendre les conjugués de $\tau$.</strong> Quitte à renuméroter, $\sigma=(1\,2\,3\,4\,5)$. Les conjugués successifs $\sigma^k\tau\sigma^{-k}$ donnent les transpositions $(a+k\ \ b+k)$ (indices mod $5$). Comme $5$ est premier et $\sigma$ d'ordre $5$, en partant d'une transposition $(a\,b)$ avec $b-a$ fixé, on engendre toutes les transpositions de la forme $(i\ \ i+d)$ pour $d=b-a$ fixé et $i$ variable.</p>
-<p><strong>On atteint toutes les transpositions.</strong> Les transpositions $(i\ \ i+d)$ pour $i=1,\dots,5$ permettent, par compositions, d'obtenir le « graphe » complet : comme $\gcd(d,5)=1$, ces transpositions relient tous les points entre eux. Le sous-groupe engendré agit donc comme $S_5$ sur $\{1,\dots,5\}$.</p>
-<p>Or les transpositions engendrent $S_5$ tout entier. Donc $G=S_5$. <span class="qed">$\square$</span></p>
-<div class="lien"><span class="label">Le <span class="ref">lemme « Sous-groupe transitif de $S_p$ »</span>.</span> Plus généralement, en degré premier $p$, un sous-groupe transitif contenant une transposition et un $p$-cycle est $S_p$. Ce critère, combiné à la méthode de Dedekind (A1), est la voie standard pour exhiber des polynômes non résolubles.</div>
+<p>Soit $G\leq S_5$ un sous-groupe transitif contenant une transposition $\tau=(a\,b)$.</p>
+<p><strong>Conjuguer la transposition.</strong> Comme $G$ agit transitivement sur $\{1,2,3,4,5\}$, les conjugués de $\tau$ par les éléments de $G$ donnent des transpositions reliant différents points. Considérons le graphe dont les sommets sont $1,2,3,4,5$, et dont les arêtes sont les paires $\{g(a),g(b)\}$ lorsque $g$ parcourt $G$.</p>
+<p>Ce graphe est stable par l'action de $G$. Comme $G$ est transitif, il n'a pas de composante propre stable : le graphe est donc connexe.</p>
+<p><strong>Les transpositions d'un graphe connexe engendrent tout le groupe symétrique.</strong> Les transpositions correspondant aux arêtes d'un graphe connexe engendrent $S_5$ : en effet, le long d'un chemin reliant deux sommets, on peut fabriquer la transposition de ces deux sommets par conjugaisons successives. Ainsi le sous-groupe engendré par les conjugués de $\tau$ est $S_5$.</p>
+<p>Or tous ces conjugués appartiennent à $G$. Donc $S_5\subset G$, et finalement $G=S_5$. <span class="qed">$\square$</span></p>
+<div class="lien"><span class="label">Le <span class="ref">lemme « Sous-groupe transitif de $S_p$ »</span>.</span> En degré premier $p$, et ici en degré $5$, la transitivité plus la présence d'une transposition force déjà le groupe entier $S_p$. Dans A1, l'irréductibilité fournit la transitivité, tandis que la factorisation modulo $17$ fournit la transposition.</div>
 </div>
 </div>
 
